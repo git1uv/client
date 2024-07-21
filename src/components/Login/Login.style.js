@@ -82,9 +82,7 @@ export const PwInput = styled.div`
 
 export const FindPw = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  width: 40%;
-
+  
   button { 
     background: none;
     border: none;

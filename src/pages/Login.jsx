@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import MobileView from '../../components/Login/MobileView';
-import PCView from '../../components/Login/PCView';
+import MobileView from '../components/Login/MobileView';
+import PCView from '../components/Login/PCView';
 
 export default function Login() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);

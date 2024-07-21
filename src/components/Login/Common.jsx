@@ -23,7 +23,7 @@ export default function Common() {
         <input placeholder='이메일을 입력하세요'></input>
         <S.PwInput>
           <input type={pwVisible ? 'text' : 'password'}
-            placeholder='비밀번호를 입력하세요 (영대소+숫자+특수기호 12자리)'>
+            placeholder='비밀번호를 입력하세요'>
           </input>
           <button onClick={togglePasswordVisibility}>
             {pwVisible ? <FaEyeSlash /> : <FaEye />}
@@ -35,6 +35,7 @@ export default function Common() {
         <button onClick={() => navigate('/findpw')}> 비밀번호 찾기</button>
       </S.FindPw>
       <button>로그인</button>
+      <S.Divider/>
       <div/>
       <S.FindPw>
         <p>아직 회원이 아니신가요?</p>

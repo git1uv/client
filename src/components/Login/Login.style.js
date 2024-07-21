@@ -103,3 +103,9 @@ export const SocialLogin = styled.div`
   }
 `
 
+export const Divider = styled.div`
+  margin-top: 10px;
+  width: 90%;
+  height: 1px; /* 아이콘과 같은 높이로 설정 */
+  background-color: #ccc;
+`;

@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from "./Login.style"
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function Common() {
+  const [pwVisible, setPwVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPwVisible(!pwVisible);
+  };
+
+  const navigate = useNavigate();
+
   return (
     <S.Right>
       <S.Title>
@@ -11,20 +21,24 @@ export default function Common() {
       </S.Title>
       <S.LoginInput>
         <input placeholder='이메일을 입력하세요'></input>
-        <div>
-
-          <input placeholder='비밀번호를 입력하세요 (영대소+숫자+특수기호 12자리)'></input>
-        </div>
+        <S.PwInput>
+          <input type={pwVisible ? 'text' : 'password'}
+            placeholder='비밀번호를 입력하세요 (영대소+숫자+특수기호 12자리)'>
+          </input>
+          <button onClick={togglePasswordVisibility}>
+            {pwVisible ? <FaEyeSlash /> : <FaEye />}
+          </button>
+        </S.PwInput>
       </S.LoginInput>
       <S.FindPw>
         <p>비밀번호를 잊으셨나요?</p>
-        <button>비밀번호 찾기</button>
+        <button onClick={() => navigate('/findpw')}> 비밀번호 찾기</button>
       </S.FindPw>
       <button>로그인</button>
       <div/>
       <S.FindPw>
         <p>아직 회원이 아니신가요?</p>
-        <button>회원가입</button>
+        <button onClick={() => navigate('/signup')}> 회원가입</button>
       </S.FindPw>
       <S.SocialLogin>
         <button>Kakao로 시작하기</button>

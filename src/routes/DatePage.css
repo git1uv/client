@@ -15,4 +15,5 @@
 .content {
     flex: 1;
     padding: 10px 0 0 3%;
+    height: 80vh;
 }

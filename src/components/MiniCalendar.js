@@ -20,9 +20,8 @@ function MiniCalendar() {
   const handleDateClick = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     navigate(`/date/${formattedDate}`);
-
   };
-
+  
   return (
     <div className="mini-calendar-wrapper">
       <Calendar

@@ -19,50 +19,96 @@ export const Left = styled.div`
   }
 `;
 
+export const RightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`
+
 export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  width: 100%;
 `;
 
 export const Title = styled.div`
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const LoginInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 24px;
-  width: 80%;
-  input {
-    height: 40px;
-    padding: 10px;
-    padding-right: 40px; /* 아이콘 공간 확보 */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+  align-items: flex-start;
+  width: 90%;
+  div {
+    margin: 10px 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+  }
+  img {
     margin-bottom: 10px;
+    width: 98.45px;
+    height: 30px;
+    object-fit: cover;
+  }
+  h5 {
+    margin: 20px 0 0 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.03em;
+
+    color: #4C434E;
+  }
+  p {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.03em;
+
+    color: #52525B;
   }
 `;
 
-export const PwInput = styled.div`
+export const InputBox = styled.div`
   display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  justify-content: center;
   align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+  width: 96%;
+`;
+
+export const Input = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 90%;
   position: relative;
+  margin-top: 20px;
 
   input {
-    width: 100%;
-    height: 40px;
-    padding-right: 40px; /* 아이콘 공간 확보 */
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    height: 43px;
+    background: #FFFFFF;
+    border: none;
+    border-bottom: 1px solid #D4D4D8;
     font-size: 16px;
+  }
+  input::placeholder {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.03em;
+    color: #A1A1AA;
+    padding: 0;
   }
 
   button { 
@@ -78,34 +124,85 @@ export const PwInput = styled.div`
     background: none;
     border: none;
   }
+
+  p {
+    margin: 0;
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.03em;
+
+    color: #18181B;
+  }
 `;
 
 export const FindPw = styled.div`
   display: flex;
-  
+  margin-top: 9px;
   button { 
+    margin: 0;
     background: none;
     border: none;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: underline; 
   }
+  p {
+    margin: 0;
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.03em;
+
+    color: #71717A;
+}
 `;
 
+export const LoginButton = styled.button`
+  width: 50%;
+  max-width: 367px;
+  height: 60px;
+  margin-top: 27px;
+
+  background: #FBEEA0;
+  border: none;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.03em;
+
+  color: #000000;
+  cursor: pointer;
+`
 export const SocialLogin = styled.div`
   display: flex;
-  flex-direction: column;
-  font-size: 24px;
+  gap: 10px;
+  justify-content: center;
   width: 80%;
+  font-size: 24px;
+
   button {
-    width: 100%;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 10px;
+    border-radius: 100%;
+    border: none;
+    cursor: pointer;
   }
 `
 
 export const Divider = styled.div`
-  margin-top: 10px;
-  width: 90%;
-  height: 1px; /* 아이콘과 같은 높이로 설정 */
+  margin: 10px 0;
+  width: 85%;
+  height: 1px;
   background-color: #ccc;
 `;

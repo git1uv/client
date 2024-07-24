@@ -1,24 +1,24 @@
 import React from 'react';
 import Header from './Header';
 import MyCalendar from './components/MyCalendar';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import DatePage from './routes/DatePage';
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./routes/Login";
+import Signup from "./routes/Signup";
+import SettingName from './routes/SettingName';
 
 function App() {
   return (
-      <Router>
-          <div>
-              <Header />
-              <Routes>
-                <Route path="/" element={<Login/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                  <Route path="/" element={<MyCalendar />} />
-                  <Route path="/date/:date" element={<DatePage />} />
-              </Routes>
-          </div>
-      </Router>
+    <div>
+        <Header />
+        <Routes>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/signup" element={<Signup/>}/>
+          <Route path="/signup/nickname" element={<SettingName />}/>
+          <Route path="/calendar" element={<MyCalendar />} />
+          <Route path="/date/:date" element={<DatePage />} />
+        </Routes>
+    </div>
   );
 }
 

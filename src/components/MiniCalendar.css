@@ -1,0 +1,29 @@
+.mini-calendar-wrapper {
+    width: 25%; /* 캘린더의 너비 설정 */
+    margin: 0; /* 페이지의 왼쪽에 배치 */
+    padding: 10px;
+    background-color: white; /* 배경 색상 */
+    border: 1px solid #ddd; /* 테두리 */
+    border-radius: 0.5rem; /* 테두리 둥글게 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 */
+}
+.react-calendar {
+    width: 100%;
+    border: none;
+}
+.react-calendar__tile {
+    padding: 10px; /* 타일의 패딩 조정 */
+}
+  
+/* 표시한 날짜에 점 표시 스타일 */
+.mini-dot {
+    background-color: burlywood;
+    border-radius: 50%;
+    width: 0.3rem;
+    height: 0.3rem;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+  

@@ -46,22 +46,17 @@ export const Wrapper = styled.div`
 export const Box = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 70%;
-  max-width: 600px;
+  max-width: 550px;
   margin-top: 44px;
-
-  img {
-    width: 20px;
-    height: 20px;
-    object-fit: cover;
-  }
 `;
 
-export const Left = styled.div`
+export const Input = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
+  width: 100%;
 
   input {
     width: 90%;
@@ -105,15 +100,29 @@ export const Left = styled.div`
 
     color: #18181B;
   }
-`;
+`
 
-export const Check = styled.div`
+export const PwInputBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+  img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+  }
+`
+
+export const Check = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
 
   box-sizing: border-box;
   width: 84px;
+  min-width: 84px;
   height: 31px;
 
   border: 1px solid #A1A1AA;
@@ -129,12 +138,18 @@ export const Check = styled.div`
   color: #A1A1AA;
 
   cursor: pointer;
+
+  &:active {
+    background-color: red;
+    ㅊ
+  } 
 `
 
 export const CheckNull = styled.div`
   box-sizing: border-box;
   border: 1px solid #D4D4D8;
   width: 20px;
+  min-width: 20px;
   height: 20px;
   border-radius: 50%;
 `

@@ -90,7 +90,7 @@ export default function SignupCm() {
       </S.Title>
       <S.Wrapper>
         <S.Box>
-          <S.Left>
+          <S.Input>
             <h6>이메일</h6>
             <input
               name="email"
@@ -99,12 +99,13 @@ export default function SignupCm() {
               onChange={handleChange}
             />
             {errors.email && <p>{errors.email}</p>}
-          </S.Left>
-            <S.Check id='check'>중복 확인</S.Check>
+          </S.Input>
+            <S.Check>중복 확인</S.Check>
         </S.Box>
         <S.Box>
-          <S.Left>
+          <S.Input>
             <h6>비밀번호</h6>
+            <S.PwInputBox>
               <input 
                 name="pw"
                 type="password"
@@ -112,39 +113,44 @@ export default function SignupCm() {
                 value={pw}
                 onChange={handleChange}
               />
+              {errors.pw === '' && pw ? (
+                <img src={check} alt='check' />
+              ) : (
+                errors.pw !== '' ? (
+                  <img src={notCheck} alt='notCheck' />
+                ) : (
+                  <S.CheckNull />
+                )
+              )}
+            </S.PwInputBox>
             {errors.pw && <p>{errors.pw}</p>}
-          </S.Left>
-          {errors.pw === '' && pw ? (
-            <img src={check} alt='check' />
-          ) : (
-            errors.pw !== '' ? (
-              <img src={notCheck} alt='notCheck' />
-            ) : (
-              <S.CheckNull />
-            )
-          )}
+          </S.Input>
+          
         </S.Box>
         <S.Box>
-          <S.Left>
-            <h6>비밀번호 재확인</h6>
-            <input 
-              name="confirmPw"
-              type="password"
-              placeholder="비밀번호를 다시 입력해주세요"
-              value={confirmPw}
-              onChange={handleChange}
-            />
+          <S.Input>
+              <h6>비밀번호 재확인</h6>
+            <S.PwInputBox>
+              <input 
+                name="confirmPw"
+                type="password"
+                placeholder="비밀번호를 다시 입력해주세요"
+                value={confirmPw}
+                onChange={handleChange}
+              />
+              {errors.confirmPw === '' && confirmPw ? (
+                <img src={check} alt='check' />
+              ) : (
+                errors.confirmPw !== '' ? (
+                  <img src={notCheck} alt='notCheck' />
+                ) : (
+                  <S.CheckNull />
+                )
+              )}
+            </S.PwInputBox>
             {errors.confirmPw && <p>{errors.confirmPw}</p>}
-          </S.Left>
-          {errors.confirmPw === '' && confirmPw ? (
-            <img src={check} alt='check' />
-          ) : (
-            errors.confirmPw !== '' ? (
-              <img src={notCheck} alt='notCheck' />
-            ) : (
-              <S.CheckNull />
-            )
-          )}
+          </S.Input>
+          
         </S.Box>
         <T.LoginButton onClick={handleSubmit}>계속하기</T.LoginButton>
         <S.TermsBox>

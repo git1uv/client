@@ -44,28 +44,30 @@ export default function SettingNameCm() {
       </S.Title>
       <S.Wrapper>
         <S.Box>
-          <S.Left>
+          <S.Input>
             <S.Nickname>
               <h6>닉네임</h6> 
               <h6 style={{color: 'grey'}}> 챗봇이 당신을 부르게 될 1~10자의 한글/영문을 사용해 주세요.</h6>
             </S.Nickname>
-            <input
-              name="nickname"
-              placeholder="닉네임을 입력해주세요"
-              value={nickname}
-              onChange={handleChange}
-            />
+            <S.PwInputBox>
+              <input
+                name="nickname"
+                placeholder="닉네임을 입력해주세요"
+                value={nickname}
+                onChange={handleChange}
+              />
+              {errors.nickname === '' && nickname ? (
+                <img src={check} alt='check' />
+              ) : (
+                errors.nickname !== '' ? (
+                  <img src={notCheck} alt='notCheck' />
+                ) : (
+                  <S.CheckNull />
+                )
+              )}
+            </S.PwInputBox>
             {errors.nickname && <p>{errors.nickname}</p>}
-          </S.Left>
-          {errors.nickname === '' && nickname ? (
-            <img src={check} alt='check' />
-          ) : (
-            errors.nickname !== '' ? (
-              <img src={notCheck} alt='notCheck' />
-            ) : (
-              <S.CheckNull />
-            )
-          )}
+          </S.Input>
         </S.Box>
         <T.LoginButton onClick={handleSubmit}>가입하기</T.LoginButton>
         <S.TermsBox>

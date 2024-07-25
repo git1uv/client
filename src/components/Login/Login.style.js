@@ -167,6 +167,7 @@ export const FindPw = styled.div`
 export const LoginButton = styled.button`
   width: 50%;
   max-width: 367px;
+  min-width: 200px;
   height: 60px;
   margin-top: 27px;
 

@@ -32,7 +32,7 @@ export default function SettingNameCm() {
       setErrors({ nickname: '닉네임은 1~10자의 한글 또는 영문이어야 합니다.' });
       return;
     }
-    navigate('/main');  // 성공적으로 제출 후 이동할 페이지
+    navigate('/login');
   };
 
   return (

@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import * as S from "./Signup.style"
 import * as T from "../../Login/Login.style"
-import { FaCircle } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import notCheck from '../../../assets/notCheck.png'

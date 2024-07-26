@@ -3,7 +3,7 @@ import * as S from "./Login.style"
 import test from '../../assets/testImg.jpeg'
 import Common from './Common'
 
-export default function PCView() {
+export default function Browser() {
   return (
     <S.Container>
       <S.Left>

@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import MobileView from '../components/Signup/Signup/MobileView';
-import PCView from '../components/Signup/Signup/PCView';
+import React from 'react'
+import Mobile from '../components/Signup/Signup/Mobile';
+import Browser from '../components/Signup/Signup/Browser';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 export default function Signup() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
-    const handleResize = () => {
-        setIsMobile(window.innerWidth <= 768);
-    };
-
-    useEffect(() => {
-      window.addEventListener('resize', handleResize);
-      return () => {
-          window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-
-    return (
-      <div>{isMobile ? <MobileView /> : <PCView />}</div>
-    );
+  <div>
+    <BrowserView>
+      <Mobile />
+    </BrowserView>
+    <MobileView>
+      <Browser />
+    </MobileView>
+  </div>
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import Common from './Common'
 
 
-export default function MobileView() {
+export default function Mobile() {
   return (
     <Common />
   )

@@ -1,15 +1,12 @@
 import React from 'react'
 import Mobile from '../components/Signup/Signup/Mobile';
 import Browser from '../components/Signup/Signup/Browser';
-import { BrowserView, MobileView } from 'react-device-detect';
+import SignupCm from '../components/Signup/Signup/SignupCm';
 
 export default function Signup() {
-  <div>
-    <BrowserView>
-      <Mobile />
-    </BrowserView>
-    <MobileView>
-      <Browser />
-    </MobileView>
-  </div>
+  return (
+    <div>
+      <SignupCm/>
+    </div>
+  );
 }

@@ -47,7 +47,7 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 70%;
+  width: 80%;
   max-width: 550px;
   margin-top: 44px;
 `;

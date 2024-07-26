@@ -5,6 +5,10 @@ export const Container = styled.div`
   grid-template-columns: 55% 45%;
   grid-template-rows: auto;
   height: 100vh;
+  
+  input:focus {
+    outline: none;
+  }
 `;
 
 export const Left = styled.div`

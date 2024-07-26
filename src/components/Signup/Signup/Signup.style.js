@@ -6,6 +6,10 @@ export const Container = styled.div`
   align-items: center;
   height: 100vh;
   margin-top: 80px;
+
+  input:focus {
+    outline: none;
+  }
 `;
 
 export const Title = styled.div`
@@ -76,6 +80,7 @@ export const Input = styled.div`
     color: #A1A1AA;
     padding: 0;
   }
+    
   p {
     margin: 4px 0 0 0;
     font-family: 'Pretendard';

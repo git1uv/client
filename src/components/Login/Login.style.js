@@ -1,53 +1,65 @@
 import styled from "styled-components";
+import backgroundImg from "../../assets/backgroundImg.png"
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 55% 45%;
-  grid-template-rows: auto;
-  height: 100vh;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95vh;
+  margin-top: 20px;
+  position: relative;
+
+  @media (min-width: 768px) {
+    background-image: url(${backgroundImg});
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin-top: 0;
+    
+  &::before {
+      content: "";
+      position: absolute;;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(3px);
+    }
+    & > * {
+      position: relative;
+      z-index: 2;
+    }
+  }
   input:focus {
     outline: none;
   }
 `;
 
-export const Left = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // background-color: lightblue;
-
-  img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-  }
-`;
-
-export const RightWrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  height: 100vh;
+  min-width: 393px;
+  max-width: 640px;
+
+  background: white;
+
+  @media (min-width: 768px) {
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 640px;
+  }
 `
 
-export const Right = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  width: 100%;
-`;
-
 export const Title = styled.div`
-  margin-top: 80px;
+  @media (min-width: 768px) {
+    margin-top: 93px;
+  }
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
+  width: 75%;
   div {
-    margin: 10px 0;
     width: 100%;
     height: 1px;
     background-color: #ccc;
@@ -58,27 +70,33 @@ export const Title = styled.div`
     height: 30px;
     object-fit: cover;
   }
-  h5 {
-    margin: 20px 0 0 0;
+  h1 {
+    margin: 30px 0 0 0;
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 25px;
     line-height: 30px;
     letter-spacing: -0.03em;
 
     color: #4C434E;
+
+    @media (min-width: 768px) {
+      font-size: 35px;
+    }
   }
-  p {
-    margin: 0;
+  h2 {
+    margin: 10px 0 0 0;
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
     letter-spacing: -0.03em;
 
     color: #52525B;
+
+    @media (min-width: 768px) {
+      font-size: 17px;
+    }
   }
 `;
 
@@ -88,15 +106,15 @@ export const InputBox = styled.div`
   font-size: 24px;
   justify-content: center;
   align-items: center;
-  width: 96%;
+  width: 75%;
 `;
 
 export const Input = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   position: relative;
-  margin-top: 20px;
+  margin-top: 40px;
 
   input {
     height: 43px;
@@ -104,6 +122,10 @@ export const Input = styled.div`
     border: none;
     border-bottom: 1px solid #D4D4D8;
     font-size: 16px;
+    
+    @media (min-width: 768px) {
+      height: 50px;
+    }
   }
   input::placeholder {
     font-family: 'Pretendard';
@@ -113,18 +135,25 @@ export const Input = styled.div`
     line-height: 17px;
     letter-spacing: -0.03em;
     color: #A1A1AA;
+
     padding: 0;
+
+    @media (min-width: 768px) {
+      font-size: 16px;
+    } 
   }
 
   button { 
     display: flex;
     align-items: center;
     justify-content: center;
+
     position: absolute;
     right: 10px;
     top: 20px;
     cursor: pointer;
     font-size: 20px;
+
     color: #aaa;
     background: none;
     border: none;
@@ -141,21 +170,32 @@ export const Input = styled.div`
     letter-spacing: -0.03em;
 
     color: #18181B;
+    
+    @media (min-width: 768px) {
+      font-size: 16px;
+    } 
   }
 `;
 
 export const FindPw = styled.div`
   display: flex;
   margin-top: 9px;
+
   button { 
     margin: 0;
     background: none;
     border: none;
+    color: black;
     font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: -0.03em;
+
     cursor: pointer;
     text-decoration: underline; 
   }
-  p {
+  h6 {
     margin: 0;
     font-family: 'Pretendard';
     font-style: normal;
@@ -170,11 +210,8 @@ export const FindPw = styled.div`
 `;
 
 export const LoginButton = styled.button`
-  width: 50%;
-  max-width: 367px;
-  min-width: 200px;
+  width: 75%;
   height: 60px;
-  margin-top: 27px;
 
   background: #FBEEA0;
   border: none;
@@ -203,12 +240,25 @@ export const SocialLogin = styled.div`
     border-radius: 100%;
     border: none;
     cursor: pointer;
+
+    @media (min-width: 768px) {
+      width: 80px;
+      height: 80px;
+    } 
   }
+    
 `
 
 export const Divider = styled.div`
-  margin: 10px 0;
-  width: 85%;
+  margin: 30px 0;
+  width: 50%;
   height: 1px;
   background-color: #ccc;
 `;
+
+export const Null = styled.div`
+  height: 20px;
+  @media (min-width: 768px) {
+    height: 176px;
+  } 
+`

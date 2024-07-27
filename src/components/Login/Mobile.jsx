@@ -1,10 +1,8 @@
-import React from 'react'
+import React  from 'react'
 import Common from './Common'
 
-
-export default function Mobile() {
+export default function Mobile({openModal}) {
   return (
-    <Common />
-    // <div></div>
+    <Common openModal={openModal}/>
   )
 }

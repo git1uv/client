@@ -4,7 +4,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 
-export default function Common() {
+export default function Common({openModal}) {
   const [pwVisible, setPwVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -14,14 +14,14 @@ export default function Common() {
   const navigate = useNavigate();
 
   return (
-    <S.RightWrapper>
-      <S.Title>
-        <img src={logo} alt='logo' />
-        <div/>
-        <h5>맞춤형 챗봇 감정 케어 서비스</h5>
-        <p>끙끙 앓던 자신의 고민을 부담없이 털어놔요</p>
-      </S.Title>
-      <S.Right>
+    <S.Container>
+      <S.Wrapper>
+        <S.Title>
+          <img src={logo} alt='logo' />
+          <div/>
+          <h1>맞춤형 챗봇 감정 케어 서비스</h1>
+          <h2>끙끙 앓던 자신의 고민을 부담없이 털어놔요</h2>
+        </S.Title>
         <S.InputBox>
           <S.Input>
             <p>이메일</p>
@@ -37,11 +37,12 @@ export default function Common() {
             </button>
           </S.Input>
         </S.InputBox>
-        <S.FindPw>
-          <p>비밀번호를 잊으셨나요?</p>
-          <button onClick={() => navigate('/findpw')}> 비밀번호 찾기</button>
-        </S.FindPw>
+        <S.Null />
         <S.LoginButton onClick={() => navigate('/main(임시라우팅)')}>로그인</S.LoginButton>
+        <S.FindPw>
+          <h6>비밀번호를 잊으셨나요?</h6>
+          <button onClick={openModal}> 비밀번호 찾기</button>
+        </S.FindPw>
         <S.Divider/>
         <div/>
         <S.SocialLogin>
@@ -49,10 +50,10 @@ export default function Common() {
           <button></button>
         </S.SocialLogin>
         <S.FindPw>
-          <p>아직 회원이 아니신가요?</p>
+          <h6>아직 회원이 아니신가요?</h6>
           <button onClick={() => navigate('/signup')}> 회원가입</button>
         </S.FindPw>
-      </S.Right>
-    </S.RightWrapper>
+      </S.Wrapper>
+    </S.Container>
   )
 }

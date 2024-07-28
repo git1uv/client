@@ -1,57 +1,115 @@
 import styled from "styled-components";
+import backgroundImg from "../../../assets/backgroundImg.png"
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  height: 100vh;
-  margin-top: 80px;
+  justify-content: center;
+  flex-direction: column;
 
+  background-image: url(${backgroundImg});
+  background-size: cover;
+  background-position: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+  }
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  
   input:focus {
     outline: none;
   }
 `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 90%;
+  min-width: 393px;
+  max-width: 640px;
+
+  background: white;
+
+  @media (min-width: 400px) {
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 640px;
+  }
+`
+
 export const Title = styled.div`
+  @media (min-width: 400px) {
+    margin-top: 93px;
+  }
+
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
+
+  @media (min-width: 400px) {
+    width: 75%;
+  }
+
   img {
+    margin-bottom: 10px;
     width: 98.45px;
     height: 30px;
     object-fit: cover;
   }
+
   section {
     margin-top: 20px;
     width: 100%;
     height: 1px; 
     background-color: #ccc;
   }
-  p {
-    margin: 26px 0 0 0;
+
+  h1 {
+    margin: 30px 0 0 0;
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 600;
     font-size: 25px;
     line-height: 30px;
     letter-spacing: -0.03em;
+
     color: #4C434E;
+
+    @media (min-width: 400px) {
+      font-size: 35px;
+    }
   }
-`
+  h2 {
+    margin: 10px 0 0 0;
+    font-family: 'Pretendard';
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.03em;
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
+    color: #52525B;
 
+    @media (min-width: 400px) {
+      font-size: 17px;
+    }
+
+}
+`
 export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 80%;
+  width: 75%;
   max-width: 550px;
   margin-top: 44px;
 `;
@@ -69,6 +127,10 @@ export const Input = styled.div`
     border: none;
     border-bottom: 1px solid #D4D4D8;
     font-size: 16px;
+
+    @media (min-width: 400px) {
+      height: 50px;
+    }
   }
   input::placeholder {
     font-family: 'Pretendard';
@@ -79,6 +141,10 @@ export const Input = styled.div`
     letter-spacing: -0.03em;
     color: #A1A1AA;
     padding: 0;
+
+    @media (min-width: 400px) {
+      font-size: 16px;
+    } 
   }
     
   p {
@@ -91,6 +157,10 @@ export const Input = styled.div`
     letter-spacing: -0.03em;
 
     color: #71717A;
+
+    @media (min-width: 400px) {
+      font-size: 16px;
+    } 
   }
 
   h6 {
@@ -117,7 +187,14 @@ export const PwInputBox = styled.div`
     width: 20px;
     height: 20px;
     object-fit: cover;
+
+    @media (min-width: 400px) {
+      width: 24px;
+      height: 24px;
+    } 
   }
+
+  
 `
 
 export const Check = styled.button`
@@ -145,8 +222,7 @@ export const Check = styled.button`
   cursor: pointer;
 
   &:active {
-    background-color: red;
-    ㅊ
+    background-color: #DDDDDD;
   } 
 `
 
@@ -157,6 +233,12 @@ export const CheckNull = styled.div`
   min-width: 20px;
   height: 20px;
   border-radius: 50%;
+
+  @media (min-width: 400px) {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+  } 
 `
 
 export const Nickname = styled.div`
@@ -172,7 +254,6 @@ export const TermsBox = styled.div`
   display: flex;
   p {
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 300;
     font-size: 12px;
     line-height: 14px;
@@ -185,13 +266,14 @@ export const TermsBox = styled.div`
     border: none;
 
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 700;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: -0.03em;
+
     text-decoration: underline;
     cursor: pointer;
+    color: black;
   }
 `
 

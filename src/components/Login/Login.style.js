@@ -5,29 +5,24 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 95vh;
-  margin-top: 20px;
-  position: relative;
+  flex-direction: column;
 
-  @media (min-width: 768px) {
-    background-image: url(${backgroundImg});
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    margin-top: 0;
-    
+  background-image: url(${backgroundImg});
+  background-size: cover;
+  background-position: center;
+
   &::before {
-      content: "";
-      position: absolute;;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(3px);
-    }
-    & > * {
-      position: relative;
-      z-index: 2;
-    }
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
   }
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+  
   input:focus {
     outline: none;
   }
@@ -43,7 +38,7 @@ export const Wrapper = styled.div`
 
   background: white;
 
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     width: 640px;
@@ -51,15 +46,21 @@ export const Wrapper = styled.div`
 `
 
 export const Title = styled.div`
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     margin-top: 93px;
   }
   margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 75%;
-  div {
+  width: 90%;
+
+  @media (min-width: 400px) {
+    width: 75%;
+  }
+
+  section {
+    margin-top: 20px;
     width: 100%;
     height: 1px;
     background-color: #ccc;
@@ -80,7 +81,7 @@ export const Title = styled.div`
 
     color: #4C434E;
 
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       font-size: 35px;
     }
   }
@@ -94,7 +95,7 @@ export const Title = styled.div`
 
     color: #52525B;
 
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       font-size: 17px;
     }
   }
@@ -106,7 +107,11 @@ export const InputBox = styled.div`
   font-size: 24px;
   justify-content: center;
   align-items: center;
-  width: 75%;
+  width: 90%;
+
+  @media (min-width: 400px) {
+    width: 75%;
+  }
 `;
 
 export const Input = styled.div`
@@ -123,7 +128,7 @@ export const Input = styled.div`
     border-bottom: 1px solid #D4D4D8;
     font-size: 16px;
     
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       height: 50px;
     }
   }
@@ -138,7 +143,7 @@ export const Input = styled.div`
 
     padding: 0;
 
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       font-size: 16px;
     } 
   }
@@ -171,7 +176,7 @@ export const Input = styled.div`
 
     color: #18181B;
     
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       font-size: 16px;
     } 
   }
@@ -179,7 +184,7 @@ export const Input = styled.div`
 
 export const FindPw = styled.div`
   display: flex;
-  margin-top: 9px;
+  margin-top: 15px;
 
   button { 
     margin: 0;
@@ -210,9 +215,13 @@ export const FindPw = styled.div`
 `;
 
 export const LoginButton = styled.button`
-  width: 75%;
+  width: 90%;
   height: 60px;
 
+  @media (min-width: 400px) {
+    width: 75%;
+  }
+    
   background: #FBEEA0;
   border: none;
   font-family: 'Pretendard';
@@ -241,7 +250,7 @@ export const SocialLogin = styled.div`
     border: none;
     cursor: pointer;
 
-    @media (min-width: 768px) {
+    @media (min-width: 400px) {
       width: 80px;
       height: 80px;
     } 
@@ -251,14 +260,19 @@ export const SocialLogin = styled.div`
 
 export const Divider = styled.div`
   margin: 30px 0;
-  width: 50%;
+  width: 90%;
   height: 1px;
   background-color: #ccc;
+
+  @media (min-width: 400px) {
+    width: 60%;
+  } 
+  
 `;
 
 export const Null = styled.div`
   height: 20px;
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     height: 176px;
   } 
 `

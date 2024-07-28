@@ -18,7 +18,7 @@ export default function Common({openModal}) {
       <S.Wrapper>
         <S.Title>
           <img src={logo} alt='logo' />
-          <div/>
+          <section/>
           <h1>맞춤형 챗봇 감정 케어 서비스</h1>
           <h2>끙끙 앓던 자신의 고민을 부담없이 털어놔요</h2>
         </S.Title>

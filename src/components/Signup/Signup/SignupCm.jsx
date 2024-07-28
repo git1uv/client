@@ -82,13 +82,14 @@ export default function SignupCm() {
   };
 
   return (
-    <S.Container>
-      <S.Title>
-        <img src={logo} alt='로고' />
-        <section />
-        <p>회원가입</p>
-      </S.Title>
+    <T.Container>
       <S.Wrapper>
+        <S.Title>
+          <img src={logo} alt='로고' />
+          <section />
+          <h1>회원가입</h1>
+          <h2>끙끙 앓던 자신의 고민을 부담 없이 털어놔요</h2>
+        </S.Title>
         <S.Box>
           <S.Input>
             <h6>이메일</h6>
@@ -152,6 +153,7 @@ export default function SignupCm() {
           </S.Input>
           
         </S.Box>
+        <T.Null />
         <T.LoginButton onClick={handleSubmit}>계속하기</T.LoginButton>
         <S.TermsBox>
           <p>회원가입 하시면</p>
@@ -164,6 +166,6 @@ export default function SignupCm() {
           <button onClick={() => navigate('/login')}>로그인하기</button>
         </S.TermsBox>
       </S.Wrapper>
-    </S.Container>
+    </T.Container>
   )
 }

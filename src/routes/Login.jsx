@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Mobile from '../components/Login/Mobile';
 import Browser from '../components/Login/Browser';
 import Modal from '../components/Login/FindPw/Modal';
+import { BrowserView, MobileView } from 'react-device-detect';
 
 export default function Login() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -26,8 +27,13 @@ export default function Login() {
   }, []);
 
   return (
-    <div>
-      {isMobile ? <Mobile openModal={openModal}/> : <Browser openModal={openModal}/>}
+    <div className="App">
+      <BrowserView>
+        <Browser openModal={openModal}/>
+      </BrowserView>
+      <MobileView>
+        <Mobile openModal={openModal}/>
+      </MobileView>
       <Modal isOpen={isModalOpen} closeModal={closeModal}/>
     </div>
   );

@@ -1,68 +1,11 @@
 import styled from "styled-components";
 
-export const Title = styled.div`
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 90%;
-
-  @media (min-width: 400px) {
-    width: 75%;
-    margin-top: 93px;
-  }
-
-  img {
-    margin-bottom: 10px;
-    width: 98.45px;
-    height: 30px;
-    object-fit: cover;
-  }
-
-  section {
-    margin-top: 20px;
-    width: 100%;
-    height: 1px; 
-    background-color: #ccc;
-  }
-
-  h1 {
-    margin: 30px 0 0 0;
-    font-family: 'Pretendard';
-    font-weight: 600;
-    font-size: 25px;
-    line-height: 30px;
-    letter-spacing: -0.03em;
-
-    color: #4C434E;
-
-    @media (min-width: 400px) {
-      font-size: 35px;
-    }
-  }
-  h2 {
-    margin: 10px 0 0 0;
-    font-family: 'Pretendard';
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 18px;
-    letter-spacing: -0.03em;
-
-    color: #52525B;
-
-    @media (min-width: 400px) {
-      font-size: 17px;
-    }
-
-}
-`
 export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 90%;
-  max-width: 550px;
-  margin-top: 44px;
+  margin-top: 2.5rem;
 
   @media (min-width: 400px) {
     width: 75%;
@@ -77,55 +20,39 @@ export const Input = styled.div`
 
   input {
     width: 100%;
-    height: 43px;
+    height: 2.6rem;
     background: #FFFFFF;
     border: none;
     border-bottom: 1px solid #D4D4D8;
-    font-size: 16px;
-
-    @media (min-width: 400px) {
-      height: 50px;
-    }
+    font-size: 1rem;
   }
   input::placeholder {
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 1rem;
     letter-spacing: -0.03em;
     color: #A1A1AA;
-    padding: 0;
 
-    @media (min-width: 400px) {
-      font-size: 16px;
-    } 
+    padding: 0;
   }
     
   p {
-    margin: 10px 0 0 0;
+    margin: 0.625rem 0 0 0;
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 300;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 0.75rem;
     letter-spacing: -0.03em;
 
     color: #71717A;
-
-    @media (min-width: 400px) {
-      font-size: 16px;
-    } 
   }
 
   h6 {
     margin: 0;
 
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 1rem;
     letter-spacing: -0.03em;
 
     color: #18181B;
@@ -137,18 +64,12 @@ export const PwInputBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+
   img {
-    width: 20px;
-    height: 20px;
+    width: 1.5rem;
+    height: 1.5rem;
     object-fit: cover;
-
-    @media (min-width: 400px) {
-      width: 24px;
-      height: 24px;
-    } 
-  }
-
-  
+  }  
 `
 
 export const Check = styled.button`
@@ -157,18 +78,15 @@ export const Check = styled.button`
   justify-content: center;
 
   box-sizing: border-box;
-  width: 84px;
-  min-width: 84px;
-  height: 31px;
+  width: 5.75rem;
+  height: 2.125rem;
 
   border: 1px solid #A1A1AA;
   border-radius: 24.5px;
 
   font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 100%;
+  font-size: 0.75rem;
 
   background-color: white;
   color: #A1A1AA;
@@ -183,39 +101,26 @@ export const Check = styled.button`
 export const CheckNull = styled.div`
   box-sizing: border-box;
   border: 1px solid #D4D4D8;
-  width: 20px;
-  min-width: 20px;
-  height: 20px;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
-
-  @media (min-width: 400px) {
-    width: 24px;
-    min-width: 24px;
-    height: 24px;
-  } 
 `
 
 export const Nickname = styled.div`
-  display: flex;
-  width: 100%;
-  h6 {
-    margin-right: 10px;
-    min-width: 36px;
-  }
+  margin-right: 0.625rem;
 `
 
 export const TermsBox = styled.div`
   display: flex;
-  margin-top: 15px;
+  align-items: center;
+  margin-top: 1rem;
 
   h6 {
     margin: 0;
 
     font-family: 'Pretendard';
-    font-style: normal;
     font-weight: 300;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 1rem;
     text-align: center;
     letter-spacing: -0.03em;
 
@@ -226,9 +131,10 @@ export const TermsBox = styled.div`
     background: none;
     border: none;
     color: black;
+
+    font-family: 'Pretendard';
     font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 1rem;
     text-align: center;
     letter-spacing: -0.03em;
 
@@ -238,8 +144,8 @@ export const TermsBox = styled.div`
 `
 
 export const Divider = styled.div`
-  margin: 30px 0;
+  margin: 1.875rem 0 1.25rem 0;
   width: 100%;
-  height: 1px; 
+  height: 0.0625rem; 
   background-color: #F4F4F5;
 `;

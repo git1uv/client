@@ -162,6 +162,7 @@ export const Input = styled.div`
 
 export const FindPw = styled.div`
   display: flex;
+  align-items: center;
   margin-top: 1.06rem;
 
   button { 
@@ -171,6 +172,7 @@ export const FindPw = styled.div`
     border: none;
     color: black;
 
+    font-family: 'Pretendard';
     font-weight: 700;
     font-size: 1rem;
     text-align: center;
@@ -248,7 +250,7 @@ export const Divider = styled.div`
 
 export const Null = styled.div`
   height: 1.25rem;
-  @media (min-width: 1440px) {
+  @media (min-width: 1500px) {
     height: 9rem;
   } 
 `

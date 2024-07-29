@@ -38,11 +38,11 @@ export default function SettingNameCm() {
   return (
     <T.Container>
       <T.Wrapper>
-        <S.Title>
+        <T.Title>
           <img src={logo} alt='로고' />
           <section />
           <h1>회원가입</h1>
-        </S.Title>
+        </T.Title>
         <S.Box>
           <S.Input>
               <h6>닉네임</h6> 

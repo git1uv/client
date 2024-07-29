@@ -1,56 +1,6 @@
 import styled from "styled-components";
-import backgroundImg from "../../../assets/backgroundImg.png"
-
-export const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  background-image: url(${backgroundImg});
-  background-size: cover;
-  background-position: center;
-
-  &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(3px);
-  }
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
-  
-  input:focus {
-    outline: none;
-  }
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 90%;
-  min-width: 393px;
-  max-width: 640px;
-
-  background: white;
-
-  @media (min-width: 400px) {
-    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 640px;
-  }
-`
 
 export const Title = styled.div`
-  @media (min-width: 400px) {
-    margin-top: 93px;
-  }
-
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -59,6 +9,7 @@ export const Title = styled.div`
 
   @media (min-width: 400px) {
     width: 75%;
+    margin-top: 93px;
   }
 
   img {
@@ -109,9 +60,13 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 75%;
+  width: 90%;
   max-width: 550px;
   margin-top: 44px;
+
+  @media (min-width: 400px) {
+    width: 75%;
+  }
 `;
 
 export const Input = styled.div`
@@ -121,7 +76,7 @@ export const Input = styled.div`
   width: 100%;
 
   input {
-    width: 90%;
+    width: 100%;
     height: 43px;
     background: #FFFFFF;
     border: none;
@@ -148,7 +103,7 @@ export const Input = styled.div`
   }
     
   p {
-    margin: 4px 0 0 0;
+    margin: 10px 0 0 0;
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 300;
@@ -182,7 +137,6 @@ export const PwInputBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
   img {
     width: 20px;
     height: 20px;
@@ -252,33 +206,39 @@ export const Nickname = styled.div`
 
 export const TermsBox = styled.div`
   display: flex;
-  p {
+  margin-top: 15px;
+
+  h6 {
+    margin: 0;
+
     font-family: 'Pretendard';
+    font-style: normal;
     font-weight: 300;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
     letter-spacing: -0.03em;
 
     color: #71717A;
   }
   button { 
+    margin: 0;
     background: none;
     border: none;
-
-    font-family: 'Pretendard';
+    color: black;
     font-weight: 700;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
     letter-spacing: -0.03em;
 
-    text-decoration: underline;
     cursor: pointer;
-    color: black;
+    text-decoration: underline; 
   }
 `
 
 export const Divider = styled.div`
-  margin-top: 10px;
+  margin: 30px 0;
   width: 100%;
   height: 1px; 
   background-color: #F4F4F5;

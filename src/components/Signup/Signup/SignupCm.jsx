@@ -83,12 +83,11 @@ export default function SignupCm() {
 
   return (
     <T.Container>
-      <S.Wrapper>
+      <T.Wrapper>
         <S.Title>
           <img src={logo} alt='로고' />
           <section />
           <h1>회원가입</h1>
-          <h2>끙끙 앓던 자신의 고민을 부담 없이 털어놔요</h2>
         </S.Title>
         <S.Box>
           <S.Input>
@@ -151,21 +150,20 @@ export default function SignupCm() {
             </S.PwInputBox>
             {errors.confirmPw && <p>{errors.confirmPw}</p>}
           </S.Input>
-          
         </S.Box>
         <T.Null />
         <T.LoginButton onClick={handleSubmit}>계속하기</T.LoginButton>
         <S.TermsBox>
-          <p>회원가입 하시면</p>
+          <h6>회원가입 하시면</h6>
           <button onClick={() => navigate('/terms')}>이용약관</button>
-          <p>에 동의하는 것으로 간주됩니다.</p>
+          <h6>에 동의하는 것으로 간주됩니다.</h6>
         </S.TermsBox>
         <S.Divider/>
         <S.TermsBox>
-          <p>회원이신가요?</p>
+          <h6>회원이신가요?</h6>
           <button onClick={() => navigate('/login')}>로그인하기</button>
         </S.TermsBox>
-      </S.Wrapper>
+      </T.Wrapper>
     </T.Container>
   )
 }

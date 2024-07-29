@@ -23,7 +23,7 @@ export default function SettingNameCm() {
     } else if (validateNickname(value)) {
       setErrors(prev => ({ ...prev, nickname: '' }));
     } else {
-      setErrors(prev => ({ ...prev, nickname: '닉네임은 1~10자의 한글 또는 영문이어야 합니다.' }));
+      setErrors(prev => ({ ...prev, nickname: '1~10자의 한글/영문을 사용해주세요.' }));
     }
   };
 
@@ -36,23 +36,20 @@ export default function SettingNameCm() {
   };
 
   return (
-    <S.Container>
-      <S.Title>
-        <img src={logo} alt='로고' />
-        <section />
-        <p>회원가입</p>
-      </S.Title>
-      <S.Wrapper>
+    <T.Container>
+      <T.Wrapper>
+        <S.Title>
+          <img src={logo} alt='로고' />
+          <section />
+          <h1>회원가입</h1>
+        </S.Title>
         <S.Box>
           <S.Input>
-            <S.Nickname>
               <h6>닉네임</h6> 
-              <h6 style={{color: 'grey'}}> 챗봇이 당신을 부르게 될 1~10자의 한글/영문을 사용해 주세요.</h6>
-            </S.Nickname>
             <S.PwInputBox>
               <input
                 name="nickname"
-                placeholder="닉네임을 입력해주세요"
+                placeholder="챗봇이 당신을 어떤 이름으로 불러드리면 좋을까요?"
                 value={nickname}
                 onChange={handleChange}
               />
@@ -69,18 +66,19 @@ export default function SettingNameCm() {
             {errors.nickname && <p>{errors.nickname}</p>}
           </S.Input>
         </S.Box>
+        <T.Null />
         <T.LoginButton onClick={handleSubmit}>가입하기</T.LoginButton>
         <S.TermsBox>
-          <p>회원가입 하시면</p>
+          <h6>회원가입 하시면</h6>
           <button onClick={() => navigate('/terms')}>이용약관</button>
-          <p>에 동의하는 것으로 간주됩니다.</p>
+          <h6>에 동의하는 것으로 간주됩니다.</h6>
         </S.TermsBox>
         <S.Divider/>
         <S.TermsBox>
-          <p>회원이신가요?</p>
+          <h6>회원이신가요?</h6>
           <button onClick={() => navigate('/login')}>로그인하기</button>
         </S.TermsBox>
-      </S.Wrapper>
-    </S.Container>
+      </T.Wrapper>
+    </T.Container>
   )
 }

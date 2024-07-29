@@ -52,34 +52,33 @@ export const Wrapper = styled.div`
 `
 
 export const Title = styled.div`
-  margin-top: 5%;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 90%;
 
-  @media (min-width: 400px) {
-    width: 75%;
+  @media (min-width: 430px) {
+   width: 75%;
   }
 
   section {
     margin-top: 2%;
     width: 100%;
-    height: 1px;
+    height: 0.0625rem;
     background-color: #ccc;
   }
   img {
-    margin-bottom: 10px;
-    width: 25%;
-    height: 35%;
+    margin-bottom: 0.625rem;
+    width: 6.15rem;
+    height: 1.875rem;
     object-fit: cover;
   }
   h1 {
-    margin: 30px 0 0 0;
+    margin: 1.875rem 0 0 0;
     font-family: 'Pretendard';
     font-weight: 600;
     font-size: 1.8rem;
-    line-height: 30px;
     letter-spacing: -0.03em;
 
     color: #4C434E;
@@ -89,21 +88,15 @@ export const Title = styled.div`
     font-family: 'Pretendard';
     font-weight: 300;
     font-size: 1rem;
-    line-height: 18px;
     letter-spacing: -0.03em;
 
     color: #52525B;
-
-    // @media (min-width: 1440px) {
-    //   font-size: 0.78rem;
-    // }
   }
 `;
 
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 24px;
   justify-content: center;
   align-items: center;
   width: 90%;
@@ -118,7 +111,7 @@ export const Input = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
-  margin-top: 40px;
+  margin-top: 2.5rem;
 
   input {
     height: 2.6rem;
@@ -147,7 +140,7 @@ export const Input = styled.div`
     right: 10px;
     top: 30px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 1.25rem;
 
     color: #aaa;
     background: none;
@@ -161,7 +154,6 @@ export const Input = styled.div`
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
-    line-height: 17px;
     letter-spacing: -0.03em;
 
     color: #18181B;
@@ -194,7 +186,6 @@ export const FindPw = styled.div`
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
-    line-height: 18px;
     text-align: center;
     letter-spacing: -0.03em;
 

@@ -228,7 +228,7 @@ export const LoginButton = styled.button`
 
 export const SocialLogin = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
   justify-content: center;
 
   button {
@@ -244,7 +244,7 @@ export const SocialLogin = styled.div`
 `
 
 export const Divider = styled.div`
-  margin: 1.5rem 0;
+  margin: 1.25rem 0;
   width: 90%;
   height: 0.0625rem;
   background-color: #ccc;

@@ -137,8 +137,8 @@ export const Input = styled.div`
     justify-content: center;
 
     position: absolute;
-    right: 10px;
-    top: 30px;
+    right: 0.625rem;
+    top: 1.875rem;
     cursor: pointer;
     font-size: 1.25rem;
 

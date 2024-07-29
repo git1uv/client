@@ -6,6 +6,7 @@ import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName';
+import GlobalStyle from './GlobalStyles'
 
 function App() {
   const location = useLocation();
@@ -13,19 +14,20 @@ function App() {
 
   const isShowHeader = !noHeaderRoutes.includes(location.pathname);
 
-  console.log(window.innerWidth)
-  console.log(window.innerHeight)
   return (
-    <div>
-        {isShowHeader && <Header />}
-        <Routes>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/signup" element={<Signup/>}/>
-          <Route path="/signup/nickname" element={<SettingName />}/>
-          <Route path="/calendar" element={<MyCalendar />} />
-          <Route path="/date/:date" element={<DatePage />} />
-        </Routes>
-    </div>
+    <>
+      <GlobalStyle />
+      <div>
+          {isShowHeader && <Header />}
+          <Routes>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/signup/nickname" element={<SettingName />}/>
+            <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/date/:date" element={<DatePage />} />
+          </Routes>
+      </div>
+    </>
   );
 }
 

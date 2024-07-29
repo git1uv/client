@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import backgroundImg from "../../assets/backgroundImg.png"
+import theme from "../../constants/theme";
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  width: 100%;
+  height: 100%;
 
   background-image: url(${backgroundImg});
   background-size: cover;
@@ -27,29 +31,28 @@ export const Container = styled.div`
     outline: none;
   }
 `;
-
+ 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
-  min-width: 393px;
-  max-width: 640px;
 
+  height: 100vh;
   background: white;
 
-  @media (min-width: 400px) {
-    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    width: 640px;
+  box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 40%;
+  min-width: 393px;
+
+  @media ${theme.WINDOW_SIZE.MOBILE} {
+    border-radius: 0px;
+    box-shadow: 0px;
   }
 `
 
 export const Title = styled.div`
-  @media (min-width: 400px) {
-    margin-top: 93px;
-  }
-  margin-top: 20px;
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -60,44 +63,40 @@ export const Title = styled.div`
   }
 
   section {
-    margin-top: 20px;
+    margin-top: 2%;
     width: 100%;
     height: 1px;
     background-color: #ccc;
   }
   img {
     margin-bottom: 10px;
-    width: 98.45px;
-    height: 30px;
+    width: 25%;
+    height: 35%;
     object-fit: cover;
   }
   h1 {
     margin: 30px 0 0 0;
     font-family: 'Pretendard';
     font-weight: 600;
-    font-size: 25px;
+    font-size: 1.8rem;
     line-height: 30px;
     letter-spacing: -0.03em;
 
     color: #4C434E;
-
-    @media (min-width: 400px) {
-      font-size: 35px;
-    }
   }
   h2 {
-    margin: 10px 0 0 0;
+    margin: 0.6rem 0 0 0;
     font-family: 'Pretendard';
     font-weight: 300;
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 18px;
     letter-spacing: -0.03em;
 
     color: #52525B;
 
-    @media (min-width: 400px) {
-      font-size: 17px;
-    }
+    // @media (min-width: 1440px) {
+    //   font-size: 0.78rem;
+    // }
   }
 `;
 
@@ -122,30 +121,21 @@ export const Input = styled.div`
   margin-top: 40px;
 
   input {
-    height: 43px;
+    height: 2.6rem;
     background: #FFFFFF;
     border: none;
     border-bottom: 1px solid #D4D4D8;
-    font-size: 16px;
-    
-    @media (min-width: 400px) {
-      height: 50px;
-    }
+    font-size: 1rem;
   }
   input::placeholder {
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 1rem;
     letter-spacing: -0.03em;
     color: #A1A1AA;
 
     padding: 0;
-
-    @media (min-width: 400px) {
-      font-size: 16px;
-    } 
   }
 
   button { 
@@ -155,7 +145,7 @@ export const Input = styled.div`
 
     position: absolute;
     right: 10px;
-    top: 20px;
+    top: 30px;
     cursor: pointer;
     font-size: 20px;
 
@@ -170,30 +160,27 @@ export const Input = styled.div`
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 300;
-    font-size: 14px;
+    font-size: 1rem;
     line-height: 17px;
     letter-spacing: -0.03em;
 
     color: #18181B;
-    
-    @media (min-width: 400px) {
-      font-size: 16px;
-    } 
   }
 `;
 
 export const FindPw = styled.div`
   display: flex;
-  margin-top: 15px;
+  margin-top: 1.06rem;
 
   button { 
     margin: 0;
+
     background: none;
     border: none;
     color: black;
+
     font-weight: 700;
-    font-size: 15px;
-    line-height: 18px;
+    font-size: 1rem;
     text-align: center;
     letter-spacing: -0.03em;
 
@@ -202,10 +189,11 @@ export const FindPw = styled.div`
   }
   h6 {
     margin: 0;
+
     font-family: 'Pretendard';
     font-style: normal;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 1rem;
     line-height: 18px;
     text-align: center;
     letter-spacing: -0.03em;
@@ -216,7 +204,9 @@ export const FindPw = styled.div`
 
 export const LoginButton = styled.button`
   width: 90%;
-  height: 60px;
+  height: 3.75rem;
+  min-height: 40px;
+  margin-top: 1.25rem;
 
   @media (min-width: 400px) {
     width: 75%;
@@ -224,44 +214,39 @@ export const LoginButton = styled.button`
     
   background: #FBEEA0;
   border: none;
+
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 1.25rem;
   text-align: center;
   letter-spacing: -0.03em;
 
   color: #000000;
   cursor: pointer;
 `
+
 export const SocialLogin = styled.div`
   display: flex;
   gap: 10px;
   justify-content: center;
-  width: 80%;
-  font-size: 24px;
 
   button {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
+    width: 5rem;
+    height: 5rem;
+    
+    margin-bottom: 1.6rem;
     border-radius: 100%;
     border: none;
     cursor: pointer;
-
-    @media (min-width: 400px) {
-      width: 80px;
-      height: 80px;
-    } 
   }
     
 `
 
 export const Divider = styled.div`
-  margin: 30px 0;
+  margin: 1.5rem 0;
   width: 90%;
-  height: 1px;
+  height: 0.0625rem;
   background-color: #ccc;
 
   @media (min-width: 400px) {
@@ -271,8 +256,8 @@ export const Divider = styled.div`
 `;
 
 export const Null = styled.div`
-  height: 20px;
-  @media (min-width: 400px) {
-    height: 176px;
+  height: 1.25rem;
+  @media (min-width: 1440px) {
+    height: 9rem;
   } 
 `

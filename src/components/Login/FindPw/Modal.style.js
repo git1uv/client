@@ -15,6 +15,10 @@ export const Container = styled.div`
     height: 100%;
     background-color: rgba(0, 0, 0 ,0.6);
     z-index: 500;
+
+    @media (max-width: 430px) {
+        height: 100dvh;
+    }
 `
 
 export const Modal = styled.div`

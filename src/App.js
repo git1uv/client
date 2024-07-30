@@ -7,10 +7,11 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName';
 import GlobalStyle from './GlobalStyles'
+import Main from './routes/Main';
 
 function App() {
   const location = useLocation();
-  const noHeaderRoutes = ['/login', '/signup', '/signup/nickname', '/'];
+  const noHeaderRoutes = ['/login', '/signup', '/signup/nickname', '/', '/terms'];
 
   const isShowHeader = !noHeaderRoutes.includes(location.pathname);
 
@@ -20,6 +21,8 @@ function App() {
       <div>
           {isShowHeader && <Header />}
           <Routes>
+            {/* 추후 /main/:userId로 바꿀 예정 */}
+            <Route path="/main" element={<Main/>}/> 
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
             <Route path="/signup/nickname" element={<SettingName />}/>

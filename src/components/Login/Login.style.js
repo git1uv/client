@@ -11,6 +11,10 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
+  @media (max-width: 430px) {
+    height: 100dvh;
+  }
+
   background-image: url(${backgroundImg});
   background-size: cover;
   background-position: center;
@@ -30,6 +34,7 @@ export const Container = styled.div`
   input:focus {
     outline: none;
   }
+
 `;
  
 export const Wrapper = styled.div`

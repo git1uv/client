@@ -38,7 +38,7 @@ export default function Common({openModal}) {
           </S.Input>
         </S.InputBox>
         <S.Null />
-        <S.LoginButton onClick={() => navigate('/main(임시라우팅)')}>로그인</S.LoginButton>
+        <S.LoginButton onClick={() => navigate('/main')}>로그인</S.LoginButton>
         <S.FindPw>
           <h6>비밀번호를 잊으셨나요?</h6>
           <button onClick={openModal}> 비밀번호 찾기</button>

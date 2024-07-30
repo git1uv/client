@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import backgroundImg from "../../assets/backgroundImg.png"
-import mainBackground from "../../assets/Main/mainBackground.png";
-import mainBackgroundMobile from "../../assets/Main/mainBackgroundMobile.png";
 import room from "../../assets/Main/room.png";
-import room2 from "../../assets/Main/room2.png";
 import trash from "../../assets/Main/trash.png";
 
 import theme from "../../constants/theme";
@@ -32,41 +29,78 @@ export const Container = styled.div`
 export const Room = styled.div`    
     position: relative;
     right: 8px;
-    width: 40%;
-    height: 100%;
     
-    background-image: url(${room2});
+    width: 856px;
+    height: 100vh;
+
+    @media (max-width: 1440px) {
+        width: 545px;
+        height: 556px;
+    }
+
+    @media (max-width: 630px) {
+        width: 345px;
+        height: 356px;
+    }
+
+    background-image: url(${room});
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     
-    // background-color: red;
-    // opacity: 0.5;
-    
-    @media (max-width: 630px) {
-        width: 22rem;
-    }
-
     z-index: 10;
 `
 
 export const Trash = styled.div`
     position: absolute;
-    right: 20%;
-    bottom: 25%;
+    
+    width: 105px;
+    height: 130px;
+    left: 1.6%;
+    bottom: 28%;
 
-    width: 16.75rem;
-    height: 11.1875rem;
+    @media (max-width: 1440px) {
+        width: 65px;
+        height: 86px;
+        left: 1.6%;
+        bottom: 21.5%;
+    }
+
+    @media (max-width: 630px) {
+        width: 40px;
+        height: 56px;
+        left: 1%;
+        bottom: 21.5%;
+    }
 
     cursor: pointer;
-    background-image: url(${props => props.defaultImage});
-
-    background-color: black;
     z-index: 20;
 
-    &:hover {
+    &:hover {      
+        width: 288px;
+        height: 189px; 
+        right: 65%;
+        bottom: 25.5%; 
+        
         background-image: url(${trash});
-        background-color: red;
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        
         z-index: 40;
+
+        @media (max-width: 1440px) {
+            background-size: 208px;
+            // background-size: 100%;
+            width: 208px;
+            height: 139px;
+            bottom: 17%;
+        }
+
+        @media (max-width: 630px) {
+            background-size: 100%;
+            width: 150px;
+            height: 90px;
+        }
     }
 `

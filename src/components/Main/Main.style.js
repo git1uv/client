@@ -28,7 +28,6 @@ export const Container = styled.div`
 
 export const Room = styled.div`    
     position: relative;
-    right: 8px;
     
     width: 856px;
     height: 100vh;
@@ -37,7 +36,6 @@ export const Room = styled.div`
         width: 545px;
         height: 556px;
     }
-
     @media (max-width: 630px) {
         width: 345px;
         height: 356px;
@@ -62,14 +60,12 @@ export const Trash = styled.div`
     @media (max-width: 1440px) {
         width: 65px;
         height: 86px;
-        left: 1.6%;
         bottom: 21.5%;
     }
 
     @media (max-width: 630px) {
         width: 40px;
         height: 56px;
-        left: 1%;
         bottom: 21.5%;
     }
 
@@ -77,7 +73,7 @@ export const Trash = styled.div`
     z-index: 20;
 
     &:hover {      
-        width: 288px;
+        width: 280px;
         height: 189px; 
         right: 65%;
         bottom: 25.5%; 
@@ -90,17 +86,15 @@ export const Trash = styled.div`
         z-index: 40;
 
         @media (max-width: 1440px) {
-            background-size: 208px;
-            // background-size: 100%;
-            width: 208px;
+            width: 170px;
             height: 139px;
             bottom: 17%;
         }
 
         @media (max-width: 630px) {
-            background-size: 100%;
-            width: 150px;
-            height: 90px;
+            width: 110px;
+            height: 70px;
+            bottom: 19%;
         }
     }
 `

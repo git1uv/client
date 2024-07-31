@@ -1,0 +1,306 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
+  display: flex;
+  z-index: 20;
+  background-color: white;
+  width: 40vw;
+  height: 73.5vh;
+  margin: 0 auto;
+  flex-direction: column;
+  padding: 0;
+  button {
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
+  @media (max-width: 430px) {
+    width: 100vw; 
+    height: 78vh;
+  }
+`;
+
+
+export const Explain = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column; 
+  align-items: flex-start; 
+  font-size: 1.67rem;
+  margin: 10px 0 0 0;
+  p {
+    margin: 2vh 2vh 2vh 3.5vw;
+    @media (max-width: 430px) {
+    margin-left: 5.3vw
+  }
+  }
+`;
+
+export const TopRow = styled.div`
+  display: flex;
+  align-items: center; /* 아이템들을 수평으로 정렬 */
+  width: 100%;
+  height: 7.3vh;
+  padding: 15px 0;
+  position: relative;
+  justify-content: center; 
+  background-color: transparent;
+  border-bottom: 1px solid #F4F4F5;
+  p {
+    position: absolute;
+    font-weight: bold;
+    flex-grow: 1;
+    text-align: center; 
+    margin: 0; 
+    font-size: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  button {
+    background-color: transparent;
+    padding: 0 0 0 3.5vw;
+    position: absolute;
+    left: 0;
+  }
+
+`;
+
+export const Title = styled.div`
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 0.875rem;
+  color: #A1A1AA;
+  margin: 0 0 1vh 3.5vw;
+  @media (max-width: 430px) {
+    margin-left: 5.3vw
+  }
+`;
+
+
+export const NicknameChange = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+
+  button {
+    background-color: transparent;
+    padding: 0;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+    color: black;
+  }
+  }
+
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const PwChange = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+    color: black;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const FAQ = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+    color: black;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const Ask = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+    color: black;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const Information = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+    color: black;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const LogOut = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 1.3vh 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    color: #ED6243;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const DeleteID = styled.div`
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+  align-items: center;
+  margin: 0 0 2vh 3.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    color: #A1A1AA;
+    @media (max-width: 430px) {
+    margin-left: 1.8vw;
+  }
+  }
+  .right-icon{
+    background-color: transparent;
+    margin-left: auto;
+    margin-right: 3.5vw;
+    color: #A1A1AA;
+    font-size: 1.5rem;
+    @media (max-width: 430px) {
+    margin-right: 5.3vw
+  }
+  }
+`;
+
+export const DeveloperInformation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  left: 30%;
+  position: absolute;
+  margin: 0 0 2.2vh 1.5vw;
+  button {
+    background-color: transparent;
+    padding: 0;
+    text-align: left;
+    font-size: 0.875rem;
+    color: #A1A1AA;
+    border: none;
+  }
+    @media (max-width: 430px) {
+    left: 5.3%;
+  }
+`;
+
+export const Divider = styled.div`
+  width: 100%;
+  height: 1px; 
+  background-color: #D4D4D8;
+  margin: 5px 0;
+`;
+
+export const Footer = styled.div`
+  margin: 3vh 0 0 0;
+  display: flex;
+  z-index: 20;
+  background-color: #F4F2EB;
+  weight: 100vw;
+  height: 26.5vh;
+  @media (max-width: 430px) {
+    height: auto; 
+    margin: 0; 
+  }
+`;

@@ -9,10 +9,10 @@ export default function MainCm() {
       <S.Room>
       <S.Trash onClick={() => navigate('/trash')}/>
       <S.Airplane />
-      <S.Calendar />
-      <S.Chatbot />
-      <S.PencilHolder />
-      <S.Mailbox />
+      <S.Calendar onClick={() => navigate('/calendar')}/>
+      <S.Chatbot onClick={() => navigate('/chatbot')}/>
+      <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
+      <S.Mailbox onClick={() => navigate('/letter')}/>
       </S.Room>
     </S.Container>
     

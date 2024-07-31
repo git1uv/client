@@ -3,7 +3,6 @@ import './MiniCalendar.css';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
-import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 
 const MiniDot = () => <div className="mini-dot" />;
@@ -11,7 +10,6 @@ const MiniDot = () => <div className="mini-dot" />;
 function MiniCalendar() {
   const [value, onChange] = useState(new Date());
   const navigate = useNavigate();
-  const today = new Date();
   const emotion_day = [
     '2024-07-20',
     '2024-07-21',
@@ -20,9 +18,8 @@ function MiniCalendar() {
   const handleDateClick = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     navigate(`/date/${formattedDate}`);
-
   };
-
+  
   return (
     <div className="mini-calendar-wrapper">
       <Calendar

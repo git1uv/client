@@ -3,9 +3,9 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
-    box-shadow: 0 0 3px #000;
-    z-index: 10;
+    /* background-color: white; */
+    /* box-shadow: 0 0 3px #000; */
+    z-index: 100;
 }
 .header_wrapper{
     display: flex;

@@ -19,7 +19,8 @@ export const Container = styled.div`
   }
   @media (max-width: 430px) {
     width: 100vw; 
-    height: 78vh;
+    // height: 78vh;
+    height: 100dvh;
   }
 `;
 

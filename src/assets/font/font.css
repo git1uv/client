@@ -1,13 +1,13 @@
 @font-face {
-    font-family: seoul;
-    font-style: normal;
-    font-weight: normal;
-    src: url("./서울한강-장체L.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: seoul;
-    font-style: normal;
-    font-weight: bold;
-    src: url("./서울한강-장체EB.ttf") format("truetype");
-  }
+  font-family: 'seoul';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fontOriginal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'seoulBold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./fontBold.ttf') format('truetype');
+}

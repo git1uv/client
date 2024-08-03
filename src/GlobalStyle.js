@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
+import seoul from './assets/font/fontOriginal.ttf'
 
 const GlobalStyle = createGlobalStyle`
+  @media (max-width: 430px) {
+    height: 100dvh;
+  }
+
   html {
     font-size: 16px; // 기본 폰트 사이즈를 16px로 설정
   }
@@ -21,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
       font-size: 12px; // 화면 너비가 768px 이하일 때
     }
   }
+    @font-face {
+      font-family: 'seoul';
+      src: url(${seoul}) format('truetype');
+    }
 `;
 
 export default GlobalStyle;

@@ -11,20 +11,20 @@ export const ModalBg = styled.div`
   align-items: center;
   z-index: 80;
   background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(2px);
 
 `;
 
 export const Modal = styled.div`
-  width: 73.5%;
-  height: 63%;
+  width: 71.3vw;
+  height: 62.9vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   position: absolute;
-  left: 22.5%;
-  top: 4%;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(2px);
+  right: 5vw;
+  top: 2.5vh;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 25px;
+  z-index: 81;
 
 `;
 
@@ -32,31 +32,28 @@ export const ModalButton = styled.button`
   display: flex;
   align-items: center; 
   width: 60%;
-  margin: 0 7%;
+  margin: 0.4vh 7%;
   padding: 8.5px;
   font-size: 1.25rem;
   background-color: transparent;
   border: none;
   
   color: #27272A;
-  &:hover {
-    background-color: #e0e0e0;
-  }
   img{
     margin-right: 15px;
-    height: 30px; 
-    width: 30px;
+    height: 4vh; 
   }
 `;
 
 export const ModalCloseButton = styled.button`
   position: absolute;
-  top: 5.1%;
-  right: 3%;
+  top: 2.4vh;
+  right: 5vw;
   background: none;
   border: none;
-  font-size: 23px;
-  color: #27272A;
+  img{
+    height: 2.7vh;
+  }
 `;
 
 export const LogoutButton = styled(ModalButton)`
@@ -66,12 +63,12 @@ export const LogoutButton = styled(ModalButton)`
 
 
 export const ButtonContainer = styled.div`
-  margin-top: 17%; 
+  margin-top: 6.5vh; 
 `;
 
 export const ModalDivider = styled.hr`
-  width: 80%;
-  margin: 15px auto;
+  width: 84%;
+  margin: 20px auto;
   border: 0;
   border-top: 1px solid #e0e0e0;
 `;

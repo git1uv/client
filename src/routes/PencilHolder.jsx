@@ -1,10 +1,9 @@
 import React from 'react';
+import PencilHolderCm from '../components/PencilHolder/PencilHolderCm';
 
 function PencilHolder() {
   return (
-    <div>
-      <h1>연필꽂이 페이지</h1>
-    </div>
+   <PencilHolderCm />
   );
 }
 

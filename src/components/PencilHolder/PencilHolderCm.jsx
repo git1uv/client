@@ -1,8 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from "./PencilHolder.style"
 import Pencil from '../../assets/pencilHolder/Pencil.png'
 
 export default function PencilHolderCm() {
+  const [name, setName] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleNameChange = (e) => {
+    const value = e.target.value;
+    if (value.length <= 10) {
+      setName(value);
+    } else {
+      alert("최대 10자까지 작성 가능합니다.");
+    }
+  };
+
+  const handleContentChange = (e) => {
+    const value = e.target.value;
+    if (value.length <= 150) {
+      setContent(value);
+    } else {
+      alert("최대 150자까지 작성 가능합니다.");
+    }
+  };
   return (
     <S.Container>
       <S.SizedBox/>
@@ -17,11 +37,17 @@ export default function PencilHolderCm() {
           <S.Wrapper>
             <S.WriteBox>
               <h3>표시할 이름</h3>
-              <input placeholder='ex) 팟팅인간(최대 10자)'></input>
+              <input 
+                placeholder='표시할 이름을 적어주세요! (최대 10자)'
+                value={name}
+                onChange={handleNameChange}></input>
             </S.WriteBox>
             <S.WriteBox>
               <h3>보낼 내용</h3>
-              <textarea placeholder='최대 150자'></textarea>
+              <textarea 
+                placeholder='따뜻한 마음을 가득 담아 적어보세요! (최대 150자)'
+                value={content}
+                onChange={handleContentChange}></textarea>
             </S.WriteBox>
             <S.SendBtn>
               <S.PencilIcon>

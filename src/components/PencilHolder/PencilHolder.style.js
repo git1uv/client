@@ -132,6 +132,7 @@ export const WriteBox = styled.div`
     }
 
     input {
+        position: relative;
         width: 22rem;
         height: 3rem;
         border: none;
@@ -155,7 +156,7 @@ export const WriteBox = styled.div`
     }
 
     textarea {
-        width: 41rem;
+        width: 38rem;
         height: 30vh;
         @media (max-width: 1440px) {
             height: 25vh;
@@ -166,7 +167,17 @@ export const WriteBox = styled.div`
         background: #FFF;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 
+        font-family: SeoulHangang;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: normal;
+        padding: 10px;
+
         resize: none;
+
+        &::placeholder {
+            color: #A3A3A3;
+        }
     }
     textarea:focus {
         outline: none;

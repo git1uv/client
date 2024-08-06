@@ -23,7 +23,6 @@ export const Container = styled.div`
     }
 `;
 
-<<<<<<< HEAD
 export const CenterSection = styled.div`
   display: flex;
   justify-content: center;

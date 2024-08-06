@@ -1,9 +1,18 @@
 import React from 'react';
-import PencilHolderCm from '../components/PencilHolder/PencilHolderCm';
+import Browser from '../components/PencilHolder/Browser';
+import { BrowserView, MobileView } from 'react-device-detect';
+import Mobile from '../components/PencilHolder/Mobile';
 
 function PencilHolder() {
   return (
-   <PencilHolderCm />
+    <div className="App">
+      <BrowserView>
+        <Browser />
+      </BrowserView>
+      <MobileView>
+        <Mobile />
+      </MobileView>
+    </div>
   );
 }
 

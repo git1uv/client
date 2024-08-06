@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as M from './LogoutModal.style';
 import { FiX } from "react-icons/fi";
 
-const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
+const DeleteModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
 
   if (!isVisible) return null;
@@ -23,4 +23,4 @@ const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
   );
 };
 
-export default LogoutModal;
+export default DeleteModal;

@@ -13,6 +13,7 @@ const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
         <M.ModalCloseButton onClick={onClose}><FiX /></M.ModalCloseButton>
         <M.LogoutModalTitle>로그아웃</M.LogoutModalTitle>
         <p className='sub'>로그아웃 하시겠습니까?</p>
+        <br />
         <M.ModalActions>
           <M.CancelButton onClick={onClose}>아니오</M.CancelButton>
           <M.LogoutClickButton onClick={onConfirm}>로그아웃</M.LogoutClickButton>

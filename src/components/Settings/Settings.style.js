@@ -6,7 +6,6 @@ export const Container = styled.div`
   background-color: white;
   width: 40vw;
   height: 73.5vh;
-  margin: 0 auto;
   flex-direction: column;
   padding: 0;
   button {
@@ -20,6 +19,10 @@ export const Container = styled.div`
   @media (max-width: 430px) {
     width: 100vw; 
     height: 78vh;
+    margin: 0 auto;
+  }
+  @media (min-width: 431px) {
+    margin: 10.3vh auto 0;
   }
 `;
 
@@ -282,6 +285,7 @@ export const DeveloperInformation = styled.div`
   }
     @media (max-width: 430px) {
     left: 5.3%;
+    margin-top: 2vh;
   }
 `;
 
@@ -296,11 +300,11 @@ export const Footer = styled.div`
   margin: 3vh 0 0 0;
   display: flex;
   z-index: 20;
-  background-color: #F4F2EB;
+  background-color: #EEECE3;
   weight: 100vw;
-  height: 26.5vh;
+  height: 13.5vh;
   @media (max-width: 430px) {
-    height: auto; 
+    height: 22vh; 
     margin: 0; 
   }
 `;

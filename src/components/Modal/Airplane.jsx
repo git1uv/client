@@ -23,6 +23,7 @@ function Airplane({setAirplaneModal}) {
                     <A.DownloadButton onClick={handleDownload}><img src={download} alt='download' /> </A.DownloadButton>
                     <A.GoToLetterButton onClick={() => { navigate('/pencilholder'); setAirplaneModal(false); }}>나도 편지 쓰러 가기</A.GoToLetterButton>
                     </A.ButtonContainer>
+
                     </A.ModalContainer>
                 </A.ModalBg>
         );

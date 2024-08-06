@@ -1,4 +1,5 @@
 import styled,{ keyframes,  css } from 'styled-components';
+
 import {trashImage, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImage, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
 
 export const Container = styled.div`
@@ -22,6 +23,7 @@ export const Container = styled.div`
     }
 `;
 
+<<<<<<< HEAD
 export const CenterSection = styled.div`
   display: flex;
   justify-content: center;
@@ -79,11 +81,11 @@ export const Card1 = styled.div`
     margin-right: -12vw;
     }
   @media (min-width: 431px) {
-  background-image: url(${card1ImageWeb});
-  width: 17.7vw;
-  height: 23.2vh;
-  margin-top: 5vh;
-  margin-right: -1vw;
+    background-image: url(${card1ImageWeb});
+    width: 17.7vw;
+    height: 23.2vh;
+    margin-top: 5vh;
+    margin-right: -1vw;
     }
 
     animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
@@ -137,7 +139,6 @@ export const Card2Button = styled.button`
     width: 14.2vw;
     height: 5.4vh;
   }
-
   animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 

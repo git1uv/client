@@ -21,6 +21,9 @@ const GlobalStyle = createGlobalStyle`
       font-size: 12px; // 화면 너비가 768px 이하일 때
     }
   }
+  @media (max-width: 430px) {
+    height: 100dvh;
+  }
 `;
 
 export default GlobalStyle;

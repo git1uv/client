@@ -22,6 +22,7 @@ function TrashPaper() {
   const handleCloseModals = () => {
     setIsConfirmModalVisible(false);
     setIsThrownOutModalVisible(false);
+
   };
 
   return (

@@ -6,7 +6,6 @@ export const Container = styled.div`
   background-color: #FAF9F5;
   width: 40vw;
   height: 89.7vh;
-  margin: 0 auto;
   flex-direction: column;
   padding: 0;
   button {
@@ -18,6 +17,10 @@ export const Container = styled.div`
   @media (max-width: 430px) {
     width: 100vw; 
     height: 100vh;
+    margin: 0 auto;
+  }
+  @media (min-width: 431px) {
+    margin: 10.3vh auto 0;
   }
 `;
 

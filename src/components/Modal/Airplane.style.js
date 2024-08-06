@@ -30,10 +30,12 @@ export const ModalContainer = styled.div`
   @media (max-width: 430px) {
     width: 100%;
     height: 60%;
+
   }
 `;
 
 export const Modal = styled.div`
+
   z-index: 62;
   position: relative;
   display: flex;
@@ -46,6 +48,7 @@ export const Modal = styled.div`
     width: 80vw;
     height: 40.5vh;
     padding: 30px 20px;
+
 
   }
   @media (min-width: 431px) {

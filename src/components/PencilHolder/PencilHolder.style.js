@@ -3,6 +3,11 @@ import letter from "../../assets/pencilHolder/letter.png"
 import backgroundImg from "../../assets/pencilHolder/bgImg.png"
 
 export const Container = styled.div`
+    @media (max-width: 1440px) {
+        html {
+            font-size: 13px; // 화면 너비가 1200px 이하일 때
+        }
+    } 
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -14,30 +19,29 @@ export const Container = styled.div`
     background-image: url(${backgroundImg});
     background-size: cover;
     background-color: #EEECE3;
-  
     background-position: center;
         
     &::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(3px);
-    background: rgba(255, 255, 255, 0.30);
-  }
-  & > * {
-    position: relative;
-    z-index: 2;
-  }
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        backdrop-filter: blur(3px);
+        background: rgba(255, 255, 255, 0.30);
+    }
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
 
     @media (max-width: 430px) {
         height: 100dvh;
     }
     
     section {
-        height: 8rem;
+        height: 2rem;
         @media (max-width: 1440px) {
-            height: 5rem;
+            height: 2rem;
         }
     }
 `;
@@ -46,7 +50,7 @@ export const Title = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    height: 10vh;
+    height: auto;
 
     h1 {
         font-family: 'Pretendard';
@@ -66,6 +70,10 @@ export const Title = styled.div`
         font-size: 1.25rem;
         letter-spacing: -0.408px;
         color: #686868;
+
+        @media (max-width: 1440px) {
+            font-size: 1rem;
+        }
     }
 `
 
@@ -73,18 +81,16 @@ export const Letter = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    justify-content: space-around;
     width: 50rem;
-    height: 80vh;
+    height: auto;
+    // padding: 3% 1rem;
 
     @media (max-width: 1440px) {
         width: 50rem;
-        height: 65vh;
+        padding: 0;
     }
-    @media (max-width: 1200px) {
-        width: 50rem;
-        height: 56vh;
-    }
+
     background-image: url(${letter});
     background-size: 100%;
     background-position: cover;
@@ -92,13 +98,13 @@ export const Letter = styled.div`
 `
 
 export const SizedBox = styled.div`
-    height: 5rem;
+    height: 14rem;
 
     @media (max-width: 1440px) {
-        height: 4rem;
+        height: 8rem;
     }
     @media (max-width: 1200px) {
-        height: 4rem;
+        height: 8rem;
     }
 `
 
@@ -107,7 +113,14 @@ export const WriteBox = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 40rem;
-    margin-top: 1.5rem;
+    margin: 3rem 0 2rem 0;
+
+    @media (max-width: 1440px) {
+        margin: 2rem 0 1rem 0;
+    }
+    @media (max-width: 1200px) {
+        margin: 3rem 0 2rem 0;
+    }
 
     h3 {
         color: #ED6243;
@@ -143,7 +156,7 @@ export const WriteBox = styled.div`
 
     textarea {
         width: 41rem;
-        height: 40vh;
+        height: 30vh;
         @media (max-width: 1440px) {
             height: 25vh;
         }
@@ -157,5 +170,57 @@ export const WriteBox = styled.div`
     }
     textarea:focus {
         outline: none;
+    }
+`
+
+export const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+`
+
+export const SendBtn = styled.div`
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    @media (max-width: 1440px) {
+        margin-bottom: 1rem;
+    }
+
+    width: 14.375rem;
+    height: 3.75rem;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 3.125rem;
+    background: linear-gradient(90deg, #ED6243 11.5%, #FF9153 92%);
+
+    p {
+        margin: 0 0 0 3rem;
+        color: white;
+        text-align: center;
+        font-family: Pretendard;
+        font-size: 1.5625rem;
+        font-weight: 800;
+        line-height: 1.375rem;
+        letter-spacing: -0.0255rem;
+    }
+`
+
+export const PencilIcon = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.8125rem;
+    height: 2.8125rem;
+    flex-shrink: 0;
+    background: #F5F3ED; 
+    border-radius: 100%;
+
+    img {
+        width: 2rem;
+        height: 2rem;
     }
 `

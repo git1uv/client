@@ -27,10 +27,14 @@ function TrashPaper() {
 
   return (
     <T.Container>
+      <T.PaperSection>
       <T.Paper>
         <textarea placeholder="Write your thoughts here..." />
       </T.Paper>
+      </T.PaperSection>
+      <T.ButtonSection>
       <T.ThrowOut onClick={handleThrowOutClick} />
+      </T.ButtonSection>
       <TrashConfirmModal
         isVisible={isConfirmModalVisible}
         onClose={handleCloseModals}

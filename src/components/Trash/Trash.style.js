@@ -141,6 +141,25 @@ export const Card2Button = styled.button`
   animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 
+export const PaperSection = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70%;
+  margin-top: 11.9vh;
+`;
+
+export const ButtonSection = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  width: 100%;
+  height: 30%;
+  margin-left: 38.5vw;
+  margin-top: 1vh;
+`;
+
 export const Paper = styled.div`
   display: flex;
   justify-content: center;
@@ -167,9 +186,8 @@ export const Paper = styled.div`
     background-image: url(${paperImageWeb});
     width: 48.6vw;
     height: 39.4vh;
-    margin-top: 11.9vh;
     padding: 80px;
-    background-size: contain;
+    background-size: cover;
     }
 `;
 

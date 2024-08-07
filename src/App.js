@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import WebHeader from './components/Header/WebHeader';
 import AppHeader from './components/Header/AppHeader';
 import MyCalendar from './routes/MyCalendar';
-import { Router, Route, Routes, useLocation } from 'react-router-dom';
+import {Route, Routes, useLocation } from 'react-router-dom';
 import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";

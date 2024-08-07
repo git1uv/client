@@ -1,13 +1,15 @@
 import styled from 'styled-components';
-import '../../assets/font/font.css';
+// import "../../assets/font/font.css"
+
 
 export const Header = styled.header`
   position: fixed;
+  top: 0;
   width: 100%;
   top: 0;
   background-color: #EEECE3;
   z-index: 100;
-  font-family: "seoul";
+  // font-family: "seoul";
 `;
 
 export const HeaderWrapper = styled.div`
@@ -15,7 +17,8 @@ export const HeaderWrapper = styled.div`
   align-items: center; 
   justify-content: space-between; 
   height: 10.3vh;
-  font-family: "seoul";
+  // font-family: "seoulBold";
+
 `;
 
 export const HeaderStart = styled.h1`

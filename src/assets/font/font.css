@@ -1,14 +1,15 @@
 
 @font-face {
-    font-family: seoul;
-    font-style: normal;
-    font-weight: normal;
-    src: url("./fontOriginal.ttf") format("truetype");
-  }
-  
-  @font-face {
-    font-family: seoul;
-    font-style: normal;
-    font-weight: bold;
-    src: url("./fontBold.ttf") format("truetype");
-  }
+  font-family: 'seoul';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fontOriginal.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'seoulBold';
+  font-style: normal;
+  font-weight: bold;
+  src: url('./fontBold.ttf') format('truetype');
+}
+

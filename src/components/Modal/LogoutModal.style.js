@@ -26,13 +26,21 @@ export const LogoutModal = styled.div`
   text-align: center;
   width: 74%; 
   .sub{
-  font-size:1.25rem;
-  margin-bottom: 0;
+    font-size:1.25rem;
+    margin: 0;
+    color: #52525B;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.0225rem;
   }
   .warning{
-  font-size: 1rem;
-  color: #A1A1AA;
-  margin:0;
+    font-size: 1rem;
+    color: #A1A1AA;
+    margin:0;
   }
   @media (min-width: 431px) {
     width: 24%;

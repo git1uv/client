@@ -211,6 +211,7 @@ export const SendBtn = styled.div`
     border-radius: 3.125rem;
     background: linear-gradient(90deg, #ED6243 11.5%, #FF9153 92%);
 
+    cursor: pointer;
     p {
         margin: 0 0 0 3rem;
         color: white;

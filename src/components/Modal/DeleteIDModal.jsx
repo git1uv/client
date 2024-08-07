@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import * as M from './LogoutModal.style';
-import { FiX } from "react-icons/fi";
+import x from '../../assets/x.png';
 
-const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
+const DeleteModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
 
   if (!isVisible) return null;
@@ -10,7 +10,7 @@ const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
       <M.LogoutModal>
-        <M.ModalCloseButton onClick={onClose}><FiX /></M.ModalCloseButton>
+        <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.LogoutModalTitle>탈퇴하기</M.LogoutModalTitle>
         <p className='sub'>정말 탈퇴할까요?</p>
         <p className='warning'>탈퇴할 시, 모든 활동과 기록이 사라져요.</p>
@@ -23,4 +23,4 @@ const LogoutModal = ({ isVisible, onClose, onConfirm }) => {
   );
 };
 
-export default LogoutModal;
+export default DeleteModal;

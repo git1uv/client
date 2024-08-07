@@ -5,7 +5,11 @@ import moment from "moment";
 import styled from "styled-components";
 import '../components/Calendar/CustomCalendar.css';
 import { useNavigate } from 'react-router-dom';
-
+const CalendarWrapper = styled.div`
+  background-color: #EEECE3;
+  height: 89.7vh;
+  weight: 100vw;
+`;
 const StyledToday = () => <div className="styled-today">Today</div>;
 const StyledEmotion = () => <div className="styled-emotion" />;
 
@@ -25,6 +29,7 @@ function MyCalendar() {
   };
 
   return (
+    <CalendarWrapper>
     <div className="styled-calendar-wrapper">
       <Calendar
         onChange={onChange}
@@ -53,6 +58,8 @@ function MyCalendar() {
       />
 
     </div>
+    </CalendarWrapper>
   );
+  
 }
 export default MyCalendar;

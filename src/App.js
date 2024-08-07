@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Header from './components/Header/Header';
+import React, { useState, useEffect } from 'react';
+import WebHeader from './components/Header/WebHeader';
+import AppHeader from './components/Header/AppHeader';
 import MyCalendar from './routes/MyCalendar';
 import {Route, Routes, useLocation } from 'react-router-dom';
 import DatePage from './routes/DatePage';
@@ -7,6 +8,7 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import Chatbot from './routes/Chatbot'; 
 import Trash from './routes/Trash'; 
+import TrashPaper from './routes/TrashPaper';
 import Letter from './routes/Letter'; 
 import PencilHolder from './routes/PencilHolder'; 
 import Settings from './routes/Set/Settings'; 
@@ -19,24 +21,37 @@ import PwChange from './routes/Set/PwChange';
 import SimterInformation from './routes/Set/SimterInformation'; 
 import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
-import { isMobile } from "react-device-detect";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 430);
   const hideHeaderPaths = ['/login', '/signup', '/term', '/'];
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
     '/faq', '/namechange', '/pwchange', 
     '/simterinformation'
   ];  
-  const hideHeader = hideHeaderPaths.includes(location.pathname) || (isMobile && mobileHideHeaderPaths.includes(location.pathname));
+  const hideHeader = hideHeaderPaths.includes(location.pathname) || (isMobileView && mobileHideHeaderPaths.includes(location.pathname));
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobileView(window.innerWidth <= 430);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <GlobalStyle />
           <div>
-              {!hideHeader && (
-              <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />)}
+          {!hideHeader && (
+          isMobileView ? 
+          <AppHeader isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> :
+          <WebHeader isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        )}
               <Routes>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
@@ -45,6 +60,7 @@ function App() {
                 <Route path="/date/:date" element={<DatePage />} />
                 <Route path="/chatbot" element={<Chatbot />} />
                 <Route path="/trash" element={<Trash />} />
+                <Route path="/trashpaper" element={<TrashPaper />} />
                 <Route path="/letter" element={<Letter />} />
                 <Route path="/pencilholder" element={<PencilHolder />} />
                 <Route path="/settings" element={<Settings />} />

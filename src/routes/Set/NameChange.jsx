@@ -7,8 +7,8 @@ import styled from 'styled-components';
 
 
 const SettingsWrapper = styled.div`
-  background-color: #F4F2EB;
-  height: 100vh;
+  background-color: #EEECE3;
+  height: 89.7vh;
   weight: 100vw;
 `;
 function NameChange() {

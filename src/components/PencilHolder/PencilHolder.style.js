@@ -62,6 +62,9 @@ export const Title = styled.div`
         @media (max-width: 1440px) {
             font-size: 2rem;
         }
+        @media (max-width: 430px) {
+            font-size: 1.75rem;
+        }
     }
     p {
         margin: 0;
@@ -82,7 +85,7 @@ export const Letter = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 50rem;
+    width: 55rem;
     height: auto;
     // padding: 3% 1rem;
 

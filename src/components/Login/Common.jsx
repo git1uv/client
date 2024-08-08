@@ -1,22 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from "./Login.style"
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import axios from 'axios';
 
 export default function Common({openModal}) {
   const K_REST_API_KEY = process.env.REACT_APP_REST_API
   const K_REDIRECT_URI = "http://localhost:3000/oauth";
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
 
-    const handleKakaoLogin = () => {
-      window.location.href = kakaoURL;
-    }
+  const [email, setEmail] = useState('');
+  const [pw, setPw] = useState('');
   const [pwVisible, setPwVisible] = useState(false);
+
+  const handleKakaoLogin = () => {
+    window.location.href = kakaoURL;
+  }
 
   const togglePasswordVisibility = () => {
     setPwVisible(!pwVisible);
   };
+
+
+  const postLogin = async() => {
+    try {
+      const res = await axios.post('api/v1/login/general', {
+        email: email,
+        password: pw,
+      })
+      navigate('/main')
+      console.log(res);
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    
+  }, [])
 
   const navigate = useNavigate();
 
@@ -32,23 +54,29 @@ export default function Common({openModal}) {
         <S.InputBox>
           <S.Input>
             <p>이메일</p>
-            <input placeholder='abc123@email.com'></input>
+            <input 
+              placeholder='abc123@email.com'
+              onChange={(e) => {setEmail(e.target.value)}}
+            ></input>
           </S.Input>
           <S.Input>
             <p>비밀번호</p>
-            <input type={pwVisible ? 'text' : 'password'}
-              placeholder='비밀번호'>
-            </input>
+            <input 
+              type={pwVisible ? 'text' : 'password'}
+              placeholder='비밀번호'
+              onChange={(e) => setPw(e.target.value)}
+            ></input>
             <button onClick={togglePasswordVisibility}>
               {pwVisible ? <FaEyeSlash /> : <FaEye />}
             </button>
           </S.Input>
         </S.InputBox>
         <S.Null />
-        <S.LoginButton onClick={() => navigate('/main')}>로그인</S.LoginButton>
+        <S.LoginButton 
+          onClick={postLogin()}>로그인</S.LoginButton>
         <S.FindPw>
           <h6>비밀번호를 잊으셨나요?</h6>
-          <button onClick={openModal}> 비밀번호 찾기</button>
+          <button onClick={openModal}>비밀번호 찾기</button>
         </S.FindPw>
         <S.Divider/>
         <div/>

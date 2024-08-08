@@ -127,3 +127,7 @@ export const ModalCloseButton = styled.button`
     right: 1vw;
   }
 `;
+
+export const AirplaneImage = styled.img`
+  width: 100%;
+`;

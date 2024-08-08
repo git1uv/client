@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import * as M from './LogoutModal.style';
-import x from '../../assets/x.png';
+import * as M from '../LogoutModal.style';
+import x from '../../../assets/x.png';
 
-const SendModal = ({ isVisible, onClose, onConfirm }) => {
+const FirstModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
 
   if (!isVisible) return null;
@@ -25,4 +25,4 @@ const SendModal = ({ isVisible, onClose, onConfirm }) => {
   );
 };
 
-export default SendModal;
+export default FirstModal;

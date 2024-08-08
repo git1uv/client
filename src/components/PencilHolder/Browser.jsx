@@ -1,18 +1,34 @@
 import React, { useState } from 'react'
 import * as S from "./PencilHolder.style"
 import Pencil from '../../assets/pencilHolder/Pencil.png'
-import Modal from '../Modal/SendModal'
+import FirstModal from '../Modal/PencilHolder/FirstModal'
+import SecondModal from '../Modal/PencilHolder/SecondModal'
+import { useNavigate } from 'react-router-dom'
 
 export default function Browser() {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const navigate = useNavigate();
+
+  const openFirstModal = () => {
+    setIsFirstModalOpen(true);
   }
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeFirstModal = () => {
+    setIsFirstModalOpen(false);
+  }
+  const openSecondModal = () => {
+    setIsFirstModalOpen(false);
+    setIsSecondModalOpen(true);
+  }
+  const closeSecondModal = () => {
+    setIsSecondModalOpen(false);
+    navigate('/main')
+  }
+  const addWriting = () => {
+    window.location.reload();
   }
 
   const handleNameChange = (e) => {
@@ -35,7 +51,6 @@ export default function Browser() {
 
   return (
     <div>
-
       <S.Container>
         <S.SizedBox/>
         <S.Wrapper>
@@ -61,7 +76,7 @@ export default function Browser() {
                   value={content}
                   onChange={handleContentChange}></textarea>
               </S.WriteBox>
-              <S.SendBtn onClick={openModal}>
+              <S.SendBtn onClick={openFirstModal}>
                 <S.PencilIcon>
                   <img src={Pencil} alt='icon'/>
                 </S.PencilIcon>
@@ -71,7 +86,8 @@ export default function Browser() {
           </S.Letter>
         </S.Wrapper>
       </S.Container>
-      <Modal isVisible={isModalOpen} onClose={closeModal} />
+      <FirstModal isVisible={isFirstModalOpen} onClose={closeFirstModal} onConfirm={openSecondModal}/>
+      <SecondModal isVisible={isSecondModalOpen} onClose={closeSecondModal} onConfirm={addWriting}/>
     </div>
   )
 }

@@ -22,7 +22,6 @@ export default function Common({openModal}) {
     setPwVisible(!pwVisible);
   };
 
-
   const postLogin = async() => {
     try {
       const res = await axios.post('api/v1/login/general', {
@@ -35,10 +34,6 @@ export default function Common({openModal}) {
       console.log(err);
     }
   }
-
-  useEffect(() => {
-    
-  }, [])
 
   const navigate = useNavigate();
 
@@ -65,6 +60,11 @@ export default function Common({openModal}) {
               type={pwVisible ? 'text' : 'password'}
               placeholder='비밀번호'
               onChange={(e) => setPw(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  postLogin();
+                }
+              }}
             ></input>
             <button onClick={togglePasswordVisibility}>
               {pwVisible ? <FaEyeSlash /> : <FaEye />}

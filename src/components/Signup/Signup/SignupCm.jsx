@@ -5,23 +5,28 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import notCheck from '../../../assets/notCheck.png'
 import check from '../../../assets/Check.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { setAccount } from '../../../redux/user'
 
 export default function SignupCm() {
-  const navigate = useNavigate();
-  
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const regexPw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/;
-
+  
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
 
+  const user = useSelector((state) => state.user)
+  
   const [errors, setErrors] = useState({
     email: '',
     pw: '',
     confirmPw: '',
   });
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  
   const validateEmail = (email) => regexEmail.test(email);
   const validatePassword = (pw) => regexPw.test(pw);
 
@@ -64,19 +69,20 @@ export default function SignupCm() {
       newErrors.email = '유효한 이메일 주소를 입력하세요.';
       isValid = false;
     }
-
     if (!validatePassword(pw)) {
       newErrors.pw = '비밀번호는 8~16자의 영문 대/소문자, 숫자, 특수문자를 포함해야 합니다.';
       isValid = false;
     }
-
     if (pw !== confirmPw) {
       newErrors.confirmPw = '비밀번호가 일치하지 않습니다.';
       isValid = false;
     }
     setErrors(newErrors);
-
     if (isValid) {
+      dispatch(setAccount({
+        email: email,
+        password: pw
+      }))
       navigate('/signup/nickname'); 
     }
   };
@@ -94,7 +100,7 @@ export default function SignupCm() {
             <h6>이메일</h6>
             <input
               name="email"
-              placeholder="이메일을 입력해주세요"
+              placeholder="이메일을 입력해주세요."
               value={email}
               onChange={handleChange}
             />

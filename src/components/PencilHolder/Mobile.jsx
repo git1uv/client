@@ -12,7 +12,7 @@ export default function Mobile() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
   
   const openFirstModal = () => {
     setIsFirstModalOpen(true);

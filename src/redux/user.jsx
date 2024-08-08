@@ -16,9 +16,8 @@ const user = createSlice({
 				state.password = password;
 			},
 			setLogin(state, action) {
-				const {nickname, accessToken} = action.payload;
+				const {nickname} = action.payload;
 				state.nickname = nickname;
-				state.accessToken = accessToken;
 			}
 		}
 })

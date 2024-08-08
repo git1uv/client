@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px; // 기본 폰트 사이즈를 16px로 설정
   }
 
+  button {
+    cursor: pointer;
+  }
+
   @media (max-width: 1440px) {
     html {
       font-size: 15px; // 화면 너비가 1440px 이하일 때

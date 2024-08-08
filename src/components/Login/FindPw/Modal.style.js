@@ -45,7 +45,6 @@ export const Exit = styled.div`
 export const ExitIcon = styled(IoCloseOutline)`
     width: 3rem;
     height: 3rem;
-	cursor: pointer;
 `
 
 export const Box = styled.div`
@@ -118,7 +117,5 @@ export const Box = styled.div`
         background: #FBEEA0;
         border-radius: 30px;
         border: none;
-
-        cursor: pointer;
     }
 `

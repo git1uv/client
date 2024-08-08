@@ -22,6 +22,7 @@ export default function Common({openModal}) {
     setPwVisible(!pwVisible);
   };
 
+
   function saveLocalStorage(token) {
     localStorage.setItem('token', token);
   }

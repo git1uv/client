@@ -91,8 +91,6 @@ export const Check = styled.button`
   background-color: white;
   color: #A1A1AA;
 
-  cursor: pointer;
-
   &:active {
     background-color: #DDDDDD;
   } 
@@ -138,7 +136,6 @@ export const TermsBox = styled.div`
     text-align: center;
     letter-spacing: -0.03em;
 
-    cursor: pointer;
     text-decoration: underline; 
   }
 `

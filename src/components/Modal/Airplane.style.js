@@ -45,8 +45,8 @@ export const Modal = styled.div`
 
   @media (max-width: 430px) {
     background-image: url(${mobileLetter});
-    width: 80vw;
-    height: 40.5vh;
+    width: 313px;
+    height: 345px;
     padding: 30px 20px;
 
 

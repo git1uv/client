@@ -1,6 +1,6 @@
 import styled,{ keyframes,  css } from 'styled-components';
 
-import {trashImage, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImage, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
+import {trashImage, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
 
 export const Container = styled.div`
   display: flex;
@@ -12,9 +12,9 @@ export const Container = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 89.7vh;
+  height: 100vh;
   z-index: 1;
-  margin-top:10.3vh;
+  bakcground-size: contain;
   @media (max-width: 430px) {
     background-image: url(${backgroundImageMobile});
     }
@@ -46,18 +46,16 @@ export const Trash = styled.button`
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
-  
+  background-image: url(${trashImageMobile});
+  background-size: cover;
+
   @media (max-width: 430px) {
     width: 90vw;
     height: 26vh;
-    background-image: url(${trashImageMobile});
-    background-size: cover;
     }
   @media (min-width: 431px) {
     width: 51.7vw;
     height: 31vh;
-    background-image: url(${trashImage});
-    background-size: contain;
     }
 `;
 export const Card1 = styled.div`
@@ -75,17 +73,31 @@ export const Card1 = styled.div`
   z-index: 10;
   @media (max-width: 430px) {
     background-image: url(${card1ImageMobile});
-    width: 56vw;
-    height: 23.5vh;
+    width: 220px;
+    height: 200px;
     margin-right: -12vw;
     }
-  @media (min-width: 431px) {
+  @media (min-width: 431px) and (max-width: 1023px) { 
     background-image: url(${card1ImageWeb});
-    width: 17.7vw;
-    height: 23.2vh;
+    width: 250px;
+    height: 211.6px;
+    margin-right: -12vw;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    background-image: url(${card1ImageWeb});
+    width: 210px;
+    height: 177.7px;
+    margin-top: 5vh;
+    margin-right: -1vw;
+  }
+  @media (min-width: 1441px) {
+    background-image: url(${card1ImageWeb});
+    width: 306px;
+    height: 259px;
     margin-top: 5vh;
     margin-right: -1vw;
     }
+
 
     animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
@@ -105,18 +117,33 @@ export const Card2 = styled.div`
   z-index: 11;
   @media (max-width: 430px) {
     background-image: url(${card2ImageMobile});
-    width: 56vw;
-    height: 23.5vh;
+    width: 220px;
+    height: 200px;
     margin-top: 41vh;
     margin-left: -12vw;
     }
-  @media (min-width: 431px) {
+  @media (min-width: 431px) and (max-width: 1023px) { 
     background-image: url(${card2ImageWeb});
-    width: 17.7vw;
-    height: 23.2vh;
+    width: 250px;
+    height: 211.6px;
+    margin-top: 41vh;
+    margin-left: -12vw;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    background-image: url(${card2ImageWeb});
+    width: 210px;
+    height: 177.7px;
+    margin-top: 27vh;
+    margin-left: -1vw;
+  }
+  @media (min-width: 1441px) {
+    background-image: url(${card2ImageWeb});
+    width: 306px;
+    height: 259px;
     margin-top: 27vh;
     margin-left: -1vw;
     }
+
   animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 
@@ -130,13 +157,23 @@ export const Card2Button = styled.button`
   z-index: 13;
   @media (max-width: 430px) {
     background-image: url(${buttonImageMobile});
-    width: 44.7vw;
-    height: 5.3vh;
+    width: 176px;
+    height: 43px;
   }
-  @media (min-width: 431px) {
+  @media (min-width: 431px) and (max-width: 1023px) { 
     background-image: url(${buttonImageWeb});
-    width: 14.2vw;
-    height: 5.4vh;
+    width: 190px;
+    height: 46.3px;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    background-image: url(${buttonImageWeb});
+    width: 150px;
+    height: 36.6px;
+  }
+  @media (min-width: 1441px) {
+    background-image: url(${buttonImageWeb});
+    width: 246px;
+    height: 60px;
   }
   animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
@@ -146,18 +183,15 @@ export const PaperSection = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 70%;
-  margin-top: 11.9vh;
+  height: auto;
 `;
 
 export const ButtonSection = styled.div`
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: flex-start;
   width: 100%;
-  height: 30%;
-  margin-left: 38.5vw;
-  margin-top: 1vh;
+  height: 25%;
 `;
 
 export const Paper = styled.div`
@@ -178,7 +212,7 @@ export const Paper = styled.div`
     padding: 42px 26px;
     width: 81.7vw;
     height: 48.9vh;
-    margin-top: 5vh;
+    margin-top: 15.3vh;
     background-size: cover;
 
     }
@@ -188,6 +222,7 @@ export const Paper = styled.div`
     height: 39.4vh;
     padding: 80px;
     background-size: cover;
+    margin-top: 22.2vh;
     }
 `;
 
@@ -200,19 +235,33 @@ export const ThrowOut = styled.button`
   background: none;
   background-repeat: no-repeat;
   background-size: contain;
-  background-image: url(${throwOutImage});
   @media (max-width: 430px) {
-    width: 44.8vw;
-    height: 6vh;
-    margin-bottom: 17.5vh;
-    margin-left: 51.5vw;
-
+    background-image: url(${throwOutImageMobile});
+    width: 176px;
+    height: 43px;
+    margin-right: 2vw;
+    margin-top: 10px;
     }
-  @media (min-width: 431px) {
-    width: 14.2vw;
-    height: 3.75rem;
-    margin-bottom: 17.5vh;
-    margin-left: 46.5vw;
+  @media (min-width: 431px) and (max-width: 1023px) { 
+    background-image: url(${throwOutImageWeb});
+    width: 184.5px;
+    height: 45px;
+    margin-right: 17.5vw;
+    margin-top: 12px;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    background-image: url(${throwOutImageWeb});
+    width: 184.5px;
+    height: 45px;
+    margin-right: 19.5vw;
+    margin-top: 12px;
+  }
+  @media (min-width: 1441px) {
+    background-image: url(${throwOutImageWeb});
+    width: 246px;
+    height: 60px;
+    margin-right: 21vw;
+    margin-top: 12px;
     }
 `;
 

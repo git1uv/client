@@ -9,9 +9,10 @@ import buttonImageWeb from './button_web.png';
 import buttonImageMobile from './button_mobile.png';
 import paperImageMobile from './image_textbox_mobile.png';
 import paperImageWeb from './image_textbox.png';
-import throwOutImage from './button_delete.png';
+import throwOutImageWeb from './button_delete_web.png';
+import throwOutImageMobile from './button_delete_mobile.png';
 import backgroundImageMobile from './image_bg_mobile.png';
 import backgroundImageWeb from './image_bg.png';
 
-export {trashImage,trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImage, backgroundImageMobile, backgroundImageWeb};
+export {trashImage,trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb};
 

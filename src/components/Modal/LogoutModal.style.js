@@ -119,3 +119,9 @@ export const ModalCloseButton = styled.button`
     right: 1vw;
   }
 `;
+
+export const GifImage = styled.img`
+  width: 58%;
+  height: 52.8%;
+`;
+

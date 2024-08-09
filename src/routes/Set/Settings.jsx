@@ -45,7 +45,7 @@ function Settings() {
   return (
     <SettingsWrapper>
       <Set.Container>
-        <Set.TopRow>
+        <Set.TopRow isSettings>
           <button onClick={() => navigate(-1)}>
           <FiChevronLeft size="2.5rem" color="#27272A" /></button>
           <p>설정</p>

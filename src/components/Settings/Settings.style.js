@@ -273,7 +273,6 @@ export const DeveloperInformation = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 2vh 31vw;
   button {
     background-color: transparent;
     padding: 0;
@@ -282,9 +281,12 @@ export const DeveloperInformation = styled.div`
     color: #A1A1AA;
     border: none;
   }
-    @media (max-width: 430px) {
+  @media (max-width: 430px) {
     left: 5.3%;
-    margin-top: 1vh;
+    margin: 1vh 0 0 5.3vw;
+  }
+  @media (min-width: 431px) {
+    margin: 0 0 2vh 31vw;
   }
 `;
 
@@ -298,6 +300,7 @@ export const Divider = styled.div`
 export const Footer = styled.div`
   margin: 3vh 0 0 0;
   display: flex;
+  align-items: flex-start;
   z-index: 20;
   background-color: #EEECE3;
   weight: 100vw;

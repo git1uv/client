@@ -11,9 +11,8 @@ export const Container = styled.div`
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 89.7vh;
+  height: 100vh;
   z-index: 1;
-  margin-top:10.3vh;
 `;
 
 export const Mailbox = styled.div`

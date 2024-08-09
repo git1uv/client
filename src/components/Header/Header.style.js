@@ -18,6 +18,9 @@ export const HeaderWrapper = styled.div`
   justify-content: space-between; 
   height: 10.3vh;
   // font-family: "seoulBold";
+  @media (max-width: 430px){
+    height: 6.5vh;
+  }
 
 `;
 
@@ -41,7 +44,11 @@ export const HeaderHome = styled.button`
   cursor: pointer;
 
   img {
-    height: calc(10.3vh / 3); 
+    height: calc(10.3vh / 3);
+    
+    @media (max-width: 430px){
+      height: calc(6.5vh / 3);
+  }
   }
 `;
 
@@ -98,9 +105,6 @@ export const HeaderEnd = styled.div`
   margin: 0;
   @media screen and (min-width: 431px) {
     margin-right: 7.8vw;
-  }
-  @media screen and (max-width: 430px) {
-    margin-right: 4vw;
   }
 `;
 

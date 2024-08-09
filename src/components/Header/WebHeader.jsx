@@ -8,12 +8,31 @@ function WebHeader() {
     const navigate = useNavigate();
     const location = useLocation();
 
-/** {!isLoggedIn ? (
+/** 
+    <H.HeaderHome onClick={() => navigate(isLoggedIn ? '/main' : '/')}>
+    {isLoggedIn ? (
+        <H.HeaderCenter>
+            <H.HeaderForm onSubmit={(e) => e.preventDefault()}>
+                <H.HeaderButton onClick={() => navigate('/chatbot')} active={location.pathname === '/chatbot'}>챗봇</H.HeaderButton>
+                <H.HeaderButton onClick={() => navigate('/calendar')} active={location.pathname === '/calendar'}>달력</H.HeaderButton>
+                <H.HeaderButton onClick={() => navigate('/trash')} active={location.pathname === '/trash'}>감정쓰레기통</H.HeaderButton>
+                <H.HeaderButton onClick={() => navigate('/letter')} active={location.pathname === '/letter'}>편지</H.HeaderButton>
+                <H.HeaderButton onClick={() => navigate('/pencilholder')} active={location.pathname === '/pencilholder'}>연필꽂이</H.HeaderButton>
+            </H.HeaderForm>
+        </H.HeaderCenter>
+    ) : null}
         <H.HeaderEnd>
-            <H.HeaderButton onClick={() => navigate('/login')}><img src={login_signup_button} alt='login_signup_button'></img></H.HeaderButton>
+            {!isLoggedIn ? (
+                <H.HeaderButton onClick={() => navigate('/login')}>
+                    <img src={login_signup_button} alt='login_signup_button' />
+                </H.HeaderButton>
+            ) : (
+                <H.HeaderButton onClick={() => navigate('/settings')}>
+                    <img src={setting} alt='setting' />
+                </H.HeaderButton>
+            )}
         </H.HeaderEnd>
-    ) : (
-        <></>)} */
+*/
 
     return (
         <H.Header>

@@ -1,12 +1,12 @@
-import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import * as A from './Airplane.style';
 import x from '../../assets/x.png';
 import download from '../../assets/letterImg/download.png';
 
 function Airplane({setAirplaneModal}) {
     const navigate = useNavigate();
-    const outside = useRef();
+    const location = useLocation(); 
 
     const [sender, setSender] = useState('');
     const [content, setContent] = useState('');
@@ -17,8 +17,14 @@ function Airplane({setAirplaneModal}) {
         console.log("다운로드");
     };
 
+    useEffect(() => {
+        return () => {
+            setAirplaneModal(false);
+        };
+    }, [location, setAirplaneModal]);
+
     return (
-                <A.ModalBg ref={outside} onClick={(e) => { if(e.target === outside.current) setAirplaneModal(false); }}>
+                <A.ModalBg>
                     <A.ModalContainer>
                     <A.Modal>
                         <A.ModalCloseButton onClick={() => setAirplaneModal(false)}><img src={x} alt='x' /></A.ModalCloseButton>

@@ -8,6 +8,13 @@ function WebHeader() {
     const navigate = useNavigate();
     const location = useLocation();
 
+/** {!isLoggedIn ? (
+        <H.HeaderEnd>
+            <H.HeaderButton onClick={() => navigate('/login')}><img src={login_signup_button} alt='login_signup_button'></img></H.HeaderButton>
+        </H.HeaderEnd>
+    ) : (
+        <></>)} */
+
     return (
         <H.Header>
             <H.HeaderWrapper>

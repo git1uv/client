@@ -8,6 +8,10 @@ function Airplane({setAirplaneModal}) {
     const navigate = useNavigate();
     const outside = useRef();
 
+    const [sender, setSender] = useState('');
+    const [content, setContent] = useState('');
+    const [date, setDate] = useState('');
+
     const handleDownload = () => {
         // 다운로드 로직 추가
         console.log("다운로드");
@@ -18,6 +22,12 @@ function Airplane({setAirplaneModal}) {
                     <A.ModalContainer>
                     <A.Modal>
                         <A.ModalCloseButton onClick={() => setAirplaneModal(false)}><img src={x} alt='x' /></A.ModalCloseButton>
+                        <A.From>from. {sender}</A.From>
+                        <A.Text>{content}</A.Text>
+                        <A.Date>{date}</A.Date>
+                        <A.WarningMessage>익명의 편지는 보관되지 않습니다. <br />
+                        편지를 내 갤러리에 저장하고 싶으시다면 저장해보세요!
+                        </A.WarningMessage>
                     </A.Modal>
                     <A.ButtonContainer>
                     <A.DownloadButton onClick={handleDownload}><img src={download} alt='download' /> </A.DownloadButton>

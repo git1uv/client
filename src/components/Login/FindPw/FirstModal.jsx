@@ -16,7 +16,6 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
         window.alert('존재하지 않는 이메일이에요.');
       else
         closeFirstModal();
-
     } catch(err) {
       console.log(err);
     }
@@ -41,6 +40,7 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
               placeholder='가입할 때 사용한 이메일을 입력해주세요.'
               onChange={(e) => {setEmail(e.target.value)}}></input>
             <S.PostBtn id="first" onClick={closeFirstModal}>발송하기</S.PostBtn>
+            {/* <S.PostBtn id="first" onClick={postTempPw}>발송하기</S.PostBtn> */}
           </S.Box>
         </S.Modal>
     </S.Container>

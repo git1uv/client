@@ -7,12 +7,14 @@ import notCheck from '../../../assets/notCheck.png'
 import check from '../../../assets/Check.png'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAccount } from '../../../redux/user'
+import axios from 'axios';
 
 export default function SignupCm() {
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const regexPw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/;
   
   const [email, setEmail] = useState('');
+  const [confirmEmail, setConfirmEmail] = useState();
   const [pw, setPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
 
@@ -38,7 +40,7 @@ export default function SignupCm() {
         setEmail(value);
         setErrors(prev => ({
           ...prev,
-          email: validateEmail(value) ? '' : '유효한 이메일 주소를 입력하세요.'
+          email: validateEmail(value) ? '' : '유효한 이메일 주소를 입력해주세요.'
         }));
         break;
       case 'pw':
@@ -61,23 +63,11 @@ export default function SignupCm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
     let isValid = true;
-    const newErrors = { ...errors };
 
-    if (!validateEmail(email)) {
-      newErrors.email = '유효한 이메일 주소를 입력하세요.';
+    if (!validateEmail(email) || !validatePassword(pw) || pw !== confirmPw)
       isValid = false;
-    }
-    if (!validatePassword(pw)) {
-      newErrors.pw = '비밀번호는 8~16자의 영문 대/소문자, 숫자, 특수문자를 포함해야 합니다.';
-      isValid = false;
-    }
-    if (pw !== confirmPw) {
-      newErrors.confirmPw = '비밀번호가 일치하지 않습니다.';
-      isValid = false;
-    }
-    setErrors(newErrors);
+
     if (isValid) {
       dispatch(setAccount({
         email: email,
@@ -86,6 +76,29 @@ export default function SignupCm() {
       navigate('/signup/nickname'); 
     }
   };
+
+  const checkEmail = async() => {
+    const newErrors = { ...errors };
+    console.log(email);
+    if(validateEmail(email)) {
+      try {
+        const res = await axios.get(`api/v1/register/general/check?email=${encodeURIComponent(email)}`)
+        if (!res.data.is_valid) {
+          setErrors(prevErrors => ({
+            ...prevErrors,
+            email: '이미 가입된 이메일입니다.'
+          }));
+        }
+      } catch(err) {
+        console.log(err);
+      }
+    } else {
+      setErrors(prevErrors => ({
+        ...prevErrors,
+        email: '유효한 이메일 주소를 입력해주세요.'
+      }));
+    }
+  }
 
   return (
     <T.Container>
@@ -106,7 +119,7 @@ export default function SignupCm() {
             />
             {errors.email && <p>{errors.email}</p>}
           </S.Input>
-            <S.Check>중복 확인</S.Check>
+            <S.Check onClick={checkEmail}>중복 확인</S.Check>
         </S.Box>
         <S.Box>
           <S.Input>
@@ -115,7 +128,7 @@ export default function SignupCm() {
               <input 
                 name="pw"
                 type="password"
-                placeholder="비밀번호를 입력해주세요"
+                placeholder="비밀번호를 입력해주세요."
                 value={pw}
                 onChange={handleChange}
               />
@@ -131,7 +144,6 @@ export default function SignupCm() {
             </S.PwInputBox>
             {errors.pw && <p>{errors.pw}</p>}
           </S.Input>
-          
         </S.Box>
         <S.Box>
           <S.Input>
@@ -140,7 +152,7 @@ export default function SignupCm() {
               <input 
                 name="confirmPw"
                 type="password"
-                placeholder="비밀번호를 다시 입력해주세요"
+                placeholder="비밀번호를 다시 입력해주세요."
                 value={confirmPw}
                 onChange={handleChange}
               />

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import notCheck from '../../../assets/notCheck.png'
 import check from '../../../assets/Check.png'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setAccount } from '../../../redux/user'
 import axios from 'axios';
 

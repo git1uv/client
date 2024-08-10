@@ -92,7 +92,7 @@ function PWChange() {
           />
         </Set.PwChange>
         <Set.Text>
-          <p className={currentPwError ? 'confirm visible' : 'confirm'}>기존 비밀번호가 일치하지 않습니다.</p>
+          <p className={currentPwError ? 'confirm visible' : 'confirm'}>비밀번호가 일치하지 않습니다.</p>
           <p className='title'>새로운 비밀번호</p>
         </Set.Text>
         <Set.PwChange>
@@ -101,11 +101,17 @@ function PWChange() {
             placeholder="8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요."
             value={newPw}
             onChange={(e) => setNewPw(e.target.value)}
-            className={newPwError ? 'error' : allValid ? 'success' : ''}
+            className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
         </Set.PwChange>
         <Set.Text>
-          <p className={newPwError ? 'confirm visible' : 'confirm'}>비밀번호가 일치하지 않습니다.</p>
+          {newPwError ? (
+            <p className='confirm visible'>8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요.</p>
+          ) : confirmPwError ? (
+            <p className='confirm visible'>비밀번호가 일치하지 않습니다.</p>
+          ) : (
+            <p className='confirm' />
+          )}
           <p className='title'>비밀번호 재확인</p>
         </Set.Text>
         <Set.PwChange>
@@ -113,11 +119,17 @@ function PWChange() {
             type="password"
             value={confirmPw}
             onChange={(e) => setConfirmPw(e.target.value)}
-            className={confirmPwError ? 'error' : allValid ? 'success' : ''}
+            className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
         </Set.PwChange>
         <Set.Text>
-          <p className={confirmPwError ? 'confirm visible' : 'confirm'}>비밀번호가 일치하지 않습니다.</p>
+        {newPwError ? (
+            <p className='confirm visible'>8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요.</p>
+          ) : confirmPwError ? (
+            <p className='confirm visible'>비밀번호가 일치하지 않습니다.</p>
+          ) : (
+            <p className='confirm' />
+          )}
         </Set.Text>
         <Set.Button>
           <button onClick={handlePWSubmit} className='change'>변경하기</button>

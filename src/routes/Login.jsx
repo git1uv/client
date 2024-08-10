@@ -1,28 +1,42 @@
 import React, { useState } from 'react'
 import Mobile from '../components/Login/Mobile';
 import Browser from '../components/Login/Browser';
-import Modal from '../components/Login/FindPw/Modal';
+import FirstModal from '../components/Login/FindPw/FirstModal';
 import { BrowserView, MobileView } from 'react-device-detect';
+import SecondModal from '../components/Login/FindPw/SecondModal';
 
 export default function Login() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFirstOpen, setIsFirstOpen] = useState(false);
+  const [isSecondOpen, setIsSecondOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openFirstModal = () => {
+    setIsFirstOpen(true);
   }
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeFirstModal = () => {
+    setIsFirstOpen(false);
   }
+  const closeSecondModal = () => {
+    setIsSecondOpen(false);
+  }
+
 
   return (
     <div className="App">
       <BrowserView>
-        <Browser openModal={openModal}/>
+        <Browser openModal={openFirstModal}/>
       </BrowserView>
       <MobileView>
-        <Mobile openModal={openModal}/>
+        <Mobile openModal={openFirstModal}/>
       </MobileView>
-      <Modal isOpen={isModalOpen} closeModal={closeModal}/>
+      <FirstModal 
+        isOpen={isFirstOpen} 
+        closeModal={closeFirstModal} 
+        setIsSecondOpen={setIsSecondOpen}
+      />
+      <SecondModal 
+        isOpen={isSecondOpen}
+        closeModal={closeSecondModal}
+      />
     </div>
   );
 }

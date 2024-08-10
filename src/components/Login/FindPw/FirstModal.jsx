@@ -14,7 +14,8 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
       console.log(res);
       if (res.status === 403)
         window.alert('존재하지 않는 이메일이에요.');
-      // else
+      else
+        closeFirstModal();
 
     } catch(err) {
       console.log(err);

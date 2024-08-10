@@ -14,11 +14,8 @@ export default function SignupCm() {
   const regexPw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/;
   
   const [email, setEmail] = useState('');
-  const [confirmEmail, setConfirmEmail] = useState();
   const [pw, setPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
-
-  const user = useSelector((state) => state.user)
   
   const [errors, setErrors] = useState({
     email: '',
@@ -78,7 +75,6 @@ export default function SignupCm() {
   };
 
   const checkEmail = async() => {
-    const newErrors = { ...errors };
     console.log(email);
     if(validateEmail(email)) {
       try {

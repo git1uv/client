@@ -62,6 +62,7 @@ function PWChange() {
       setAllValid(true);
       setErrorMessage('');
       // 비밀번호 변경 API 호출
+      setSuccessModal(true);
       navigate(-1);
     } else {
       setAllValid(false);
@@ -135,6 +136,14 @@ function PWChange() {
           <button onClick={handlePWSubmit} className='change'>변경하기</button>
         </Set.Button>
       </Set.Container>
+
+      {successModal && (
+        <PwChangeModal 
+          isVisible={successModal} 
+          onClose={() => setSuccessModal(false)} 
+        />
+      )}
+
     </SettingsWrapper>
   );
 }

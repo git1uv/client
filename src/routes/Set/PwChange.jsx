@@ -22,7 +22,7 @@ function PWChange() {
   const [newPwError, setNewPwError] = useState(false);
   const [confirmPwError, setConfirmPwError] = useState(false);
   const [allValid, setAllValid] = useState(false);
-  const [SucceessModal, setSuccessModal] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;

@@ -120,8 +120,9 @@ export const ModalCloseButton = styled.button`
   }
 `;
 
-export const GifImage = styled.img`
-  width: 58%;
+export const DeleteGif = styled.img`
+  width: 68%;
   height: 52.8%;
+  padding: 0 0 0 18%;
 `;
 

@@ -79,7 +79,7 @@ export const Button = styled.div`
   .change{
     width: 100%;
     top: 50%;
-    height: 6vh;
+    height: 6.5vh;
     padding: 10px 20px;
     font-size: 1rem;
     background-color: #FBEEA0;

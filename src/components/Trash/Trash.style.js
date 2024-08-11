@@ -1,6 +1,6 @@
-import styled,{ keyframes,  css } from 'styled-components';
-
-import {trashImage, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import {trashImage, trashImageFront, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
 
 export const Container = styled.div`
   display: flex;
@@ -43,11 +43,13 @@ export const Trash = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; 
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
   background-image: url(${trashImageMobile});
   background-size: cover;
+  z-index: 10;
 
   @media (max-width: 430px) {
     width: 90vw;
@@ -58,6 +60,16 @@ export const Trash = styled.button`
     height: 31vh;
     }
 `;
+
+export const TrashFront = styled.div`
+  position: absolute;
+  width: 100%;
+  background-image: url(${trashImageFront});
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 15; 
+`;
+
 export const Card1 = styled.div`
   display: flex;
   justify-content: center;
@@ -70,7 +82,7 @@ export const Card1 = styled.div`
   border-radius: 25px;
   box-shadow: -10px 4px 4px 0px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
-  z-index: 10;
+  z-index: 12;
   @media (max-width: 430px) {
     background-image: url(${card1ImageMobile});
     width: 220px;
@@ -97,9 +109,6 @@ export const Card1 = styled.div`
     margin-top: 5vh;
     margin-right: -1vw;
     }
-
-
-    animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 
 export const Card2 = styled.div`
@@ -114,12 +123,12 @@ export const Card2 = styled.div`
   border-radius: 25px;
   box-shadow: -10px 4px 4px 0px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
-  z-index: 11;
+  z-index: 13;
   @media (max-width: 430px) {
     background-image: url(${card2ImageMobile});
     width: 220px;
     height: 200px;
-    margin-top: 41vh;
+    margin-top: 45vh;
     margin-left: -12vw;
     }
   @media (min-width: 431px) and (max-width: 1023px) { 
@@ -143,8 +152,6 @@ export const Card2 = styled.div`
     margin-top: 27vh;
     margin-left: -1vw;
     }
-
-  animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 
 export const Card2Button = styled.button`
@@ -154,7 +161,7 @@ export const Card2Button = styled.button`
   background-size: contain;
   border: none;
   cursor: pointer;
-  z-index: 13;
+  z-index: 14;
   @media (max-width: 430px) {
     background-image: url(${buttonImageMobile});
     width: 176px;
@@ -175,7 +182,6 @@ export const Card2Button = styled.button`
     width: 246px;
     height: 60px;
   }
-  animation: ${({ show }) => show ? css`${floatIn} 0.3s ease-in-out` : 'none'};
 `;
 
 export const PaperSection = styled.div`
@@ -263,14 +269,5 @@ export const ThrowOut = styled.button`
     margin-right: 21vw;
     margin-top: 12px;
     }
-`;
-
-const floatIn = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 `;
 

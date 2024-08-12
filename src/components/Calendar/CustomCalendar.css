@@ -1,8 +1,7 @@
 
 .styled-calendar-wrapper {
     width: 90%;
-    height:89vh;
-    margin-top: 10.3vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,13 +11,14 @@
   
   .react-calendar {
     width: 90%;
+    height: auto;
     border: none;
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
     box-shadow: 4px 2px 10px 0px rgba(0, 0, 0, 0.13);
-    padding: 5% 5%;
     background-color: white;
+    padding: 15% 5%;
   }
   
   /* 네비게이션 가운데 정렬 */

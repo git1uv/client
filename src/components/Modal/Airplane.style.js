@@ -45,16 +45,26 @@ export const Modal = styled.div`
 
   @media (max-width: 430px) {
     background-image: url(${mobileLetter});
-    width: 80vw;
-    height: 40.5vh;
+    width: 313px;
+    height: 345px;
     padding: 30px 20px;
-
-
   }
-  @media (min-width: 431px) {
+  @media (min-width: 431px) and (max-width: 1023px) {
     background-image: url(${webLetter});
-    width: 20.8vw;
-    height: 42.34vh;
+    width: 200px;
+    height: 262.8px;
+    padding: 40px;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    background-image: url(${webLetter});
+    width: 250px;
+    height: 328.5px;
+    padding: 40px;
+  }
+  @media (min-width: 1441px) {
+    background-image: url(${webLetter});
+    width: 360px;
+    height: 473px;
     padding: 40px;
   }
 
@@ -66,8 +76,14 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 15px;
-  @media (min-width: 431px) {
+  @media (min-width: 1441px) {
     width: 25.5vw;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px) {
+    width: 330px;
+  }
+  @media (min-width: 431px) and (max-width: 1023px) {
+    width: 280px;
   }
   @media (max-width: 430px) {
     width: calc(80% + 40px);
@@ -130,4 +146,40 @@ export const DownloadButton = styled.button`
     left: 7.4vw;
   }
 `;
+
+export const From = styled.div`
+  font-size: 1.375rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+
+`;
+
+
+export const Text = styled.div`
+  font-size: 1.375rem;
+  width: 100%;
+  height: 50%;
+`;
+
+
+export const Date = styled.div`
+  font-size: 1.125rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px; 
+`;
+
+export const WarningMessage = styled.div`
+  font-size: 1rem;
+  color: #A8A29E;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+
 

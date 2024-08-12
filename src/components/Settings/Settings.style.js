@@ -5,9 +5,9 @@ export const Container = styled.div`
   z-index: 20;
   background-color: white;
   width: 40vw;
-  height: 73.5vh;
+  height: auto;
   flex-direction: column;
-  padding: 0;
+  padding: 0 0 5vh 0;
   button {
     border: none;
     padding: 10px 10px;
@@ -52,6 +52,7 @@ export const TopRow = styled.div`
   justify-content: center; 
   background-color: transparent;
   border-bottom: 1px solid #F4F4F5;
+  flex-shrink: 0;
   p {
     position: absolute;
     font-weight: bold;
@@ -270,11 +271,8 @@ export const DeleteID = styled.div`
 
 export const DeveloperInformation = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  left: 30%;
-  position: absolute;
-  margin: 0 0 2.2vh 1.5vw;
   button {
     background-color: transparent;
     padding: 0;
@@ -283,9 +281,12 @@ export const DeveloperInformation = styled.div`
     color: #A1A1AA;
     border: none;
   }
-    @media (max-width: 430px) {
+  @media (max-width: 430px) {
     left: 5.3%;
-    margin-top: 2vh;
+    margin: 1vh 0 0 5.3vw;
+  }
+  @media (min-width: 431px) {
+    margin: 0 0 2vh 31vw;
   }
 `;
 
@@ -299,10 +300,11 @@ export const Divider = styled.div`
 export const Footer = styled.div`
   margin: 3vh 0 0 0;
   display: flex;
+  align-items: flex-start;
   z-index: 20;
   background-color: #EEECE3;
   weight: 100vw;
-  height: 13.5vh;
+  height: auto;
   @media (max-width: 430px) {
     height: 22vh; 
     margin: 0; 

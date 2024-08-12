@@ -131,3 +131,10 @@ export const ModalCloseButton = styled.button`
 export const AirplaneImage = styled.img`
   width: 100%;
 `;
+
+export const DeleteGif = styled.img`
+  width: 68%;
+  height: 52.8%;
+  padding: 0 0 0 18%;
+`;
+

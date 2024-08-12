@@ -7,7 +7,7 @@ import '../components/Calendar/CustomCalendar.css';
 import { useNavigate } from 'react-router-dom';
 const CalendarWrapper = styled.div`
   background-color: #EEECE3;
-  height: 89.7vh;
+  height: 100vh;
   weight: 100vw;
 `;
 const StyledToday = () => <div className="styled-today">Today</div>;

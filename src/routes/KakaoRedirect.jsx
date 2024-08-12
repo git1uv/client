@@ -7,13 +7,13 @@ export default function Redirect() {
   const code = new URL(window.location.href).searchParams.get("code");
   let navigate = useNavigate();
 
-  function saveLocalStorage(token, id) {
+  function saveLocalStorage(token) {
     localStorage.setItem('token', token);
   }
 
   const fetchKakaoData = async () => {
     try {
-      const res = await axios.post(`http://localhost:8000/api/v1/login/kakao?authCode=${code}`, {});
+      const res = await axios.post(`/api/v1/login/kakao?authCode=${code}`, {});
       console.log(res.data);
       const receivedToken = res.data.token;
       saveLocalStorage(receivedToken);

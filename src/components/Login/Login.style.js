@@ -144,7 +144,6 @@ export const Input = styled.div`
     position: absolute;
     right: 0.625rem;
     top: 1.875rem;
-    cursor: pointer;
     font-size: 1.25rem;
 
     color: #aaa;
@@ -183,7 +182,6 @@ export const FindPw = styled.div`
     text-align: center;
     letter-spacing: -0.03em;
 
-    cursor: pointer;
     text-decoration: underline; 
   }
   h6 {
@@ -221,7 +219,6 @@ export const LoginButton = styled.button`
   letter-spacing: -0.03em;
 
   color: #000000;
-  cursor: pointer;
 `
 
 export const SocialLogin = styled.div`
@@ -236,7 +233,6 @@ export const SocialLogin = styled.div`
     margin-bottom: 1.6rem;
     border-radius: 100%;
     border: none;
-    cursor: pointer;
   }
     
 `

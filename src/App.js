@@ -6,6 +6,7 @@ import {Route, Routes, useLocation } from 'react-router-dom';
 import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
+import SettingName from './routes/SettingName'
 import Chatbot from './routes/Chatbot'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
@@ -26,7 +27,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 430);
-  const hideHeaderPaths = ['/login', '/signup', '/term', '/'];
+  const hideHeaderPaths = ['/login', '/signup', '/signup/nickname', '/term', '/'];
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
     '/faq', '/namechange', '/pwchange', 
@@ -55,6 +56,7 @@ function App() {
               <Routes>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
+                <Route path="/signup/nickname" element={<SettingName/>}/>
                 <Route path="/main" element={<Main/>}/>
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />

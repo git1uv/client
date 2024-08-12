@@ -5,14 +5,18 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png'
 import notCheck from '../../../assets/notCheck.png'
 import check from '../../../assets/Check.png'
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export default function SettingNameCm() {
-  const navigate = useNavigate();
   
   const regexName = /^[a-zA-Z가-힣]{1,10}$/;
   const [nickname, setNickname] = useState('');
   const [errors, setErrors] = useState({ nickname: '' });
+  
+  const navigate = useNavigate();
 
+  const user = useSelector((state) => state.user);
   const validateNickname = (nickname) => regexName.test(nickname);
 
   const handleChange = (e) => {
@@ -27,13 +31,34 @@ export default function SettingNameCm() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (!validateNickname(nickname)) {
       setErrors({ nickname: '닉네임은 1~10자의 한글 또는 영문이어야 합니다.' });
       return;
     }
-    navigate('/login');
+    /* 회원가입 API : 연결하면 주석 풀기 */
+    // await postRegister();
+    navigate('/login');  /* 회원가입 API : 연결하면 지우기 */
   };
+
+
+  /* 회원가입 API : 연결하면 주석 풀기 */
+
+  // const postRegister = async() => {
+  //   try {
+  //     const res = await axios.post('/api/v1/register', {
+  //       nickname: nickname,
+  //       email: user.email,
+  //       password: user.password
+  //     })
+      
+  //     console.log(res.data);
+  //     window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
+  //     navigate('/login');
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
 
   return (
     <T.Container>

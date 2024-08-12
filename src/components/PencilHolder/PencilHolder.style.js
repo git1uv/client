@@ -62,6 +62,9 @@ export const Title = styled.div`
         @media (max-width: 1440px) {
             font-size: 2rem;
         }
+        @media (max-width: 430px) {
+            font-size: 1.75rem;
+        }
     }
     p {
         margin: 0;
@@ -82,7 +85,7 @@ export const Letter = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 50rem;
+    width: 55rem;
     height: auto;
     // padding: 3% 1rem;
 
@@ -208,6 +211,7 @@ export const SendBtn = styled.div`
     border-radius: 3.125rem;
     background: linear-gradient(90deg, #ED6243 11.5%, #FF9153 92%);
 
+    cursor: pointer;
     p {
         margin: 0 0 0 3rem;
         color: white;

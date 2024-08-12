@@ -33,6 +33,7 @@ export const Modal = styled.div`
     border-radius: 26.4px;
     z-index: 1000;
 `
+
 export const Exit = styled.div`
     width: 100%;
     display: flex;
@@ -45,7 +46,7 @@ export const Exit = styled.div`
 export const ExitIcon = styled(IoCloseOutline)`
     width: 3rem;
     height: 3rem;
-	cursor: pointer;
+    cursor: pointer;
 `
 
 export const Box = styled.div`
@@ -54,17 +55,6 @@ export const Box = styled.div`
     justify-content: center;
     flex-direction: column;
     gap: 0.75rem;
-
-    h1 {
-        margin: 0;
-        font-family: 'Pretendard';
-        font-weight: 400;
-        font-size: 1.375rem;
-        text-align: center;
-        letter-spacing: -0.03em;
-
-        color: #27272A;
-    }
 
     p {
         margin: 0;
@@ -82,14 +72,22 @@ export const Box = styled.div`
         width: 24.75rem;
         height: 4.43rem;
         margin-top: 0.625rem;
+        padding-left: 0.5rem;
 
+        font-family: 'Pretendard';
+        font-weight: 400;
+        font-size: 1.125rem;
+        letter-spacing: -0.03em;
+    
         background: #FFFFFF;
         border: 0.0625rem solid #D4D4D8;
+
+        &:focus {
+            outline: none;
+        }
     }
 
     input::placeholder {
-        padding-left: 0.5rem;
-
         font-family: 'Pretendard';
         font-weight: 400;
         font-size: 1.125rem;
@@ -97,28 +95,36 @@ export const Box = styled.div`
 
         color: #A1A1AA;
     }
-        
-    button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 0.625rem;
+`
 
-        width: 11rem;
-        height: 3.43rem;
+export const Title = styled.h1`
+    margin: ${({ id }) => id === 'first' ? 0 : '4rem 0'};
+    font-family: 'Pretendard';
+    font-weight: 400;
+    font-size: 1.375rem;
+    text-align: center;
+    letter-spacing: -0.03em;
 
-        font-family: 'Pretendard';
-        font-weight: 500;
-        font-size: 1.25rem;
-        text-align: center;
-        letter-spacing: -0.03em;
+    color: #27272A;
+`
+export const PostBtn = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.625rem;
 
-        color: #27272A;
+    width: 11rem;
+    height: 3.43rem;
 
-        background: #FBEEA0;
-        border-radius: 30px;
-        border: none;
+    font-family: 'Pretendard';
+    font-weight: 500;
+    font-size: 1.25rem;
+    text-align: center;
+    letter-spacing: -0.03em;
 
-        cursor: pointer;
-    }
+    color: #27272A;
+
+    background: ${({ id }) => id === 'first' ? '#FBEEA0' :'#D4D4D8'};
+    border-radius: 30px;
+    border: none;
 `

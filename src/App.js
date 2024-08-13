@@ -7,7 +7,7 @@ import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName'
-import Chatbot from './routes/Chatbot'; 
+import Chatbot from './routes/Chatbot/Chatbot'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
 import Letter from './routes/Letter'; 

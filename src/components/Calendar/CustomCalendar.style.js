@@ -9,20 +9,22 @@ export const StyledCalendarWrapper = styled.div`
   width: 51.5vw;
   height: 84.5vh;
   position: relative;
-
+  @media screen and (min-width: 431px) {
+    margin-top: 10.3vh;
+  }
   @media screen and (max-width: 430px) {
     height: 70vh; 
   }
   .react-calendar {
     width: 100%;
-    height: auto;
+    height: 100%;
     border: none;
     justify-content: center;
     align-items: center;
     border-radius: 27.8px;
     box-shadow: 0px 3.706px 3.706px 0px rgba(0, 0, 0, 0.25);
     background-color: white;
-    padding: 15% 5%;
+    padding: 5%;
   }
   
   /* 네비게이션 가운데 정렬 */
@@ -40,11 +42,6 @@ export const StyledCalendarWrapper = styled.div`
   
   /* 네비게이션 버튼 컬러 */
   .react-calendar__navigation button:focus {
-    background-color: white;
-  }
-
-  /* 네비게이션 비활성화 됐을때 스타일 */
-  .react-calendar__navigation button:disabled {
     background-color: white;
   }
   

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import * as A from './Airplane.style';
 import x from '../../assets/x.png';
 import download from '../../assets/letterImg/download.png';
@@ -13,11 +14,30 @@ function Airplane({setAirplaneModal}) {
     const [date, setDate] = useState('');
 
     const handleDownload = () => {
-        // 다운로드 로직 추가
-        console.log("다운로드");
+        //다운로드 로직
     };
 
     useEffect(() => {
+        /**
+         const fetchLetterData = async () => {
+            try {
+                const response = await axios.get('/api/v1/airplane/{receiverId}');
+                if (response.status === 200) {
+                    const { writerName, content, createdAt } = response.data.data;
+                    setSender(writerName);
+                    setContent(content);
+                    setDate(createdAt);
+                } else {
+                    console.error('Failed to fetch letter data');
+                }
+            } catch (error) {
+                console.error('Error fetching letter data:', error);
+            }
+        };
+
+        fetchLetterData();
+
+         */
         return () => {
             setAirplaneModal(false);
         };

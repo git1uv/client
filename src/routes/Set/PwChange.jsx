@@ -5,7 +5,7 @@ import { FiChevronLeft } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import PwChangeModal from '../../components/Modal/PwChangeModal'
+import PwChangeModal from '../../components/Modal/PwChangeModal';
 
 
 const SettingsWrapper = styled.div`

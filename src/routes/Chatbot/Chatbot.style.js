@@ -88,6 +88,21 @@ export const Header = styled.div`
     background-color: #F5F4F2;
     border-radius: 2.5rem 2.5rem 0 0;
     filter: drop-shadow(0px 4px 4px rgba(165, 165, 165, 0.25));
+
+    button {
+    width: 6.8rem;
+    height: 2.8rem;
+    flex-shrink: 0;
+    border-radius: 4.8125rem;
+    background: #ED6243;
+    border: none;
+
+    color: white;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: normal;
+}
 `
 
 export const BackBtn = styled(IoIosArrowBack)`

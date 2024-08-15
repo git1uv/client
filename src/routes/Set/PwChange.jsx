@@ -1,4 +1,5 @@
 import React from 'react';
+import * as S from "../../components/Settings/Settings.style"
 import * as Set from "../../components/Settings/Settings.change.style"
 import { FiChevronLeft } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
@@ -72,15 +73,15 @@ function PWChange() {
   return (
     <SettingsWrapper>
       <Set.Container>
-        <Set.TopRow>
+        <S.TopRow>
           <button onClick={() => navigate(-1)}>
             <FiChevronLeft size="2.5rem" color="#27272A" />
           </button>
           <p>비밀번호 변경</p>
-        </Set.TopRow>
-        <Set.Explain>
+        </S.TopRow>
+        <S.Explain>
           <p>변경할 비밀번호를 입력하세요</p>
-        </Set.Explain>
+        </S.Explain>
         <Set.Text>
           <p className='title'>기존 비밀번호</p>
         </Set.Text>

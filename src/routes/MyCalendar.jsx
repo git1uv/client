@@ -3,15 +3,16 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
 import styled from "styled-components";
-import '../components/Calendar/CustomCalendar.css';
+import * as C from '../components/Calendar/CustomCalendar.style';
 import { useNavigate } from 'react-router-dom';
 const CalendarWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #EEECE3;
   height: 100vh;
   weight: 100vw;
 `;
-const StyledToday = () => <div className="styled-today">Today</div>;
-const StyledEmotion = () => <div className="styled-emotion" />;
 
 function MyCalendar() {
   const [value, onChange] = useState(new Date());
@@ -30,7 +31,7 @@ function MyCalendar() {
 
   return (
     <CalendarWrapper>
-    <div className="styled-calendar-wrapper">
+      <C.StyledCalendarWrapper>
       <Calendar
         onChange={onChange}
         value={value}
@@ -48,16 +49,16 @@ function MyCalendar() {
             date.getMonth() === today.getMonth() &&
             date.getDate() === today.getDate()
           ) {
-            html.push(<StyledToday key={"today"} />);
+            html.push(<C.StyledToday key={"today"}>today</C.StyledToday>);
           }
           if (emotion_day.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-            html.push(<StyledEmotion key={moment(date).format("YYYY-MM-DD")} />);
+            html.push(<C.StyledEmotion key={moment(date).format("YYYY-MM-DD")} />);
           }
           return <>{html}</>;
         }}
       />
 
-    </div>
+    </C.StyledCalendarWrapper>
     </CalendarWrapper>
   );
   

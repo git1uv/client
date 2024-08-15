@@ -25,52 +25,6 @@ export const Container = styled.div`
 `;
 
 
-export const Explain = styled.div`
-  display: flex;
-  width: 100%;
-  flex-direction: column; 
-  align-items: flex-start; 
-  font-size: 1.67rem;
-  margin: 10px 0 0 0;
-  p {
-    margin: 2vh 2vh 2vh 3.5vw;
-    @media (max-width: 430px) {
-    margin-left: 5.3vw
-  }
-  }
-`;
-
-export const TopRow = styled.div`
-  display: flex;
-  align-items: center; /* 아이템들을 수평으로 정렬 */
-  width: 100%;
-  height: 7.3vh;
-  padding: 15px 0;
-  position: relative;
-  justify-content: center; 
-  background-color: transparent;
-  border-bottom: 1px solid #F4F4F5;
-  p {
-    position: absolute;
-    font-weight: bold;
-    flex-grow: 1;
-    text-align: center; 
-    margin: 0; 
-    font-size: 1.25rem;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  button {
-    padding: 0 0 0 3.5vw;
-    position: absolute;
-    left: 0;
-    font-size: 1.25rem;
-  }
-
-`;
-
-
 export const Button = styled.div`
     display: flex;
     justify-content: center; 
@@ -82,6 +36,11 @@ export const Button = styled.div`
     height: 6.5vh;
     padding: 10px 20px;
     font-size: 1rem;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.45px;
     background-color: #FBEEA0;
     color: black;
     border: none;
@@ -106,6 +65,7 @@ export const NicknameChange = styled.div`
     padding: 10px 20px ;
     color: black;
     font-size: 1.125rem;
+    font-family: Pretendard;
     border: 1px solid #D4D4D8;
     border-radius: 5px;
     background: #FFFFFF;
@@ -151,6 +111,12 @@ export const Text = styled.div`
   background-color: transparent;
   .title{
   font-size: 1.125rem;
+  color: #000;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.54px;
   margin: 3vh 0 0 3.5vw;
   @media (max-width: 430px) {
     margin: 3vh 0 0 5.3vw;
@@ -159,6 +125,11 @@ export const Text = styled.div`
   .confirm{
   font-size: 1rem;
   color: #A1A1AA;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  letter-spacing: -0.48px;
   margin: 0 0 0 3.5vw;
   display: none;
   }

@@ -26,20 +26,20 @@ export const LogoutModal = styled.div`
   text-align: center;
   width: 74%; 
   .sub{
-    font-size:1.25rem;
+    font-size: 1.25rem;
     margin: 0;
     color: #52525B;
     text-align: center;
     font-family: Pretendard;
-    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.0225rem;
   }
   .warning{
+    font-family: Pretendard;
     font-size: 1rem;
-    color: #A1A1AA;
+    color: #9F9F9F;
     margin:0;
   }
   @media (min-width: 431px) {
@@ -57,8 +57,16 @@ export const LogoutModal = styled.div`
 `;
 
 export const LogoutModalTitle = styled.h2`
-  margin-bottom: 1vh;
-  font-size: 1.375rem;
+  margin-bottom: 1.4vh;
+  font-size: 1.35rem;
+  color: #27272A;
+  text-align: center;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.648px;
+
 `;
 
 export const ModalActions = styled.div`
@@ -77,10 +85,16 @@ export const CancelButton = styled.button`
   font-size: 1.125rem;
   border: none;
   background-color: #E8E9EB;
-  color: black;
+  color: #52525B;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
   @media (min-width: 431px) {
     height: 6vh;
     border-radius: 18px;
+    letter-spacing: -0.54px;
   }
   .ok{
   width: 90%;
@@ -88,6 +102,7 @@ export const CancelButton = styled.button`
   @media (max-width: 430px) {
     border-radius: 15px;
     height: 5.5vh;
+    letter-spacing: -0.45px;
   }
 
 `;
@@ -99,13 +114,20 @@ export const LogoutClickButton = styled.button`
   border: none;
   background-color: #ED6243;
   color: white;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
   @media (min-width: 431px) {
     height: 6vh;
     border-radius: 18px;
+    letter-spacing: -0.54px;
   }
   @media (max-width: 430px) {
     border-radius: 15px;
     height: 5.5vh;
+    letter-spacing: -0.45px;
   }
 
 `;

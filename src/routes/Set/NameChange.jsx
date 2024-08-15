@@ -1,4 +1,5 @@
 import React from 'react';
+import * as S from "../../components/Settings/Settings.style"
 import * as Set from "../../components/Settings/Settings.change.style"
 import { FiChevronLeft } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
@@ -26,14 +27,14 @@ function NameChange() {
   return (
     <SettingsWrapper>
       <Set.Container>
-        <Set.TopRow>
+        <S.TopRow>
           <button onClick={() => navigate(-1)}>
           <FiChevronLeft size="2.5rem" color="#27272A" /></button>
           <p>닉네임 변경</p>
-        </Set.TopRow>
-        <Set.Explain>
+        </S.TopRow>
+        <S.Explain>
           <p>변경할 닉네임을 입력하세요</p>
-        </Set.Explain>
+        </S.Explain>
         <Set.NicknameChange>
             <input
             type="text"

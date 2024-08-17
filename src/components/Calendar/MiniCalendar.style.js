@@ -1,62 +1,50 @@
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
-import "../../../node_modules/react-calendar/dist/Calendar.css";
+import "../../../node_modules/react-calendar/dist/Calendar.css"; 
 
-export const StyledCalendarWrapper = styled.div`
+export const MiniCalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 51.5vw;
-  height: 84.5vh;
-  position: relative;
-  @media screen and (min-width: 431px) {
-    margin-top: 5.3vh;
-  }
-  @media screen and (max-width: 430px) {
-    height: 75vh; 
-    width: 100%;
-  }
+  width: 26vw;
+  margin: 0; 
+  background-color: white; 
+  height: 45vh;
+  margin-top: 5.3vh;
 
+  @media screen and (max-width: 430px) {
+    display: none;
   }
   .react-calendar {
     width: 100%;
-    height: 100%;
     border: none;
+    height: 100%;
+    border-radius:0;
     justify-content: center;
     align-items: center;
-    border-radius: 27.8px;
-    box-shadow: 0px 3.706px 3.706px 0px rgba(0, 0, 0, 0.25);
-    background-color: white;
+    position: relative; 
     padding: 5%;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    z-index: 5; 
   }
-  
-  /* 네비게이션 가운데 정렬 */
   .react-calendar__navigation {
     justify-content: center;
     margin-bottom: 5%; 
   }
-  
-  /* 네비게이션 폰트 설정 */
   .react-calendar__navigation button {
     font-weight: bold;
     font-size: 2rem;
     font-family: SeoulHangang;
     line-height: 22px; 
     color: #4C434E;
-    margin: 0 1vw;
+    margin: 0 0.5vw;
   }
-  
-  /* 네비게이션 버튼 컬러 */
   .react-calendar__navigation button:focus {
     background-color: white;
   }
-  
-  /* 년/월 상단 네비게이션 칸 크기 줄이기 */
   .react-calendar__navigation__label {
     flex-grow: 0 !important;
   }
-  
-  /* 요일 밑줄 제거 */
   .react-calendar__month-view__weekdays abbr {
     text-decoration: none;
     font-weight: 400;
@@ -73,6 +61,9 @@ export const StyledCalendarWrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
+    .react-calendar__month-view__days__day {
+    padding: 1%;
+  }
   .react-calendar__month-view__days__day abbr { 
     color: #78716C;
     text-align: center;
@@ -82,12 +73,8 @@ export const StyledCalendarWrapper = styled.div`
     font-weight: 400;
     line-height: 20px; 
   }
-
-  
-  /* 오늘 날짜 폰트 컬러 */
   .react-calendar__tile--now {
-    background-color: #f4dcc0 !important;
-    border-radius: 0.8rem;
+    background-color: white !important;
   }
   .react-calendar__tile--now abbr {
     color: orange;
@@ -100,10 +87,8 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__tile--hasActive abbr {
     color: white;
   }
-  
-  /* 일 날짜 간격 */
   .react-calendar__tile {
-    padding: 2vh 0 6vh;
+    padding: 2vh 0 !important;
     position: relative;
     font-size: 1.25rem;
   }
@@ -112,34 +97,11 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__year-view__months__month {
   
   }
-  
-`;
-
-export const StyledToday = styled.div`
-  font-size: x-small;
-  color: burlywood;
-  font-weight: 600;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 1em;
-  transform: translateX(-50%);
-`;
-
-export const StyledEmotion = styled.div`
-  background-image: ${({ imageUrl }) => imageUrl ? `url(${imageUrl})` : 'none'};
-  background-size: cover;
-  background-position: center;
-  border-radius: 50%;
-  width: 6.25rem;
-  height: 6.25rem;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
-  ${({ imageUrl }) => !imageUrl && `
-    border: 1px solid ##F4F2EB; 
-  `}
+  .react-calendar__tile.highlight {
+    background-color: #FFCB3A;
+    border-radius: 15px;
+  }
 
 `;
+
 

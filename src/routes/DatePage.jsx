@@ -2,11 +2,14 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import MiniCalendar from '../components/Calendar/MiniCalendar'
-import '../components/Calendar/DatePage.css';
+import * as P from '../components/Calendar/PCDatePage.style';
 import styled from "styled-components";
 const DateWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #EEECE3;
-  height: 89.7vh;
+  height: 100vh;
   weight: 100vw;
 `;
 function DatePage() {
@@ -16,17 +19,46 @@ function DatePage() {
 
   return (
     <DateWrapper>
-    <div className="page-layout">
+      <P.BackButton></P.BackButton>
+      <P.Container>
         <MiniCalendar />
-        <div className="content">
-            <h3>{formattedDate}</h3>
-            <p>이 페이지는 {formattedDate}의 세부 정보를 표시합니다.</p>
-            <p>오늘의 감정</p>
-            <p>한 줄 일기</p>
-            <p>오늘의 대화</p>
-            <p>추천리스트</p>
-        </div>
-    </div>
+        <P.Tape />
+        <P.Content>
+          <P.DiaryBox>
+            <P.TodayEmotion></P.TodayEmotion>
+            <P.Diary>
+              <P.TopRow className='diary'>
+                <P.Title></P.Title>
+                <P.SaveButton></P.SaveButton>
+              </P.TopRow>
+              <P.Text></P.Text>
+            </P.Diary>
+          </P.DiaryBox>
+          <P.ChatBox>
+            <P.TopRow className='chat'>
+              <P.Title></P.Title>
+              <P.Explain></P.Explain>
+            </P.TopRow>
+            <P.Film>
+              <P.Slide>
+                <P.Slide></P.Slide>
+                <P.Time></P.Time>
+              </P.Slide>
+            </P.Film>
+          </P.ChatBox>
+          <P.ToDoListBox>
+            <P.TopRow>
+              <P.Title></P.Title>
+            </P.TopRow>
+            <P.ToDoList>
+              <P.CheckBox></P.CheckBox>
+              <P.Todo></P.Todo>
+              <P.DeleteButton></P.DeleteButton>
+              <P.Scroll></P.Scroll>
+            </P.ToDoList>
+          </P.ToDoListBox>
+        </P.Content>
+      </P.Container>
     </DateWrapper>
   );
 }

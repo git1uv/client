@@ -37,8 +37,8 @@ export const ModalButton = styled.button`
   font-size: 1.25rem;
   background-color: transparent;
   border: none;
-  
   color: #27272A;
+  font-family: Pretendard;
   img{
     margin-right: 15px;
     height: 4vh; 

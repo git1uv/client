@@ -154,6 +154,11 @@ export const From = styled.div`
   align-items: center;
   margin-bottom: 30px;
   width: 100%;
+  color: #404040;
+  font-family: SeoulHangang;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 
 `;
 
@@ -162,6 +167,11 @@ export const Text = styled.div`
   font-size: 1.375rem;
   width: 100%;
   height: 50%;
+  color: #404040;
+  font-family: SeoulHangang;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 
 
@@ -171,6 +181,14 @@ export const Date = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-bottom: 20px; 
+  color: #000;
+  text-align: right;
+  font-family: SeoulHangang;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; 
+  letter-spacing: -0.408px;
+
 `;
 
 export const WarningMessage = styled.div`
@@ -179,6 +197,12 @@ export const WarningMessage = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.408px;
+
 `;
 
 

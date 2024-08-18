@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
+import * as S from "../../components/Settings/Settings.style"
 import * as Set from "../../components/Settings/Settings.change.style"
 import { FiChevronLeft } from "react-icons/fi";
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import PwChangeModal from '../../components/Modal/PwChangeModal'
+import axios from 'axios';
+import PwChangeModal from '../../components/Modal/PwChangeModal';
 
 
 const SettingsWrapper = styled.div`
@@ -29,16 +30,8 @@ function PWChange() {
     return regex.test(password);
   };
 
-  const handlePWSubmit = () => {
+  const handlePWSubmit = async () => {
     let isValid = true;
-
-    if (currentPw !== 'your_current_password') {
-      setErrorMessage('기존 비밀번호가 일치하지 않습니다.');
-      setCurrentPwError(true);
-      isValid = false;
-    } else {
-      setCurrentPwError(false);
-    }
     
     if (!validatePassword(newPw)) {
       setErrorMessage('새 비밀번호는 8~16자의 영문 대/소문자, 숫자, 특수문자를 포함해야 합니다.');
@@ -57,30 +50,50 @@ function PWChange() {
       setNewPwError(false);
       setConfirmPwError(false);
     }
-
-    if (isValid) {
-      setAllValid(true);
-      setErrorMessage('');
-      // 비밀번호 변경 API 호출
-      setSuccessModal(true);
-      navigate(-1);
-    } else {
+    if (!isValid) {
       setAllValid(false);
+      return;
     }
+
+    /**try {
+      const response = await axios.patch('/api/v1/setting/password', {
+        oldPassword: currentPw,
+        newPassword: newPw,
+      });
+
+      if (response.status === 200) {
+        setAllValid(true);
+        setErrorMessage('');
+        setSuccessModal(true);
+      } else {
+        setErrorMessage(response.data.message);
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 403) {
+          setErrorMessage('기존 비밀번호가 일치하지 않습니다.');
+          setCurrentPwError(true);
+        } else {
+          setErrorMessage('비밀번호 변경에 실패했습니다.');
+        }
+      } else {
+        setErrorMessage('비밀번호 변경에 실패했습니다.');
+      }
+    }*/
   };
 
   return (
     <SettingsWrapper>
       <Set.Container>
-        <Set.TopRow>
+        <S.TopRow>
           <button onClick={() => navigate(-1)}>
             <FiChevronLeft size="2.5rem" color="#27272A" />
           </button>
           <p>비밀번호 변경</p>
-        </Set.TopRow>
-        <Set.Explain>
+        </S.TopRow>
+        <S.Explain>
           <p>변경할 비밀번호를 입력하세요</p>
-        </Set.Explain>
+        </S.Explain>
         <Set.Text>
           <p className='title'>기존 비밀번호</p>
         </Set.Text>
@@ -140,7 +153,10 @@ function PWChange() {
       {successModal && (
         <PwChangeModal 
           isVisible={successModal} 
-          onClose={() => setSuccessModal(false)} 
+          onClose={() => {
+            setSuccessModal(false);
+            navigate(-1); }
+          } 
         />
       )}
 

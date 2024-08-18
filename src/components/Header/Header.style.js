@@ -77,7 +77,11 @@ export const HeaderButton = styled.button`
   background-color: transparent;
   writing-mode: horizontal-tb; 
   white-space: nowrap; 
-  color: ${({ active }) => (active ? '#ED6243' : '#78716C')}; 
+  font-family: SeoulHangang;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  color: ${({ active }) => (active ? '#ED6243' : '#4C434E')}; 
   text-align: center; 
 
   &:hover {

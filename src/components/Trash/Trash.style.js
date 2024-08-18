@@ -212,6 +212,18 @@ export const Paper = styled.div`
     height: 100%;
     border: none;
     background-color: transparent;
+    color: #000;
+    font-family: SeoulHangang;
+    font-style: normal;
+    font-weight: 400;
+    @media (min-width: 431px){
+    font-size: 26px;
+    line-height: 32px; 
+    }
+    @media (max-width: 430px){
+    font-size: 14px;
+    line-height: 21px; 
+    }
   }
   @media (max-width: 430px) {
     background-image: url(${paperImageMobile});

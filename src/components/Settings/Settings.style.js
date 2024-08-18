@@ -33,6 +33,12 @@ export const Explain = styled.div`
   flex-direction: column; 
   align-items: flex-start; 
   font-size: 1.67rem;
+  color: #27272A;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.5px;
   margin: 10px 0 0 0;
   p {
     margin: 2vh 2vh 2vh 3.5vw;
@@ -55,7 +61,12 @@ export const TopRow = styled.div`
   flex-shrink: 0;
   p {
     position: absolute;
-    font-weight: bold;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.5px;
     flex-grow: 1;
     text-align: center; 
     margin: 0; 
@@ -69,6 +80,7 @@ export const TopRow = styled.div`
     padding: 0 0 0 3.5vw;
     position: absolute;
     left: 0;
+    font-size: 1.25rem;
   }
 
 `;
@@ -78,6 +90,11 @@ export const Title = styled.div`
   font-weight: bold;
   font-size: 0.875rem;
   color: #A1A1AA;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.5px;
   margin: 0 0 1vh 3.5vw;
   @media (max-width: 430px) {
     margin-left: 5.3vw
@@ -95,6 +112,12 @@ export const NicknameChange = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
     color: black;
@@ -122,6 +145,12 @@ export const PwChange = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
     color: black;
@@ -148,6 +177,12 @@ export const FAQ = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
     color: black;
@@ -174,6 +209,12 @@ export const Ask = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
     color: black;
@@ -200,6 +241,12 @@ export const Information = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
     color: black;
@@ -226,6 +273,11 @@ export const LogOut = styled.div`
   button {
     background-color: transparent;
     padding: 0;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     color: #ED6243;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
@@ -253,6 +305,11 @@ export const DeleteID = styled.div`
     background-color: transparent;
     padding: 0;
     color: #A1A1AA;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     @media (max-width: 430px) {
     margin-left: 1.8vw;
   }
@@ -279,6 +336,11 @@ export const DeveloperInformation = styled.div`
     text-align: left;
     font-size: 0.875rem;
     color: #A1A1AA;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
     border: none;
   }
   @media (max-width: 430px) {

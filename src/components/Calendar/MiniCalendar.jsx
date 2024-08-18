@@ -1,28 +1,65 @@
-import React, { useState } from 'react';
-import './MiniCalendar.css';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import React, { useState, useEffect } from 'react';
 import moment from "moment";
-import styled from "styled-components";
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
+import leftArrow from '../../assets/CalendarImg/left-arrow.png'; 
+import rightArrow from '../../assets/CalendarImg/right-arrow.png'; 
+import Calendar from 'react-calendar'; 
+import * as M from './MiniCalendar.style';
+import styled from 'styled-components';
 
-const MiniDot = () => <div className="mini-dot" />;
-
-const StyledMiniCalendar = styled(Calendar)`
-  .react-calendar__tile {
-    padding: 2vh 0 4vh !important; 
-  }
+const MiniDot = styled.div`
+  border-radius: 50%;
+  width: 0.56rem;
+  height: 0.56rem;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  color: #FFCB3A;
+  transform: translateX(-50%);
+  z-index: 10; 
 `;
 
 function MiniCalendar() {
   const [value, onChange] = useState(new Date());
+  const [emotionDays, setEmotionDays] = useState([]);
   const navigate = useNavigate();
   const emotion_day = [
-    '2024-07-20',
-    '2024-07-21',
+    '2024-08-20',
+    '2024-08-21',
     // 여기에 추가
   ];
+  /**
+  useEffect(() => {
+    const fetchCalendarData = async () => {
+      try {
+        const response = await axios.get('/api/v1/calendar/:month/home');
+        if (response.status === 200) {
+          setEmotionDays(response.data.data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch calendar data:", error);
+      }
+    };
 
+    fetchCalendarData();
+  }, []);
+
+  const tileContent = ({ date, view }) => {
+    let html = [];
+    if (view === 'month') {
+      const dateStr = moment(date).format('YYYY-MM-DD');
+      const dayData = emotionDays.find(day => day.date === dateStr);
+      if (dayData && dayData.emotion !== 'none') {
+        html.push(<MiniDot key={dateStr} />);
+      }
+    }
+    return <>{html}</>;
+  };
+
+  // tileContent={tileContent}로 바꾸기
+
+  */
   const location = useLocation();
   const dateParam = moment(location.pathname.split('/').pop(), 'YYYY-MM-DD').toDate();
 
@@ -39,10 +76,14 @@ function MiniCalendar() {
   };
 
   return (
-    <div className="mini-calendar-wrapper">
-      <StyledMiniCalendar
+    <M.MiniCalendarWrapper>
+      <Calendar
         onChange={onChange}
         value={value}
+        minDetail="year"
+        maxDetail="month"
+        prevLabel={<img src={leftArrow} alt="Previous" />}
+        nextLabel={<img src={rightArrow} alt="Next" />}
         next2Label={null}
         prev2Label={null}
         formatDay={(locale, date) => moment(date).format('D')}
@@ -60,7 +101,7 @@ function MiniCalendar() {
         }}
       />
 
-    </div>
+  </M.MiniCalendarWrapper>
   );
 }
 export default MiniCalendar;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from './Chatbot.style'
 import Chair from '../../assets/chatbot/ChairWeb.png'
 import Simmaeum from '../../assets/chatbot/Simmaeum.png'
@@ -8,6 +8,7 @@ import Neuranee from '../../assets/chatbot/Neuranee.png'
 import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
 
 export default function Chatbot() {
+
   return (
     <S.App>
       <S.Top>

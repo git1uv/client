@@ -1,8 +1,8 @@
 import React from 'react'
 import * as S from './ChatbotInfo.style'
-import howto from '../../../assets/chatbot/howto.png'
-import func from '../../../assets/chatbot/function.png'
-import warning from '../../../assets/chatbot/warning.png'
+import howto from '../../../assets/chatbot/chatStart/howto.png'
+import func from '../../../assets/chatbot/chatStart/function.png'
+import warning from '../../../assets/chatbot/chatStart/warning.png'
 
 export default function ChatbotInfo() {
   return (

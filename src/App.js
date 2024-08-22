@@ -22,6 +22,7 @@ import PwChange from './routes/Set/PwChange';
 import SimterInformation from './routes/Set/SimterInformation'; 
 import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
+import TestPage from './routes/Chatbot/TestPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />
                 <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/test" element={<TestPage />} />
                 <Route path="/trash" element={<Trash />} />
                 <Route path="/trashpaper" element={<TrashPaper />} />
                 <Route path="/letter" element={<Letter />} />

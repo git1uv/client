@@ -85,7 +85,7 @@ export const Header = styled.div`
     align-items: center;
     padding: 0 5%;
 
-    width: 90%;
+    width: 100%;
     height: 12.5%;
     background-color: #F5F4F2;
     border-radius: 2.5rem 2.5rem 0 0;

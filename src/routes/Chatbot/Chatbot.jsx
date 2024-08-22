@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import * as S from './Chatbot.style'
-import Chair from '../../assets/chatbot/ChairWeb.png'
-import Simmaeum from '../../assets/chatbot/Simmaeum.png'
-import Banbani from '../../assets/chatbot/Banbani.png'
-import Neuranee from '../../assets/chatbot/Neuranee.png'
+import Chair from '../../assets/chatbot/chatStart/ChairWeb.png'
+import Simmaeum from '../../assets/chatbot/chatStart/Simmaeum.png'
+import Banbani from '../../assets/chatbot/chatStart/Banbani.png'
+import Neuranee from '../../assets/chatbot/chatStart/Neuranee.png'
 
 import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
 

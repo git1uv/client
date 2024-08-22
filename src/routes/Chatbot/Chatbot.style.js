@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import backgroundImg from '../../assets/backgroundImg.png'
-import sendBtn from '../../assets/chatbot/sendBtn.png'
+import sendBtn from '../../assets/chatbot/chatStart/sendBtn.png'
 import { IoIosArrowBack } from "react-icons/io";
 import theme from '../../constants/theme'; // theme 파일의 경로
 
@@ -79,9 +79,6 @@ export const Bottom = styled.div`
     box-shadow: 3px 2px 20px 0px rgba(95, 95, 95, 0.25) inset;
     backdrop-filter: blur(10px);
 `
-
-/* ChatbotBox*/
-
 export const Header = styled.div`
     display: flex;
     justify-content: space-around;

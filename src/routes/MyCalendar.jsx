@@ -21,6 +21,7 @@ function MyCalendar() {
   const [emotionData, setEmotionData] = useState([]);
   const navigate = useNavigate();
   const today = new Date();
+  const isMobile = window.innerWidth <= 430; 
   const emotion_day = [
     '2024-08-20',
     '2024-08-21',
@@ -64,8 +65,20 @@ function MyCalendar() {
   const handleDateClick = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     navigate(`/date/${formattedDate}`);
+  };
+
+  const getPrevMonthLabel = (date) => {
+    const prevMonth = moment(date).subtract(1, 'month').format('M');
+    return isMobile ? <C.MonthLabel>{`${prevMonth}월`}</C.MonthLabel> : null;
 
   };
+
+  const getNextMonthLabel = (date) => {
+    const nextMonth = moment(date).add(1, 'month').format('M');
+    return isMobile ? <C.MonthLabel>{`${nextMonth}월`}</C.MonthLabel> : null;
+
+  };
+
 
   return (
     <CalendarWrapper>
@@ -75,8 +88,18 @@ function MyCalendar() {
         value={value}
         minDetail="year"
         maxDetail="month"
-        prevLabel={<img src={leftArrow} alt="Previous" />}
-        nextLabel={<img src={rightArrow} alt="Next" />}
+        prevLabel={
+          <>
+            <img src={leftArrow} alt="Previous" />
+            {isMobile ? getPrevMonthLabel(value) : null}
+          </>
+        }
+        nextLabel={
+          <>
+            {isMobile ? getNextMonthLabel(value) : null}
+            <img src={rightArrow} alt="Next" />
+          </>
+        }
         next2Label={null}
         prev2Label={null}
         formatDay={(locale, date) => moment(date).format('D')}

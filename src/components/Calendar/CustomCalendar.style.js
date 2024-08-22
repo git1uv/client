@@ -13,7 +13,7 @@ export const StyledCalendarWrapper = styled.div`
     margin-top: 5.3vh;
   }
   @media screen and (max-width: 430px) {
-    height: 75vh; 
+    height: 87vh; 
     width: 100%;
   }
 
@@ -33,7 +33,12 @@ export const StyledCalendarWrapper = styled.div`
   /* 네비게이션 가운데 정렬 */
   .react-calendar__navigation {
     justify-content: center;
+    align-items: center;
     margin-bottom: 5%; 
+    @media screen and (max-width: 430px) {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
   }
   
   /* 네비게이션 폰트 설정 */
@@ -44,8 +49,10 @@ export const StyledCalendarWrapper = styled.div`
     line-height: 22px; 
     color: #4C434E;
     margin: 0 1vw;
+    padding: 0;
   }
-  
+
+
   /* 네비게이션 버튼 컬러 */
   .react-calendar__navigation button:focus {
     background-color: white;
@@ -140,6 +147,17 @@ export const StyledEmotion = styled.div`
   ${({ imageUrl }) => !imageUrl && `
     border: 1px solid ##F4F2EB; 
   `}
+`;
+
+export const MonthLabel = styled.span`
+  color: #000;
+  font-family: Pretendard;
+  font-size: 1.16rem;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 12px; /* 85.714% */
+  letter-spacing: -0.408px;
+  margin: 0 2.5vw 1.2vh;
 
 `;
 

@@ -20,7 +20,7 @@ export const App = styled.div`
             content: "";
             position: absolute;
             width: 100%;
-            height: 100vh;
+            height: 90vh;
             backdrop-filter: blur(3px);
             background: rgba(244, 242, 235, 0.70);
         }
@@ -37,35 +37,28 @@ export const App = styled.div`
     }
     z-index: 1;
 `
-// background: ${({ isTestStart }) => 
-//     isTestStart 
-//       ? `url(${backgroundImg}) no-repeat center center / cover, #EEECE3`
-//       : `#F4F2EB`};
-// ${({ isTestStart }) => 
-//     isTestStart && `
-//         filter: blur(5px); /* Blur amount */
-//         background-size: cover;
-//     `} 
-
-// &::before {
-//     content: "";
-//     position: absolute;
-//     width: 100%;
-//     height: 100vh;
-//     backdrop-filter: blur(3px);
-//     background: rgba(255, 255, 255, 0.30);
-// }
 
 export const Container = styled.div`
     ${ALIGN.COLUMN_CENTER};
 
-    width: 80%;
-    height: 80%;
+    width: 80.5625rem;
+    height: 53.0625rem;
+    @media (max-width: 1440px) {
+         width: 60.5625rem;
+        height: 38.0625rem;
+    }
     padding: 0.2rem 0;
-
-    background: #EEECE3;
+    background: ${({ isTestStart }) => 
+        isTestStart ? `#F4F2EB` : `#EEECE3`
+    };
+    box-shadow : ${({ isTestStart }) => 
+        isTestStart ? `0px 4px 4px 0px #E3DECB inset` : ``
+    };
     border-radius: 2.5rem;
 `
+// background: ${({ isTestStart }) => 
+//     isTestStart ? `#F4F2EB` : `#EEECE3`
+// };
 
 export const TextBox = styled.div`
     width: 80%;
@@ -121,9 +114,11 @@ export const BtnBox = styled.div`
     ${ALIGN.COLUMN_CENTER};
     gap: 1rem;  
     width: 100%;
+    margin-bottom: 1rem;
     button {
-        width: 25rem;
-        height: 4rem;
+        white-space: pre-line;
+        width: 28.4375rem;
+        height: 5rem;
         border: none;
         border-radius: 0.5rem;
         background-color: #ffffff;

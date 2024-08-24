@@ -7,7 +7,7 @@ import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName'
-import Chatbot from './routes/Chatbot'; 
+import Chatbot from './routes/Chatbot/Chatbot'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
 import Letter from './routes/Letter'; 
@@ -22,6 +22,9 @@ import PwChange from './routes/Set/PwChange';
 import SimterInformation from './routes/Set/SimterInformation'; 
 import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
+import TestPage from './routes/Chatbot/TestPage';
+import TestContent from './components/Test/TestContent';
+import TestResult from './routes/Chatbot/TestResultPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,6 +64,9 @@ function App() {
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />
                 <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/test" element={<TestPage />} />
+                <Route path="/test/content" element={<TestContent />} />
+                <Route path="/test/result" element={<TestResult />} />
                 <Route path="/trash" element={<Trash />} />
                 <Route path="/trashpaper" element={<TrashPaper />} />
                 <Route path="/letter" element={<Letter />} />

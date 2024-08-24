@@ -42,7 +42,7 @@ function WebHeader() {
                 </H.HeaderStart>
                 <H.HeaderCenter>
                     <H.HeaderForm onSubmit={(e) => e.preventDefault()}>
-                        <H.HeaderButton onClick={() => navigate('/chatbot')} active={location.pathname === '/chatbot'}>챗봇</H.HeaderButton>
+                        <H.HeaderButton onClick={() => navigate('/test')} active={location.pathname === '/chatbot'}>챗봇</H.HeaderButton>
                         <H.HeaderButton onClick={() => navigate('/calendar')} active={location.pathname === '/calendar'}>달력</H.HeaderButton>
                         <H.HeaderButton onClick={() => navigate('/trash')} active={location.pathname === '/trash'}>감정쓰레기통</H.HeaderButton>
                         <H.HeaderButton onClick={() => navigate('/letter')} active={location.pathname === '/letter'}>편지</H.HeaderButton>

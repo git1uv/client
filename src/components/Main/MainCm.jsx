@@ -13,7 +13,7 @@ export default function MainCm() {
       <S.Trash onClick={() => navigate('/trash')}/>
       <S.Airplane onClick={() => setAirplaneModal(true)}/>
       <S.Calendar onClick={() => navigate('/calendar')}/>
-      <S.Chatbot onClick={() => navigate('/chatbot')}/>
+      <S.Chatbot onClick={() => navigate('/test')}/>
       <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
       <S.Mailbox onClick={() => navigate('/letter')}/>
       </S.Room>

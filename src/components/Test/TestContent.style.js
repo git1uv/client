@@ -102,11 +102,11 @@ export const Loading = styled.div`
     
     width: 100%;
     height: 90vh;
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.9);
 
     z-index: 100;
 
     img {
-        width: 50%;
+        width: 20rem;
     }
 `

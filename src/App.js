@@ -23,7 +23,7 @@ import SimterInformation from './routes/Set/SimterInformation';
 import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
 import TestPage from './routes/Chatbot/TestPage';
-import TestContent from './components/Test/TestContent';
+import TestContent from './components/Test/TestContent/TestContent';
 import TestResult from './routes/Chatbot/TestResultPage';
 
 function App() {

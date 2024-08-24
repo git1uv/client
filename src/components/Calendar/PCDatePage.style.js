@@ -250,25 +250,30 @@ export const ToDoList = styled.div`
   height: 60%;
   display: flex;
   flex-direction: column;
-  padding: 3%;
+  padding: 3% 0 3% 3%;
   position: relative;
   overflow-y: auto;
   /* 스크롤바 전체 스타일 */
   &::-webkit-scrollbar {
-    width: 9px;
+    width: 70px;
   }
 
   /* 스크롤바 트랙 스타일 */
   &::-webkit-scrollbar-track {
     background-color: #F4F2EB;
-    border-radius: 10px;
+    border-radius: 30px;
+    border-top: 5px solid white; 
+    border-bottom: 5px solid white; 
+    border-left: 30px solid white;
+    border-right: 30px solid white;
   }
 
   /* 스크롤바 핸들(thumb) 스타일 */
   &::-webkit-scrollbar-thumb {
     background-color: #739B8B;
-    border-radius: 10px;
-    border: none;
+    border-radius: 30px;
+    border-left: 30px solid white;
+    border-right: 30px solid white;
   }
 `;
 export const ToDoItem = styled.div`
@@ -276,7 +281,7 @@ export const ToDoItem = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 2%;
-  width: 90%;
+  width: 100%;
 `;
 export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   appearance: none;
@@ -293,7 +298,7 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   }
 `;
 export const Todo = styled.div`
-  width: 80%; 
+  width: 90%; 
   margin: 0 1.5%;
   font-family: SeoulHangang;
   font-size: 1.25rem;
@@ -310,7 +315,4 @@ export const DeleteButton = styled.div`
   background-image: url(${x});
   background-size: contain;
   background-repeat: no-repeat;
-`;
-export const Scroll = styled.div`
-
 `;

@@ -18,7 +18,7 @@ export default function TestContent() {
   const [buttonText2, setButtonText2] = useState('');
 
   const test = useSelector((state) => state.test);
-
+  
   const titles = [
     'Q1. 친구가 배탈이 났다고 한다. 나의 반응은?',
     'Q2. 함께 대화를 하던 사람이 나보고 이렇게 말한다. 이 말에 대한 나의 생각은?',
@@ -67,6 +67,10 @@ export default function TestContent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  function saveLocalStorage(token) {
+    localStorage.setItem('result', test.score);
+  }
+
   useEffect(() => {
     if (number < answerF.length) {
       const isFirstButtonFromF = Math.random() > 0.5;
@@ -96,6 +100,7 @@ export default function TestContent() {
   useEffect(() => {
     if (progress === 90) {
       console.log(test.score);
+      saveLocalStorage(test.score)
       const timer = setTimeout(() => {
         navigate('/test/result');
       }, 3000)

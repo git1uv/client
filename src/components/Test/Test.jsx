@@ -22,7 +22,8 @@ export default function Test() {
           </S.ImgBox>
           <S.BtnBox>
             <button onClick={() => navigate('/test/content')}>테스트 시작</button>
-            <button>건너뛰기</button>
+            <button onClick={() => navigate('/챗봇선택하는페이지')}>건너뛰기</button>
+             {/* 건너뛰기 라우팅 추후에 바꿔야 함 */}
           </S.BtnBox>
       </S.Container>
     </S.App>

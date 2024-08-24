@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import * as S from './ChatbotBox.style'
 import ChatbotInfo from '../ChatbotInfo/ChatbotInfo'
 import Chat from '../Chat/Chat'

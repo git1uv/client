@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from '../../constants/theme'; // theme 파일의 경로
-import backgroundImg from "../../assets/backgroundImg.png"
+import backgroundImg from "../../assets/chatbot/background.png"
 
 const { ALIGN } = theme;
 
@@ -56,9 +56,6 @@ export const Container = styled.div`
     };
     border-radius: 2.5rem;
 `
-// background: ${({ isTestStart }) => 
-//     isTestStart ? `#F4F2EB` : `#EEECE3`
-// };
 
 export const TextBox = styled.div`
     width: 80%;

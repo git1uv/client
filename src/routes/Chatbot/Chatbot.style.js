@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImg from '../../assets/backgroundImg.png'
+import backgroundImg from '../../assets/chatbot/background.png'
 import sendBtn from '../../assets/chatbot/chatStart/sendBtn.png'
 import { IoIosArrowBack } from "react-icons/io";
 import theme from '../../constants/theme'; // theme 파일의 경로
@@ -94,7 +94,7 @@ export const Header = styled.div`
     h1 {
         width: 80%;
         text-align: center;
-
+        margin: 0;
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;

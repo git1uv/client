@@ -24,6 +24,7 @@ import './assets/font/font.css';
 import GlobalStyle from './GlobalStyle';
 import TestPage from './routes/Chatbot/TestPage';
 import TestContent from './components/Test/TestContent';
+import TestResult from './routes/Chatbot/TestResult';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/chatbot" element={<Chatbot />} />
                 <Route path="/test" element={<TestPage />} />
                 <Route path="/test/content" element={<TestContent />} />
+                <Route path="/test/result" element={<TestResult />} />
                 <Route path="/trash" element={<Trash />} />
                 <Route path="/trashpaper" element={<TrashPaper />} />
                 <Route path="/letter" element={<Letter />} />

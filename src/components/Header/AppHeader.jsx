@@ -45,7 +45,7 @@ function AppHeader({ isLoggedIn, setIsLoggedIn }) {
                     <M.Modal>
                         <M.ModalCloseButton onClick={() => setModal(false)}><img src={x} alt='x' /></M.ModalCloseButton>
                         <M.ButtonContainer>
-                            <M.ModalButton onClick={() => { navigate('/chatbot'); setModal(false); }}><img src={chat} alt='chatbot' />챗봇</M.ModalButton>
+                            <M.ModalButton onClick={() => { navigate('/test'); setModal(false); }}><img src={chat} alt='chatbot' />챗봇</M.ModalButton>
                             <M.ModalButton onClick={() => { navigate('/trash'); setModal(false); }}><img src={trash} alt='trash' />감정쓰레기통</M.ModalButton>
                             <M.ModalButton onClick={() => { navigate('/calendar'); setModal(false); }}><img src={cal} alt='calendar' />달력</M.ModalButton>
                             <M.ModalButton onClick={() => { navigate('/letter'); setModal(false); }}><img src={letter} alt='letter' />편지</M.ModalButton>

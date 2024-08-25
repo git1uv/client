@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
-import MiniCalendar from './MiniCalendar'
 import * as M from './MobileDatePage.style';
 import styled from "styled-components";
 import axios from 'axios';

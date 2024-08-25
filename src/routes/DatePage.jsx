@@ -7,6 +7,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../components/Modal/Calendar/SaveModal';
+import { useNavigate } from 'react-router-dom';
 
 const DateWrapper = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const DateWrapper = styled.div`
 `;
 
 function DatePage() {
+  const navigate = useNavigate();
   const { date } = useParams();
   const formattedDate = moment(date).format('YYYY년 MM월 DD일');
   const { calendarID } = useParams(); 
@@ -137,7 +139,7 @@ function DatePage() {
   return (
     <DateWrapper>
       <P.Container>
-        <P.BackButton />
+        <P.BackButton onClick={() => navigate(-1)}/>
         <MiniCalendar />
         <P.Content>
           <P.DiaryBox>

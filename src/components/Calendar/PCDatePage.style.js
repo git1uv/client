@@ -63,7 +63,7 @@ export const DiaryBox = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 27%;
-  background-color: #EEECE3;
+  background-color: transparent;
 `;
 
 export const Diary = styled.div`
@@ -214,7 +214,7 @@ export const ChatBox = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 33%;
-  background-color: #EEECE3;
+  background-color: transparent;
   position: relative;
 `;
 export const Explain = styled.div`
@@ -256,7 +256,7 @@ export const ToDoListBox = styled.div`
   justify-content: flex-start;
   width: 100%;
   height: 40%;
-  background-color: #EEECE3;
+  background-color: transparent;
 `;
 export const ToDoList = styled.div`
   background-color: white;

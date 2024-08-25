@@ -249,31 +249,37 @@ export const ToDoList = styled.div`
   width: 70%;
   height: 60%;
   display: flex;
-  flex-direction: column;
-  padding: 3% 0 3% 3%;
+  padding: 3%;
   position: relative;
+`;
+export const ToDoListContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 94%;
   overflow-y: auto;
   /* 스크롤바 전체 스타일 */
   &::-webkit-scrollbar {
-    width: 70px;
+    width: 50px;
   }
 
   /* 스크롤바 트랙 스타일 */
   &::-webkit-scrollbar-track {
     background-color: #F4F2EB;
-    border-radius: 30px;
-    border-top: 5px solid white; 
-    border-bottom: 5px solid white; 
-    border-left: 30px solid white;
-    border-right: 30px solid white;
+    border-radius: 20px;
+    border-left: 20px solid white;
+    border-right: 20px solid white;
   }
 
   /* 스크롤바 핸들(thumb) 스타일 */
   &::-webkit-scrollbar-thumb {
     background-color: #739B8B;
-    border-radius: 30px;
-    border-left: 30px solid white;
-    border-right: 30px solid white;
+    border-radius: 20px;
+    background-clip: padding-box;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
   }
 `;
 export const ToDoItem = styled.div`
@@ -310,7 +316,7 @@ export const Todo = styled.div`
 `;
 export const DeleteButton = styled.div`
   border: none;
-  height: 90%;
+  height: 1.25rem;
   width: 1.25rem;
   background-image: url(${x});
   background-size: contain;

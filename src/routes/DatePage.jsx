@@ -6,6 +6,7 @@ import * as P from '../components/Calendar/PCDatePage.style';
 import styled from "styled-components";
 import axios from 'axios';
 import { FiChevronRight} from "react-icons/fi";
+import SaveModal from '../components/Modal/Calendar/SaveModal';
 
 const DateWrapper = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ function DatePage() {
   const [message, setMessage] = useState('');
   //const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
 
   // 임의의 데이터 설정
@@ -51,6 +53,20 @@ function DatePage() {
     const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
     setSolutions(updatedSolutions);
   };
+  /**const handleDelete = async (solutionId) => {
+    try {
+      const response = await axios.delete(`/api/v1/calendar/today/solution/:solutionID/delete`);
+      if (response.status === 200) {
+        setSolutions(solutions.filter(solution => solution.id !== solutionId));
+        setMessage('해결책이 삭제되었습니다.');
+      } else {
+        setMessage(`삭제 실패: ${response.data.message}`);
+      }
+    } catch (error) {
+      setMessage(`삭제 중 오류 발생: ${error.message}`);
+    }
+  };
+ */
 
   useEffect(() => {
     const fetchDiaryData = async () => {
@@ -79,6 +95,7 @@ function DatePage() {
 
       if (response.status === 200) {
         setMessage('저장되었습니다.');
+        setShowModal(true);
       } else {
         setMessage(`저장 실패: ${response.data.message}`);
       }
@@ -167,6 +184,7 @@ function DatePage() {
               <P.Title>추천리스트</P.Title>
             </P.ToDoListTopRow>
             <P.ToDoList>
+            <P.ToDoListContainer>
             {solutions.map((solution) => (
             <P.ToDoItem key={solution.id}>
                   <P.CheckBox
@@ -180,10 +198,12 @@ function DatePage() {
                   <P.DeleteButton onClick={() => handleDelete(solution.id)} />
                 </P.ToDoItem>
             ))}
+            </P.ToDoListContainer>
             </P.ToDoList>
           </P.ToDoListBox>
         </P.Content>
       </P.Container>
+      {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
     </DateWrapper>
   );
 }

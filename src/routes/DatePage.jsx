@@ -136,8 +136,8 @@ function DatePage() {
 
   return (
     <DateWrapper>
-      <P.BackButton></P.BackButton>
       <P.Container>
+        <P.BackButton />
         <MiniCalendar />
         <P.Content>
           <P.DiaryBox>

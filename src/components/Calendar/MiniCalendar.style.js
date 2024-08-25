@@ -35,9 +35,9 @@ export const MiniCalendarWrapper = styled.div`
     display: none;
   }
   @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 270px;
-    height: 318px;
-    margin: 40px 0 0 100px;
+    width: 240px;
+    height: 300px;
+    margin: 30px 0 0 90px;
   }
   @media (min-width: 1201px) {
     width: 380px;
@@ -58,18 +58,23 @@ export const MiniCalendarWrapper = styled.div`
   }
   .react-calendar__navigation {
     justify-content: center;
-    margin-bottom: 5%; 
+    @media (min-width: 1201px){
+      margin-bottom: 5%; 
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      margin-bottom: 2%; 
+    }
   }
   .react-calendar__navigation button {
     font-weight: bold;
     font-family: SeoulHangang;
     line-height: 22px; 
     color: #4C434E;
-    @media (min-width: 1441px){
+    @media (min-width: 1201px){
       font-size: 2rem;
       margin: 0 0.5vw !important;
     }
-    @media (min-width: 1024px) and (max-width: 1440px) {
+    @media (min-width: 1024px) and (max-width: 1200px) {
       font-size: 1.5rem;
       margin: 0 0.3vw !important;
     }

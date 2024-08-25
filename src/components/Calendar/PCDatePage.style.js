@@ -1,9 +1,23 @@
 import styled from 'styled-components';
-import {bigFirework, smallFirework, buttonBack, film, note, stickerDown, stickerUp, miniTape, check} from '../../assets/CalendarImg/icons';
+import {bigFirework, smallFirework, buttonBack, film, note, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
 import x from '../../assets/x.png';
 
 export const BackButton = styled.div`
-
+  display: flex;
+  position: absolute;
+  background-image: url(${buttonBack});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 3.75rem;
+  height: 4.125rem;
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    top: -10.5%;
+    left: 10.5%;
+  }
+  @media (min-width: 1201px) {
+    top: -7.8%;
+    left: 8.6%;
+  }
 `;
 
 export const Container = styled.div`
@@ -15,8 +29,8 @@ export const Container = styled.div`
   flex-direction: row;
   margin: 10.4vh 0 0;
   @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 943px;
-    height: 600px;
+    width: 833px;
+    height: 530px;
   }
   @media (min-width: 1201px) {
     width: 1327px;
@@ -31,9 +45,9 @@ export const Content = styled.div`
   align-items: flex-start; 
   background-color: transparent;
   @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 495px;
-    height: 506px;
-    margin: 40px 23px;
+    width: 450px;
+    height: 456px;
+    margin: 30px 23px;
   }
   @media (min-width: 1201px) {
     width: 680px;

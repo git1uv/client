@@ -28,13 +28,13 @@ export const App = styled.div`
             position: relative;
             z-index: 2;
         }
-    ` : `
-        background: #F4F2EB;    
-    `
+    ` : `background: #F4F2EB;`
     } 
-    @media (max-width: 430px) {
-        height: 93dvh;
-        margin-top: 7dvh;
+
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        position: fixed;
+        top: -4vh; /* 헤더의 높이 */
+        height: calc(100dvh - 6.5dvh); /* 10vh는 헤더의 높이 */
     }
     z-index: 1;
 `

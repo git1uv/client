@@ -5,7 +5,7 @@ import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png'
 import Banbani from '../../../assets/chatbot/test/Banbani.png'
 import Neuranee from '../../../assets/chatbot/test/Neuranee.png'
 
-import { chatbotInfo, chatbotInfo2 } from '../../../datas/chatbot'
+import { chatbotInfo, chatbotInfo2, chatbotInfo2Mobile } from '../../../datas/chatbot'
 import { useNavigate } from 'react-router-dom'
 
 export default function TestResult() {
@@ -30,17 +30,17 @@ export default function TestResult() {
         ? (
           <>
             <h2>{chatbotInfo[2]}</h2>
-            <p>{chatbotInfo2[2]}</p>
+            <p>{window.innerWidth >= 430 ? chatbotInfo2[2] : chatbotInfo2Mobile[2]} </p>
           </>
         ) : result >= 40 ? (
           <>
             <h2>{chatbotInfo[1]}</h2>
-            <p>{chatbotInfo2[1]}</p>
+            <p>{window.innerWidth >= 430 ? chatbotInfo2[1] : chatbotInfo2Mobile[1]} </p>
           </>
         ): (
           <>
             <h2>{chatbotInfo[0]}</h2>
-            <p>{chatbotInfo2[0]}</p>
+            <p>{window.innerWidth >= 430 ? chatbotInfo2[0] : chatbotInfo2Mobile[0]} </p>
           </>
         )}
         </S.speechBubble>

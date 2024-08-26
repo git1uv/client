@@ -9,6 +9,7 @@ export const ProgressBarContainer = styled.div`
     width: 40%;
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         width: 90%;    
+        margin-top: 1rem;
     }
     padding: 5px;
     .progress {
@@ -124,13 +125,15 @@ export const Loading = styled.div`
     ${ALIGN.COLUMN_CENTER};
     position: absolute;
     top: 10%;
-    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-        top: 0%;
-    }
     width: 100%;
     height: 90vh;
     background: rgba(255, 255, 255, 0.9);
-
+    
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        position: fixed;
+        top: 0;
+        height: 100dvh;
+    }
     z-index: 100;
 
     img {

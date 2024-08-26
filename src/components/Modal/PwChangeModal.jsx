@@ -14,7 +14,7 @@ const PwChangeModal = ({ isVisible, onClose}) => {
         <M.LogoutModalTitle>비밀번호 변경</M.LogoutModalTitle>
         <p className='sub'>비밀번호가 변경되었습니다</p>
         <M.ModalActions>
-          <M.CancelButton className='ok' onClick={onClose} >확인</M.CancelButton>
+          <M.OKButton onClick={onClose} >확인</M.OKButton>
         </M.ModalActions>
       </M.LogoutModal>
     </M.LogoutModalBg>

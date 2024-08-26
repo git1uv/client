@@ -88,6 +88,7 @@ function Mobile() {
   }, [calendarID]);
 
   const handleSaveDiary = async () => {
+    setShowModal(true);
   /**
     try {
       const response = await axios.patch(`/calendar/today/:calendarID/diary`, {

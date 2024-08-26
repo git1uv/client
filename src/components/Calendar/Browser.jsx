@@ -8,6 +8,7 @@ import axios from 'axios';
 import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../Modal/Calendar/SaveModal';
 import { useNavigate } from 'react-router-dom';
+import './Confetti.css';
 
 const DateWrapper = styled.div`
   display: flex;
@@ -50,6 +51,7 @@ function Browser() {
       return solution;
     });
     setSolutions(updatedSolutions);
+
     if (updatedSolutions.every((solution) => solution.is_completed)) {
       setShowConfetti(true);
       setTimeout(() => setShowConfetti(false), 3000); // 3초 후 Confetti 종료
@@ -95,6 +97,7 @@ function Browser() {
   }, [calendarID]);
 
   const handleSaveDiary = async () => {
+    setShowModal(true);
   /**
     try {
       const response = await axios.patch(`/calendar/today/:calendarID/diary`, {
@@ -212,6 +215,7 @@ function Browser() {
         </P.Content>
       </P.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
+      {showConfetti && <div className="bg-confetti-animated"></div>}
     </DateWrapper>
   );
 }

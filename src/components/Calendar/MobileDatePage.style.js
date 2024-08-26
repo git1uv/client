@@ -24,7 +24,7 @@ export const Container = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   flex-direction: column;
-  margin: 22vh 0 0;
+  margin: 30vh 0 0;
   @media (max-width: 430px) {
     width: 100%;
     height: auto;
@@ -50,21 +50,21 @@ export const DiaryBox = styled.div`
   align-items: flex-start; 
   justify-content: flex-start;
   width: 100%;
-  height: 35vh;
+  height: 293px;
   background-color: transparent;
 `;
 
 export const Diary = styled.div`
   width: 90%;
-  height: 16vh;
+  height: 135px;
   flex-direction: column;
   margin-left: 3.5%;
 `;
 
 export const TodayEmotion = styled.div`
   position: relative;    
-  width: 45%;
-  height: 19.5vh;
+  width: 158px;
+  height: 158px;
   background-image: url(${stickerDown});
   background-size: contain;
   background-repeat: no-repeat;
@@ -72,8 +72,8 @@ export const TodayEmotion = styled.div`
 
 export const OverlayImage = styled.div`
   position: absolute;
-  bottom: 12%;
-  right: 6%;
+  bottom: 15px;
+  right: 9px;
   width: 55%;
   height: 30%; 
   background-image: url(${stickerUp});
@@ -83,11 +83,11 @@ export const OverlayImage = styled.div`
 
 export const EmotionButton = styled.div`
   position: absolute;
-  top: 21.5%;
-  left: 50%;
+  top: 37px;
+  left: 79px;
   transform: translateX(-50%);
-  width: 60%;
-  height: 59.5%;
+  width: 92px;
+  height: 92px;
   background-color: #D9D9D9;
   border-radius: 50%;
   display: flex;
@@ -145,7 +145,6 @@ export const SaveButton = styled.div`
   background: #F4F2EB;
   width: 20%;
   height: 50%;
-  margin-right: 1%;
 `;
 
 export const Text = styled.div`
@@ -154,7 +153,7 @@ export const Text = styled.div`
 `;
 
 export const NotesTextarea = styled.textarea`
-  width: 100%;
+  width: 97%;
   height: 90%;
   background-image:
     repeating-linear-gradient(
@@ -191,7 +190,7 @@ export const ChatBox = styled.div`
   align-items: flex-start; 
   justify-content: flex-start;
   width: 96.5%;
-  height: 28vh;
+  height: 32vh;
   background-color: transparent;
   position: relative;
   margin-left: 3.5%;
@@ -214,13 +213,13 @@ export const Film = styled.div`
   left: -5.5%;
 `;
 export const Slide = styled.div`
-border-radius: 5px;
-background: #D9D9D9;
-height: 50%;
-width: 60%;
-position: relative;
-top: 23%;
-left: 20%;
+  border-radius: 5px;
+  background: #D9D9D9;
+  height: 12vh;
+  width: 60%;
+  position: absolute;
+  top: 21%;
+  left: 20%;
 `;
 export const With = styled.div`
 
@@ -236,7 +235,7 @@ export const ToDoListBox = styled.div`
   width: 96.5%;
   height: 30vh;
   background-color: transparent;
-  margin-left: 3.5%;
+  margin: 0 0 5% 3.5%;
 `;
 export const ToDoList = styled.div`
   background-color: white;
@@ -312,6 +311,7 @@ export const DeleteButton = styled.div`
   border: none;
   height: 1.25rem;
   width: 1.25rem;
+  margin-right: 2%;
   background-image: url(${x});
   background-size: contain;
   background-repeat: no-repeat;

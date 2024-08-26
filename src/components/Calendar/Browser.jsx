@@ -28,6 +28,7 @@ function Browser() {
   //const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
 
   // 임의의 데이터 설정
@@ -49,6 +50,11 @@ function Browser() {
       return solution;
     });
     setSolutions(updatedSolutions);
+    if (updatedSolutions.every((solution) => solution.is_completed)) {
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 3000); // 3초 후 Confetti 종료
+    }
+
   };
 
   const handleDelete = (solutionId) => {

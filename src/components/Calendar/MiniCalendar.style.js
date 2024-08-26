@@ -25,13 +25,21 @@ export const MiniCalendarWrapper = styled.div`
     width: 127px;
     height: 40px;
     }
-    @media (min-width: 1201px) {
+    @media (min-width: 1201px) and (max-width: 1440px) {
+      width: 150px;
+      height: 50px;
+    }
+    @media (min-width: 1441px) and (max-width: 1600px) {
+      width: 150px;
+      height: 50px;
+    }
+    @media (min-width: 1601px) {
       width: 179px;
       height: 56px;
     }
   }
 
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 1023px) {
     display: none;
   }
   @media (min-width: 1024px) and (max-width: 1200px) {
@@ -39,7 +47,17 @@ export const MiniCalendarWrapper = styled.div`
     height: 300px;
     margin: 30px 0 0 90px;
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 270px;
+    height: 340px;
+    margin: 30px 0 0 90px;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 270px;
+    height: 340px;
+    margin: 30px 0 0 90px;
+  }
+  @media (min-width: 1601px) {
     width: 380px;
     height: 448px;
     margin: 66px 0 0 152px;
@@ -58,25 +76,21 @@ export const MiniCalendarWrapper = styled.div`
   }
   .react-calendar__navigation {
     justify-content: center;
-    @media (min-width: 1201px){
+    margin-bottom: 2%; 
+    @media (min-width: 1601px){
       margin-bottom: 5%; 
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
-      margin-bottom: 2%; 
     }
   }
   .react-calendar__navigation button {
     font-weight: bold;
     font-family: SeoulHangang;
     line-height: 22px; 
+    font-size: 1.5rem;
+    margin: 0 0.3vw !important;
     color: #4C434E;
-    @media (min-width: 1201px){
+    @media (min-width: 1601px){
       font-size: 2rem;
       margin: 0 0.5vw !important;
-    }
-    @media (min-width: 1024px) and (max-width: 1200px) {
-      font-size: 1.5rem;
-      margin: 0 0.3vw !important;
     }
   }
   .react-calendar__navigation button:focus {
@@ -132,8 +146,11 @@ export const MiniCalendarWrapper = styled.div`
     position: relative;
     font-size: 1.25rem;
     z-index: 5;
-    @media (min-width: 1201px){
+    @media (min-width: 1601px){
       padding: 4.7% 0 !important;
+    }
+    @media (min-width: 1201px) and (max-width: 1600px) {
+      padding: 4% 0 !important;
     }
     @media (min-width: 1024px) and (max-width: 1200px) {
       padding: 3.3% 0 !important;

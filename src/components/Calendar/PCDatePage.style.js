@@ -8,15 +8,29 @@ export const BackButton = styled.div`
   background-image: url(${buttonBack});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 3.75rem;
-  height: 4.125rem;
   @media (min-width: 1024px) and (max-width: 1200px) {
     top: -10.5%;
     left: 10.5%;
+    width: 3rem;
+    height: 3.5rem;
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    top: -8.5%;
+    left: 10.5%;
+    width: 3rem;
+    height: 3.5rem;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    top: -8.5%;
+    left: 10.5%;
+    width: 3rem;
+    height: 3.5rem;
+  }
+  @media (min-width: 1601px) {
     top: -7.8%;
     left: 8.6%;
+    width: 3.75rem;
+    height: 4.125rem;
   }
 `;
 
@@ -32,7 +46,16 @@ export const Container = styled.div`
     width: 833px;
     height: 530px;
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 943px;
+    height: 600px;
+    margin: 20vh 0 0;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 943px;
+    height: 600px;
+  }
+  @media (min-width: 1601px) {
     width: 1327px;
     height: 844px;
   }
@@ -49,7 +72,17 @@ export const Content = styled.div`
     height: 456px;
     margin: 30px 23px;
   }
-  @media (min-width: 1201px) {
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 505px;
+    height: 520px;
+    margin: 30px 23px;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 505px;
+    height: 520px;
+    margin: 30px 23px;
+  }
+  @media (min-width: 1601px) {
     width: 680px;
     height: 700px;
     margin: 66px 37px;
@@ -306,9 +339,6 @@ export const ToDoItem = styled.div`
 export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   appearance: none;
   border: 3px solid #739B8B;
-  width: 1.75rem;
-  height: 1.75rem;
-
   &:checked {
     background-image: url(${check});
     background-size: 100% 100%;
@@ -316,17 +346,41 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
     background-repeat: no-repeat;
     background-color: #739B8B;
   }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @media (min-width: 1601px) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 `;
 export const Todo = styled.div`
   width: 90%; 
   margin: 0 1.5%;
   font-family: SeoulHangang;
-  font-size: 1.25rem;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
   color: ${(props) => (props.completed ? "#9C9C9C" : "#4C434E")};
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    font-size: 1rem;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1441px) {
+    font-size: 1.14rem;
+  }
 `;
 export const DeleteButton = styled.div`
   border: none;

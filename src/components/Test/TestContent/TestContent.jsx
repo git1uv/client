@@ -56,9 +56,9 @@ export default function TestContent() {
     if (progress === 100) {
       console.log(test.score);
       saveLocalStorage(test.score)
-      const timer = setTimeout(() => {
-        navigate('/test/result');
-      }, 3000)
+      // const timer = setTimeout(() => {
+      //   navigate('/test/result');
+      // }, 3000)
     }
   }, [progress])
 

@@ -124,7 +124,9 @@ export const Loading = styled.div`
     ${ALIGN.COLUMN_CENTER};
     position: absolute;
     top: 10%;
-    
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        top: 0%;
+    }
     width: 100%;
     height: 90vh;
     background: rgba(255, 255, 255, 0.9);

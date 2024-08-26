@@ -5,7 +5,7 @@ import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png'
 import Banbani from '../../../assets/chatbot/test/Banbani.png'
 import Neuranee from '../../../assets/chatbot/test/Neuranee.png'
 
-import { chatbotInfo, chatbotInfo2, chatbotInfo2Mobile } from '../../../datas/chatbot'
+import chatbotInfo from '../../../datas/chatbot'
 import { useNavigate } from 'react-router-dom'
 
 export default function TestResult() {
@@ -29,23 +29,23 @@ export default function TestResult() {
         {result >= 70 
         ? (
           <>
-            <h2>{chatbotInfo[2]}</h2>
-            <p>{window.innerWidth >= 430 ? chatbotInfo2[2] : chatbotInfo2Mobile[2]} </p>
+            <h2>{chatbotInfo[2].title}</h2>
+            <p>{window.innerWidth >= 430 ? chatbotInfo[2].info : chatbotInfo[2].mobile} </p>
           </>
         ) : result >= 40 ? (
           <>
-            <h2>{chatbotInfo[1]}</h2>
-            <p>{window.innerWidth >= 430 ? chatbotInfo2[1] : chatbotInfo2Mobile[1]} </p>
+            <h2>{chatbotInfo[1].title}</h2>
+            <p>{window.innerWidth >= 430 ? chatbotInfo[1].info : chatbotInfo[1].mobile} </p>
           </>
         ): (
           <>
-            <h2>{chatbotInfo[0]}</h2>
-            <p>{window.innerWidth >= 430 ? chatbotInfo2[0] : chatbotInfo2Mobile[0]} </p>
+            <h2>{chatbotInfo[0].title}</h2>
+            <p>{window.innerWidth >= 430 ? chatbotInfo[0].info : chatbotInfo[0].mobile} </p>
           </>
         )}
         </S.speechBubble>
         <S.BtnBox>
-          <button onClick={() => navigate('/챗봇 선택하는 페이지')}>다른 캐릭터 보러가기</button>
+          <button onClick={() => navigate('/chatbot/choice')}>다른 캐릭터 보러가기</button>
           <button onClick={() => navigate('/chatbot')}>대화를 시작할까?</button>
         </S.BtnBox>
       </S.Container>

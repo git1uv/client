@@ -14,6 +14,18 @@ export const App = styled.div`
     background-color: #F4F2EB;
 
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-        height: 90dvh;
+        height: 93.5dvh;
+        margin-top: 6.5dvh;
+
     }
+`
+export const Title = styled.h1`
+    text-align: center;
+    padding: 2rem 0;
+`
+
+export const ChatbotInfo = styled.div`
+    ${ALIGN.COLUMN_CENTER};
+    width: 80%;
+    margin-left: 10%;
 `

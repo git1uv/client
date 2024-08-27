@@ -35,7 +35,6 @@ export const ModalContainer = styled.div`
 `;
 
 export const Modal = styled.div`
-
   z-index: 62;
   position: relative;
   display: flex;
@@ -53,13 +52,13 @@ export const Modal = styled.div`
     background-image: url(${webLetter});
     width: 200px;
     height: 262.8px;
-    padding: 40px;
+    padding: 30px;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
     background-image: url(${webLetter});
     width: 250px;
     height: 328.5px;
-    padding: 40px;
+    padding: 30px;
   }
   @media (min-width: 1441px) {
     background-image: url(${webLetter});
@@ -148,7 +147,7 @@ export const DownloadButton = styled.button`
 `;
 
 export const From = styled.div`
-  font-size: 1.375rem;
+  font-size: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -164,9 +163,9 @@ export const From = styled.div`
 
 
 export const Text = styled.div`
-  font-size: 1.375rem;
+  font-size: 1rem;
   width: 100%;
-  height: 50%;
+  height: 75%;
   color: #404040;
   font-family: SeoulHangang;
   font-style: normal;
@@ -176,7 +175,7 @@ export const Text = styled.div`
 
 
 export const Date = styled.div`
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -188,13 +187,15 @@ export const Date = styled.div`
   font-weight: 400;
   line-height: 22px; 
   letter-spacing: -0.408px;
+  width: 100%;
 
 `;
 
 export const WarningMessage = styled.div`
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #A8A29E;
   display: flex;
+  width: 100%;
   justify-content: flex-start;
   align-items: center;
   font-family: Pretendard;

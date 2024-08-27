@@ -1,5 +1,4 @@
-import bigFirework from './bigfirework.gif';
-import smallFirework from './smallfirework.gif';
+import Firework from './firework.gif';
 import buttonBack from './button_back.png';
 import film from './image_film.png';
 import note from './image_note.png';
@@ -8,4 +7,4 @@ import miniTape from './image_sticker_onlytape.png';
 import stickerUp from './image_sticker_up.png';
 import bigTape from './image_yellowtape.png';
 import check from './check.png';
-export {bigFirework, smallFirework, buttonBack, film, note, stickerDown, stickerUp, miniTape, bigTape, check};
+export {Firework, buttonBack, film, note, stickerDown, stickerUp, miniTape, bigTape, check};

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {bigFirework, smallFirework, buttonBack, film, note, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
+import {buttonBack, film, note, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
 import x from '../../assets/x.png';
 
 export const BackButton = styled.div`

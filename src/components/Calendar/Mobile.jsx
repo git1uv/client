@@ -6,6 +6,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../Modal/Calendar/SaveModal';
+import GifModal from '../Modal/Calendar/GifModal'; 
 import { useNavigate } from 'react-router-dom';
 
 const DateWrapper = styled.div`
@@ -27,6 +28,7 @@ function Mobile() {
   //const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showGif, setShowGif] = useState(false);
 
 
   // 임의의 데이터 설정
@@ -34,11 +36,7 @@ function Mobile() {
   const [solutions, setSolutions] = useState([
     { id: 1, content: '물 많이 마시기', is_completed: false },
     { id: 2, content: '10분 명상하기', is_completed: true },
-    { id: 3, content: '하루 운동하기', is_completed: false },
-    { id: 4, content: '하루 운동하기', is_completed: false },
-    { id: 5, content: '하루 운동하기', is_completed: false },
-    { id: 6, content: '하루 운동하기', is_completed: false },
-    { id: 7, content: '하루 운동하기', is_completed: false },
+    { id: 3, content: '하루 운동하기', is_completed: true },
   ]);
   const handleCheck = (solutionId) => {
     const updatedSolutions = solutions.map(solution => {
@@ -48,6 +46,9 @@ function Mobile() {
       return solution;
     });
     setSolutions(updatedSolutions);
+    if (updatedSolutions.every(solution => solution.is_completed)) {
+      setShowGif(true);
+    }
   };
 
   const handleDelete = (solutionId) => {
@@ -205,6 +206,12 @@ function Mobile() {
         </M.Content>
       </M.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
+      {showGif && (
+        <GifModal 
+          isVisible={showGif} 
+          onClose={() => setShowGif(false)} 
+        />
+      )}
     </DateWrapper>
   );
 }

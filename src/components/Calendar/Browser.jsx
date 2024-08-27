@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import MiniCalendar from './MiniCalendar'
@@ -8,7 +8,7 @@ import axios from 'axios';
 import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../Modal/Calendar/SaveModal';
 import { useNavigate } from 'react-router-dom';
-import './Confetti.css';
+import Confetti from 'react-confetti';
 
 const DateWrapper = styled.div`
   display: flex;
@@ -37,11 +37,11 @@ function Browser() {
   const [solutions, setSolutions] = useState([
     { id: 1, content: '물 많이 마시기', is_completed: false },
     { id: 2, content: '10분 명상하기', is_completed: true },
-    { id: 3, content: '하루 운동하기', is_completed: false },
-    { id: 4, content: '하루 운동하기', is_completed: false },
-    { id: 5, content: '하루 운동하기', is_completed: false },
-    { id: 6, content: '하루 운동하기', is_completed: false },
-    { id: 7, content: '하루 운동하기', is_completed: false },
+    { id: 3, content: '하루 운동하기', is_completed: true },
+    { id: 4, content: '하루 운동하기', is_completed: true },
+    { id: 5, content: '하루 운동하기', is_completed: true },
+    { id: 6, content: '하루 운동하기', is_completed: true },
+    { id: 7, content: '하루 운동하기', is_completed: true },
   ]);
   const handleCheck = (solutionId) => {
     const updatedSolutions = solutions.map(solution => {
@@ -54,10 +54,11 @@ function Browser() {
 
     if (updatedSolutions.every((solution) => solution.is_completed)) {
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 3000); // 3초 후 Confetti 종료
+      setTimeout(() => setShowConfetti(false), 3000); 
     }
-
   };
+  const todoListRef = useRef(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   const handleDelete = (solutionId) => {
     const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
@@ -79,22 +80,29 @@ function Browser() {
  */
 
   useEffect(() => {
-    const fetchDiaryData = async () => {
-      /**try {
-        const response = await axios.get(`/calendar/today`);
+    if (todoListRef.current) {
+      setContainerSize({
+        width: todoListRef.current.offsetWidth,
+        height: todoListRef.current.offsetHeight
+      });
+    }
+  }, [todoListRef.current]);
+    /**const fetchDiaryData = async () => {
+      try {
+        const response = await axios.get(`/api/v1/calendar/today/:year/:month/:day`);
         if (response.status === 200) {
           const data = response.data.data;
           setContent(data.diary);
           setSolutions(data.solution);
-          setCounselingLogs(data.counseling_log);
+          setCounselingLogs(data.counselinglog);
         }
       } catch (error) {
         setMessage(`데이터 불러오기 중 오류 발생: ${error.message}`);
-      }*/
+      }
     };
 
     fetchDiaryData();
-  }, [calendarID]);
+  }, [calendarID]);*/
 
   const handleSaveDiary = async () => {
     setShowModal(true);
@@ -194,7 +202,7 @@ function Browser() {
             <P.ToDoListTopRow>
               <P.Title>추천리스트</P.Title>
             </P.ToDoListTopRow>
-            <P.ToDoList>
+            <P.ToDoList ref={todoListRef} style={{ position: 'relative' }}>
             <P.ToDoListContainer>
             {solutions.map((solution) => (
             <P.ToDoItem key={solution.id}>
@@ -210,12 +218,19 @@ function Browser() {
                 </P.ToDoItem>
             ))}
             </P.ToDoListContainer>
+            {showConfetti && (
+                <Confetti
+                  width={containerSize.width}
+                  height={containerSize.height}
+                  recycle={false}
+                  style={{ position: 'absolute', top: 0, left: 0, zIndex: 10 }}
+                />
+              )}
             </P.ToDoList>
           </P.ToDoListBox>
         </P.Content>
       </P.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
-      {showConfetti && <div className="bg-confetti-animated"></div>}
     </DateWrapper>
   );
 }

@@ -110,9 +110,23 @@ export const StyledCalendarWrapper = styled.div`
   
   /* 일 날짜 간격 */
   .react-calendar__tile {
-    padding: 2vh 0 6vh;
     position: relative;
     font-size: 1.25rem;
+    @media (max-width: 430px) {
+      padding: 2vh 1vw 8vh;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      padding: 2vh 0 7vh;
+    }
+    @media (min-width: 1201px) and (max-width: 1440px) {
+      padding: 2vh 0 7vh;
+    }
+    @media (min-width: 1441px) and (max-width: 1600px) {
+      padding: 1vh 0 7vh;
+    }
+    @media (min-width: 1601px) {
+      padding: 1vh 0 10vh;
+    }
   }
   
   /* 네비게이션 월 스타일 적용 */
@@ -138,17 +152,48 @@ export const StyledEmotion = styled.div`
   background-size: cover;
   background-position: center;
   border-radius: 50%;
-  width: 6.25rem;
-  height: 6.25rem;
+  width: 2rem;
+  height: 2rem;
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translateX(-50%);
-  ${({ imageUrl }) => !imageUrl && `
-    border: 1px solid ##F4F2EB; 
-  `}
 `;
-
+export const Circle = styled.div`
+  background-color: ${({ hasCounseling }) => (hasCounseling ? '#cccccc' : '#F4F2EB')};
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 430px) {
+    width: 5.9vh;
+    height: 5.9vh;
+    top: 60%;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 6vh;
+    height: 6vh;
+    top: 70%;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 6vh;
+    height: 6vh;
+    top: 70%;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 6vh;
+    height: 6vh;
+    top: 70%;
+  }
+  @media (min-width: 1601px) {
+    width: 9vh;
+    height: 9vh;
+    top: 60%;
+  }
+`;
 export const MonthLabel = styled.span`
   color: #000;
   font-family: Pretendard;
@@ -157,7 +202,8 @@ export const MonthLabel = styled.span`
   font-weight: 200;
   line-height: 12px; /* 85.714% */
   letter-spacing: -0.408px;
-  margin: 0 2.5vw 1.2vh;
+  margin: 0 2.5vw 2vh;
+
 
 `;
 

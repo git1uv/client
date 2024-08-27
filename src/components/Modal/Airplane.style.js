@@ -79,10 +79,10 @@ export const ButtonContainer = styled.div`
     width: 25.5vw;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
-    width: 330px;
+    width: 310px;
   }
   @media (min-width: 431px) and (max-width: 1023px) {
-    width: 280px;
+    width: 260px;
   }
   @media (max-width: 430px) {
     width: calc(80% + 40px);
@@ -98,19 +98,25 @@ export const GoToLetterButton = styled.button`
   color: white;
   border: none;
   border-radius: 15px;
-  font-size: 1.125rem;
+  font-size: 1rem;
   cursor: pointer;
-  height: 3.75rem;
   @media (max-width: 430px) {
     top: 66vh;
     width: 73.5vw;
     right: 5%;
 
   }
-  @media (min-width: 431px) {
+  @media (min-width: 1441px) {
     top: 56.5vh;
-    width: 20.5vw;
+    width: 85%;
     right: 7.4vw;
+    height: 3.5rem;
+  }
+  @media (min-width: 431px) and (max-width: 1440px) {
+    top: 56.5vh;
+    width: 80%;
+    right: 7.4vw;
+    height: 3rem;
   }
 
 `;
@@ -129,8 +135,6 @@ export const DownloadButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.75rem;
-  height: 3.75rem;
   border: none;
   border-radius: 50%;
   background-color: white;
@@ -143,6 +147,18 @@ export const DownloadButton = styled.button`
   @media (min-width: 431px) {
     top: 56.5vh;
     left: 7.4vw;
+  }
+  @media (min-width: 1441px) {
+    top: 56.5vh;
+    left: 7.4vw;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  @media (min-width: 431px) and (max-width: 1440px) {
+    top: 56.5vh;
+    left: 7.4vw;
+    width: 3rem;
+    height: 3rem;
   }
 `;
 

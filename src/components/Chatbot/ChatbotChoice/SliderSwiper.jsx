@@ -48,7 +48,7 @@ const StyledSwiper = styled(Swiper)`
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.9s ease;
         filter: grayscale(100%);
         transform: scale(0.75);
     }
@@ -88,6 +88,7 @@ export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
             onSlideChange={handleSlideChange}
             slideToClickedSlide={true}
             initialSlide={0}
+            speed={900}
         >
         {images.map((image, index) => (
             <SwiperSlide key={index}>

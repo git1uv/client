@@ -69,9 +69,12 @@ export default function TestContent() {
     <div>
       <T.App isTestStart={isTestStart}>
         <T.Container isTestStart={isTestStart}>
-          <S.ProgressBarContainer progress={progress}>
-            <S.CustomProgressBar now={progress} max={90}/>
-          </S.ProgressBarContainer>
+          <S.ProgressWrapper>
+            <S.ProgressBarContainer progress={progress} >
+              <S.CustomProgressBar now={progress} max={100}/>
+            </S.ProgressBarContainer>
+            <p>{progress}%</p>
+          </S.ProgressWrapper>
         <S.Container>
           <S.Question>
             <h1>{titles[number]}</h1>

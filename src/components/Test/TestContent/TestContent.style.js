@@ -4,6 +4,20 @@ import theme from '../../../constants/theme'; // theme 파일의 경로
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 
+export const ProgressWrapper = styled.div`
+    ${ALIGN.ROW_CENTER};
+    width: 100%;
+    p {
+        vertical-align: center;
+        margin: 0 0 0 0.5rem;
+        color: #52525B;
+        font-family: Pretendard;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 2.125rem
+        letter-spacing: -0.03125rem;
+    }
+`;
 export const ProgressBarContainer = styled.div`
     border-radius: 5px;
     width: 40%;
@@ -12,18 +26,19 @@ export const ProgressBarContainer = styled.div`
         margin-top: 1rem;
     }
     padding: 5px;
+
     .progress {
         background: #D9D9D9;
-        height: 0.5rem;
-        @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-            height: 0.75rem; 
-        }
+        height: 0.75rem; 
     }
 `;
 
 export const CustomProgressBar = styled(ProgressBar)`
     .progress-bar {
         background: #ED6243;
+        position: relative; /* 라벨의 위치를 조정할 수 있도록 설정 */
+        font-weight: bold;
+        font-size: 0.75rem; /* 라벨의 글씨 크기 조정 */
     }
 `;
 

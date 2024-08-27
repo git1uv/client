@@ -44,7 +44,7 @@ export const Container = styled.div`
     border-radius: 2.5rem;
 
     h1 {
-        margin: 0.5rem 0 0 0;
+        margin: 0.5rem 0 1rem 0;
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
             margin: 1rem 0;
         }
@@ -64,7 +64,6 @@ export const Container = styled.div`
         width: 16.875rem;
         @media (max-width: 1440px) {
             width: 10rem;
-            margin: 2rem 0 1rem;
         }
         object-fit: cover;
     }
@@ -89,7 +88,7 @@ export const ResultBox = styled.div`
     letter-spacing: -0.0625rem;
 `
 
-export const speechBubble = styled.div`
+export const SpeechBubble = styled.div`
     ${ALIGN.COLUMN_CENTER};
 
     position: relative;

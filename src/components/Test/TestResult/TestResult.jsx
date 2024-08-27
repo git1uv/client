@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom'
 
 export default function TestResult() {
   const result = localStorage.getItem('result');
+  const score = localStorage.getItem('score');
   const isTestStart = true;
 
   const navigate = useNavigate();
@@ -18,14 +19,14 @@ export default function TestResult() {
     <S.App isTestStart={isTestStart}>
       <S.Container>
         <S.ResultBox>
-          T/F의 성향이 {result}% {100-result}%인
+          T/F의 성향이 {score}% {100-score}%인
         </S.ResultBox>
         <h1>나에게 맞는 심터 캐릭터는</h1>
-        {result >= 70 
+        {result === 'Neuranee'
         ? <img src={Neuranee} alt='chatbot' />
-        : result >= 40 ? <img src={Banbani} alt='chatbot' /> 
+        : result === 'Banbani' ? <img src={Banbani} alt='chatbot' /> 
         : <img src={Simmaeum} alt='chatbot' />  }
-        <S.speechBubble>
+        <S.SpeechBubble>
         {result >= 70 
         ? (
           <>
@@ -43,7 +44,7 @@ export default function TestResult() {
             <p>{window.innerWidth >= 430 ? chatbotInfo[0].info : chatbotInfo[0].mobile} </p>
           </>
         )}
-        </S.speechBubble>
+        </S.SpeechBubble>
         <S.BtnBox>
           <button onClick={() => navigate('/chatbot/choice')}>다른 캐릭터 보러가기</button>
           <button onClick={() => navigate('/chatbot')}>대화를 시작할까?</button>

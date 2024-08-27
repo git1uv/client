@@ -22,8 +22,12 @@ export default function TestContent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function saveLocalStorage(token) {
-    localStorage.setItem('result', test.score);
+  const saveLocalStorage = () => {
+    test.score >= 70 
+      ? localStorage.setItem('result', 'Neuranee')
+      : test.score >= 40 ? localStorage.setItem('result', 'Banbani')
+      : localStorage.setItem('result', 'simmaeum');
+    localStorage.setItem('score', test.score);
   }
 
   useEffect(() => {
@@ -55,7 +59,7 @@ export default function TestContent() {
   useEffect(() => {
     if (progress === 100) {
       console.log(test.score);
-      saveLocalStorage(test.score)
+      saveLocalStorage()
       const timer = setTimeout(() => {
         navigate('/test/result');
       }, 3000)

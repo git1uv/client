@@ -27,13 +27,13 @@ export default function TestResult() {
         : result === 'Banbani' ? <img src={Banbani} alt='chatbot' /> 
         : <img src={Simmaeum} alt='chatbot' />  }
         <S.SpeechBubble>
-        {result >= 70 
+        {result === 'Neuranee'
         ? (
           <>
             <h2>{chatbotInfo[2].title}</h2>
             <p>{window.innerWidth >= 430 ? chatbotInfo[2].info : chatbotInfo[2].mobile} </p>
           </>
-        ) : result >= 40 ? (
+        ) : result === 'Banbani' ? (
           <>
             <h2>{chatbotInfo[1].title}</h2>
             <p>{window.innerWidth >= 430 ? chatbotInfo[1].info : chatbotInfo[1].mobile} </p>

@@ -96,9 +96,6 @@ export const CancelButton = styled.button`
     border-radius: 18px;
     letter-spacing: -0.54px;
   }
-  .ok{
-  width: 90%;
-  }
   @media (max-width: 430px) {
     border-radius: 15px;
     height: 5.5vh;
@@ -160,3 +157,26 @@ export const DeleteGif = styled.img`
   padding: 0 0 0 18%;
 `;
 
+export const OKButton = styled.button`
+  width: 100%;
+  margin: 15px 5px 10px 10px;
+  font-size: 1.125rem;
+  border: none;
+  background-color: #E8E9EB;
+  color: #52525B;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  @media (min-width: 431px) {
+    height: 5vh;
+    border-radius: 18px;
+    letter-spacing: -0.54px;
+  }
+  @media (max-width: 430px) {
+    border-radius: 15px;
+    height: 5.5vh;
+    letter-spacing: -0.45px;
+  }
+
+`;

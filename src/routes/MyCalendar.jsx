@@ -21,14 +21,19 @@ function MyCalendar() {
   const [emotionData, setEmotionData] = useState([]);
   const navigate = useNavigate();
   const today = new Date();
-  const emotion_day = [
-    '2024-08-20',
-    '2024-08-21',
-    // 여기에 추가
-  ];
+  const isMobile = window.innerWidth <= 430; 
+
+  useEffect(() => {
+    const exampleData = [
+      { calendarId: 1, date: '2024-08-10', emotion: 'happy', hasCounseling: true },
+      { calendarId: 3, date: '2024-08-20', emotion: 'none', hasCounseling: true },
+      { calendarId: 3, date: '2024-08-21', emotion: 'none', hasCounseling: false },
+    ];
+    setEmotionData(exampleData);
+  }, []);
 
   /**useEffect(() => {
-    fetch('/api/v1/calendar/:month/home')
+    fetch('/api/v1/calendar/${moment(value).format('YYYY-MM')}/home')
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 200) {
@@ -38,34 +43,53 @@ function MyCalendar() {
       .catch((error) => {
         console.error('Error fetching calendar data:', error);
       });
-  }, []);
-
-  const renderEmotionIcon = (date) => {
-    const formattedDate = moment(date).format('YYYY-MM-DD');
-    const emotionEntry = emotionData.find(entry => entry.date === formattedDate);
-    
-    if (emotionEntry) {
-      switch (emotionEntry.emotion) {
-        case 'happy':
-          return <C.StyledEmotion imageUrl={happyIcon} />;
-        case 'sad':
-          return <C.StyledEmotion imageUrl={sadIcon} />;
-        // 감정 케이스를 추가
-        default:
-          return <C.StyledEmotion />;
-      }
-    } else {
-      return <C.StyledEmotion />;
-    }
-  };
+  }, [value]);
   */
 
+  const renderEmotionIcon = (emotion) => {
+    switch (emotion) {
+      case 'happy':
+        return <C.StyledEmotion imageUrl={'../assets/smile.png'} />;
+      // 다른 감정 아이콘 추가
+      default:
+        return null;
+    }
+  };
 
   const handleDateClick = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');
     navigate(`/date/${formattedDate}`);
+  };
+
+  const getPrevMonthLabel = (date) => {
+    const prevMonth = moment(date).subtract(1, 'month').format('M');
+    return isMobile ? <C.MonthLabel>{`${prevMonth}월`}</C.MonthLabel> : null;
 
   };
+
+  const getNextMonthLabel = (date) => {
+    const nextMonth = moment(date).add(1, 'month').format('M');
+    return isMobile ? <C.MonthLabel>{`${nextMonth}월`}</C.MonthLabel> : null;
+
+  };
+
+  const tileContent = ({ date, view }) => {
+    if (view !== 'month') return null;
+
+    const formattedDate = moment(date).format('YYYY-MM-DD');
+    const entry = emotionData.find(item => item.date === formattedDate);
+
+    if (!entry) return null;
+
+    return (
+      <>
+        <C.Circle hasCounseling={entry.hasCounseling}>
+          {entry.emotion !== 'none' && renderEmotionIcon(entry.emotion)}
+        </C.Circle>
+      </>
+    );
+  };
+
 
   return (
     <CalendarWrapper>
@@ -75,33 +99,26 @@ function MyCalendar() {
         value={value}
         minDetail="year"
         maxDetail="month"
-        prevLabel={<img src={leftArrow} alt="Previous" />}
-        nextLabel={<img src={rightArrow} alt="Next" />}
+        prevLabel={
+          <>
+            <img src={leftArrow} alt="Previous" />
+            {isMobile ? getPrevMonthLabel(value) : null}
+          </>
+        }
+        nextLabel={
+          <>
+            {isMobile ? getNextMonthLabel(value) : null}
+            <img src={rightArrow} alt="Next" />
+          </>
+        }
         next2Label={null}
         prev2Label={null}
         formatDay={(locale, date) => moment(date).format('D')}
         showNeighboringMonth={false}
         calendarType="gregory"
         onClickDay={handleDateClick}
+        tileContent={tileContent}
 
-        tileContent={({ date, view }) => {
-          let html = [];
-          if (
-            view === "month" &&
-            date.getMonth() === today.getMonth() &&
-            date.getDate() === today.getDate()
-          ) {
-            html.push(<C.StyledToday key={"today"}>today</C.StyledToday>);
-          }
-          if (emotion_day.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-            html.push(<C.StyledEmotion key={moment(date).format("YYYY-MM-DD")} />);
-          }
-          //if (view === 'month') {
-          //  return renderEmotionIcon(date);}
-          //return null;}}
-
-          return <>{html}</>;
-        }}
       />
 
     </C.StyledCalendarWrapper>

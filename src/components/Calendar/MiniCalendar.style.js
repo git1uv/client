@@ -1,19 +1,66 @@
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import "../../../node_modules/react-calendar/dist/Calendar.css"; 
+import {bigTape} from '../../assets/CalendarImg/icons';
 
 export const MiniCalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 26vw;
-  margin: 0; 
   background-color: white; 
-  height: 45vh;
-  margin-top: 5.3vh;
+  z-index: 3;
+  position: relative; 
 
-  @media screen and (max-width: 430px) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: -5%; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url(${bigTape});
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 6;
+    @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 127px;
+    height: 40px;
+    }
+    @media (min-width: 1201px) and (max-width: 1440px) {
+      width: 150px;
+      height: 50px;
+    }
+    @media (min-width: 1441px) and (max-width: 1600px) {
+      width: 150px;
+      height: 50px;
+    }
+    @media (min-width: 1601px) {
+      width: 179px;
+      height: 56px;
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
     display: none;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 240px;
+    height: 300px;
+    margin: 30px 0 0 90px;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 270px;
+    height: 340px;
+    margin: 30px 0 0 90px;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 270px;
+    height: 340px;
+    margin: 30px 0 0 90px;
+  }
+  @media (min-width: 1601px) {
+    width: 380px;
+    height: 448px;
+    margin: 66px 0 0 152px;
   }
   .react-calendar {
     width: 100%;
@@ -23,21 +70,28 @@ export const MiniCalendarWrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: relative; 
-    padding: 5%;
+    padding: 11% 5% 5%;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     z-index: 5; 
   }
   .react-calendar__navigation {
     justify-content: center;
-    margin-bottom: 5%; 
+    margin-bottom: 2%; 
+    @media (min-width: 1601px){
+      margin-bottom: 5%; 
+    }
   }
   .react-calendar__navigation button {
     font-weight: bold;
-    font-size: 2rem;
     font-family: SeoulHangang;
     line-height: 22px; 
+    font-size: 1.5rem;
+    margin: 0 0.3vw !important;
     color: #4C434E;
-    margin: 0 0.5vw;
+    @media (min-width: 1601px){
+      font-size: 2rem;
+      margin: 0 0.5vw !important;
+    }
   }
   .react-calendar__navigation button:focus {
     background-color: white;
@@ -48,10 +102,11 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__month-view__weekdays abbr {
     text-decoration: none;
     font-weight: 400;
-    font-size: 1.125rem;
+    font-size: 0.94rem;
     line-height: 22px; 
-    color: #4C434E;
-    font-family: Pretendard;
+    color: #000;
+    font-family: SeoulHangang;
+
   }
   .react-calendar__month-view__weekdays{
     margin-bottom: 1vh;
@@ -65,16 +120,16 @@ export const MiniCalendarWrapper = styled.div`
     padding: 1%;
   }
   .react-calendar__month-view__days__day abbr { 
-    color: #78716C;
+    color: #000;
     text-align: center;
-    font-family: Pretendard;
-    font-size: 1.25rem;
+    font-family: SeoulHangang;
+    font-size: 0.94rem;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; 
   }
   .react-calendar__tile--now {
-    background-color: white !important;
+    background-color: white;
   }
   .react-calendar__tile--now abbr {
     color: orange;
@@ -88,9 +143,19 @@ export const MiniCalendarWrapper = styled.div`
     color: white;
   }
   .react-calendar__tile {
-    padding: 2vh 0 !important;
     position: relative;
     font-size: 1.25rem;
+    z-index: 5;
+    @media (min-width: 1601px){
+      padding: 4.7% 0 !important;
+    }
+    @media (min-width: 1201px) and (max-width: 1600px) {
+      padding: 4% 0 !important;
+    }
+    @media (min-width: 1024px) and (max-width: 1200px) {
+      padding: 3.3% 0 !important;
+    }
+
   }
   
   /* 네비게이션 월 스타일 적용 */
@@ -98,10 +163,22 @@ export const MiniCalendarWrapper = styled.div`
   
   }
   .react-calendar__tile.highlight {
-    background-color: #FFCB3A;
+    background-color: #FFCB3A !important;
     border-radius: 15px;
   }
 
+`;
+
+export const MiniDot = styled.div`
+  border-radius: 50%;
+  width: 0.56rem;
+  height: 0.56rem;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  background-color: #FFCB3A;
+  transform: translateX(-50%);
+  z-index: 10; 
 `;
 
 

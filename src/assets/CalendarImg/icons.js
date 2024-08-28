@@ -1,0 +1,10 @@
+import Firework from './firework.gif';
+import buttonBack from './button_back.png';
+import film from './image_film.png';
+import note from './image_note.png';
+import stickerDown from './image_sticker_down_mobile.png';
+import miniTape from './image_sticker_onlytape.png';
+import stickerUp from './image_sticker_up.png';
+import bigTape from './image_yellowtape.png';
+import check from './check.png';
+export {Firework, buttonBack, film, note, stickerDown, stickerUp, miniTape, bigTape, check};

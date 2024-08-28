@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as M from './LogoutModal.style';
 import x from '../../assets/x.png';
 
-const LogoutModal = ({ isVisible, onClose}) => {
+const PwChangeModal = ({ isVisible, onClose}) => {
   const outside = useRef();
 
   if (!isVisible) return null;
@@ -14,11 +14,11 @@ const LogoutModal = ({ isVisible, onClose}) => {
         <M.LogoutModalTitle>비밀번호 변경</M.LogoutModalTitle>
         <p className='sub'>비밀번호가 변경되었습니다</p>
         <M.ModalActions>
-          <M.CancelButton className='ok' onClick={onClose} >확인</M.CancelButton>
+          <M.OKButton onClick={onClose} >확인</M.OKButton>
         </M.ModalActions>
       </M.LogoutModal>
     </M.LogoutModalBg>
   );
 };
 
-export default LogoutModal;
+export default PwChangeModal;

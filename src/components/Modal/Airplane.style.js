@@ -35,7 +35,6 @@ export const ModalContainer = styled.div`
 `;
 
 export const Modal = styled.div`
-
   z-index: 62;
   position: relative;
   display: flex;
@@ -53,13 +52,13 @@ export const Modal = styled.div`
     background-image: url(${webLetter});
     width: 200px;
     height: 262.8px;
-    padding: 40px;
+    padding: 30px;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
     background-image: url(${webLetter});
     width: 250px;
     height: 328.5px;
-    padding: 40px;
+    padding: 30px;
   }
   @media (min-width: 1441px) {
     background-image: url(${webLetter});
@@ -80,10 +79,10 @@ export const ButtonContainer = styled.div`
     width: 25.5vw;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
-    width: 330px;
+    width: 310px;
   }
   @media (min-width: 431px) and (max-width: 1023px) {
-    width: 280px;
+    width: 260px;
   }
   @media (max-width: 430px) {
     width: calc(80% + 40px);
@@ -99,19 +98,25 @@ export const GoToLetterButton = styled.button`
   color: white;
   border: none;
   border-radius: 15px;
-  font-size: 1.125rem;
+  font-size: 1rem;
   cursor: pointer;
-  height: 3.75rem;
   @media (max-width: 430px) {
     top: 66vh;
     width: 73.5vw;
     right: 5%;
 
   }
-  @media (min-width: 431px) {
+  @media (min-width: 1441px) {
     top: 56.5vh;
-    width: 20.5vw;
+    width: 85%;
     right: 7.4vw;
+    height: 3.5rem;
+  }
+  @media (min-width: 431px) and (max-width: 1440px) {
+    top: 56.5vh;
+    width: 80%;
+    right: 7.4vw;
+    height: 3rem;
   }
 
 `;
@@ -130,8 +135,6 @@ export const DownloadButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.75rem;
-  height: 3.75rem;
   border: none;
   border-radius: 50%;
   background-color: white;
@@ -145,10 +148,22 @@ export const DownloadButton = styled.button`
     top: 56.5vh;
     left: 7.4vw;
   }
+  @media (min-width: 1441px) {
+    top: 56.5vh;
+    left: 7.4vw;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  @media (min-width: 431px) and (max-width: 1440px) {
+    top: 56.5vh;
+    left: 7.4vw;
+    width: 3rem;
+    height: 3rem;
+  }
 `;
 
 export const From = styled.div`
-  font-size: 1.375rem;
+  font-size: 1rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -164,9 +179,9 @@ export const From = styled.div`
 
 
 export const Text = styled.div`
-  font-size: 1.375rem;
+  font-size: 1rem;
   width: 100%;
-  height: 50%;
+  height: 75%;
   color: #404040;
   font-family: SeoulHangang;
   font-style: normal;
@@ -176,7 +191,7 @@ export const Text = styled.div`
 
 
 export const Date = styled.div`
-  font-size: 1.125rem;
+  font-size: 0.875rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -188,13 +203,15 @@ export const Date = styled.div`
   font-weight: 400;
   line-height: 22px; 
   letter-spacing: -0.408px;
+  width: 100%;
 
 `;
 
 export const WarningMessage = styled.div`
-  font-size: 1rem;
+  font-size: 0.75rem;
   color: #A8A29E;
   display: flex;
+  width: 100%;
   justify-content: flex-start;
   align-items: center;
   font-family: Pretendard;

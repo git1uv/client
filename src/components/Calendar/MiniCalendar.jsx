@@ -8,23 +8,13 @@ import Calendar from 'react-calendar';
 import * as M from './MiniCalendar.style';
 import styled from 'styled-components';
 
-const MiniDot = styled.div`
-  border-radius: 50%;
-  width: 0.56rem;
-  height: 0.56rem;
-  position: absolute;
-  top: 65%;
-  left: 50%;
-  color: #FFCB3A;
-  transform: translateX(-50%);
-  z-index: 10; 
-`;
 
 function MiniCalendar() {
   const [value, onChange] = useState(new Date());
   const [emotionDays, setEmotionDays] = useState([]);
   const navigate = useNavigate();
   const emotion_day = [
+    '2024-08-01',
     '2024-08-20',
     '2024-08-21',
     // 여기에 추가
@@ -95,7 +85,7 @@ function MiniCalendar() {
         tileContent={({ date, view }) => {
           let html = [];
           if (emotion_day.find((x) => x === moment(date).format("YYYY-MM-DD"))) {
-            html.push(<MiniDot key={moment(date).format("YYYY-MM-DD")} />);
+            html.push(<M.MiniDot key={moment(date).format("YYYY-MM-DD")} />);
           }
           return <>{html}</>;
         }}

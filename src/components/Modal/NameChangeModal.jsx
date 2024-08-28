@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as M from './LogoutModal.style';
 import x from '../../assets/x.png';
 
-const LogoutModal = ({ isVisible, onClose}) => {
+const NameChangeModal = ({ isVisible, onClose}) => {
   const outside = useRef();
 
   if (!isVisible) return null;
@@ -21,4 +21,4 @@ const LogoutModal = ({ isVisible, onClose}) => {
   );
 };
 
-export default LogoutModal;
+export default NameChangeModal;

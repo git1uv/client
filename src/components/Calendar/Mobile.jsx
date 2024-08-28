@@ -57,7 +57,7 @@ function Mobile() {
   };
   /**const handleDelete = async (solutionId) => {
     try {
-      const response = await axios.delete(`/api/v1/calendar/today/solution/:solutionID/delete`);
+      const response = await axios.delete(`/api/v1/calendar/today/solution/${solutionId}/delete`);
       if (response.status === 200) {
         setSolutions(solutions.filter(solution => solution.id !== solutionId));
         setMessage('해결책이 삭제되었습니다.');
@@ -73,12 +73,16 @@ function Mobile() {
   useEffect(() => {
     const fetchDiaryData = async () => {
       /**try {
-        const response = await axios.get(`/calendar/today`);
+        const year = moment(date).format('YYYY');
+        const month = moment(date).format('MM');
+        const day = moment(date).format('DD');
+
+        const response = await axios.get(`/api/v1/calendar/today/${year}/${month}/${day}`);
         if (response.status === 200) {
           const data = response.data.data;
           setContent(data.diary);
           setSolutions(data.solution);
-          setCounselingLogs(data.counseling_log);
+          setCounselingLogs(data.counselinglog);
         }
       } catch (error) {
         setMessage(`데이터 불러오기 중 오류 발생: ${error.message}`);
@@ -92,7 +96,7 @@ function Mobile() {
     setShowModal(true);
   /**
     try {
-      const response = await axios.patch(`/calendar/today/:calendarID/diary`, {
+      const response = await axios.patch(`/calendar/today/${calendarID}/diary`, {
         content: content,
       });
 
@@ -109,31 +113,30 @@ function Mobile() {
 
 
     /**
-    const handleCheck = async (solutionID) => {
+    const handleCheck = async (solutionId) => {
       const updatedSolutions = solutions.map(solution => {
       if (solution.id === solutionId) {
-        const newCompletedState = !solution.is_completed;
-        
-        try {
-          const response = axios.patch(`/calendar/today/solution/:solutionID/done`, {
-            is_completed: newCompletedState,
-          });
-
-          if (response.status !== 200) {
-            setMessage(`저장 실패: ${response.data.message}`);
-            return solution; // 상태가 변경되지 않도록 유지
-          }
-        } catch (error) {
-          setMessage(`저장 중 오류 발생: ${error.message}`);
-          return solution; // 상태가 변경되지 않도록 유지
-        }
-
-        return { ...solution, is_completed: newCompletedState };
+        return { ...solution, is_completed: !solution.is_completed };
       }
       return solution;
     });
     setSolutions(updatedSolutions);
-  };
+        
+        try {
+          const solution = updatedSolutions.find(solution => solution.id === solutionId);
+          const response = await axios.patch(`/api/v1/calendar/today/solution/${solutionId}/done`, {
+           is_completed: solution.is_completed,
+        });
+          if (response.status !== 200) {
+            setMessage(`저장 실패: ${response.data.message}`);
+            setSolutions(solutions);
+          } else if (updatedSolutions.every((solution) => solution.is_completed)) {
+            setShowGif(true);
+          }
+        } catch (error) {
+          setMessage(`저장 중 오류 발생: ${error.message}`);
+          setSolutions(solutions);
+        }
 };
     }*/
 

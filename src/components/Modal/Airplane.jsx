@@ -7,7 +7,7 @@ import * as A from './Airplane.style';
 import x from '../../assets/x.png';
 import download from '../../assets/letterImg/download.png';
 
-function Airplane({setAirplaneModal}) {
+function Airplane({setAirplaneModal, receiverId }) {
     const navigate = useNavigate();
     const location = useLocation(); 
     const [sender, setSender] = useState('');
@@ -44,7 +44,7 @@ function Airplane({setAirplaneModal}) {
     useEffect(() => {
          const fetchLetterData = async () => {
             try {
-                const response = await axios.get('/api/v1/airplane/{receiverId}');
+                const response = await axios.get('/api/v1/airplane/${receiverId}');
                 if (response.status === 200) {
                     const { writerName, content, createdAt } = response.data.data;
                     setSender(writerName);

@@ -43,7 +43,7 @@ function Browser() {
     { id: 6, content: '하루 운동하기', is_completed: true },
     { id: 7, content: '하루 운동하기', is_completed: true },
   ]);
-  const handleCheck = (solutionId) => {
+  const handleCheck = async (solutionId) => {
     const updatedSolutions = solutions.map(solution => {
       if (solution.id === solutionId) {
         return { ...solution, is_completed: !solution.is_completed };
@@ -57,6 +57,7 @@ function Browser() {
       setTimeout(() => setShowConfetti(false), 3000); 
     }
   };
+
   const todoListRef = useRef(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
@@ -66,7 +67,7 @@ function Browser() {
   };
   /**const handleDelete = async (solutionId) => {
     try {
-      const response = await axios.delete(`/api/v1/calendar/today/solution/:solutionID/delete`);
+      const response = await axios.delete(`/api/v1/calendar/today/solution/${solutionId}/delete`);
       if (response.status === 200) {
         setSolutions(solutions.filter(solution => solution.id !== solutionId));
         setMessage('해결책이 삭제되었습니다.');
@@ -89,7 +90,11 @@ function Browser() {
   }, [todoListRef.current]);
     /**const fetchDiaryData = async () => {
       try {
-        const response = await axios.get(`/api/v1/calendar/today/:year/:month/:day`);
+        const year = moment(date).format('YYYY');
+        const month = moment(date).format('MM');
+        const day = moment(date).format('DD');
+
+        const response = await axios.get(`/api/v1/calendar/today/${year}/${month}/${day}`);
         if (response.status === 200) {
           const data = response.data.data;
           setContent(data.diary);
@@ -108,7 +113,7 @@ function Browser() {
     setShowModal(true);
   /**
     try {
-      const response = await axios.patch(`/calendar/today/:calendarID/diary`, {
+      const response = await axios.patch(`/calendar/today/${calendarID}/diary`, {
         content: content,
       });
 
@@ -125,31 +130,31 @@ function Browser() {
 
 
     /**
-    const handleCheck = async (solutionID) => {
+    const handleCheck = async (solutionId) => {
       const updatedSolutions = solutions.map(solution => {
       if (solution.id === solutionId) {
-        const newCompletedState = !solution.is_completed;
-        
-        try {
-          const response = axios.patch(`/calendar/today/solution/:solutionID/done`, {
-            is_completed: newCompletedState,
-          });
-
-          if (response.status !== 200) {
-            setMessage(`저장 실패: ${response.data.message}`);
-            return solution; // 상태가 변경되지 않도록 유지
-          }
-        } catch (error) {
-          setMessage(`저장 중 오류 발생: ${error.message}`);
-          return solution; // 상태가 변경되지 않도록 유지
-        }
-
-        return { ...solution, is_completed: newCompletedState };
+        return { ...solution, is_completed: !solution.is_completed };
       }
       return solution;
     });
     setSolutions(updatedSolutions);
-  };
+        
+        try {
+          const solution = updatedSolutions.find(solution => solution.id === solutionId);
+          const response = await axios.patch(`/api/v1/calendar/today/solution/${solutionId}/done`, {
+           is_completed: solution.is_completed,
+        });
+          if (response.status !== 200) {
+            setMessage(`저장 실패: ${response.data.message}`);
+            setSolutions(solutions);
+          } else if (updatedSolutions.every((solution) => solution.is_completed)) {
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), 3000);
+          }
+        } catch (error) {
+          setMessage(`저장 중 오류 발생: ${error.message}`);
+          setSolutions(solutions);
+        }
 };
     }*/
 

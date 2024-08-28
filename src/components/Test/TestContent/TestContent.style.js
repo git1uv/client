@@ -8,7 +8,7 @@ export const ProgressWrapper = styled.div`
     ${ALIGN.ROW_CENTER};
     width: 100%;
     p {
-        vertical-align: center;
+        // vertical-align: center;
         margin: 0 0 0 0.5rem;
         color: #52525B;
         font-family: Pretendard;
@@ -23,9 +23,8 @@ export const ProgressBarContainer = styled.div`
     width: 40%;
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         width: 90%;    
-        margin-top: 1rem;
     }
-    padding: 5px;
+    padding: 0.5rem;
 
     .progress {
         background: #D9D9D9;

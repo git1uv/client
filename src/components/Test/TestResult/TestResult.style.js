@@ -93,10 +93,13 @@ export const SpeechBubble = styled.div`
 
     position: relative;
     width: 60%;
-    height: 8rem;
+    height: 10rem;
+    @media (max-width: 1440px) {
+        height: 8rem;
+    }  
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-        width: 90%;
-        height: 10rem;
+        width: 85%;
+        height: 8rem;
         border-radius: 1.25rem;
     }   
     
@@ -155,7 +158,7 @@ export const BtnBox = styled.div`
     button { 
         ${ALIGN.ROW_CENTER};
         width: 80%;
-        height: 3.3rem;
+        height: 3.75rem;
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
             height: 4.16rem;
         }

@@ -9,11 +9,13 @@ export const App = styled.div`
     width: 100%;
     height: 90vh;
     margin-top: 10vh;
+
     background-color: #F4F2EB;
     background-image: url(${backgroundImg});
     background-size: cover;
     background-color: #F4F2EB;
     background-position: center;
+    
     position: relative;
     overflow: hidden;
 
@@ -41,9 +43,15 @@ export const Container = styled.div`
     border-radius: 2.5rem;
 `
 
-export const SliderWrapper = styled.h1`
-    width: 100%;
+export const SliderWrapper = styled.div`
+    width: 80%;
     margin: 0;
+    @media (max-width: 1440px) {
+        width: 90%;
+    }
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        width: 150%;
+    }
 `
 
 export const Section = styled.div`
@@ -87,7 +95,9 @@ export const ChatbotInfo = styled.div`
         height: 3.3rem;
         margin-top: 1.5rem; 
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+            width: 85%;
             height: 4.16rem;
+            margin-top: 5rem;
         }
         border: none;
         border-radius: 0.9375rem;

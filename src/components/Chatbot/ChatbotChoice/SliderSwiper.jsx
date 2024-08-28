@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,7 +7,9 @@ import Banbani from '../../../assets/chatbot/test/Banbani.png';
 import Neuranee from '../../../assets/chatbot/test/Neuranee.png';
 import { Navigation } from 'swiper/modules';
 import styled from 'styled-components';
+import theme from '../../../constants/theme';
 
+const RESPONSE_SIZE = theme;
 const images = [
   { src: Simmaeum, alt: 'Simmaeum', index: 0 },
   { src: Banbani, alt: 'Banbani', index: 1 },
@@ -18,68 +20,121 @@ const StyledSwiperContainer = styled.div`
     position: relative;
     width: 100%;
     margin: 0 auto;
-    padding: 0 8rem; /* 양쪽에 50px의 패딩을 추가하여 화살표와 슬라이드가 겹치지 않도록 합니다. */
+    padding: 0 8rem;
 
   .swiper-button-prev,
   .swiper-button-next {
     position: absolute;
-    top: calc(100% + 120px);
-    transform: translateY(-50%);
-    width: 44px; 
-    height: 44px; 
+    top: 133%;
+    @media (max-width: 1440px) {
+      top: 150%;
+    }
     color: grey;
     border-radius: 50%;
     z-index: 10;
+    --swiper-navigation-size: 2rem; // navigation size 조절
+    
+    @media (max-width: 430px) {
+      --swiper-navigation-size: 1.6rem;
+    }
   }
 
   .swiper-button-prev {
     left: 0.75rem; 
+    @media (max-width: 430px) {
+      left: 8rem;
+    }
   }
 
   .swiper-button-next {
     right: 0.75rem; 
+    @media (max-width: 430px) {
+      right: 8rem;
+    }
   }
 `;
 
 const StyledSwiper = styled(Swiper)`
-    height: 100%; 
-    .swiper-slide {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.9s ease;
-        filter: grayscale(100%);
-        transform: scale(0.75);
-    }
+ height: 100%; 
+  .swiper-slide {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.9s ease;
+  }
+
+  .swiper-slide img {
+    filter: grayscale(100%);
+    transform: scale(0.5);
+    transition: all 0.9s ease;
+  }
 
   .swiper-slide-active {
+    z-index: 3;
+  }
+
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    z-index: 2;
+  }
+  .swiper-slide-active img {
     filter: grayscale(0%);
     transform: scale(1);
-    z-index: 10;
+  }
+
+  .swiper-slide-prev img,
+  .swiper-slide-next img {
+    transform: scale(0.75);
   }
 `;
 
 const SlideImage = styled.img`
     width: 16.875rem;
     @media (max-width: 1440px) {
-        width: 10rem;
+      width: 10rem;
     }
     object-fit: cover;
 `;
 
 export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
+    // const handleSlideChange = (swiper) => {
+    // const centerIndex = swiper.realIndex;
+    // setChatbot(chatbotInfo[centerIndex]);
+    // setIndex(centerIndex);
+    // };
     const handleSlideChange = (swiper) => {
-    const centerIndex = swiper.realIndex;
-    setChatbot(chatbotInfo[centerIndex]);
-    setIndex(centerIndex);
+      const centerIndex = swiper.realIndex;
+      setChatbot(chatbotInfo[centerIndex]);
+      setIndex(centerIndex);
+  
+      swiper.slides.forEach((slide, index) => {
+        slide.style.zIndex = '1'; // 기본 z-index 설정
+
+        if (index === centerIndex) {
+          slide.style.zIndex = '3'; // Center slide with the highest z-index
+        } else if (
+          index === centerIndex - 1 ||
+          index === centerIndex + 1 ||
+          (centerIndex === 0 && index === images.length - 1) ||
+          (centerIndex === images.length - 1 && index === 0)
+        ) {
+          slide.style.zIndex = '2'; // Adjacent slides with a lower z-index
+        }
+      });
     };
+  
+    useEffect(() => {
+      const swiper = document.querySelector('.swiper').swiper;
+      handleSlideChange(swiper); // Apply initial z-index settings
+    }, []);
+
   return (
     <StyledSwiperContainer>
         <StyledSwiper
             slidesPerView={5}
             centeredSlides={true}
-            spaceBetween={20}
+            spaceBetween={10}
             navigation={{
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',

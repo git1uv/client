@@ -195,8 +195,13 @@ export const ButtonSection = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  width: 100%;
   height: 25%;
+  @media (max-width: 430px) {
+    width: 95vw;
+  }
+  @media (min-width: 431px) {
+    width: 57.8vw;
+  }
 `;
 
 export const Paper = styled.div`
@@ -216,28 +221,28 @@ export const Paper = styled.div`
     font-style: normal;
     font-weight: 400;
     @media (min-width: 431px){
-    font-size: 26px;
+    font-size: 1.625rem;
     line-height: 32px; 
     }
     @media (max-width: 430px){
-    font-size: 14px;
+    font-size: 1.16rem;
     line-height: 21px; 
     }
   }
   @media (max-width: 430px) {
     background-image: url(${paperImageMobile});
-    padding: 42px 26px;
-    width: 81.7vw;
-    height: 48.9vh;
+    padding: 3.5rem 2.16rem;
+    width: 95vw;
+    height: 60vh;
     margin-top: 15.3vh;
     background-size: cover;
 
     }
   @media (min-width: 431px) {
     background-image: url(${paperImageWeb});
-    width: 48.6vw;
-    height: 39.4vh;
-    padding: 80px;
+    width: 57.8vw;
+    height: 53.7vh;
+    padding: 5rem;
     background-size: cover;
     margin-top: 22.2vh;
     }
@@ -245,7 +250,7 @@ export const Paper = styled.div`
 
 export const ThrowOut = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   border: none;
   cursor: pointer;
@@ -263,21 +268,18 @@ export const ThrowOut = styled.button`
     background-image: url(${throwOutImageWeb});
     width: 184.5px;
     height: 45px;
-    margin-right: 17.5vw;
     margin-top: 12px;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
     background-image: url(${throwOutImageWeb});
     width: 184.5px;
     height: 45px;
-    margin-right: 19.5vw;
     margin-top: 12px;
   }
   @media (min-width: 1441px) {
     background-image: url(${throwOutImageWeb});
     width: 246px;
     height: 60px;
-    margin-right: 21vw;
     margin-top: 12px;
     }
 `;

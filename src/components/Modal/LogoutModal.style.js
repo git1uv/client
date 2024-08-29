@@ -45,7 +45,7 @@ export const LogoutModal = styled.div`
   @media (min-width: 431px) {
     width: 24%;
     .sub{
-      padding: 0 2vw;
+      padding: 0 1vw;
     }
   }
   @media (max-width: 430px) {
@@ -57,7 +57,7 @@ export const LogoutModal = styled.div`
 `;
 
 export const LogoutModalTitle = styled.h2`
-  margin-bottom: 1.4vh;
+  margin: 1.4vh 0;
   font-size: 1.35rem;
   color: #27272A;
   text-align: center;
@@ -92,7 +92,7 @@ export const CancelButton = styled.button`
   line-height: normal;
 
   @media (min-width: 431px) {
-    height: 6vh;
+    height: 5.5vh;
     border-radius: 18px;
     letter-spacing: -0.54px;
   }
@@ -117,7 +117,7 @@ export const LogoutClickButton = styled.button`
   line-height: normal;
 
   @media (min-width: 431px) {
-    height: 6vh;
+    height: 5.5vh;
     border-radius: 18px;
     letter-spacing: -0.54px;
   }

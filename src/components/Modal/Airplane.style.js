@@ -44,26 +44,26 @@ export const Modal = styled.div`
 
   @media (max-width: 430px) {
     background-image: url(${mobileLetter});
-    width: 313px;
-    height: 345px;
+    width: 90%;
+    height: 90%;
     padding: 30px 20px;
   }
   @media (min-width: 431px) and (max-width: 1023px) {
     background-image: url(${webLetter});
-    width: 200px;
-    height: 262.8px;
+    width: 400px;
+    height: 502px;
     padding: 30px;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
     background-image: url(${webLetter});
-    width: 250px;
-    height: 328.5px;
+    width: 320px;
+    height: 402px;
     padding: 30px;
   }
   @media (min-width: 1441px) {
     background-image: url(${webLetter});
-    width: 360px;
-    height: 473px;
+    width: 440px;
+    height: 553px;
     padding: 40px;
   }
 
@@ -76,16 +76,16 @@ export const ButtonContainer = styled.div`
   align-items: center;
   margin-top: 15px;
   @media (min-width: 1441px) {
-    width: 25.5vw;
+    width: 440px;
   }
   @media (min-width: 1024px) and (max-width: 1440px) {
     width: 310px;
   }
   @media (min-width: 431px) and (max-width: 1023px) {
-    width: 260px;
+    width: 400px;
   }
   @media (max-width: 430px) {
-    width: calc(80% + 40px);
+    width: 85%;
   }
 `;
 
@@ -104,6 +104,7 @@ export const GoToLetterButton = styled.button`
     top: 66vh;
     width: 73.5vw;
     right: 5%;
+    height: 3.5rem;
 
   }
   @media (min-width: 1441px) {
@@ -123,7 +124,7 @@ export const GoToLetterButton = styled.button`
 
 export const ModalCloseButton = styled.button`
   position: absolute;
-  top: 3.5vh;
+  top: 3vh;
   right: 1.5vw;
   background: none;
   border: none;
@@ -142,11 +143,8 @@ export const DownloadButton = styled.button`
   @media (max-width: 430px) {
     top: 66vh;
     left: 5%;
-
-  }
-  @media (min-width: 431px) {
-    top: 56.5vh;
-    left: 7.4vw;
+    width: 3rem;
+    height: 3rem;
   }
   @media (min-width: 1441px) {
     top: 56.5vh;
@@ -179,7 +177,7 @@ export const From = styled.div`
 
 
 export const Text = styled.div`
-  font-size: 1rem;
+  font-size: 1.375rem;
   width: 100%;
   height: 75%;
   color: #404040;
@@ -187,6 +185,18 @@ export const Text = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  @media (max-width: 430px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 431px) and (max-width: 1023px) {
+    font-size: 1.75rem;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    font-size: 1.2rem;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    font-size: 1rem;
+  }
 `;
 
 

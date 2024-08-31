@@ -4,7 +4,7 @@ import x from '../../../assets/x.png';
 import d from '../../../assets/letterImg/delete.png';
 import * as C from './ChatLetter.style';
 
-function Letter({userId, setLetterModal}) {
+function Letter({userId, mailId, setLetterModal}) {
     const [content, setContent] = useState('');
     const [date, setDate] = useState('');
     const [chatbotType, setChatbotType] = useState('');
@@ -48,11 +48,28 @@ function Letter({userId, setLetterModal}) {
         fetchLetterData();
     }, [userId]); */
 
+    const handleDelete = async () => {
+        /**
+        try {
+          const response = await axios.post('/api/v1/mail', {
+            mailIds: [mailId],
+          });
+    
+          if (response.data.code === "MAIL2001") {
+            setLetterModal(false); 
+          } else {
+            console.error('Failed to delete letter:', response.data.message);
+          }
+        } catch (error) {
+          console.error('Error deleting letter:', error);
+        }*/
+      };
+
     return (
         <C.ModalBg>
             <C.ModalContainer>
                 <C.Modal chatbotType={chatbotType}>
-                    <C.DeleteButton><img src={d} alt='delete' /></C.DeleteButton>
+                    <C.DeleteButton onClick={handleDelete}><img src={d} alt='delete' /></C.DeleteButton>
                     <C.ModalCloseButton onClick={() => setLetterModal(false)}><img src={x} alt='x' /></C.ModalCloseButton>
                     <C.Text>{content}</C.Text>
                     <C.Date>{date}</C.Date>

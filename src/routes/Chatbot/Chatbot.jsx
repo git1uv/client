@@ -6,9 +6,11 @@ import Banbani from '../../assets/chatbot/chatStart/Banbani.png'
 import Neuranee from '../../assets/chatbot/chatStart/Neuranee.png'
 
 import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
+import axios from 'axios';
 
 export default function Chatbot() {
   const result = localStorage.getItem('result');
+  
   return (
     <S.App>
       <S.Top>

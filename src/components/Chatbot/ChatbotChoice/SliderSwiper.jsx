@@ -97,14 +97,15 @@ const SlideImage = styled.img`
     object-fit: cover;
 `;
 
-export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
-    // const handleSlideChange = (swiper) => {
-    // const centerIndex = swiper.realIndex;
-    // setChatbot(chatbotInfo[centerIndex]);
-    // setIndex(centerIndex);
-    // };
+export const SliderSwiper = ({chatbot, setChatbot, chatbotInfo, setIndex}) => {
     const handleSlideChange = (swiper) => {
-      const centerIndex = swiper.realIndex;
+      let centerIndex = swiper.realIndex;
+      if (chatbot === 'F') 
+        centerIndex = 0;
+      else if (chatbot === 'H') 
+        centerIndex = 1;
+      else
+        centerIndex = 2;
       setChatbot(chatbotInfo[centerIndex]);
       setIndex(centerIndex);
   

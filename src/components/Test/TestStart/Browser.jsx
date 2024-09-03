@@ -22,7 +22,6 @@ export default function Browser() {
           <S.BtnBox>
             <button onClick={() => navigate('/test/content')}>테스트 시작</button>
             <button onClick={() => navigate('/chatbot/choice')}>건너뛰기</button>
-             {/* 건너뛰기 라우팅 추후에 바꿔야 함 */}
           </S.BtnBox>
       </S.Container>
     </S.App>

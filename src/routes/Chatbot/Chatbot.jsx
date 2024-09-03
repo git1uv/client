@@ -13,21 +13,21 @@ export default function Chatbot() {
   
   return (
     <S.App>
-      <S.Top>
+      <S.Top> 
         <S.Chair src={Chair} alt="상담의자"/>
-        {result === 'Neuranee'
-          ? <S.Character src={Neuranee} alt='chatbot' />
-          : result === 'Banbani' ? <S.Character src={Banbani} alt='chatbot' /> 
-          : <S.Character src={Simmaeum} alt='chatbot' /> 
+        {result === 'F'
+          ? <S.Character src={Simmaeum} alt='chatbot' />
+          : result === 'H' ? <S.Character src={Banbani} alt='chatbot' /> 
+          : <S.Character src={Neuranee} alt='chatbot' /> 
         }
       </S.Top>
       <S.Bottom>
         <S.Header>
           <S.BackBtn/>
-          {result === 'Neuranee'
-            ? <h1>뉴러니</h1>
-            : result === 'Banbani' ? <h1>반바니</h1>
-            : <h1>심마음</h1> 
+          {result === 'F'
+            ? <h1>심마음</h1>
+            : result === 'H' ? <h1>반바니</h1>
+            : <h1>뉴러니</h1> 
           }
           <button>끝내기</button>
         </S.Header>

@@ -24,9 +24,9 @@ export default function TestContent() {
 
   const saveLocalStorage = () => {
     test.score >= 70 
-      ? localStorage.setItem('result', 'Neuranee')
-      : test.score >= 40 ? localStorage.setItem('result', 'Banbani')
-      : localStorage.setItem('result', 'simmaeum');
+      ? localStorage.setItem('result', 'T')
+      : test.score >= 40 ? localStorage.setItem('result', 'H')
+      : localStorage.setItem('result', 'H');
     localStorage.setItem('score', test.score);
   }
 

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import * as S from './TestContent.style'
-import * as T from './Test.style'
+import * as S from '../TestContent/TestContent.style'
+import * as T from '../TestStart/Test.style'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { titles, questions, answerF, answerT } from '../../datas/question';
+import { titles, questions, answerF, answerT } from '../../../datas/question';
 
-import profile from '../../assets/chatbot/test/profile.png'
-import loading from '../../assets/chatbot/test/loading.gif'
+import profile from '../../../assets/chatbot/test/profile.png'
+import loading from '../../../assets/chatbot/test/loading.gif'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearScore, setScore } from '../../redux/test';
+import { clearScore, setScore } from '../../../redux/test';
 
 export default function TestContent() {
   const isTestStart = true;
@@ -22,8 +22,12 @@ export default function TestContent() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  function saveLocalStorage(token) {
-    localStorage.setItem('result', test.score);
+  const saveLocalStorage = () => {
+    test.score >= 70 
+      ? localStorage.setItem('result', 'Neuranee')
+      : test.score >= 40 ? localStorage.setItem('result', 'Banbani')
+      : localStorage.setItem('result', 'simmaeum');
+    localStorage.setItem('score', test.score);
   }
 
   useEffect(() => {
@@ -55,7 +59,7 @@ export default function TestContent() {
   useEffect(() => {
     if (progress === 100) {
       console.log(test.score);
-      saveLocalStorage(test.score)
+      saveLocalStorage()
       const timer = setTimeout(() => {
         navigate('/test/result');
       }, 3000)
@@ -69,9 +73,12 @@ export default function TestContent() {
     <div>
       <T.App isTestStart={isTestStart}>
         <T.Container isTestStart={isTestStart}>
-        <S.ProgressBarContainer progress={progress}>
-          <S.CustomProgressBar now={progress} max={90}/>
-        </S.ProgressBarContainer>
+          <S.ProgressWrapper>
+            <S.ProgressBarContainer progress={progress} >
+              <S.CustomProgressBar now={progress} max={100}/>
+            </S.ProgressBarContainer>
+            <p>{progress}%</p>
+          </S.ProgressWrapper>
         <S.Container>
           <S.Question>
             <h1>{titles[number]}</h1>

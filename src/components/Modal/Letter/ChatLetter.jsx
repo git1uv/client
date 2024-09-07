@@ -3,11 +3,13 @@ import axios from 'axios';
 import x from '../../../assets/x.png';
 import d from '../../../assets/letterImg/delete.png';
 import * as C from './ChatLetter.style';
+import DeleteLetterModal from './DeleteLetter';
 
 function Letter({userId, mailId, setLetterModal}) {
     const [content, setContent] = useState('');
     const [date, setDate] = useState('');
     const [chatbotType, setChatbotType] = useState('');
+    const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);  
 
     useEffect(() => {
         // 예시 데이터 설정
@@ -27,6 +29,11 @@ function Letter({userId, mailId, setLetterModal}) {
             setLetterModal(false);
         };
     }, [setLetterModal]);
+
+    const handleDeleteClick = () => {
+        setDeleteModalVisible(true);
+      };
+    
     /**
     useEffect(() => {
         const fetchLetterData = async () => {
@@ -48,33 +55,27 @@ function Letter({userId, mailId, setLetterModal}) {
         fetchLetterData();
     }, [userId]); */
 
-    const handleDelete = async () => {
-        /**
-        try {
-          const response = await axios.post('/api/v1/mail', {
-            mailIds: [mailId],
-          });
-    
-          if (response.data.code === "MAIL2001") {
-            setLetterModal(false); 
-          } else {
-            console.error('Failed to delete letter:', response.data.message);
-          }
-        } catch (error) {
-          console.error('Error deleting letter:', error);
-        }*/
-      };
-
     return (
         <C.ModalBg>
             <C.ModalContainer>
                 <C.Modal chatbotType={chatbotType}>
-                    <C.DeleteButton onClick={handleDelete}><img src={d} alt='delete' /></C.DeleteButton>
+                    <C.DeleteButton onClick={handleDeleteClick}><img src={d} alt='delete' /></C.DeleteButton>
                     <C.ModalCloseButton onClick={() => setLetterModal(false)}><img src={x} alt='x' /></C.ModalCloseButton>
                     <C.Text>{content}</C.Text>
                     <C.Date>{date}</C.Date>
                 </C.Modal>
             </C.ModalContainer>
+            {isDeleteModalVisible && (
+                <DeleteLetterModal
+                isVisible={isDeleteModalVisible}
+                onClose={() => setDeleteModalVisible(false)}
+                onConfirm={() => {
+                    setLetterModal(false);
+                    setDeleteModalVisible(false);
+                }}
+                mailId={mailId}
+                />
+            )}
         </C.ModalBg>
     );
     }

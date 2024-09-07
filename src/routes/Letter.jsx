@@ -28,6 +28,21 @@ function Mailbox() {
             </L.Delete>
           </L.TopRow>
           <L.Letters>
+            <L.LetterContainer>
+              <L.CheckBox></L.CheckBox>
+              <L.Letter>
+                <L.ChatBox>
+                  <L.Chatbot>
+                    <L.RedDot></L.RedDot>
+                  </L.Chatbot>
+                </L.ChatBox>
+                <L.TextBox>
+                  <L.Title></L.Title>
+                  <L.Date></L.Date>
+                </L.TextBox>
+                <L.Heart></L.Heart>
+              </L.Letter>
+            </L.LetterContainer>
           </L.Letters>
       </L.Mailbox>
       {isLetterModalVisible && <Letter setLetterModal={setLetterModalVisible} />}

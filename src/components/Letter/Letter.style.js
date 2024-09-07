@@ -5,18 +5,18 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #EEECE3;
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 100vh;
   z-index: 1;
   @media (max-width: 430px) {
     background-image: url(${mailbox_mobile});
+    height: 75vh;
   }
   @media (min-width: 431px){
     background-image: url(${mailbox});}
+    height: 100vh;
 `;
 
 export const Mailbox = styled.div`

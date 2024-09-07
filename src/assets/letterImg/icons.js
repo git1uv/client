@@ -5,6 +5,6 @@ import allX from './button_everything_x.png';
 import favoriteO from './buttton_favourites_o.png';
 import favoriteX from './buttton_favourites_x.png';
 import mailbox from './mailbox.png';
-import mailbox_mobile from './Mask group.png';
+import mailbox_mobile from './mailbox_mobile.png';
 
 export {notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, mailbox_mobile};

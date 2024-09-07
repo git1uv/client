@@ -266,21 +266,55 @@ export const Film = styled.div`
   height: 85%;
   position: relative;
   left: -3%;
-`;
-export const Slide = styled.div`
-border-radius: 5px;
-background: #D9D9D9;
-height: 60%;
-width: 60%;
-position: relative;
-top: 25%;
-left: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const With = styled.div`
-
+  width: 100%;
+  height: 15%;
+  background: none;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 12px; /* 100% */
+  letter-spacing: -0.408px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 export const Time = styled.div`
-
+  width: 100%;
+  height: 15%;
+  background: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+export const OneLine = styled.div`
+  width: 100%;
+  height: 40%;
+  background: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+export const WithChat = styled.div`
+  width: 100%;
+  height: 30%;
+  background: none;
+  color: #000;
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 12px; 
+  letter-spacing: -0.408px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
 export const ToDoListBox = styled.div`
   display: flex;

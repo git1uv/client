@@ -4,22 +4,33 @@ import Firework from '../../../assets/CalendarImg/firework.gif';
 
 const GifModalWrapper = styled.div`
   position: fixed;
-  top: 20%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent; /* 투명 모달 배경 */
+  background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  width: 100%;
+  height: 100%;
+  top: 30%;
+  @media (max-width: 430px) {
+    left: 0;
+  }
+  @media (min-width: 431px) {
+    left: 15%;
+  }
 `;
 const GifContainer = styled.div`
   display: flex;
 `;
 const GifImage = styled.img`
-  width: 100vw;  
-  height: auto;
+  @media (max-width: 430px) {
+    width: 100vw;  
+    height: auto;
+  }
+  @media (min-width: 431px) {
+    width: 25vw;  
+    height: auto;
+  }
 `;
 
 const GifModal = ({ isVisible, onClose }) => {

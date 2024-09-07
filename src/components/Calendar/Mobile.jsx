@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import CustomSlider from './CustomSlider';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
 import * as M from './MobileDatePage.style';
 import styled from "styled-components";
 import axios from 'axios';
-import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../Modal/Calendar/SaveModal';
+import EmotionModal from '../Modal/Calendar/EmotionModal';
 import GifModal from '../Modal/Calendar/GifModal'; 
 import { useNavigate } from 'react-router-dom';
 
@@ -27,7 +28,20 @@ function Mobile() {
   const [message, setMessage] = useState('');
   //const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
+
+  useEffect(() => {
+    // 예시 데이터 설정
+    const exampleLogs = [
+      { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
+      { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
+      { id: 3, title: "직장 스트레스 해결 방법", chatbotType: "F", time: "14:15" },
+    ];
+
+    setCounselingLogs(exampleLogs);
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
+  const [showEmotionModal, setShowEmotionModal] = useState(false);
   const [showGif, setShowGif] = useState(false);
 
 
@@ -83,7 +97,9 @@ function Mobile() {
           setContent(data.diary);
           setSolutions(data.solution);
           setCounselingLogs(data.counselinglog);
-        }
+        } else {
+        setMessage(`데이터 불러오기 실패: ${response.data.message}`);
+      }
       } catch (error) {
         setMessage(`데이터 불러오기 중 오류 발생: ${error.message}`);
       }*/
@@ -111,6 +127,20 @@ function Mobile() {
     } */
   };
 
+  const handleEmotionClick = () => {
+    setShowEmotionModal(true);
+  };
+  
+  const getChatbotName = (chatbotType) => {
+    switch (chatbotType) {
+      case 'F':
+        return '심마음';
+      case 'T':
+        return '뉴러니';
+      default:
+        return '반바니';
+    }
+  };
 
     /**
     const handleCheck = async (solutionId) => {
@@ -145,7 +175,7 @@ function Mobile() {
       <M.Container>
         <M.BackButton onClick={() => navigate(-1)}/>
         <M.Content>
-          <M.DiaryBox>
+          <M.DiaryBox onClick={handleEmotionClick}>
             <M.TodayEmotion>
               <M.EmotionButton>
                 <M.EmotionText>오늘의 감정은 <br /> 어땠나요?</M.EmotionText>
@@ -176,17 +206,13 @@ function Mobile() {
               <M.Explain>이전 대화 기록을 확인할 수 있어요</M.Explain>
             </M.ChatTopRow>
             <M.Film>
-              <M.Slide>
-              <M.Time></M.Time>
-              <M.With>대화한 친구 <br />
-              <FiChevronRight />
-              </M.With>
-              </M.Slide>
+            <CustomSlider logs={counselingLogs} getChatbotName={getChatbotName} />
             </M.Film>
           </M.ChatBox>
           <M.ToDoListBox>
             <M.ToDoListTopRow>
               <M.Title>추천리스트</M.Title>
+              <M.Explain>삭제 버튼 누를시 바로 삭제되니 주의하세요</M.Explain>
             </M.ToDoListTopRow>
             <M.ToDoList>
             <M.ToDoListContainer>
@@ -209,6 +235,7 @@ function Mobile() {
         </M.Content>
       </M.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} />}
       {showGif && (
         <GifModal 
           isVisible={showGif} 

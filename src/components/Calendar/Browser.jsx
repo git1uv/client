@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import CustomSlider from './CustomSlider';
 import { useParams } from 'react-router-dom';
 import moment from 'moment';
-import MiniCalendar from './MiniCalendar'
+import MiniCalendar from './MiniCalendar';
 import * as P from './PCDatePage.style';
 import styled from "styled-components";
 import axios from 'axios';
-import { FiChevronRight} from "react-icons/fi";
 import SaveModal from '../Modal/Calendar/SaveModal';
+import EmotionModal from '../Modal/Calendar/EmotionModal';
 import { useNavigate } from 'react-router-dom';
-import Confetti from 'react-confetti';
+import GifModal from '../Modal/Calendar/GifModal'; 
 
 const DateWrapper = styled.div`
   display: flex;
@@ -28,8 +29,21 @@ function Browser() {
   const [message, setMessage] = useState('');
   //const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
+
+  useEffect(() => {
+    // 예시 데이터 설정
+    const exampleLogs = [
+      { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
+      { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
+      { id: 3, title: "직장 스트레스 해결 방법", chatbotType: "F", time: "14:15" },
+    ];
+
+    setCounselingLogs(exampleLogs);
+  }, []);
+
   const [showModal, setShowModal] = useState(false);
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [showEmotionModal, setShowEmotionModal] = useState(false);
+  const [showGif, setShowGif] = useState(false);
 
 
   // 임의의 데이터 설정
@@ -38,10 +52,6 @@ function Browser() {
     { id: 1, content: '물 많이 마시기', is_completed: false },
     { id: 2, content: '10분 명상하기', is_completed: true },
     { id: 3, content: '하루 운동하기', is_completed: true },
-    { id: 4, content: '하루 운동하기', is_completed: true },
-    { id: 5, content: '하루 운동하기', is_completed: true },
-    { id: 6, content: '하루 운동하기', is_completed: true },
-    { id: 7, content: '하루 운동하기', is_completed: true },
   ]);
   const handleCheck = async (solutionId) => {
     const updatedSolutions = solutions.map(solution => {
@@ -51,15 +61,10 @@ function Browser() {
       return solution;
     });
     setSolutions(updatedSolutions);
-
     if (updatedSolutions.every((solution) => solution.is_completed)) {
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 3000); 
+      setShowGif(true);
     }
   };
-
-  const todoListRef = useRef(null);
-  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
 
   const handleDelete = (solutionId) => {
     const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
@@ -81,15 +86,8 @@ function Browser() {
  */
 
   useEffect(() => {
-    if (todoListRef.current) {
-      setContainerSize({
-        width: todoListRef.current.offsetWidth,
-        height: todoListRef.current.offsetHeight
-      });
-    }
-  }, [todoListRef.current]);
-    /**const fetchDiaryData = async () => {
-      try {
+    const fetchDiaryData = async () => {
+      /**try {
         const year = moment(date).format('YYYY');
         const month = moment(date).format('MM');
         const day = moment(date).format('DD');
@@ -100,14 +98,16 @@ function Browser() {
           setContent(data.diary);
           setSolutions(data.solution);
           setCounselingLogs(data.counselinglog);
-        }
+        } else {
+        setMessage(`데이터 불러오기 실패: ${response.data.message}`);
+      }
       } catch (error) {
         setMessage(`데이터 불러오기 중 오류 발생: ${error.message}`);
-      }
+      }*/
     };
 
     fetchDiaryData();
-  }, [calendarID]);*/
+  }, [calendarID]);
 
   const handleSaveDiary = async () => {
     setShowModal(true);
@@ -128,6 +128,20 @@ function Browser() {
     } */
   };
 
+  const handleEmotionClick = () => {
+    setShowEmotionModal(true);
+  };
+
+  const getChatbotName = (chatbotType) => {
+    switch (chatbotType) {
+      case 'F':
+        return '심마음';
+      case 'T':
+        return '뉴러니';
+      default:
+        return '반바니';
+    }
+  };
 
     /**
     const handleCheck = async (solutionId) => {
@@ -148,8 +162,7 @@ function Browser() {
             setMessage(`저장 실패: ${response.data.message}`);
             setSolutions(solutions);
           } else if (updatedSolutions.every((solution) => solution.is_completed)) {
-            setShowConfetti(true);
-            setTimeout(() => setShowConfetti(false), 3000);
+            setShowGif(true);
           }
         } catch (error) {
           setMessage(`저장 중 오류 발생: ${error.message}`);
@@ -165,7 +178,7 @@ function Browser() {
         <MiniCalendar />
         <P.Content>
           <P.DiaryBox>
-            <P.TodayEmotion>
+            <P.TodayEmotion onClick={handleEmotionClick}>
               <P.EmotionButton>
                 <P.EmotionText>오늘의 감정은 <br /> 어땠나요?</P.EmotionText>
               </P.EmotionButton>
@@ -195,19 +208,15 @@ function Browser() {
               <P.Explain>이전 대화 기록을 확인할 수 있어요</P.Explain>
             </P.ChatTopRow>
             <P.Film>
-              <P.Slide>
-              <P.Time></P.Time>
-              <P.With>대화한 친구 <br />
-              <FiChevronRight />
-              </P.With>
-              </P.Slide>
+            <CustomSlider logs={counselingLogs} getChatbotName={getChatbotName} />
             </P.Film>
           </P.ChatBox>
           <P.ToDoListBox>
             <P.ToDoListTopRow>
               <P.Title>추천리스트</P.Title>
+              <P.Explain>삭제 버튼 누를시 바로 삭제되니 주의하세요</P.Explain>
             </P.ToDoListTopRow>
-            <P.ToDoList ref={todoListRef} style={{ position: 'relative' }}>
+            <P.ToDoList>
             <P.ToDoListContainer>
             {solutions.map((solution) => (
             <P.ToDoItem key={solution.id}>
@@ -223,19 +232,18 @@ function Browser() {
                 </P.ToDoItem>
             ))}
             </P.ToDoListContainer>
-            {showConfetti && (
-                <Confetti
-                  width={containerSize.width}
-                  height={containerSize.height}
-                  recycle={false}
-                  style={{ position: 'absolute', top: 0, left: 0, zIndex: 10 }}
-                />
-              )}
             </P.ToDoList>
           </P.ToDoListBox>
         </P.Content>
       </P.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} />}
+      {showGif && (
+        <GifModal 
+          isVisible={showGif} 
+          onClose={() => setShowGif(false)} 
+        />
+      )}
     </DateWrapper>
   );
 }

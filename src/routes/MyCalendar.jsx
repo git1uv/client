@@ -25,9 +25,9 @@ function MyCalendar() {
 
   useEffect(() => {
     const exampleData = [
-      { calendarId: 1, date: '2024-08-10', emotion: 'happy', hasCounseling: true },
-      { calendarId: 3, date: '2024-08-20', emotion: 'none', hasCounseling: true },
-      { calendarId: 3, date: '2024-08-21', emotion: 'none', hasCounseling: false },
+      { calendarId: 1, date: '2024-09-10', emotion: 'happy', hasCounseling: true },
+      { calendarId: 3, date: '2024-09-20', emotion: 'none', hasCounseling: true },
+      { calendarId: 3, date: '2024-09-21', emotion: 'none', hasCounseling: false },
     ];
     setEmotionData(exampleData);
   }, []);

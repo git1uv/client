@@ -211,21 +211,9 @@ export const Film = styled.div`
   height: 85%;
   position: relative;
   left: -5.5%;
-`;
-export const Slide = styled.div`
-  border-radius: 5px;
-  background: #D9D9D9;
-  height: 12vh;
-  width: 60%;
-  position: absolute;
-  top: 21%;
-  left: 20%;
-`;
-export const With = styled.div`
-
-`;
-export const Time = styled.div`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const ToDoListBox = styled.div`
   display: flex;

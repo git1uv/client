@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import FBackground from '../../../assets/letterImg/letter_f.png';
 import TBackground from '../../../assets/letterImg/letter_t.png';
-import DefaultBackground from '../../../assets/letterImg/letter_half.png';
+import HBackground from '../../../assets/letterImg/letter_half.png';
 
 export const ModalBg = styled.div`
   position: fixed;
@@ -55,7 +55,8 @@ export const Modal = styled.div`
   background-image: ${({ chatbotType }) => 
     chatbotType === 'F' ? `url(${FBackground})` : 
     chatbotType === 'T' ? `url(${TBackground})` : 
-    `url(${DefaultBackground})`};
+    chatbotType === 'H' ? `url(${HBackground})` : 
+    `url(${HBackground})`};
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

@@ -132,7 +132,10 @@ export const EmotionButton = styled.div`
   transform: translateX(-50%);
   width: 60%;
   height: 59.5%;
-  background-color: #D9D9D9;
+  background-color: ${({ emotion }) => emotion === 'none' ? '#D9D9D9' : 'white'};
+  background-image: ${({ emotionImage }) => emotionImage !== 'none' ? `url(${emotionImage})` : 'none'};
+  background-size: contain;
+  background-position: center;
   border-radius: 50%;
   display: flex;
   justify-content: center;

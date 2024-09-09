@@ -19,16 +19,23 @@ const CustomSwiper = styled(Swiper)`
   display: flex;
   position: absolute;
   @media (min-width: 431px) {
-    width: 68%; 
+    width: 60%; 
     height: 60%; 
     top: 24%;
     left: 16%;
   }
   @media (max-width: 430px) {
-    width: 88%; 
+    width: 72%; 
     height: 48%; 
     top: 19%;
-    left: 10%;
+    left: 18%;
+  }
+  .swiper-pagination {
+    position: absolute;
+    bottom: 0.3vh !important;
+  }
+  .swiper-pagination-bullet {
+    background-color: #000;
   }
 `;
 const CustomSwiperSlide = styled(SwiperSlide)`

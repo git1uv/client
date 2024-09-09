@@ -93,11 +93,26 @@ export const StyledCalendarWrapper = styled.div`
   
   /* 오늘 날짜 폰트 컬러 */
   .react-calendar__tile--now {
-    background-color: #f4dcc0 !important;
-    border-radius: 0.8rem;
+    background-color: white;
   }
   .react-calendar__tile--now abbr {
-    color: orange;
+    color: white;
+    background-color: #FFCB3A;
+    border-radius: 50%; 
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    text-align: center;
+    @media (max-width: 430px) {
+      line-height: 20px;
+    }
+    @media (min-width: 431px) {
+      line-height: 28px;
+    }
+  }
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #e6e6e6 !important;
   }
   
   /* 네비게이션 현재 월 스타일 적용 */
@@ -112,6 +127,7 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__tile {
     position: relative;
     font-size: 1.25rem;
+    border-radius: 0.8rem;
     @media (max-width: 430px) {
       padding: 2vh 1vw 8vh;
     }
@@ -136,17 +152,6 @@ export const StyledCalendarWrapper = styled.div`
   
 `;
 
-export const StyledToday = styled.div`
-  font-size: x-small;
-  color: burlywood;
-  font-weight: 600;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 1em;
-  transform: translateX(-50%);
-`;
-
 export const StyledEmotion = styled.div`
   background-image: ${({ imageUrl }) => imageUrl ? `url(${imageUrl})` : 'none'};
   background-size: cover;
@@ -169,9 +174,9 @@ export const Circle = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 430px) {
-    width: 5.9vh;
-    height: 5.9vh;
-    top: 60%;
+    width: 5.6vh;
+    height: 5.6vh;
+    top: 70%;
   }
   @media (min-width: 1024px) and (max-width: 1200px) {
     width: 6vh;
@@ -203,7 +208,5 @@ export const MonthLabel = styled.span`
   line-height: 12px; /* 85.714% */
   letter-spacing: -0.408px;
   margin: 0 2.5vw 2vh;
-
-
 `;
 

@@ -116,7 +116,7 @@ export const MiniCalendarWrapper = styled.div`
     justify-content: flex-start;
     align-items: center;
   }
-    .react-calendar__month-view__days__day {
+  .react-calendar__month-view__days__day {
     padding: 1%;
   }
   .react-calendar__month-view__days__day abbr { 
@@ -129,15 +129,24 @@ export const MiniCalendarWrapper = styled.div`
     line-height: 20px; 
   }
   .react-calendar__tile--now {
-    background-color: white;
+    background: white;
+    border: 2px solid #FFCB3A !important;
+    border-radius: 15px;
   }
   .react-calendar__tile--now abbr {
-    color: orange;
+    color: #000;
+    background: none;
+    width: 100%;
+    height: 100%;
   }
   
   /* 네비게이션 현재 월 스타일 적용 */
   .react-calendar__tile--hasActive {
     background-color: transparent;
+  }
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: #e6e6e6 !important;
   }
   .react-calendar__tile--hasActive abbr {
     color: white;
@@ -145,6 +154,7 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__tile {
     position: relative;
     font-size: 1.25rem;
+    border-radius: 15px;
     z-index: 5;
     @media (min-width: 1601px){
       padding: 4.7% 0 !important;

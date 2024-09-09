@@ -9,6 +9,7 @@ import SaveModal from '../Modal/Calendar/SaveModal';
 import EmotionModal from '../Modal/Calendar/EmotionModal';
 import GifModal from '../Modal/Calendar/GifModal'; 
 import { useNavigate } from 'react-router-dom';
+import {img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16} from '../../assets/CalendarImg/icons';
 
 const DateWrapper = styled.div`
   display: flex;
@@ -24,34 +25,42 @@ function Mobile() {
   const { date } = useParams();
   const formattedDate = moment(date).format('YYYY년 MM월 DD일');
   const { calendarID } = useParams(); 
-  //const [content, setContent] = useState(''); 
+  const [emotion, setEmotion] = useState('none');  
+  const [content, setContent] = useState(''); 
   const [message, setMessage] = useState('');
-  //const [solutions, setSolutions] = useState([]);
+  const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
 
+  // 예시 데이터 설정
   useEffect(() => {
-    // 예시 데이터 설정
-    const exampleLogs = [
-      { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
-      { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
-      { id: 3, title: "직장 스트레스 해결 방법", chatbotType: "F", time: "14:15" },
-    ];
+    const exampleData = {
+      emotion: "Happy",
+      diary: "오늘 맛있는 밥을 모거따",
+      counselingLog: [
+        { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
+        { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
+        { id: 3, title: "친구들에 대한 고민", chatbotType: "H", time: "11:00" },
+      ],
+      solution: [
+        { id: 1, content: "물 많이 마시기", is_completed: false },
+        { id: 2, content: "10분 명상하기", is_completed: true },
+        { id: 3, content: "10분 명상하기", is_completed: true },
+        { id: 4, content: "10분 명상하기", is_completed: true },
+        { id: 5, content: "10분 명상하기", is_completed: true },
+      ]
+    };
 
-    setCounselingLogs(exampleLogs);
+    // 예시 데이터를 상태로 설정
+    setEmotion(exampleData.emotion);
+    setContent(exampleData.diary);
+    setCounselingLogs(exampleData.counselingLog);
+    setSolutions(exampleData.solution);
   }, []);
 
   const [showModal, setShowModal] = useState(false);
   const [showEmotionModal, setShowEmotionModal] = useState(false);
   const [showGif, setShowGif] = useState(false);
 
-
-  // 임의의 데이터 설정
-  const [content, setContent] = useState('오늘 맛있는 밥을 먹었다.');
-  const [solutions, setSolutions] = useState([
-    { id: 1, content: '물 많이 마시기', is_completed: false },
-    { id: 2, content: '10분 명상하기', is_completed: true },
-    { id: 3, content: '하루 운동하기', is_completed: true },
-  ]);
   const handleCheck = (solutionId) => {
     const updatedSolutions = solutions.map(solution => {
       if (solution.id === solutionId) {
@@ -60,6 +69,7 @@ function Mobile() {
       return solution;
     });
     setSolutions(updatedSolutions);
+
     if (updatedSolutions.every(solution => solution.is_completed)) {
       setShowGif(true);
     }
@@ -83,10 +93,10 @@ function Mobile() {
     }
   };
  */
-
+/**
   useEffect(() => {
     const fetchDiaryData = async () => {
-      /**try {
+      try {
         const year = moment(date).format('YYYY');
         const month = moment(date).format('MM');
         const day = moment(date).format('DD');
@@ -94,6 +104,7 @@ function Mobile() {
         const response = await axios.get(`/api/v1/calendar/today/${year}/${month}/${day}`);
         if (response.status === 200) {
           const data = response.data.data;
+          setEmotion(data.emotion);
           setContent(data.diary);
           setSolutions(data.solution);
           setCounselingLogs(data.counselinglog);
@@ -102,11 +113,11 @@ function Mobile() {
       }
       } catch (error) {
         setMessage(`데이터 불러오기 중 오류 발생: ${error.message}`);
-      }*/
+      }
     };
 
     fetchDiaryData();
-  }, [calendarID]);
+  }, [calendarID]);*/
 
   const handleSaveDiary = async () => {
     setShowModal(true);
@@ -130,13 +141,35 @@ function Mobile() {
   const handleEmotionClick = () => {
     setShowEmotionModal(true);
   };
-  
+  const emotionImages = {
+    Laughing: img1,
+    Excited: img2,
+    Passionate: img3,
+    Peaceful: img4,
+    Angry: img5,
+    Crying: img6,
+    Dissatisfied: img7,
+    Disappointed: img8,
+    Inlove: img9,
+    Sick: img10,
+    Proud: img11,
+    Tired: img12,
+    Surprised: img13,
+    Anxious: img14,
+    Happy: img15,
+    Embarrassed: img16,
+  };
+
+  const currentEmotionImage = emotion !== 'none' ? emotionImages[emotion] : null;
+
   const getChatbotName = (chatbotType) => {
     switch (chatbotType) {
       case 'F':
         return '심마음';
       case 'T':
         return '뉴러니';
+      case 'H':
+        return '반바니';
       default:
         return '반바니';
     }
@@ -155,7 +188,7 @@ function Mobile() {
         try {
           const solution = updatedSolutions.find(solution => solution.id === solutionId);
           const response = await axios.patch(`/api/v1/calendar/today/solution/${solutionId}/done`, {
-           is_completed: solution.is_completed,
+           is_completed: solution.is_completed.toString(),
         });
           if (response.status !== 200) {
             setMessage(`저장 실패: ${response.data.message}`);
@@ -177,8 +210,8 @@ function Mobile() {
         <M.Content>
           <M.DiaryBox onClick={handleEmotionClick}>
             <M.TodayEmotion>
-              <M.EmotionButton>
-                <M.EmotionText>오늘의 감정은 <br /> 어땠나요?</M.EmotionText>
+              <M.EmotionButton emotion={emotion} emotionImage={currentEmotionImage}>
+                {emotion === 'none' && <M.EmotionText>오늘의 감정은 <br /> 어땠나요?</M.EmotionText>}
               </M.EmotionButton>
               <M.OverlayImage />
             </M.TodayEmotion>
@@ -235,7 +268,7 @@ function Mobile() {
         </M.Content>
       </M.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
-      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} calendarID={calendarID} setEmotion={setEmotion} />}
       {showGif && (
         <GifModal 
           isVisible={showGif} 

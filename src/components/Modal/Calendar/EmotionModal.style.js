@@ -13,7 +13,6 @@ export const ModalBg = styled.div`
   z-index: 90;
   @media (min-width: 431px) {
     background: rgba(82, 82, 82, 0.3);
-    backdrop-filter: blur(2.5px);
   }
 `;
 export const Modal = styled.div`
@@ -24,15 +23,15 @@ export const Modal = styled.div`
   border-radius: 24px;
   text-align: center;
   @media (min-width: 431px) {
-    width: 24%;
+    width: 24vw;
     top: 30%;
     left: 50%;
-    height: 50%;
+    height: 50vh;
   }
   @media (max-width: 430px) {
-    width: 76%;
+    width: 78vw;
     top: 25%;
-    height: 50%;
+    height: 48vh;
   }
 `;
 export const ModalCloseButton = styled.button`
@@ -51,4 +50,30 @@ export const ModalCloseButton = styled.button`
     top: 1.5vh;
     right: 1vw;
   }
+`;
+export const EmotionContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  position: relative;
+  top: 5%;
+
+`;
+export const EmotionImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  @media (min-width: 431px) {
+    img{
+      width: 5vw;
+      height: 10vh;
+    }
+  }
+  @media (max-width: 430px) {
+    img{
+      width: 15vw;
+      height: 9vh;
+    }
+  }
+
 `;

@@ -14,9 +14,9 @@ function MiniCalendar() {
   const [emotionDays, setEmotionDays] = useState([]);
   const navigate = useNavigate();
   const emotion_day = [
-    '2024-08-01',
-    '2024-08-20',
-    '2024-08-21',
+    '2024-09-01',
+    '2024-09-20',
+    '2024-09-21',
     // 여기에 추가
   ];
   /**

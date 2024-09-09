@@ -61,7 +61,7 @@ export const NicknameChange = styled.div`
 
   input {
     width: 100%;
-    height: 4vh;
+    height: 6vh;
     padding: 10px 20px ;
     color: black;
     font-size: 1.125rem;
@@ -87,7 +87,7 @@ export const PwChange = styled.div`
   }
   input {
     width: 100%;
-    height: 4vh;
+    height: 6vh;
     padding: 10px 20px ;
     color: black;
     font-size: 1.125rem;

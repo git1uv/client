@@ -5,7 +5,7 @@ export const Container = styled.div`
   z-index: 20;
   background-color: white;
   width: 40vw;
-  height: auto;
+  height: 80vh;
   flex-direction: column;
   padding: 0 0 5vh 0;
   button {
@@ -32,7 +32,7 @@ export const Explain = styled.div`
   width: 100%;
   flex-direction: column; 
   align-items: flex-start; 
-  font-size: 1.67rem;
+  font-size: 1.875rem;
   color: #27272A;
   font-family: Pretendard;
   font-style: normal;
@@ -52,7 +52,7 @@ export const TopRow = styled.div`
   display: flex;
   align-items: center; /* 아이템들을 수평으로 정렬 */
   width: 100%;
-  height: 7.3vh;
+  height: 9vh;
   padding: 15px 0;
   position: relative;
   justify-content: center; 
@@ -70,7 +70,7 @@ export const TopRow = styled.div`
     flex-grow: 1;
     text-align: center; 
     margin: 0; 
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -88,14 +88,14 @@ export const TopRow = styled.div`
 export const Title = styled.div`
   background-color: transparent;
   font-weight: bold;
-  font-size: 0.875rem;
+  font-size: 1.25rem;
   color: #A1A1AA;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.5px;
-  margin: 0 0 1vh 3.5vw;
+  margin: 2vh 0 1vh 3.5vw;
   @media (max-width: 430px) {
     margin-left: 5.3vw
   }
@@ -105,7 +105,7 @@ export const Title = styled.div`
 export const NicknameChange = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
 
@@ -139,7 +139,7 @@ export const NicknameChange = styled.div`
 export const PwChange = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
   button {
@@ -171,7 +171,7 @@ export const PwChange = styled.div`
 export const FAQ = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
   button {
@@ -203,7 +203,7 @@ export const FAQ = styled.div`
 export const Ask = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
   button {
@@ -235,7 +235,7 @@ export const Ask = styled.div`
 export const Information = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
   button {
@@ -267,7 +267,7 @@ export const Information = styled.div`
 export const LogOut = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 1.3vh 0 2vh 3.5vw;
   button {
@@ -298,7 +298,7 @@ export const LogOut = styled.div`
 export const DeleteID = styled.div`
   display: flex;
   justify-content: space-between;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   align-items: center;
   margin: 0 0 2vh 3.5vw;
   button {

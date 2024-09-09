@@ -101,11 +101,11 @@ export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
 
     const handleSlideChange = (swiper) => {
       let centerIndex = swiper.realIndex;
-      const chatbotSymbol = localStorage.getItem('result');
+      const chatbotName = localStorage.getItem('result');
 
-      if (chatbotSymbol === 'F')
+      if (chatbotName === 'Simmaeum')
         setIndex(0);
-      else if(chatbotSymbol === 'H')
+      else if(chatbotName === 'Banbani')
         setIndex(1);
       else
         setIndex(2);

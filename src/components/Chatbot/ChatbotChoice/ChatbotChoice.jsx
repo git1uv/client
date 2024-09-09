@@ -15,12 +15,7 @@ export default function ChatbotChoice()  {
   const navigate = useNavigate();
 
   const handleChoiceChatbot = () => {
-    if (chatbot.name === 'Simmaeum')
-      localStorage.setItem('result', 'F');
-    else if (chatbot.name === 'Banbani')
-      localStorage.setItem('result', 'H');
-    else
-      localStorage.setItem('result', 'T');
+    localStorage.setItem('result', chatbot.name);
     navigate('/chatbot');
     console.log(chatbot.name);
   }

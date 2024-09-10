@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './ChatbotResult.style'
+import Moment from 'moment'
+
 export default function ChatbotResult() {
+  const [chatbot, setChatbot] = useState('');
+
+  const formatDate = Moment().format('YYYY / MM / DD');
+  console.log(formatDate);
+
+  useEffect(() => {
+    let result = localStorage.getItem('result');
+
+    if (result === 'Simmaeum')
+      setChatbot('심마음');
+    else if (result === 'Banbani')
+      setChatbot('반바니');
+    else
+      setChatbot('뉴러니');
+  }, [])
   return (
     <S.App>
       <S.Container>
@@ -9,8 +26,8 @@ export default function ChatbotResult() {
             <img src="/path-to-your-image.png" alt="Character" />
           </S.Header>
           <S.Name>
-            <div>심마음의 일지</div>
-            <h3>2024 / 00 / 00</h3>
+            <div>{chatbot}의 일지</div>
+            <h3>{formatDate}</h3>
           </S.Name>
         </S.Top>
       <S.Bottom>

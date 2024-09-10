@@ -35,7 +35,10 @@ export const Header = styled.div`
   justify-content: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); // 그림자 효과
 
-  img {}
+  img {
+    border-radius: 100%;
+    width: 100px;
+  }
 `;
 
 export const Name = styled.div` // 000의 일지

@@ -3,6 +3,10 @@ import * as S from './ChatbotResult.style'
 import Moment from 'moment'
 import { useSelector } from 'react-redux';
 
+import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png'
+import Banbani from '../../../assets/chatbot/test/Banbani.png'
+import Neuranee from '../../../assets/chatbot/test/Neuranee.png'
+
 export default function ChatbotResult() {
   const [chatbot, setChatbot] = useState('');
   const chatResult = useSelector((state) => state.chatResult);
@@ -10,8 +14,8 @@ export default function ChatbotResult() {
   const formatDate = Moment().format('YYYY / MM / DD');
   console.log(formatDate);
 
+  let result = localStorage.getItem('result');
   useEffect(() => {
-    let result = localStorage.getItem('result');
 
     if (result === 'Simmaeum')
       setChatbot('심마음');
@@ -25,7 +29,7 @@ export default function ChatbotResult() {
       <S.Container>
         <S.Top>
           <S.Header>
-            <img src="/path-to-your-image.png" alt="Character" />
+            <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
           </S.Header>
           <S.Name>
             <div>{chatbot}의 일지</div>

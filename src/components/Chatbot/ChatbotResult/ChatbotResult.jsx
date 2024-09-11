@@ -3,9 +3,9 @@ import * as S from './ChatbotResult.style'
 import Moment from 'moment'
 import { useSelector } from 'react-redux';
 
-import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png'
-import Banbani from '../../../assets/chatbot/test/Banbani.png'
-import Neuranee from '../../../assets/chatbot/test/Neuranee.png'
+import Simmaeum from '../../../assets/chatbot/result/Simmaeum.png'
+import Banbani from '../../../assets/chatbot/result/Banbani.png'
+import Neuranee from '../../../assets/chatbot/result/Neuranee.png'
 
 export default function ChatbotResult() {
   const [chatbot, setChatbot] = useState('');

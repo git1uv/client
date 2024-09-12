@@ -82,8 +82,22 @@ export const ContentBox = styled.div`
 `
 
 export const Title = styled.div`
-    img {}
-    h2 {}
+  ${ALIGN.ROW_CENTER};
+  width: 100%;
+  img {
+    width: 10%;
+  
+    }
+  h2 {
+    width: 90%;
+    margin: 0 0 0 1%;
+    color: #ED6243;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    }
 `
 
 export const BtnBox = styled.div`

@@ -37,7 +37,7 @@ function AppHeader({ isLoggedIn, setIsLoggedIn }) {
                     <H.HeaderHome onClick={() => navigate('/main')}><img src={logo} alt='logo' /></H.HeaderHome>
                 </H.HeaderStart>
                 <H.HeaderEnd>
-                <H.MenuButton onClick={() => setModal(true)}><FiMenu size='35'/></H.MenuButton>
+                <H.MenuButton onClick={() => setModal(true)}><FiMenu size='30'/></H.MenuButton>
                 </H.HeaderEnd>
             </H.HeaderWrapper>
             {modal && (

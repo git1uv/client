@@ -10,7 +10,7 @@ const DeleteLetterModal = ({ isVisible, onClose, onConfirm, mailId }) => {
     /**
     try {
       const response = await axios.post('/api/v1/mail', {
-        mailIds: [mailId],
+        mailIds: mailId,
       });
 
       if (response.data.code === "MAIL2001") {
@@ -31,7 +31,6 @@ const DeleteLetterModal = ({ isVisible, onClose, onConfirm, mailId }) => {
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.LogoutModalTitle>삭제하기</M.LogoutModalTitle>
         <p className='sub'>정말 삭제할까요?</p>
-        <br />
         <M.ModalActions>
           <M.CancelButton onClick={onClose}>아니오</M.CancelButton>
           <M.LogoutClickButton onClick={handleDelete}>삭제</M.LogoutClickButton>

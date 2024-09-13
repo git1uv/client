@@ -6,5 +6,12 @@ import favoriteO from './buttton_favourites_o.png';
 import favoriteX from './buttton_favourites_x.png';
 import mailbox from './mailbox.png';
 import mailbox_mobile from './mailbox_mobile.png';
+import Fface from './Fface.png';
+import Tface from './Tface.png';
+import Hface from './Hface.png';
+import Emptyheart from './Emptyheart.png';
+import heart from './Heart.png';
+import check from './check.png';
+import trash from './button_delete.png';
 
-export {notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, mailbox_mobile};
+export {notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, mailbox_mobile, Fface, Tface, Hface, heart, Emptyheart, check, trash};

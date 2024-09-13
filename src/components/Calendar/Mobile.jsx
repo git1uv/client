@@ -208,8 +208,8 @@ function Mobile() {
       <M.Container>
         <M.BackButton onClick={() => navigate(-1)}/>
         <M.Content>
-          <M.DiaryBox onClick={handleEmotionClick}>
-            <M.TodayEmotion>
+          <M.DiaryBox>
+            <M.TodayEmotion onClick={handleEmotionClick}>
               <M.EmotionButton emotion={emotion} emotionImage={currentEmotionImage}>
                 {emotion === 'none' && <M.EmotionText>오늘의 감정은 <br /> 어땠나요?</M.EmotionText>}
               </M.EmotionButton>

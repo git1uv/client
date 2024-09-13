@@ -55,10 +55,14 @@ export default function ChatbotResult() {
           <S.Header>
             <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
           </S.Header>
-          <S.Name>
-            <div>{chatbot}의 일지</div>
-            <h3>{formatDate}</h3>
-          </S.Name>
+          <S.TitleBox>
+            <S.Name>
+              <div>{chatbot}의 일지</div>
+              {/* <div>{chatbot}의 일지 : 심마음과 반바니가 싸워서 속상해</div> */}
+              <h3>{formatDate}</h3>
+            </S.Name>
+            <section>{chatResult.title}</section>
+          </S.TitleBox>
         </S.Top>
         <S.Bottom>
           <S.ContentBox>
@@ -66,33 +70,37 @@ export default function ChatbotResult() {
               <img src={Icon1} alt='아이콘'/>
               <h2>네가 가진 고민은 이런 거야</h2>
             </S.Title>
-            <div>
-              <p>{chatResult.first}</p>
-            </div>
+            <S.Content>
+              <p>{chatResult.content.first}</p>
+            </S.Content>
           </S.ContentBox>
           <S.ContentBox>
             <S.Title>
             <img src={Icon2} alt='아이콘'/>
-              <h2>내가 생각하는 제안은 이런 것이야</h2>
+              <h2>내 생각은 이런 것이야</h2>
             </S.Title>
-            <div>
-              <p>{chatResult.second}</p>
-            </div>
+            <S.Content>
+              <p>{chatResult.content.second}</p>
+            </S.Content>
           </S.ContentBox>
           <S.ContentBox>
             <S.Title>
             <img src={Icon3} alt='아이콘'/>
               <h2>이것을 하면 기분이 좋아질 거야</h2>
             </S.Title>
-            <div>
-              <p>{chatResult.third[0]}</p>
-            </div>
-            <div>
-              <p>{chatResult.third[1]}</p>
-            </div>
-            <div>
-              <p>{chatResult.third[2]}</p>
-            </div>
+            <S.Content>
+              <div>
+                <p>{chatResult.content.third[0]}</p>
+              </div>
+              <section />
+              <div>
+                <p>{chatResult.content.third[1]}</p>
+              </div>
+              <section />
+              <div>
+                <p>{chatResult.content.third[2]}</p>
+              </div>
+            </S.Content>
           </S.ContentBox>
         </S.Bottom>
       </S.Container>

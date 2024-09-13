@@ -13,8 +13,8 @@ const EmotionModal = ({ isVisible, onClose, calendarID, setEmotion}) => {
 
   // 예시 데이터
   const handleEmotionSelect = (emotionName) => {
-    setEmotion(emotionName); // 선택한 감정을 상위 컴포넌트로 전달
-    onClose(); // 모달 닫기
+    setEmotion(emotionName); 
+    onClose(); 
   };
 
   /**

@@ -154,18 +154,26 @@ export const StyledCalendarWrapper = styled.div`
 
 export const StyledEmotion = styled.div`
   background-image: ${({ imageUrl }) => imageUrl ? `url(${imageUrl})` : 'none'};
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  @media (max-width: 430px) {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  @media (min-width: 431px) {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
 `;
 export const Circle = styled.div`
-  background-color: ${({ hasCounseling }) => (hasCounseling ? '#cccccc' : '#F4F2EB')};
+  background-color: ${({ circleColor }) => circleColor};
   border-radius: 50%;
   position: absolute;
   left: 50%;
@@ -174,28 +182,18 @@ export const Circle = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 430px) {
-    width: 5.6vh;
-    height: 5.6vh;
+    width: 4.15rem;
+    height: 4.15rem;
     top: 70%;
   }
-  @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 6vh;
-    height: 6vh;
-    top: 70%;
-  }
-  @media (min-width: 1201px) and (max-width: 1440px) {
-    width: 6vh;
-    height: 6vh;
-    top: 70%;
-  }
-  @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 6vh;
-    height: 6vh;
+  @media (min-width: 1024px) and (max-width: 1600px) {
+    width: 6.25rem;
+    height: 6.25rem;
     top: 70%;
   }
   @media (min-width: 1601px) {
-    width: 9vh;
-    height: 9vh;
+    width: 6.25rem;
+    height: 6.25rem;
     top: 60%;
   }
 `;

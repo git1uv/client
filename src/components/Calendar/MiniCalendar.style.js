@@ -130,7 +130,7 @@ export const MiniCalendarWrapper = styled.div`
   }
   .react-calendar__tile--now {
     background: white;
-    border: 2px solid #FFCB3A !important;
+    border: 2px solid #d9d9d9 !important;
     border-radius: 15px;
   }
   .react-calendar__tile--now abbr {

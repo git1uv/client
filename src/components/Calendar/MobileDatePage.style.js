@@ -24,7 +24,7 @@ export const Container = styled.div`
   background-position: right;
   background-repeat: no-repeat;
   flex-direction: column;
-  margin: 30vh 0 0;
+  margin: 35vh 0 0;
   @media (max-width: 430px) {
     width: 100%;
     height: auto;
@@ -210,8 +210,8 @@ export const Film = styled.div`
   background-image: url(${film});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 95%;
-  height: 85%;
+  width: 306px;
+  height: 167px;
   position: relative;
   left: -5.5%;
   display: flex;

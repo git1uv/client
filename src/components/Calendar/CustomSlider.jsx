@@ -26,16 +26,16 @@ const CustomSwiper = styled(Swiper)`
   }
   @media (max-width: 430px) {
     width: 72%; 
-    height: 48%; 
-    top: 19%;
-    left: 18%;
+    height: 58%; 
+    top: 43px;
+    left: 50px;
   }
   .swiper-pagination {
     position: absolute;
     bottom: 0.3vh !important;
   }
   .swiper-pagination-bullet {
-    background-color: #000;
+    background-color: #A17C51;
   }
 `;
 const CustomSwiperSlide = styled(SwiperSlide)`

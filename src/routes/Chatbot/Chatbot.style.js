@@ -33,7 +33,7 @@ export const Character = styled.img`
     position: relative;
     width: 230px;
     height: auto;
-    z-index: 101;
+    z-index: 80;
 
     @media (max-width: 1440px) {
         width: 200px;
@@ -63,7 +63,7 @@ export const Chair = styled.img`
         left: calc(50% - 130px); /* 이미지의 중앙에 캐릭터가 위치하도록 조정 */
     }
 
-    z-index: 100;
+    z-index: 70;
 `
 
 export const Bottom = styled.div`

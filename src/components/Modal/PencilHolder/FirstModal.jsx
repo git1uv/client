@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import * as M from '../LogoutModal.style';
 import x from '../../../assets/x.png';
 
-const FirstModal = ({ isVisible, onClose, onConfirm }) => {
+const FirstModal = ({ isVisible, onClose, onConfirm, name, content }) => {
   const outside = useRef();
 
   if (!isVisible) return null;

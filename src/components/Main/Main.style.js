@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import backgroundImg from "../../assets/backgroundImg.png"
-import room from "../../assets/Main/room.png";
-import {airplane, chatbot, calendar, mailbox, pencilHolder, trash} from '../../assets/Main/icons'
+import room from "../../assets/main/room.png";
+import {airplane, chatbot, calendar, mailbox, pencilHolder, trash} from '../../assets/main/icons'
 import theme from "../../constants/theme";
 
 export const Container = styled.div`

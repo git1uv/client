@@ -97,17 +97,20 @@ const SlideImage = styled.img`
     object-fit: cover;
 `;
 
-export const SliderSwiper = ({chatbot, setChatbot, chatbotInfo, setIndex}) => {
+export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
+
     const handleSlideChange = (swiper) => {
       let centerIndex = swiper.realIndex;
-      if (chatbot === 'F') 
-        centerIndex = 0;
-      else if (chatbot === 'H') 
-        centerIndex = 1;
+      const chatbotName = localStorage.getItem('result');
+
+      if (chatbotName === 'Simmaeum')
+        setIndex(0);
+      else if(chatbotName === 'Banbani')
+        setIndex(1);
       else
-        centerIndex = 2;
+        setIndex(2);
+
       setChatbot(chatbotInfo[centerIndex]);
-      setIndex(centerIndex);
   
       swiper.slides.forEach((slide, index) => {
         slide.style.zIndex = '1'; // 기본 z-index 설정

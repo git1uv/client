@@ -26,7 +26,7 @@ export default function TestContent() {
     test.score >= 70 
       ? localStorage.setItem('result', 'Neuranee')
       : test.score >= 40 ? localStorage.setItem('result', 'Banbani')
-      : localStorage.setItem('result', 'simmaeum');
+      : localStorage.setItem('result', 'Simmaeum');
     localStorage.setItem('score', test.score);
   }
 

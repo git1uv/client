@@ -15,8 +15,9 @@ export default function ChatbotChoice()  {
   const navigate = useNavigate();
 
   const handleChoiceChatbot = () => {
-    localStorage.setItem('result', chatbot.name)
+    localStorage.setItem('result', chatbot.name);
     navigate('/chatbot');
+    console.log(chatbot.name);
   }
   const userId = localStorage.getItem('userId');
 
@@ -25,7 +26,7 @@ export default function ChatbotChoice()  {
   // const getDefaultChatbot = async() => {
   //   try {
   //     const res = await axios.get(`api/v1/chatbot/${userId}`);
-  //     setChatbot(res.data.chatbot);
+  //     localStorage.setItem('result', res.data.chatbot);
   //   } catch(err) {
   //     if (err.response.status === 500)
   //       console.log('ERROR500 : 디폴트 챗봇 불러오기에 실패하였습니다.')
@@ -43,7 +44,6 @@ export default function ChatbotChoice()  {
         <S.Title>나와 대화할 캐릭터는</S.Title>
         <S.SliderWrapper>
           <SliderSwiper 
-            chatbot={chatbot}
             setChatbot={setChatbot}
             chatbotInfo={chatbotInfo}
             setIndex={setIndex}
@@ -56,7 +56,7 @@ export default function ChatbotChoice()  {
               <p>{window.innerWidth >= 430 ? chatbot.info : chatbot.mobile}</p>
             </S.TextContainer>
           </T.SpeechBubble>
-          <button onClick={handleChoiceChatbot}>대화를 시작할까?</button>
+          <button onClick={() => handleChoiceChatbot()}>대화를 시작할까?</button>
         </S.ChatbotInfo>
       </S.Container>
     </S.App>

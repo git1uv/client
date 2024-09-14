@@ -5,6 +5,7 @@ import Pencil from '../../assets/pencilHolder/Pencil.png'
 import FirstModal from '../Modal/PencilHolder/FirstModal'
 import SecondModal from '../Modal/PencilHolder/SecondModal'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Mobile() {
   const [name, setName] = useState('');
@@ -13,6 +14,29 @@ export default function Mobile() {
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
   const navigate = useNavigate(); 
+
+  const receivedToken = localStorage.getItem('token');
+
+  /* 종이비행기 작성 API */
+  // const postAirplane = async() => {
+  //   try {
+  //     const res = await axios.post(`/api/v1/airplane`, {
+  //       writer_name: name,
+  //       content: content
+  //     }, {
+  //       headers: {
+  //         'Authorization': `Bearer ${receivedToken}`
+  //       },
+  //     });
+  //     console.log(res);
+
+  //   } catch (error){
+  //     if(error.response.status === 500) {
+  //       console.log(error.response.message);
+  //       window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
+  //     }
+  //   }
+  //  }
   
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -23,6 +47,9 @@ export default function Mobile() {
   const openSecondModal = () => {
     setIsFirstModalOpen(false);
     setIsSecondModalOpen(true);
+
+    // 종이비행기 작성 API
+    // postAirplane(); 
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
@@ -85,8 +112,18 @@ export default function Mobile() {
           </S.Letter>
         </T.Wrapper>
       </T.Container>
-      <FirstModal isVisible={isFirstModalOpen} onClose={closeFirstModal} onConfirm={openSecondModal}/>
-      <SecondModal isVisible={isSecondModalOpen} onClose={closeSecondModal} onConfirm={addWriting}/>
+      <FirstModal 
+        isVisible={isFirstModalOpen} 
+        onClose={closeFirstModal} 
+        onConfirm={openSecondModal}
+        name={name}
+        content={content}
+      />
+      <SecondModal 
+        isVisible={isSecondModalOpen} 
+        onClose={closeSecondModal} 
+        onConfirm={addWriting}
+      />
     </div>
   )
 }

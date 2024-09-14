@@ -14,12 +14,41 @@ export default function ChatbotChoice()  {
   const [index, setIndex] = useState();
   const navigate = useNavigate();
 
+  const [counselingId, setCounselingId] = useState(''); // 일단 임시, 기능 구현하면 바뀔지도
+
   const handleChoiceChatbot = () => {
     localStorage.setItem('result', chatbot.name);
+    // postSelectedChatbot(); // API 연결
     navigate('/chatbot');
     console.log(chatbot.name);
   }
   const userId = localStorage.getItem('userId');
+  const receivedToken = localStorage.getItem('token');
+
+  /* 사용할 챗봇 선택 API */
+  // const postSelectedChatbot = async() => {
+  //   let selectedChatbot;
+  //   if (chatbot.name === 'Simmaeum')
+  //     selectedChatbot = 'F'
+  //   else if (chatbot.name === 'Banbani')
+  //     selectedChatbot = 'H'
+  //   else
+  //     selectedChatbot = 'T'
+
+  //   try {
+  //     const res = await axios.get(`/api/v1/chatbot/select`, {
+  //       chatbot_type: selectedChatbot
+  //     },{
+  //       headers: {
+  //         'Authorization': `Bearer ${receivedToken}`
+  //       }
+  //     });
+  //     setCounselingId(res.data.counselingId);
+  //   } catch(err) {
+  //     if (err.response.status === 500)
+  //       console.log('서버 에러, 관리자에게 문의 바랍니다.');
+  //   }
+  // }
 
 
   /* 사용할 default 챗봇 가져오기 API */

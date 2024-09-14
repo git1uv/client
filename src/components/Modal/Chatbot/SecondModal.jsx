@@ -20,10 +20,8 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
       <M.LogoutModal>
-        <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.AirplaneImage src={write} alt="gif" />
         <M.LogoutModalTitle>챗봇이 일지를 작성하고 있어요!</M.LogoutModalTitle>
-        {/* <br /> */}
       </M.LogoutModal>
     </M.LogoutModalBg>
   );

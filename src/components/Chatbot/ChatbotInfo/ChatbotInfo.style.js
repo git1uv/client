@@ -29,12 +29,11 @@ export const IconBox = styled.div`
     padding: 3% 0;
     img {
         width: ${({ id }) => id === 'howto' ? '1.8rem' : id === 'func' ? '2.2rem' : '2.8rem'};
-        height: 2.4rem;
+        height: auto;
         object-fit: cover;
 
         @media (max-width: 1440px) {
             width: ${({ id }) => id === 'howto' ? '1.2rem' : id === 'func' ? '1.7rem' : '1.9rem'};
-            height: 1.6rem;
         }
     }
 

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import theme from '../../../constants/theme'; // theme 파일의 경로
 import sendBtn from '../../../assets/chatbot/chatStart/sendBtn.png'
 
-const { ALIGN } = theme;
+const { ALIGN, RESPONSIVE_SIZE } = theme;
 
 export const Container = styled.div`
     display: flex;
@@ -17,19 +17,23 @@ export const Container = styled.div`
 export const Title = styled.div`
     ${ALIGN.ROW_CENTER};
     width: 100%;
-    height: 10%;
+    height: 1%;
 
     h1 {
         margin: 0 0 2rem 0;
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;
+        @media (max-width: 1440px) {
+            font-size: 1.25rem;
+        }
         font-weight: 400;
         line-height: normal;
         letter-spacing: -0.015rem;
     }
 `
 export const Warning = styled.div`
+    margin-top: 1rem;
     h3 {
         margin: 0;
         color: #ED6243;

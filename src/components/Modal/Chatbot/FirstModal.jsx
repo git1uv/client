@@ -12,8 +12,8 @@ const FirstModal = ({ isVisible, onClose, onConfirm, name, content }) => {
       <M.LogoutModal>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.LogoutModalTitle>정말 대화를 끝낼건가요?</M.LogoutModalTitle>
-        <p className='sub'>지금까지의 대화 내용을 바탕으로.</p>
-        <p className='sub'>챗봇이 일지를 작성해줘요.</p>
+        <p className='sub' style={{fontSize:'1rem'}}>지금까지의 대화 내용을 바탕으로</p>
+        <p className='sub' style={{fontSize:'1rem'}}>챗봇이 일지를 작성해줘요.</p>
         <br />
         <M.ModalActions>
           <M.CancelButton onClick={onClose}>아니오</M.CancelButton>

@@ -4,7 +4,7 @@ import sendBtn from '../../assets/chatbot/chatStart/sendBtn.png'
 import { IoIosArrowBack } from "react-icons/io";
 import theme from '../../constants/theme'; // theme 파일의 경로
 
-const { ALIGN } = theme;
+const { ALIGN, RESPONSIVE_SIZE } = theme;
 
 export const App = styled.div`
     ${ALIGN.COLUMN_CENTER};
@@ -69,9 +69,17 @@ export const Chair = styled.img`
 export const Bottom = styled.div`
     ${ALIGN.COLUMN_CENTER};
 
-    width: 70%;
-    min-width: 500px;
-    height: 65vh;
+    width: 80.5625rem;
+    height: 43.41075rem;
+
+    @media (max-width: 1440px) {
+        width: 60.5625rem;
+        height: 30.41075rem;
+    }
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        width: 30rem;
+        height: 50rem;
+    }
 
     border-radius: 2.5rem;
     border: 1px solid #FFF;
@@ -98,6 +106,9 @@ export const Header = styled.div`
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;
+        @media (max-width: 1440px) {
+            font-size: 1.25rem;
+        }
         font-weight: 400;
         line-height: normal;
         letter-spacing: -0.015rem;

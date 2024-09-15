@@ -21,7 +21,7 @@ export default function ChatbotBox() {
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       ChangeChat();
-      setSendSentence(sentence)
+      setSendSentence(sentence);
       textClear();
     }
   }
@@ -50,7 +50,7 @@ export default function ChatbotBox() {
         <input
           placeholder='고민부터 털어놓고 싶은 것, 오늘 있었던 일 등 뭐든 말해보아요!'
           onChange={ChangeInput}
-          onKeyDown={handleKeyPress}
+          onKeyPress={handleKeyPress}
           ref={inputRef}
         />
         <button onClick={ChangeChat} />

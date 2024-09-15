@@ -5,7 +5,7 @@ export default function Chat({sentence}) {
   const [sentenceList, setIsSentenceList] = useState([]);
 
   useEffect(() => {
-    setIsSentenceList((chats => [...chats, sentenceList]))
+    setIsSentenceList((chats => [...chats, sentence]))
     console.log(sentenceList)
   }, [sentence])
 

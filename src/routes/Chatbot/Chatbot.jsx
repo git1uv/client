@@ -50,13 +50,21 @@ export default function Chatbot() {
       </S.Top>
       <S.Bottom>
         <S.Header>
-          <S.BackBtn/>
+          <S.BackBtn onClick={() => navigate('/main')}/>
+          <S.SpeechBubble id='back'>
+            <h1>홈으로 돌아가기</h1>
+            <p>대화내역이 사라져요</p>
+          </S.SpeechBubble>
           {result === 'Simmaeum'
             ? <h1>심마음</h1>
             : result === 'Banbani' ? <h1>반바니</h1>
             : <h1>뉴러니</h1> 
           }
           <button onClick={openFirstModal}>끝내기</button>
+          <S.SpeechBubble id='end'>
+            <h1>다음 단계로!</h1>
+            <p>내용을 바탕으로 <br/> 일지를 작성해줘요.</p>
+          </S.SpeechBubble>
         </S.Header>
         <ChatbotBox />
       </S.Bottom>

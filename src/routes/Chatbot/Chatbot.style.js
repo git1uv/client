@@ -118,6 +118,7 @@ export const Header = styled.div`
         // width: 15%;
         height: 2.8rem;
         margin-right: -4%;
+        position: relative;
 
         border-radius: 4.8125rem;
         background: #ED6243;
@@ -128,6 +129,11 @@ export const Header = styled.div`
         font-size: 1.25rem;
         font-weight: 700;
         line-height: normal;
+
+        &:hover + div { /* BackBtn 위에 말풍선이 나오도록 설정 */
+            visibility: visible;
+            opacity: 1;
+        }
     }
 `
 
@@ -136,4 +142,63 @@ export const BackBtn = styled(IoIosArrowBack)`
     height: 2rem;
     margin-left: -8%;
     color: #ED6243;
+    position: relative;
+    cursor: pointer;
+
+    &:hover + div { /* BackBtn 위에 말풍선이 나오도록 설정 */
+        visibility: visible;
+        opacity: 1;
+    }
 `
+
+
+export const SpeechBubble = styled.div`
+  ${ALIGN.COLUMN_CENTER};
+    gap: 0.5rem;
+    position: absolute;
+    top: -7rem;
+    left: ${(props) => props.id === 'back' ? '1rem' : '50rem'};
+
+    width: 12.5625rem;
+    height: 7rem;
+
+    background: #F4F2EB;
+    border-radius: 1.25rem;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+
+    visibility: hidden;
+    opacity: 0;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        border: 1rem solid transparent;
+        border-top-color: #F4F2EB;
+        border-bottom: 0;
+        border-left: ${(props) => props.id === 'back' && '0'};
+        border-right: ${(props) => props.id === 'end' && '0'};
+        margin-left: ${(props) => props.id === 'back' ? '-3rem' : '1rem'};
+        margin-bottom: -0.8rem;
+    }
+
+    h1, p {
+        margin: 0;
+        color: #000;
+        text-align: center;
+        font-family: Pretendard;
+        font-style: normal;
+        line-height: 1.5rem; /* 133.333% */
+    }
+
+    h1 {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 300;
+    }
+`;

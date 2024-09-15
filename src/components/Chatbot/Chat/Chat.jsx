@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as T from '../ChatbotBox/ChatbotBox.style'
 
-export default function Chat({sentence}) {
+export default function Chat({sentence, counseling}) {
   const [sentenceList, setIsSentenceList] = useState([]);
 
   useEffect(() => {
@@ -13,6 +13,7 @@ export default function Chat({sentence}) {
     <T.Container>
         <T.Title>
             <h1>{sentence}</h1>
+            
           </T.Title>
     </T.Container>
   )

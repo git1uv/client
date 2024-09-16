@@ -3,18 +3,22 @@ import * as S from './ChatbotBox.style'
 import ChatbotInfo from '../ChatbotInfo/ChatbotInfo'
 import Chat from '../Chat/Chat'
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAnswer } from '../../../redux/counseling';
 
 export default function ChatbotBox() {
   const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
   const [input, setInput] = useState(); // input 값
   const [current, setCurrent] = useState(); // 보낼 문장
-  const [counseling, setCounseling] = useState({
-    counselingId: 1,
-    emotion: '평온',
-  }) // 챗봇의 상태와 상담일지 ID
+  // const [counseling, setCounseling] = useState({
+  //   counselingLogId: 1,
+  //   emotion: '평온',
+  // }) // 챗봇의 상태와 상담일지 ID
+  const counseling = useSelector((state) => state.counseling);
 
   const inputRef = useRef(null);
+  const dispatch = useDispatch();
 
   const receivedToken = localStorage.getItem('token');
 
@@ -59,10 +63,13 @@ export default function ChatbotBox() {
         }
       })
       console.log(res.data);
-      setCounseling({
-        counselingId: res.data.counselingId,
-        emotion: res.data.emotion,
-      });
+      dispatch(setAnswer(
+        {
+          counselingLogId: res.data.counselingLogId,
+          emotion: res.data.emotion,
+          date: res.data.createdAt,
+        }
+      ))
       setMessage((prev) => [...prev, {
         msg: res.data.message,
         isUser: false

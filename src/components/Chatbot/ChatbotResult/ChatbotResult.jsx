@@ -17,6 +17,7 @@ export default function ChatbotResult() {
   const [chatbot, setChatbot] = useState('');
   const componentRef = useRef(null); 
   const chatResult = useSelector((state) => state.chatResult);
+  const solution = useSelector((state) => state.solution);
 
   const formatDate = Moment().format('YYYY / MM / DD');
   console.log(formatDate);
@@ -61,7 +62,7 @@ export default function ChatbotResult() {
               {/* <div>{chatbot}의 일지 : 심마음과 반바니가 싸워서 속상해</div> */}
               <h3>{formatDate}</h3>
             </S.Name>
-            <section>{chatResult.title}</section>
+            <section>{solution.title}</section>
           </S.TitleBox>
         </S.Top>
         <S.Bottom>
@@ -71,7 +72,7 @@ export default function ChatbotResult() {
               <h2>네가 가진 고민은 이런 거야</h2>
             </S.Title>
             <S.Content>
-              <p>{chatResult.content.first}</p>
+              <p>{solution.summary}</p>
             </S.Content>
           </S.ContentBox>
           <S.ContentBox>
@@ -80,7 +81,7 @@ export default function ChatbotResult() {
               <h2>내 생각은 이런 것이야</h2>
             </S.Title>
             <S.Content>
-              <p>{chatResult.content.second}</p>
+              <p>{solution.suggestion}</p>
             </S.Content>
           </S.ContentBox>
           <S.ContentBox>
@@ -90,15 +91,15 @@ export default function ChatbotResult() {
             </S.Title>
             <S.Content>
               <div>
-                <p>{chatResult.content.third[0]}</p>
+                <p>{solution.solutions[0].content}</p>
               </div>
               <section />
               <div>
-                <p>{chatResult.content.third[1]}</p>
+                <p>{solution.solutions[1].content}</p>
               </div>
               <section />
               <div>
-                <p>{chatResult.content.third[2]}</p>
+                <p>{solution.solutions[2].content}</p>
               </div>
             </S.Content>
           </S.ContentBox>

@@ -26,16 +26,9 @@ export default function Chatbot() {
   const openSecondModal = () => {
     setIsFirstModalOpen(false);
     setIsSecondModalOpen(true);
-
-    // 종이비행기 작성 API
-    // postAirplane(); 
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
-    navigate('/chatbot/result');
-  }
-  const addWriting = () => {
-    window.location.reload();
   }
   
   return (
@@ -76,7 +69,6 @@ export default function Chatbot() {
       <SecondModal
         isVisible={isSecondModalOpen} 
         onClose={closeSecondModal} 
-        onConfirm={addWriting}
       />
     </S.App>
   );

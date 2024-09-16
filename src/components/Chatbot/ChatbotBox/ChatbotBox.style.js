@@ -8,6 +8,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: ${(props) => (props.isChat ? 'center' : 'flex-start')};
     position: relative;
 
     width: 90%;

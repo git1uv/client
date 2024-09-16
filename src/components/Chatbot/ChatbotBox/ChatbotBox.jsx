@@ -74,7 +74,7 @@ export default function ChatbotBox() {
   }
 
   return (
-    <S.Container>
+    <S.Container isChat={isChat}>
       {isChat ? (
         <Chat message={message} counseling={counseling}/>
       ) : (

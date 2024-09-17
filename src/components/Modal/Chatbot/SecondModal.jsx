@@ -10,17 +10,17 @@ import { useNavigate } from 'react-router-dom';
 const SecondModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
   const counseling = useSelector((state) => state.counseling);
-  const counseling_log_id = counseling.counselingLogId;
+  const counselingLogId = counseling.counselingLogId;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const endChatting = async() => {
     try {
-      const res = await axios.get(`/api/v1/chatbot/exit/${counseling_log_id}`);
+      const res = await axios.get(`/api/v1/chatbot/exit/${counselingLogId}`);
       console.log(res.data);
       dispatch(setSolution({
-        counselingLogId: counseling_log_id,
+        counselingLogId: counselingLogId,
         title: res.data.title,
         summary: res.data.summary,
         suggestion: res.data.suggestion,
@@ -37,7 +37,7 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
       const timer = setTimeout(() => {
         onClose(); // 3초 후에 onClose 호출
         endChatting();
-        navigate('/chatbot/result');
+        navigate(`/chatbot/${counselingLogId}`);
       }, 3000);
 
       return () => clearTimeout(timer); // 컴포넌트 언마운트 시 타이머 클리어

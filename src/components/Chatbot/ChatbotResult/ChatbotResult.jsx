@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './ChatbotResult.style'
 import Moment from 'moment'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
 import saveAs from 'file-saver';
 
@@ -12,15 +12,17 @@ import Neuranee from '../../../assets/chatbot/result/Neuranee.png'
 import Icon1 from '../../../assets/chatbot/result/journal1.png'
 import Icon2 from '../../../assets/chatbot/result/journal2.png'
 import Icon3 from '../../../assets/chatbot/result/journal3.png'
+import axios from 'axios';
+import { setSolution } from '../../../redux/solution';
 
 export default function ChatbotResult() {
   const [chatbot, setChatbot] = useState('');
   const componentRef = useRef(null); 
   const chatResult = useSelector((state) => state.chatResult);
   const solution = useSelector((state) => state.solution);
-
-  const formatDate = Moment().format('YYYY / MM / DD');
-  console.log(formatDate);
+  let [endDate, setEndDate] = useState('');
+  
+  const dispatch = useDispatch();
 
   const handleDownload = async () => {
     if (!componentRef.current) return;
@@ -38,10 +40,41 @@ export default function ChatbotResult() {
 
 };
 
-
   let result = localStorage.getItem('result');
+  let receivedToken = localStorage.getItem('token');
+  let counselingLogId = localStorage.getItem('counselingLogId');
+
+  /* 특정 상담일지 가져오기 API 구현*/
+
+  const getCounseling = async() => {
+    try {
+      const res = await axios.get(`/api/v1/chatbot/counselinglog/${counselingLogId}`, {
+        headers: {
+          'Authorization': `Bearer ${receivedToken}`
+        }
+      });
+      console.log(res.data);
+      dispatch(setSolution({
+        counselingLogId: res.data.counselingLogId,
+        title: res.data.title,
+        summary: res.data.summary,
+        suggestion: res.data.suggestion,
+        solution: res.data.solution,
+        endedAt: res.data.endedAt,
+      }));
+      const formatDate = res.data.endedAt.format('YYYY / MM / DD');
+      setEndDate(formatDate);
+
+      console.log(formatDate);
+
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   
   useEffect(() => {
+    // getCounseling(); /* 특정 상담일지 가져오기 API */
     if (result === 'Simmaeum')
       setChatbot('심마음');
     else if (result === 'Banbani')
@@ -59,8 +92,7 @@ export default function ChatbotResult() {
           <S.TitleBox>
             <S.Name>
               <div>{chatbot}의 일지</div>
-              {/* <div>{chatbot}의 일지 : 심마음과 반바니가 싸워서 속상해</div> */}
-              <h3>{formatDate}</h3>
+              <h3>{endDate}</h3>
             </S.Name>
             <section>{solution.title}</section>
           </S.TitleBox>

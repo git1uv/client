@@ -273,51 +273,56 @@ export const Film = styled.div`
   justify-content: center;
   align-items: center;
 `;
-export const With = styled.div`
+export const OneLine = styled.div`
   width: 100%;
-  height: 15%;
+  height: 50%;
   background: none;
-  color: #000;
-  font-family: Pretendard;
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 200;
-  line-height: 12px; /* 100% */
-  letter-spacing: -0.408px;
   display: flex;
   justify-content: flex-start;
+  align-items: flex-start;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+export const SliderLineBox = styled.div`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
+  width: 100%;
+  height: 30%;
 `;
 export const Time = styled.div`
-  width: 100%;
-  height: 15%;
+  width: auto;
+  height: 100%;
   background: none;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`;
-export const OneLine = styled.div`
-  width: 100%;
-  height: 40%;
-  background: none;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 export const WithChat = styled.div`
-  width: 100%;
-  height: 30%;
+  width: auto;
+  height: 100%;
   background: none;
-  color: #000;
-  font-family: Pretendard;
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 12px; 
   letter-spacing: -0.408px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  color: #fff;
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 `;
 export const ToDoListBox = styled.div`
   display: flex;

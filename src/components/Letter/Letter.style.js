@@ -237,17 +237,32 @@ export const Letter = styled.div`
   @media (min-width: 431px) and (max-width: 1023px) {
     max-width: 270px;
   }
-  @media (min-width: 1024px) and (max-width: 1200px) {
+  @media (min-width: 1024px) and (max-width: 1130px) {
     max-width: 370px;
   }
-  @media (min-width: 1201px) and (max-width: 1440px) {
+  @media (min-width: 1131px) and (max-width: 1200px) {
+    max-width: 400px;
+  }
+  @media (min-width: 1201px) and (max-width: 1260px) {
     max-width: 430px;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1261px) and (max-width: 1370px) {
+    max-width: 470px;
+  }
+  @media (min-width: 1371px) and (max-width: 1440px) {
+    max-width: 510px;
+  }
+  @media (min-width: 1441px) and (max-width: 1540px) {
     max-width: 540px;
   }
-  @media (min-width: 1601px){
+  @media (min-width: 1541px) and (max-width: 1600px) {
+    max-width: 570px;
+  }
+  @media (min-width: 1601px) and (max-width: 1700px) {
     max-width: 600px;
+  }
+  @media (min-width: 1701px){
+    max-width: 620px;
   }
 `;
 export const ChatBox = styled.div`

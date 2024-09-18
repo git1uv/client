@@ -23,7 +23,7 @@ export const Mailbox = styled.div`
   z-index: 2;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   @media (max-width: 430px) {
     width: 90vw;
@@ -53,7 +53,7 @@ export const TopRow = styled.div`
 export const Delete = styled.div`
   z-index: 4;
   background-image: url(${trash});
-  background-size: contain;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   position: absolute;
   bottom: 10%;
@@ -128,6 +128,7 @@ export const LettersWrapper = styled.div`
   border-radius: 55px;
   background-color: #280502;
   @media (max-width: 430px) {
+    width: 90%;
     height: 60%;
     margin-bottom: 20%;
   }
@@ -230,6 +231,24 @@ export const Letter = styled.div`
   border-radius: 30px;
   background: #FBFBFB;
   position: relative;
+  @media (max-width: 430px) {
+    max-width: 240px;
+  }
+  @media (min-width: 431px) and (max-width: 1023px) {
+    max-width: 270px;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    max-width: 370px;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    max-width: 430px;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    max-width: 540px;
+  }
+  @media (min-width: 1601px){
+    max-width: 600px;
+  }
 `;
 export const ChatBox = styled.div`
   z-index: 7;
@@ -275,8 +294,8 @@ export const TextBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column; 
-  width: 80%;
   height: 80%;
+  width: 80%;
 `;
 export const Title = styled.div`
   color: #27272A;
@@ -291,6 +310,9 @@ export const Title = styled.div`
   display: flex;
   text-align: center;
   align-items: center;
+  overflow: hidden; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 export const Date = styled.div`
   color: #52525B;

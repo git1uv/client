@@ -42,6 +42,27 @@ export const Character = styled.img`
         width: 170px;
     }
 `
+export const Emotion = styled.img`
+    position: absolute;
+    z-index: 90;
+    width: 115px;
+    height: auto;
+    bottom: calc(50% - 90px);
+    left: calc(50% - 62.5px); 
+
+    @media (max-width: 1440px) {
+        width: 95px;
+        bottom: calc(50% - 80px); 
+        left: calc(50% - 52.5px); 
+    }
+
+    @media (max-width: 630px) {
+        width: 75px;
+        bottom: calc(50% - 68px);  
+        left: calc(50% - 130px); 
+    }
+   
+`
 
 export const Chair = styled.img`
     position: absolute;

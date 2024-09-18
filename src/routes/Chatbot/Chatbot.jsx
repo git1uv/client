@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from './Chatbot.style'
 import Chair from '../../assets/chatbot/chatStart/ChairWeb.png'
-import Simmaeum from '../../assets/chatbot/chatStart/Simmaeum.png'
-import Banbani from '../../assets/chatbot/chatStart/Banbani.png'
-import Neuranee from '../../assets/chatbot/chatStart/Neuranee.png'
+import SimmaeumImg from '../../assets/chatbot/chatStart/Simmaeum.png'
+import BanbaniImg from '../../assets/chatbot/chatStart/Banbani.png'
+import NeuraneeImg from '../../assets/chatbot/chatStart/Neuranee.png'
+
+import { Simmaeum, Banbani, Neuranee } from '../../datas/emotion'
+
 
 import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import FirstModal from '../../components/Modal/Chatbot/FirstModal';
 import SecondModal from '../../components/Modal/Chatbot/SecondModal';
+import { useSelector } from 'react-redux';
 
 export default function Chatbot() {
   const result = localStorage.getItem('result');
+  let counseling = useSelector((state) => state.counseling)
   const navigate = useNavigate();
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+  const [emotion, setEmotion] = useState(Simmaeum.basic);
 
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -30,16 +35,64 @@ export default function Chatbot() {
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
   }
-  
+
+  // 감정 분석에 따른 챗봇의 표정 변화 구현 
+  const changeFace = () => {
+    let select = Simmaeum;
+    if (result === 'Simmaeum')
+      select = Simmaeum;
+    else if (result === 'Banbani')
+      select = Banbani;
+    else
+      select = Neuranee;
+
+    switch(counseling.emotion) {
+      case '평온':
+        setEmotion(select.basic);
+        break;
+      case '웃음':
+        setEmotion(select.smile);
+        break;
+      case '사랑':
+        setEmotion(select.love);
+        break;
+      case '놀람':
+        setEmotion(select.surprise);
+        break;
+      case '슬픔':
+        setEmotion(select.sad);
+        break;
+      case '불편':
+        setEmotion(select.awkward);
+        break;
+      case '화남':
+        setEmotion(select.annoying);
+        break;
+      case '불안':
+        setEmotion(select.anxiety);
+        break;
+      case '피곤':
+        setEmotion(select.tired);
+        break;
+      default:
+        setEmotion(select.love);
+    }
+  }
+
+  useEffect(() => {
+    changeFace();
+  }, [emotion])
+
   return (
     <S.App>
       <S.Top> 
         <S.Chair src={Chair} alt="상담의자"/>
         {result === 'Simmaeum'
-          ? <S.Character src={Simmaeum} alt='chatbot' />
-          : result === 'Banbani' ? <S.Character src={Banbani} alt='chatbot' /> 
-          : <S.Character src={Neuranee} alt='chatbot' /> 
+          ? <S.Character src={SimmaeumImg} alt='chatbot' />
+          : result === 'Banbani' ? <S.Character src={BanbaniImg} alt='chatbot' /> 
+          : <S.Character src={NeuraneeImg} alt='chatbot' /> 
         }
+        <S.Emotion src={emotion}></S.Emotion>
       </S.Top>
       <S.Bottom>
         <S.Header>
@@ -59,7 +112,9 @@ export default function Chatbot() {
             <p>내용을 바탕으로 <br/> 일지를 작성해줘요.</p>
           </S.SpeechBubble>
         </S.Header>
-        <ChatbotBox />
+        <ChatbotBox  
+          changeFace={changeFace}
+        />
       </S.Bottom>
       <FirstModal
         isVisible={isFirstModalOpen} 

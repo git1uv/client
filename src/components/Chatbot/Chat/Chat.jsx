@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 import * as S from './Chat.style'
 import * as T from '../ChatbotBox/ChatbotBox.style'
 
 export default function Chat({message, counseling}) {
-  const [sentenceList, setIsSentenceList] = useState([]);
   const chatbot = localStorage.getItem('result');
-  useEffect(() => {
-    setIsSentenceList((chats => [...chats, message.msg]))
-  }, [message.msg])
 
   // 더미데이터
   const dummyData = [
@@ -28,7 +24,6 @@ export default function Chat({message, counseling}) {
       isUser: false
     },
   ]
-
 
 
   return (

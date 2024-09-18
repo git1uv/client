@@ -45,6 +45,15 @@ export default function ChatbotBox() {
       setCurrent(input);
       textClear();
       // postChatting();  // 사용자 메시지 보내기 API
+
+      // test
+      dispatch(setAnswer(
+        {
+          counselingLogId: 1,
+          emotion: '사랑',
+          date: '',
+        }
+      ))
       console.log(message)
     }
   }

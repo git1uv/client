@@ -38,7 +38,7 @@ export const Character = styled.img`
     @media (max-width: 1440px) {
         width: 200px;
     }
-    @media (max-width: 630px) {
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         width: 170px;
     }
 `
@@ -56,7 +56,7 @@ export const Emotion = styled.img`
         left: calc(50% - 52.5px); 
     }
 
-    @media (max-width: 630px) {
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         width: 75px;
         bottom: calc(50% - 68px);  
         left: calc(50% - 130px); 

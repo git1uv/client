@@ -81,7 +81,7 @@ export default function Chatbot() {
 
   useEffect(() => {
     changeFace();
-  }, [emotion])
+  }, [counseling.emotion])
 
   return (
     <S.App>

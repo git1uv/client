@@ -6,6 +6,9 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 import styled from "styled-components";
 import * as P from './PCDatePage.style';
+import slider_t from '../../assets/CalendarImg/slider_t.png';
+import slider_f from '../../assets/CalendarImg/slider_f.png';
+import slider_h from '../../assets/CalendarImg/slider_h.png';
 
 const SwiperContainer = styled.div`
   display: flex;
@@ -32,7 +35,7 @@ const CustomSwiper = styled(Swiper)`
   }
   .swiper-pagination {
     position: absolute;
-    bottom: 0.3vh !important;
+    bottom: 0.1vh !important;
   }
   .swiper-pagination-bullet {
     background-color: #A17C51;
@@ -42,15 +45,34 @@ const CustomSwiperSlide = styled(SwiperSlide)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #d9d9d9;
+  background-image: ${({ chatbotType }) => getChatbotBackground(chatbotType)};
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateX(-50%, -50%);
   width: 100%; 
   height: 100%;
+  img{
   border-radius: 5px;
-  background: #D9D9D9;
+  } 
+  border-radius: 5px;
+  background-clip: padding-box;
   padding: 2% 5%;
   flex-direction: column;
 `;
 
+function getChatbotBackground(chatbotType) {
+  switch (chatbotType) {
+    case 'F':
+      return `url(${slider_f})`;
+    case 'T':
+      return `url(${slider_t})`;
+    case 'H':
+      return `url(${slider_h})`;
+    default:
+      return `url(${slider_h})`;
+  }
+}
 
 function CustomSlider({ logs, getChatbotName }) {
     return (
@@ -64,11 +86,12 @@ function CustomSlider({ logs, getChatbotName }) {
           className="mySwiper"
         >
           {logs.map((log) => (
-          <CustomSwiperSlide key={log.id}>
-            <P.Time>{log.time}</P.Time>
+          <CustomSwiperSlide key={log.id} chatbotType={log.chatbotType}>
             <P.OneLine>{log.title}</P.OneLine>
-            <P.With>대화한 친구</P.With>
+            <P.SliderLineBox>
             <P.WithChat>{getChatbotName(log.chatbotType)}</P.WithChat>
+            <P.Time>{log.time}</P.Time>
+            </P.SliderLineBox>
           </CustomSwiperSlide>
           ))}
         </CustomSwiper>

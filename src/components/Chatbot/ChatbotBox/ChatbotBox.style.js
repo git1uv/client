@@ -86,8 +86,7 @@ export const InputBox = styled.div`
         background: none;
         border: none;
         outline: none;
-    }
-
+        }
     button {
         width: 3.125rem;
         height: 3.125rem;

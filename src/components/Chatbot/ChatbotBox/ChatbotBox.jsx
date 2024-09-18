@@ -11,6 +11,7 @@ export default function ChatbotBox() {
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
   const [input, setInput] = useState(); // input 값
   const [current, setCurrent] = useState(); // 보낼 문장
+  const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
   // const [counseling, setCounseling] = useState({
   //   counselingLogId: 1,
   //   emotion: '평온',
@@ -54,6 +55,7 @@ export default function ChatbotBox() {
 
   /* 사용자 메시지 보내기 API*/
   const postChatting = async() => {
+    setLoading(true);
     try {
       const res = await axios.post(`/api/v1/chatbot/chatting`, {
         userMessage: current,
@@ -74,6 +76,7 @@ export default function ChatbotBox() {
         msg: res.data.message,
         isUser: false
       }]);
+      setLoading(false);
     } catch(err) {
       console.log(err);
       window.alert('메시지 전송을 실패하였습니다. 다시 시도해주세요.');
@@ -83,7 +86,7 @@ export default function ChatbotBox() {
   return (
     <S.Container isChat={isChat}>
       {isChat ? (
-        <Chat message={message} counseling={counseling}/>
+        <Chat message={message} counseling={counseling} loading={loading}/>
       ) : (
         <>
           <S.Title>
@@ -98,12 +101,13 @@ export default function ChatbotBox() {
       )}
       <S.InputBox>
         <input
+          disabled={loading}
           placeholder='고민부터 털어놓고 싶은 것, 오늘 있었던 일 등 뭐든 말해보아요!'
           onChange={ChangeInput}
           onKeyPress={handleKeyPress}
           ref={inputRef}
         />
-        <button onClick={ChangeChat} />
+        <button disabled={loading} onClick={ChangeChat} />
       </S.InputBox>
     </S.Container>
   )

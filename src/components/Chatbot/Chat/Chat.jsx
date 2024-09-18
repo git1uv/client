@@ -1,8 +1,8 @@
 import React from 'react'
 import * as S from './Chat.style'
 import * as T from '../ChatbotBox/ChatbotBox.style'
-
-export default function Chat({message, counseling}) {
+import icon from '../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
+export default function Chat({message, counseling, loading}) {
   const chatbot = localStorage.getItem('result');
 
   // 더미데이터
@@ -33,7 +33,13 @@ export default function Chat({message, counseling}) {
           return (
             (value.isUser ?
               <S.UserBubble chatbot={chatbot}>{value.msg}</S.UserBubble>
-              :  <S.ChatbotBubble>{value.msg}</S.ChatbotBubble>
+              :  <S.ChatbotBubble key={index}>
+              {loading && index === dummyData.length - 1 ? ( // 마지막 응답이 로딩 중일 때
+                <img src={icon} alt="loading icon" />
+              ) : (
+                value.msg
+              )}
+            </S.ChatbotBubble>
             )
           )
         })

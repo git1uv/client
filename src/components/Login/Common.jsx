@@ -14,6 +14,8 @@ export default function Common({openModal}) {
   const [pw, setPw] = useState('');
   const [pwVisible, setPwVisible] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleKakaoLogin = () => {
     window.location.href = kakaoURL;
   }
@@ -25,28 +27,25 @@ export default function Common({openModal}) {
 
   function saveLocalStorage(token) {
     localStorage.setItem('token', token);
-  }
+  } 
 
   /* 로그인 API : 연결하면 주석 풀기 */
-  // const postLogin = async() => {
-  //   try {
-  //     const res = await axios.post('/api/v1/login/general', {
-  //       email: email,
-  //       password: pw,
-  //     })
-  //     let receivedToken = res.data.token; // 이것도 서버에서 전달받는 데이터의 형식에 따라 코드 바뀔 듯
-  //     saveLocalStorage(receivedToken);
-  //     navigate('/main')
-  //     console.log(res.data);
-  //   } catch(err) {
-  //     /* 서버에게 받는 형식에 따라 바뀔 예정 */
-  //     /* if (err.response.status === 403) 
-  //         window.alert('존재하지 않는 이메일이거나 비밀번호가 일치하지 않습니다.') */
-  //     console.log(err);
-  //   }
-  // }
+  const postLogin = async() => {
+    try {
+      const res = await axios.post('http://simter.site:8080/api/v1/login/general', {
+        email: email,
+        password: pw,
+      })
+      let data = res.data.data;
+      let accessToken = data.token.accessToken; 
+      let refreshToken = data.token.refreshToken;
+      saveLocalStorage(`Bearer ${accessToken} ${refreshToken}`);
+      navigate('/main')
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
-  const navigate = useNavigate();
 
   return (
     <S.Container>
@@ -73,8 +72,7 @@ export default function Common({openModal}) {
               onChange={(e) => setPw(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  // postLogin(); /* 로그인 API : 연결하면 주석 풀기 */
-                  navigate('/main')
+                  postLogin();
                 }
               }}
             ></input>
@@ -85,9 +83,7 @@ export default function Common({openModal}) {
         </S.InputBox>
         <S.Null />
         <S.LoginButton 
-          // onClick={postLogin()}>로그인</S.LoginButton> /* 로그인 API : 연결하면 주석 풀기 */
-          onClick={() => navigate('/main')}>로그인</S.LoginButton> 
-          {/* 위 코드 API 연결 시 삭제 */}
+          onClick={postLogin}>로그인</S.LoginButton>
         <S.FindPw>
           <h6>비밀번호를 잊으셨나요?</h6>
           <button onClick={openModal}>비밀번호 찾기</button>

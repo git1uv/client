@@ -9,10 +9,13 @@ export const StyledCalendarWrapper = styled.div`
   width: 51.5vw;
   height: 84.5vh;
   position: relative;
-  @media screen and (min-width: 431px) {
+  @media screen and (min-width: 769px) {
     margin-top: 5.3vh;
   }
-  @media screen and (max-width: 430px) {
+  @media (min-width: 769px) and (max-width: 1023px){
+    width: 80%;
+  }
+  @media screen and (max-width: 768px) {
     height: 87vh; 
     width: 100%;
   }
@@ -129,19 +132,25 @@ export const StyledCalendarWrapper = styled.div`
     font-size: 1.25rem;
     border-radius: 0.8rem;
     @media (max-width: 430px) {
-      padding: 2vh 1vw 8vh;
+      padding: 0.3rem 0.2rem 8rem;
+    }
+    @media (min-width: 431px) and (max-width: 768px) {
+      padding: 0.5rem 0 7.5rem;
+    }
+    @media (min-width: 769px) and (max-width: 1023px) {
+      padding: 0.5rem 0 7rem;
     }
     @media (min-width: 1024px) and (max-width: 1200px) {
-      padding: 2vh 0 7vh;
+      padding: 0.5rem 0 7.5rem;
     }
     @media (min-width: 1201px) and (max-width: 1440px) {
-      padding: 2vh 0 7vh;
+      padding: 0.4rem 0 7rem;
     }
     @media (min-width: 1441px) and (max-width: 1600px) {
-      padding: 1vh 0 7vh;
+      padding: 0.2rem 0 7.5rem;
     }
     @media (min-width: 1601px) {
-      padding: 1vh 0 10vh;
+      padding: 0.4rem 0 7.5rem;
     }
   }
   
@@ -167,7 +176,23 @@ export const StyledEmotion = styled.div`
     width: 3.75rem;
     height: 3.75rem;
   }
-  @media (min-width: 431px) {
+  @media (min-width: 431px) and (max-width: 768px) {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+  @media (min-width: 769px) and (max-width: 1200px) {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 5.25rem;
+    height: 5.25rem;
+  }
+  @media (min-width: 1601px) {
     width: 5.5rem;
     height: 5.5rem;
   }
@@ -184,12 +209,32 @@ export const Circle = styled.div`
   @media (max-width: 430px) {
     width: 4.15rem;
     height: 4.15rem;
-    top: 70%;
+    top: 60%;
   }
-  @media (min-width: 1024px) and (max-width: 1600px) {
+  @media (min-width: 431px) and (max-width: 768px) {
     width: 6.25rem;
     height: 6.25rem;
-    top: 70%;
+    top: 60%;
+  }
+  @media (min-width: 769px) and (max-width: 1023px) {
+    width: 5rem;
+    height: 5rem;
+    top: 60%;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 5rem;
+    height: 5rem;
+    top: 60%;
+  }
+  @media (min-width: 1201px) and (max-width: 1440px) {
+    width: 5.25rem;
+    height: 5.25rem;
+    top: 65%;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    width: 6rem;
+    height: 6rem;
+    top: 60%;
   }
   @media (min-width: 1601px) {
     width: 6.25rem;

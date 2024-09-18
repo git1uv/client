@@ -20,18 +20,36 @@ const LetterWrapper = styled.div`
 function Mailbox() {
   const [isLetterModalVisible, setLetterModalVisible] = useState(false);
   const [mails, setMails] = useState([]);
-  const [selectedMail, setSelectedMail] = useState(null);
   const [seeAllActive, setSeeAllActive] = useState(true);
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
+  const [mailDetails, setMailDetails] = useState(null);
   const userId = 1; //임시유저아이디
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedMailIds, setSelectedMailIds] = useState([]);  
 
-  const handleLetterClick = (mail) => {
-    setSelectedMail(mail);
-    setLetterModalVisible(true);
+  const handleLetterClick = async (mailId) => {
+    //임시
+    const mail = data.find(mail => mail.mailId === mailId);
+    if (mail) {
+      setMailDetails(mail); 
+      setLetterModalVisible(true); 
+    }
+    /**try {
+      const response = await axios.get(`/api/v1/mail?mailId=${mailId}`);
+      if (response.data.code === "200") {
+        setMailDetails(response.data.data);  // 메일 상세 정보를 상태에 저장
+        setLetterModalVisible(true);  // 모달 열기
+      } else if(response.data.code === "MAIL5001"){
+        console.error("편지 가져오기 실패:", response.data.message);
+      } else {
+        console.error("편지가 없습니다:", response.data.message);
+      }
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }*/
   };
+
   const handleDeleteClick = () => {
     if (selectedMailIds.length > 0) {
       setDeleteModalVisible(true);
@@ -53,8 +71,6 @@ function Mailbox() {
         return data;
     }
   };
-
-  
 
 /**useEffect(() => {
     const fetchMails = async (listType = '') => {
@@ -172,7 +188,7 @@ function Mailbox() {
                   onChange={() => handleCheck(mail.mailId)}
                 />
               </L.CheckBox>
-              <L.Letter onClick={() => handleLetterClick(mail)}>  
+              <L.Letter onClick={() => handleLetterClick(mail.mailId)}>  
                 <L.ChatBox>
                   <L.Chatbot>
                     <img src={getChatbotImage(mail.chatbotType)} alt="chatbot" />
@@ -201,13 +217,13 @@ function Mailbox() {
           </L.Letters>
           </L.LettersWrapper>
       </L.Mailbox>
-      {isLetterModalVisible && selectedMail && (
+      {isLetterModalVisible && mailDetails && (
           <Letter
-            mailId={selectedMail.mailId}
+            mailId={mailDetails.mailId}
             userId={userId}
-            content={selectedMail.content}
-            createdAt={selectedMail.createdAt}
-            chatbotType={selectedMail.chatbotType}
+            content={mailDetails.content}
+            createdAt={mailDetails.createdAt}
+            chatbotType={mailDetails.chatbotType}
             setLetterModal={setLetterModalVisible}
           />
         )}

@@ -6,12 +6,11 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAnswer } from '../../../redux/counseling';
 
-export default function ChatbotBox() {
-  const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
-  const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
-  const [input, setInput] = useState(); // input 값
-  const [current, setCurrent] = useState(); // 보낼 문장
-  const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
+export default function ChatbotBox({changeFace, loading, isChat, message}) {
+  // const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
+  // const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
+  // const [input, setInput] = useState(); // input 값
+  // const [current, setCurrent] = useState(); // 보낼 문장
   // const [counseling, setCounseling] = useState({
   //   counselingLogId: 1,
   //   emotion: '평온',
@@ -22,75 +21,6 @@ export default function ChatbotBox() {
   const dispatch = useDispatch();
 
   const receivedToken = localStorage.getItem('token');
-
-  const textClear = () => { // input 창 초기화
-    inputRef.current.value = null;
-  }
-
-  const ChangeChat = () => { // 채팅 화면으로 변경
-    if (!isChat) {
-      setIsChat(true);
-    }
-    textClear();
-    // postChatting(); // 사용자 메시지 보내기 API
-  }
-
-  const handleKeyPress = (e) => { // 엔터키 누르면 메시지 전송
-    if (e.key === 'Enter') {
-      ChangeChat();
-      setMessage((prev) => [...prev, {
-        msg: input,
-        isUser: true,
-      }]);
-      setCurrent(input);
-      textClear();
-      // postChatting();  // 사용자 메시지 보내기 API
-
-      // test
-      dispatch(setAnswer(
-        {
-          counselingLogId: 1,
-          emotion: '사랑',
-          date: '',
-        }
-      ))
-      console.log(message)
-    }
-  }
-
-  const ChangeInput = (e) => {
-    setInput(e.target.value);
-  }
-
-  /* 사용자 메시지 보내기 API*/
-  const postChatting = async() => {
-    setLoading(true);
-    try {
-      const res = await axios.post(`/api/v1/chatbot/chatting`, {
-        userMessage: current,
-      }, {
-        headers: {
-          'Authorization': `Bearer ${receivedToken}`
-        }
-      })
-      console.log(res.data);
-      dispatch(setAnswer(
-        {
-          counselingLogId: res.data.counselingLogId,
-          emotion: res.data.emotion,
-          date: res.data.createdAt,
-        }
-      ))
-      setMessage((prev) => [...prev, {
-        msg: res.data.message,
-        isUser: false
-      }]);
-      setLoading(false);
-    } catch(err) {
-      console.log(err);
-      window.alert('메시지 전송을 실패하였습니다. 다시 시도해주세요.');
-    }
-  }
 
   return (
     <S.Container isChat={isChat}>
@@ -108,16 +38,6 @@ export default function ChatbotBox() {
           </S.Warning>
         </>
       )}
-      <S.InputBox>
-        <input
-          disabled={loading}
-          placeholder='고민부터 털어놓고 싶은 것, 오늘 있었던 일 등 뭐든 말해보아요!'
-          onChange={ChangeInput}
-          onKeyPress={handleKeyPress}
-          ref={inputRef}
-        />
-        <button disabled={loading} onClick={ChangeChat} />
-      </S.InputBox>
     </S.Container>
   )
 }

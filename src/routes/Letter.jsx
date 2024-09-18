@@ -6,6 +6,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
+import data from '../datas/mail';
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -19,7 +20,6 @@ const LetterWrapper = styled.div`
 function Mailbox() {
   const [isLetterModalVisible, setLetterModalVisible] = useState(false);
   const [mails, setMails] = useState([]);
-  const [favorites, setFavorites] = useState([]);
   const [selectedMail, setSelectedMail] = useState(null);
   const [seeAllActive, setSeeAllActive] = useState(true);
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
@@ -42,82 +42,26 @@ function Mailbox() {
   };
 
   // 예시 데이터 설정
-  useEffect(() => {
-    const exampleMails = [
-      {
-        mailId: 4,
-        content: "하잉",
-        chatbotType: "F",
-        createdAt: "2024-08-09",
-        read: false
-      },
-      {
-        mailId: 6,
-        content: "ㅎㅎ",
-        chatbotType: "H",
-        createdAt: "2024-08-10",
-        read: false
-      },
-      {
-        mailId: 7,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-11",
-        read: true
-      },
-      {
-        mailId: 8,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-12",
-        read: true
-      },
-      {
-        mailId: 9,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-13",
-        read: true
-      },
-      {
-        mailId: 10,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-14",
-        read: true
-      },
-      {
-        mailId: 11,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-15",
-        read: true
-      },
-      {
-        mailId: 12,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-16",
-        read: true
-      },
-      {
-        mailId: 13,
-        content: "ㅎㅁㅎ",
-        chatbotType: "T",
-        createdAt: "2024-08-17",
-        read: true
-      }
-    ];
-    setMails(exampleMails); // 예시 데이터 설정
-  }, []);
+  const fetchMailsForType = (listType = "all") => {
+    switch (listType) {
+      case "starred":
+        return data.filter(mail => mail.starred);
+      case "notRead":
+        return data.filter(mail => !mail.read);
+      case "all":
+      default:
+        return data;
+    }
+  };
+
+  
 
 /**useEffect(() => {
-    // API를 호출하여 메일 목록 가져오기
-    const fetchMails = async () => {
+    const fetchMails = async (listType = '') => {
       try {
-        const response = await axios.get(`/api/v1/mail/${userId}`);
-        if (response.data.code === "COMMON200") {
-          setMails(response.data.data.mails); // 메일 목록 저장
+        const response = await axios.get(`/api/v1/mail/list${listType ? `?listType=${listType}` : ''}`);
+        if (response.data.code === "200") {
+          setMails(response.data.data.mails); 
         } else if (response.data.code === "MAIL5001") {
           console.error("편지 가져오기 실패:", response.data.message);
         } else {
@@ -127,19 +71,19 @@ function Mailbox() {
         console.error("API 호출 중 오류 발생:", error);
       }
     };
-    fetchMails(); // 컴포넌트가 마운트될 때 API 호출
-  }, [userId]);
+    fetchMails('');
+  }, []);
 
  */
   const toggleFavorite = (mailId) => {
     const updatedMails = mails.map((mail) =>
-      mail.mailId === mailId ? { ...mail, favorite: !mail.favorite } : mail
+      mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
     );
     setMails(updatedMails);
     /**
     axios.patch(`/api/v1/mail/star/${mailId}`)
       .then(response => {
-        if (response.data.code === "COMMON200") {
+        if (response.data.code === "200") {
           console.log("즐겨찾기 추가 성공");
         }else if (response.data.code === "MAIL5001") {
           console.error("실패:", response.data.message);
@@ -164,35 +108,31 @@ function Mailbox() {
           return Hface;
       }
     };
-
-  const getFilteredMails = () => {
-    if (seeFavoritesActive) {
-      return mails.filter(mail => mail.favorite);
-      //return favorites;
-    }
-    if (seeNotReadActive) {
-      return mails.filter(mail => !mail.read);
-    }
-    return mails;
-    };
   
-
   const handleSeeAllToggle = () => {
     setSeeAllActive(true);
     setSeeFavoritesActive(false);
     setSeeNotReadActive(false);
+    //fetchMails('all'); 
+
+    setMails(fetchMailsForType("all"));
     };
   const handleSeeFavoritesToggle = () => {
     //fetchFavoriteMails();
     setSeeFavoritesActive(true);
     setSeeAllActive(false);
     setSeeNotReadActive(false);
+    //fetchMails('starred');  
 
+    setMails(fetchMailsForType("starred"));
     };
   const handleSeeNotReadToggle = () => {
     setSeeNotReadActive(true);
     setSeeAllActive(false);
     setSeeFavoritesActive(false);
+    //fetchMails('notRead');  
+
+    setMails(fetchMailsForType("notRead"));
     };
 
   const handleCheck = (mailId) => {
@@ -204,23 +144,11 @@ function Mailbox() {
       }
     });
   };
-  /**
-   // 즐겨찾기된 메일 가져오기 (Favorites)
-  const fetchFavoriteMails = async () => {
-    try {
-      const response = await axios.get(`/api/v1/mail/stared/${userId}`);
-      if (response.data.code === "COMMON200") {
-        setFavorites(response.data.data.mails); // 즐겨찾기된 메일 설정
-      } else {
-        console.error("즐겨찾기 조회 실패:", response.data.message);
-      }
-    } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
-    }
-  };
-   */
     
-  
+  useEffect(() => {
+    //예시
+    setMails(fetchMailsForType("all"));
+  }, []); 
   
 
   return (
@@ -230,13 +158,12 @@ function Mailbox() {
           <L.TopRow>
             <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
             <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
-            {/* <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} /> */}
             <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} />
-            <L.Delete onClick={handleDeleteClick} />
+            <L.Delete onClick={() => handleDeleteClick()}/>
           </L.TopRow>
           <L.LettersWrapper>
           <L.Letters>
-          {getFilteredMails().map(mail => (
+          {mails.map(mail => (
             <L.LetterContainer key={mail.mailId}>
               <L.CheckBox>
                 <L.Check
@@ -257,9 +184,9 @@ function Mailbox() {
                   <L.Date>{mail.createdAt}</L.Date>
                 </L.TextBox>
                 <L.HeartBox>
-                <L.Heart like={mail.favorite}>
+                <L.Heart like={mail.starred}>
                   <img 
-                    src={mail.favorite ? heart : Emptyheart} 
+                    src={mail.starred ? heart : Emptyheart} 
                     onClick={(e) => {
                       e.stopPropagation(); // 이벤트 전파를 막아 모달이 뜨지 않게 함
                       toggleFavorite(mail.mailId);

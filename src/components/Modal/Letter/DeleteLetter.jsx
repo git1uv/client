@@ -13,13 +13,13 @@ const DeleteLetterModal = ({ isVisible, onClose, onConfirm, mailId }) => {
         mailIds: mailId,
       });
 
-      if (response.data.code === "MAIL2001") {
+      if (response.data.code === "200") {
         onConfirm();
       } else {
-        console.error('Failed to delete letter:', response.data.message);
+        console.error('실패:', response.data.message);
       }
     } catch (error) {
-      console.error('Error deleting letter:', error);
+      console.error('실패:', error);
     }*/
   };
 

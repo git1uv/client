@@ -23,8 +23,10 @@ import SimterInformation from './routes/Set/SimterInformation';
 import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
 import TestPage from './routes/Chatbot/TestPage';
-import TestContent from './components/Test/TestContent';
+import TestContent from './components/Test/TestContent/TestContent';
 import TestResult from './routes/Chatbot/TestResultPage';
+import ChatbotChoice from './components/Chatbot/ChatbotChoice/ChatbotChoice';
+import ChatbotResultPage from './routes/Chatbot/ChatbotResultPage';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -64,6 +66,8 @@ function App() {
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />
                 <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/chatbot/choice" element={<ChatbotChoice />} />
+                <Route path="/chatbot/result" element={<ChatbotResultPage />} />
                 <Route path="/test" element={<TestPage />} />
                 <Route path="/test/content" element={<TestContent />} />
                 <Route path="/test/result" element={<TestResult />} />

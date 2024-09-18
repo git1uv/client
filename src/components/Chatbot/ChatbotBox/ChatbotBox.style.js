@@ -7,12 +7,28 @@ const { ALIGN, RESPONSIVE_SIZE } = theme;
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: ${(props) => (!props.isChat ? 'center' : 'flex-start')};
     align-items: ${(props) => (props.isChat ? 'center' : 'flex-start')};
     position: relative;
 
-    width: 90%;
-    height: 100%;
+    padding: 2rem 4rem; 
+
+    @media (max-width: 1440px) {
+        padding: 1rem 2rem; 
+    }
+
+    width: 100%;
+    height: 43.41075rem;
+
+    @media (max-width: 1440px) {
+       height: 30.41075rem;
+    }
+    @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
+        width: 30rem;
+        height: 50rem;
+    }
+
+    overflow: auto;
 `
 
 export const Title = styled.div`
@@ -34,7 +50,7 @@ export const Title = styled.div`
     }
 `
 export const Warning = styled.div`
-    margin-top: 1rem;
+    margin-top: 3rem;
     h3 {
         margin: 0;
         color: #ED6243;
@@ -66,13 +82,22 @@ export const InputBox = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
-    width: 80%;
+    width: 55.0625rem;
     height: 4rem;
     
     position: absolute;
-    bottom: calc(0% - 2rem);
-    left: calc(50% - 40%);
+    bottom: calc(0% + 5.5rem);
+
+    @media (max-width: 1440px) {
+        width: 45.0625rem;
+        bottom: calc(0% + 1.5rem);
+    }
+    @media (max-width: 1200px) {
+        bottom: calc(0% + 4rem);
+    }
+    @media (max-width: 768px) {
+        bottom: calc(0% + 4.5rem);
+    }
 
     border-radius: 2.0625rem;
     border: 1px solid #739B8B;

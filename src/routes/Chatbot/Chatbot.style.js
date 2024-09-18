@@ -10,8 +10,8 @@ export const App = styled.div`
     ${ALIGN.COLUMN_CENTER};
 
     width: 100%;
-    height: 100vh;
-
+    // height: 100vh;
+    min-height: 100vh;
     background-image: url(${backgroundImg});
     background-size: cover;
     background-color: #EEECE3;
@@ -96,6 +96,7 @@ export const Bottom = styled.div`
     @media (max-width: 1440px) {
         width: 60.5625rem;
         height: 30.41075rem;
+
     }
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         width: 30rem;

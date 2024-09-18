@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './ChatbotResult.style'
 import Moment from 'moment'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
 import saveAs from 'file-saver';
 
@@ -12,14 +12,17 @@ import Neuranee from '../../../assets/chatbot/result/Neuranee.png'
 import Icon1 from '../../../assets/chatbot/result/journal1.png'
 import Icon2 from '../../../assets/chatbot/result/journal2.png'
 import Icon3 from '../../../assets/chatbot/result/journal3.png'
+import axios from 'axios';
+import { setSolution } from '../../../redux/solution';
 
 export default function ChatbotResult() {
   const [chatbot, setChatbot] = useState('');
   const componentRef = useRef(null); 
   const chatResult = useSelector((state) => state.chatResult);
-
-  const formatDate = Moment().format('YYYY / MM / DD');
-  console.log(formatDate);
+  const solution = useSelector((state) => state.solution);
+  let [endDate, setEndDate] = useState('');
+  
+  const dispatch = useDispatch();
 
   const handleDownload = async () => {
     if (!componentRef.current) return;
@@ -37,10 +40,41 @@ export default function ChatbotResult() {
 
 };
 
-
   let result = localStorage.getItem('result');
+  let receivedToken = localStorage.getItem('token');
+  let counselingLogId = localStorage.getItem('counselingLogId');
+
+  /* 특정 상담일지 가져오기 API 구현*/
+
+  const getCounseling = async() => {
+    try {
+      const res = await axios.get(`/api/v1/chatbot/counselinglog/${counselingLogId}`, {
+        headers: {
+          'Authorization': `Bearer ${receivedToken}`
+        }
+      });
+      console.log(res.data);
+      dispatch(setSolution({
+        counselingLogId: res.data.counselingLogId,
+        title: res.data.title,
+        summary: res.data.summary,
+        suggestion: res.data.suggestion,
+        solution: res.data.solution,
+        endedAt: res.data.endedAt,
+      }));
+      const formatDate = res.data.endedAt.format('YYYY / MM / DD');
+      setEndDate(formatDate);
+
+      console.log(formatDate);
+
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
   
   useEffect(() => {
+    // getCounseling(); /* 특정 상담일지 가져오기 API */
     if (result === 'Simmaeum')
       setChatbot('심마음');
     else if (result === 'Banbani')
@@ -58,10 +92,9 @@ export default function ChatbotResult() {
           <S.TitleBox>
             <S.Name>
               <div>{chatbot}의 일지</div>
-              {/* <div>{chatbot}의 일지 : 심마음과 반바니가 싸워서 속상해</div> */}
-              <h3>{formatDate}</h3>
+              <h3>{endDate}</h3>
             </S.Name>
-            <section>{chatResult.title}</section>
+            <section>{solution.title}</section>
           </S.TitleBox>
         </S.Top>
         <S.Bottom>
@@ -71,7 +104,7 @@ export default function ChatbotResult() {
               <h2>네가 가진 고민은 이런 거야</h2>
             </S.Title>
             <S.Content>
-              <p>{chatResult.content.first}</p>
+              <p>{solution.summary}</p>
             </S.Content>
           </S.ContentBox>
           <S.ContentBox>
@@ -80,7 +113,7 @@ export default function ChatbotResult() {
               <h2>내 생각은 이런 것이야</h2>
             </S.Title>
             <S.Content>
-              <p>{chatResult.content.second}</p>
+              <p>{solution.suggestion}</p>
             </S.Content>
           </S.ContentBox>
           <S.ContentBox>
@@ -90,15 +123,15 @@ export default function ChatbotResult() {
             </S.Title>
             <S.Content>
               <div>
-                <p>{chatResult.content.third[0]}</p>
+                <p>{solution.solutions[0].content}</p>
               </div>
               <section />
               <div>
-                <p>{chatResult.content.third[1]}</p>
+                <p>{solution.solutions[1].content}</p>
               </div>
               <section />
               <div>
-                <p>{chatResult.content.third[2]}</p>
+                <p>{solution.solutions[2].content}</p>
               </div>
             </S.Content>
           </S.ContentBox>

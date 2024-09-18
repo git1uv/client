@@ -117,8 +117,8 @@ export const SpeechBubble = styled.div`
         border: 17px solid transparent;
         border-bottom-color: #FBFBFB;
         border-top: 0;
-        margin-left: -17px;
-        margin-top: -17px;
+        margin-left: -16px;
+        margin-top: -16px;
     }
 
     h2 {

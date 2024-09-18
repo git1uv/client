@@ -67,7 +67,7 @@ function App() {
                 <Route path="/date/:date" element={<DatePage />} />
                 <Route path="/chatbot" element={<Chatbot />} />
                 <Route path="/chatbot/choice" element={<ChatbotChoice />} />
-                <Route path="/chatbot/result" element={<ChatbotResultPage />} />
+                <Route path="/chatbot/:counselingLogId" element={<ChatbotResultPage />} />
                 <Route path="/test" element={<TestPage />} />
                 <Route path="/test/content" element={<TestContent />} />
                 <Route path="/test/result" element={<TestResult />} />

@@ -56,6 +56,7 @@ export const Header = styled.div`
   }
   img {
     width: 12.68369rem;
+    border-radius: 50%;
     
     @media (max-width: 1440px) {
       width: 9rem;

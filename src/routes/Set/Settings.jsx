@@ -27,10 +27,20 @@ function Settings() {
     // 로그아웃 로직 추가
     navigate('/login'); 
   };
-  const confirmDeleteAccount = () => {
+  const confirmDeleteAccount = async () => {
     setDeleteAccountModal(false);
-    // 탈퇴 로직 추가
-    navigate('/');
+    /**
+     try {
+      const response = await axios.patch('/api/v1/setting/delete-account');
+ 
+      if (response.status === 200) {
+        console.log('사용자 탈퇴 성공:', response.data.message);
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('사용자 탈퇴 실패:', error.response?.data?.message || error.message);
+      setErrorMessage('탈퇴에 실패했습니다. 다시 시도해 주세요.');
+    }*/
   };
 
   const [nickname, setNickname] = useState('');

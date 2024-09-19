@@ -150,7 +150,7 @@ export const StyledCalendarWrapper = styled.div`
       padding: 0.2rem 0 7.5rem;
     }
     @media (min-width: 1601px) {
-      padding: 0.4rem 0 7.5rem;
+      padding: 0.4rem 0 7rem;
     }
   }
   

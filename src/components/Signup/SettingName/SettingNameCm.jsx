@@ -37,28 +37,28 @@ export default function SettingNameCm() {
       return;
     }
     /* 회원가입 API : 연결하면 주석 풀기 */
-    // await postRegister();
-    navigate('/login');  /* 회원가입 API : 연결하면 지우기 */
+    await postRegister();
+    // navigate('/login');  /* 회원가입 API : 연결하면 지우기 */
   };
 
 
   /* 회원가입 API : 연결하면 주석 풀기 */
 
-  // const postRegister = async() => {
-  //   try {
-  //     const res = await axios.post('/api/v1/register', {
-  //       nickname: nickname,
-  //       email: user.email,
-  //       password: user.password
-  //     })
-      
-  //     console.log(res.data);
-  //     window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
-  //     navigate('/login');
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  const postRegister = async() => {
+    try {
+      const res = await axios.post('http://simter.site:8080/api/v1/register/general', {
+        nickname: nickname,
+        email: user.email,
+        password: user.password,
+        loginType: 'general'
+      })
+      console.log(res.data);
+      window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
+      navigate('/login');
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   return (
     <T.Container>

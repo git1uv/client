@@ -7,17 +7,16 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
   
   const postTempPw = async() => {
     try { 
-      const res = await axios.patch(
-        `/api/v1/login/temp-pw`,
-        {email: email} 
-      )
-      console.log(res);
-      if (res.status === 403)
+      const res = await axios.patch(`http://simter.site:8080/api/v1/login/temp-pw`, {email: email})
+      console.log(res.data);
+      if (res.status === 400)
         window.alert('존재하지 않는 이메일이에요.');
       else
         closeFirstModal();
     } catch(err) {
       console.log(err);
+      if (err.response.status === 400)
+        window.alert('존재하지 않는 이메일이에요.');
     }
   }
 
@@ -39,8 +38,7 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
             <input 
               placeholder='가입할 때 사용한 이메일을 입력해주세요.'
               onChange={(e) => {setEmail(e.target.value)}}></input>
-            <S.PostBtn id="first" onClick={closeFirstModal}>발송하기</S.PostBtn>
-            {/* <S.PostBtn id="first" onClick={postTempPw}>발송하기</S.PostBtn> */}
+            <S.PostBtn id="first" onClick={postTempPw}>발송하기</S.PostBtn>
           </S.Box>
         </S.Modal>
     </S.Container>

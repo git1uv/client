@@ -75,16 +75,21 @@ export default function SignupCm() {
   };
 
   const checkEmail = async() => {
-    console.log(email);
     if(validateEmail(email)) {
       try {
-        const res = await axios.get(`api/v1/register/general/check?email=${encodeURIComponent(email)}`)
-        if (!res.data.is_valid) {
+        const res = await axios.get(`http://simter.site:8080/api/v1/register/general/check?email=${encodeURIComponent(email)}`)
+        if (!res.data.valid) {
           setErrors(prevErrors => ({
             ...prevErrors,
             email: '이미 가입된 이메일입니다.'
           }));
+        } else {
+          setErrors(prevErrors => ({
+            ...prevErrors,
+            email: '사용 가능한 이메일입니다.'
+          }));
         }
+        console.log(res.data);
       } catch(err) {
         console.log(err);
       }
@@ -113,7 +118,7 @@ export default function SignupCm() {
               value={email}
               onChange={handleChange}
             />
-            {errors.email && <p>{errors.email}</p>}
+            <p>{errors.email}</p>
           </S.Input>
             <S.Check onClick={checkEmail}>중복 확인</S.Check>
         </S.Box>

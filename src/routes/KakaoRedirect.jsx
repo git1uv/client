@@ -1,37 +1,49 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import axios from "axios";
 
-export default function Redirect() {
+export default function KakaoRedirect() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const code = new URL(window.location.href).searchParams.get("code");
+  console.log(code);
   let navigate = useNavigate();
 
-  function saveLocalStorage(token) {
-    localStorage.setItem('token', token);
-  }
+  function saveLocalStorage(accessToken, refreshToken) {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+  } 
 
   const fetchKakaoData = async () => {
     try {
-      const res = await axios.post(`/api/v1/login/kakao?authCode=${code}`, {});
+      const res = await axios.post(`${serverURL}/api/v1/login/kakao?code=${code}`, {});
       console.log(res.data);
-      const receivedToken = res.data.token;
-      saveLocalStorage(receivedToken);
-      // if (res.data.is_member)
-      //   navigate("/main");
-      // else 
-      //   navigate("/signup/nickname");
+
+      let data = res.data.data;
+      let accessToken = data.token.accessToken; 
+      let refreshToken = data.token.refreshToken;
+      saveLocalStorage(accessToken, refreshToken);
+      if (data.is_member)
+        navigate("/main");
+      else 
+        navigate("/signup/nickname");
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    fetchKakaoData();
+    // fetchKakaoData();
   }, []);
 
   return (
-    <div style={{display:'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <div>
+      <h2> 진행 중입니다...</h2>
+      <h2> 진행 중입니다...</h2>
+      <h2> 진행 중입니다...</h2>
+      <h2> 진행 중입니다...</h2>
+      <h2> 진행 중입니다...</h2>
+      <h2> 진행 중입니다...</h2>
       <h2> 진행 중입니다...</h2>
     </div>
   );

@@ -8,34 +8,55 @@ import styled from 'styled-components';
 import axios from 'axios';
 import NameChangeModal from '../../components/Modal/NameChangeModal';
 
-
 const SettingsWrapper = styled.div`
   background-color: #EEECE3;
   height: 89.7vh;
   weight: 100vw;
 `;
 function NameChange() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
   const [nickname, setNickname] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
 
   const handleNicknameChange = (e) => {
     setNickname(e.target.value);
   };
 
   const handleNicknameSubmit = async () => {
-    /**try {
-      const response = await axios.patch('/api/v1/setting/nickname', { nickname });
+
+    if (!accessToken) {
+      setErrorMessage('로그인이 필요합니다.');
+      return;
+    }
+    try {
+      const response = await axios.patch(
+        `${serverURL}/api/v1/setting/nickname`,
+        { nickname },
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
+        }
+      );
 
       if (response.status === 200) {
-        console.log('닉네임 변경 성공:', response.data.message);
+        console.log('닉네임 변경 성공:', response.data);
         setIsModalVisible(true);
       }
     } catch (error) {
-      console.error('닉네임 변경 실패:', error.response.data.message);
-      setErrorMessage('닉네임 변경에 실패했습니다. 다시 시도해 주세요.');
-    }*/
+      if (error.response && error.response.data) {
+        console.log('서버 응답 에러 메시지:', error.response); 
+        setErrorMessage('닉네임 변경에 실패했습니다. 다시 시도해 주세요.');
+      } else {
+        console.error('닉네임 변경 실패:', error.message); 
+        setErrorMessage('닉네임 변경에 실패했습니다. 다시 시도해 주세요.');
+      }
+    }
   };
 
   const closeModal = () => {

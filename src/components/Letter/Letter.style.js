@@ -53,18 +53,18 @@ export const TopRow = styled.div`
 export const Delete = styled.div`
   z-index: 4;
   background-image: url(${trash});
-  background-size: 100% 100%;
+  background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
   bottom: 10%;
   @media (max-width: 430px) {
     right: 12%;
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 2.3rem;
+    height: 2.2rem;
   }
   @media (min-width: 431px){
     right: 8%;
-    width: 3.125rem;
+    width: 3.2rem;
     height: 3.125rem;
   }
 `;

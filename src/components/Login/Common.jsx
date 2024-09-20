@@ -6,9 +6,19 @@ import logo from '../../assets/logo.png'
 import axios from 'axios';
 
 export default function Common({openModal}) {
-  const K_REST_API_KEY = process.env.REACT_APP_REST_API
-  const K_REDIRECT_URI = "http://localhost:3000/oauth";
-  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
+  // 카카오 로그인 관련 데이터
+  const K_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID
+  const K_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URL
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_CLIENT_ID}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
+  
+  
+  // 구글 로그인 관련 데이터
+  const G_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
+  const G_REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URL
+  const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${G_CLIENT_ID}&redirect_uri=${G_REDIRECT_URI}&response_type=code&scope=email`;
+
 
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
@@ -20,26 +30,31 @@ export default function Common({openModal}) {
     window.location.href = kakaoURL;
   }
 
+  const handleGoogleLogin = () => {
+    window.location.href = googleURL;
+  }
+
   const togglePasswordVisibility = () => {
     setPwVisible(!pwVisible);
   };
 
 
-  function saveLocalStorage(token) {
-    localStorage.setItem('token', token);
+  function saveLocalStorage(accessToken, refreshToken) {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
   } 
 
   /* 로그인 API : 연결하면 주석 풀기 */
   const postLogin = async() => {
     try {
-      const res = await axios.post('http://simter.site:8080/api/v1/login/general', {
+      const res = await axios.post(`${serverURL}/api/v1/login/general`, {
         email: email,
         password: pw,
       })
       let data = res.data.data;
       let accessToken = data.token.accessToken; 
       let refreshToken = data.token.refreshToken;
-      saveLocalStorage(`Bearer ${accessToken} ${refreshToken}`);
+      saveLocalStorage(accessToken, refreshToken);
       navigate('/main')
     } catch(err) {
       console.log(err);
@@ -91,8 +106,8 @@ export default function Common({openModal}) {
         <S.Divider/>
         <div/>
         <S.SocialLogin>
-          <button></button>
-          <button></button>
+          <button onClick={handleKakaoLogin}></button>
+          <button onClick={handleGoogleLogin}></button>
         </S.SocialLogin>
         <S.FindPw>
           <h6>아직 회원이 아니신가요?</h6>

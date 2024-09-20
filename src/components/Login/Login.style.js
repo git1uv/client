@@ -219,6 +219,12 @@ export const LoginButton = styled.button`
   letter-spacing: -0.03em;
 
   color: #000000;
+  &:disabled  {
+    background-color: #ccc; 
+    color: #666;            
+    cursor: not-allowed;    
+    opacity: 0.7;           
+  }
 `
 
 export const SocialLogin = styled.div`

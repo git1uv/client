@@ -7,6 +7,7 @@ import DatePage from './routes/DatePage';
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName'
+import KakaoRedirect from './routes/KakaoRedirect'
 import Chatbot from './routes/Chatbot/Chatbot'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/signup/nickname" element={<SettingName/>}/>
+                <Route path="/oauth" element={<KakaoRedirect />}/>
                 <Route path="/main" element={<Main/>}/>
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />

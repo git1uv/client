@@ -101,7 +101,9 @@ export const Trash = styled.div`
 `
 export const Airplane = styled.div`
     position: absolute;
-    
+
+    visibility: ${(props) => (props.airplane ? 'visible' : 'hidden')};
+
     width: 80px;
     height: 40px;
     left: 26%;

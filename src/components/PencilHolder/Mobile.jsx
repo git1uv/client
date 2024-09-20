@@ -8,35 +8,14 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Mobile() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
   const navigate = useNavigate(); 
-
-  const receivedToken = localStorage.getItem('token');
-
-  /* 종이비행기 작성 API */
-  // const postAirplane = async() => {
-  //   try {
-  //     const res = await axios.post(`/api/v1/airplane`, {
-  //       writer_name: name,
-  //       content: content
-  //     }, {
-  //       headers: {
-  //         'Authorization': `Bearer ${receivedToken}`
-  //       },
-  //     });
-  //     console.log(res);
-
-  //   } catch (error){
-  //     if(error.response.status === 500) {
-  //       console.log(error.response.message);
-  //       window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
-  //     }
-  //   }
-  //  }
   
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -46,10 +25,7 @@ export default function Mobile() {
   }
   const openSecondModal = () => {
     setIsFirstModalOpen(false);
-    setIsSecondModalOpen(true);
-
-    // 종이비행기 작성 API
-    // postAirplane(); 
+    setIsSecondModalOpen(true); 
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
@@ -76,9 +52,31 @@ export default function Mobile() {
       alert("최대 150자까지 작성 가능합니다.");
     }
   };
+
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  /* 종이비행기 작성 API */
+  const writeLetter = async() => {
+    try {
+      const res = await axios.post(`${serverURL}/api/v1/airplane`, {
+        writer_name: name,
+        content: content
+      }, {
+        headers: {
+          'Authorization' : `Bearer ${accessToken} ${refreshToken}`
+        },
+      });
+      openSecondModal();
+    } catch (err){
+      if(err.response.status === 500) {
+        console.log(err.response.message);
+        window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
+      }
+    }
+   }
   return (
     <div>
-
       <T.Container>
         <T.Wrapper>
           <T.Title>

@@ -3,11 +3,13 @@ import * as S from "./Modal.style"
 import axios from 'axios';
 
 export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const [email, setEmail] = useState('');
   
   const postTempPw = async() => {
     try { 
-      const res = await axios.patch(`http://simter.site:8080/api/v1/login/temp-pw`, {email: email})
+      const res = await axios.patch(`${serverURL}/api/v1/login/temp-pw`, {email: email})
       console.log(res.data);
       if (res.status === 400)
         window.alert('존재하지 않는 이메일이에요.');

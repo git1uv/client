@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LogoutModal from '../../components/Modal/LogoutModal';
 import DeleteIDModal from '../../components/Modal/DeleteIDModal';
+import axios from 'axios';
 
 const fetchUserNickname = async () => {
   //api 가져오기
@@ -17,15 +18,34 @@ const SettingsWrapper = styled.div`
   weight: 100vw;
 `;
 
+const token = localStorage.getItem('token');
+
 function Settings() {
   const navigate = useNavigate();
   const [logoutModal, setLogoutModal] = useState(false);
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
 
-  const confirmLogout = () => {
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  console.log(token);
+
+  const confirmLogout = async() => {
     setLogoutModal(false);
-    // 로그아웃 로직 추가
-    navigate('/login'); 
+    try {
+      const res = await axios.delete('http://simter.site:8080/api/v1/logout', {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        }
+      });
+      if (res.status === 200) {
+        // console.log('사용자 탈퇴 성공:', res.data.data.message);
+        localStorage.clear();
+        navigate('/login');
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   const confirmDeleteAccount = async () => {
     setDeleteAccountModal(false);

@@ -16,6 +16,8 @@ const SettingsWrapper = styled.div`
   weight: 100vw;
 `;
 
+const token = localStorage.getItem('token');
+
 function Settings() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();

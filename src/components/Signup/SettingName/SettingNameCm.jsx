@@ -9,7 +9,8 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 export default function SettingNameCm() {
-  
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const regexName = /^[a-zA-Z가-힣]{1,10}$/;
   const [nickname, setNickname] = useState('');
   const [errors, setErrors] = useState({ nickname: '' });
@@ -43,10 +44,9 @@ export default function SettingNameCm() {
 
 
   /* 회원가입 API : 연결하면 주석 풀기 */
-
   const postRegister = async() => {
     try {
-      const res = await axios.post('http://simter.site:8080/api/v1/register/general', {
+      const res = await axios.post(`${serverURL}/api/v1/register/general`, {
         nickname: nickname,
         email: user.email,
         password: user.password,

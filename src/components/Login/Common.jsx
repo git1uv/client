@@ -8,9 +8,17 @@ import axios from 'axios';
 export default function Common({openModal}) {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
-  const K_REST_API_KEY = process.env.REACT_APP_REST_API_KEY
-  const K_REDIRECT_URI = "http://localhost:3000/oauth";
-  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
+  // 카카오 로그인 관련 데이터
+  const K_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID
+  const K_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URL
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_CLIENT_ID}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
+  
+  
+  // 구글 로그인 관련 데이터
+  const G_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
+  const G_REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URL
+  const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${G_CLIENT_ID}&redirect_uri=${G_REDIRECT_URI}&response_type=code&scope=email`;
+
 
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
@@ -20,6 +28,10 @@ export default function Common({openModal}) {
 
   const handleKakaoLogin = () => {
     window.location.href = kakaoURL;
+  }
+
+  const handleGoogleLogin = () => {
+    window.location.href = googleURL;
   }
 
   const togglePasswordVisibility = () => {
@@ -95,7 +107,7 @@ export default function Common({openModal}) {
         <div/>
         <S.SocialLogin>
           <button onClick={handleKakaoLogin}></button>
-          <button></button>
+          <button onClick={handleGoogleLogin}></button>
         </S.SocialLogin>
         <S.FindPw>
           <h6>아직 회원이 아니신가요?</h6>

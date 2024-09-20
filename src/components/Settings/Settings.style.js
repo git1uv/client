@@ -141,7 +141,7 @@ export const PwChange = styled.div`
   justify-content: space-between;
   font-size: 1.5rem;
   align-items: center;
-  margin: 0 0 2vh 3.5vw;
+  margin: 0 0 0.5vh 3.5vw;
   button {
     background-color: transparent;
     padding: 0;

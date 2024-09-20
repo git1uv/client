@@ -14,7 +14,7 @@ const NameChangeModal = ({ isVisible, onClose}) => {
         <M.LogoutModalTitle>닉네임 변경</M.LogoutModalTitle>
         <p className='sub'>닉네임이 변경되었습니다</p>
         <M.ModalActions>
-          <M.CancelButton className='ok' onClick={onClose} >확인</M.CancelButton>
+          <M.OKButton className='ok' onClick={onClose} >확인</M.OKButton>
         </M.ModalActions>
       </M.LogoutModal>
     </M.LogoutModalBg>

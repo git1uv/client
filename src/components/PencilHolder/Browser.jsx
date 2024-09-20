@@ -4,8 +4,11 @@ import Pencil from '../../assets/pencilHolder/Pencil.png'
 import FirstModal from '../Modal/PencilHolder/FirstModal'
 import SecondModal from '../Modal/PencilHolder/SecondModal'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Browser() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
@@ -49,6 +52,28 @@ export default function Browser() {
     }
   };
 
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  const writeLetter = async() => {
+    try {
+      const res = await axios.post(`${serverURL}/api/v1/airplane`, {
+        writerName: name,
+        content: content
+      },{
+        headers : {
+          'Authorization' : `Bearer ${accessToken} ${refreshToken}`
+        }
+      })
+      openSecondModal();
+    } catch(err) {
+      if(err.response.status === 500) {
+        console.log(err.response.message);
+        window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
+      }
+    }
+  }
+
   return (
     <div>
       <S.Container>
@@ -86,8 +111,18 @@ export default function Browser() {
           </S.Letter>
         </S.Wrapper>
       </S.Container>
-      <FirstModal isVisible={isFirstModalOpen} onClose={closeFirstModal} onConfirm={openSecondModal}/>
-      <SecondModal isVisible={isSecondModalOpen} onClose={closeSecondModal} onConfirm={addWriting}/>
+      <FirstModal 
+        isVisible={isFirstModalOpen} 
+        onClose={closeFirstModal} 
+        onConfirm={writeLetter}
+        name={name}
+        content={content}
+      />
+      <SecondModal 
+        isVisible={isSecondModalOpen} 
+        onClose={closeSecondModal} 
+        onConfirm={addWriting}
+      />
     </div>
   )
 }

@@ -27,15 +27,17 @@ const axiosInstance = axios.create({
 
 // 요청 인터셉터 (헤더에 액세스 토큰 추가)
 axiosInstance.interceptors.request.use(
-  (config) => {
-    const accessToken = getLocalStorage('accessToken'); // 저장된 액세스 토큰을 가져옴
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`; // 헤더에 토큰 추가
-    }
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
+    (config) => {
+        const accessToken = getLocalStorage('accessToken');
+        const refreshToken = getLocalStorage('refreshToken'); // 저장된 리프레시 토큰을 가져옴
+
+        if (accessToken && refreshToken) {
+        config.headers.Authorization = `Bearer ${accessToken} ${refreshToken}`; // 헤더에 두 개의 토큰 추가
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);  
 
 // 응답 인터셉터 (401 에러 처리)
 axiosInstance.interceptors.response.use(
@@ -60,6 +62,7 @@ axiosInstance.interceptors.response.use(
         console.log('토큰 재발급 실패', tokenError);
         window.alert('토큰이 만료되어, 시작 화면으로 이동합니다.')
         window.location.href = '/'; // 온보딩 페이지로 리다이렉트
+
         return Promise.reject(tokenError);
       }
     }

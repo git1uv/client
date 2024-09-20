@@ -28,6 +28,7 @@ export default function MainCm() {
       })
       let data = res.data.data;
       dispatch(setLogin({nickname: data.nickname}));
+      localStorage.setItem('nickname', data.nickname);
 
       console.log(data);
       // data.airplane ? setAirplane(true) : setAirplane(false);
@@ -56,3 +57,4 @@ export default function MainCm() {
     
   )
 }
+

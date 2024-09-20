@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import * as L from "../components/Letter/Letter.style";
-import { FaHeart, FaTrash} from "react-icons/fa";
 import Letter from '../components/Modal/Letter/ChatLetter';
 import styled from "styled-components";
 import axios from 'axios';
 import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
-import data from '../datas/mail';
+import dummyMails from '../datas/mail'; 
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -18,20 +17,62 @@ const LetterWrapper = styled.div`
 `;
 
 function Mailbox() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const [isLetterModalVisible, setLetterModalVisible] = useState(false);
   const [mails, setMails] = useState([]);
-  const [selectedMail, setSelectedMail] = useState(null);
   const [seeAllActive, setSeeAllActive] = useState(true);
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
+  const [mailDetails, setMailDetails] = useState(null);
   const userId = 1; //임시유저아이디
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedMailIds, setSelectedMailIds] = useState([]);  
 
-  const handleLetterClick = (mail) => {
-    setSelectedMail(mail);
-    setLetterModalVisible(true);
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  const fetchMails = async (listType = '') => {
+    try {
+      const response = await axios.get(`${serverURL}/api/v1/mail/list${listType ? `?listType=${listType}` : ''}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
+        }
+      );
+      if (response.data.code === "200") {
+        setMails(response.data.data.mails);
+      } else if (response.data.code === "MAIL5001") {
+        console.error("편지 가져오기 실패:", response.data.message);
+      } else {
+        console.error("편지가 없습니다:", response.data.message);
+      }
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }
   };
+
+  const handleLetterClick = async (mailId) => {
+    try {
+      const response = await axios.get(`${serverURL}/api/v1/mail?mailId=${mailId}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
+        });
+      if (response.data.code === "200") {
+        setMailDetails(response.data.data); 
+        setLetterModalVisible(true); 
+      } else if(response.data.code === "MAIL5001"){
+        console.error("편지 가져오기 실패:", response.data.message);
+      } else {
+        console.error("편지가 없습니다:", response.data.message);
+      }
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }
+  };
+
   const handleDeleteClick = () => {
     if (selectedMailIds.length > 0) {
       setDeleteModalVisible(true);
@@ -41,47 +82,17 @@ function Mailbox() {
     }
   };
 
-  // 예시 데이터 설정
-  const fetchMailsForType = (listType = "all") => {
-    switch (listType) {
-      case "starred":
-        return data.filter(mail => mail.starred);
-      case "notRead":
-        return data.filter(mail => !mail.read);
-      case "all":
-      default:
-        return data;
-    }
-  };
-
-  
-
-/**useEffect(() => {
-    const fetchMails = async (listType = '') => {
-      try {
-        const response = await axios.get(`/api/v1/mail/list${listType ? `?listType=${listType}` : ''}`);
-        if (response.data.code === "200") {
-          setMails(response.data.data.mails); 
-        } else if (response.data.code === "MAIL5001") {
-          console.error("편지 가져오기 실패:", response.data.message);
-        } else {
-          console.error("편지가 없습니다", response.data.message);
-        }
-      } catch (error) {
-        console.error("API 호출 중 오류 발생:", error);
-      }
-    };
-    fetchMails('');
-  }, []);
-
- */
   const toggleFavorite = (mailId) => {
     const updatedMails = mails.map((mail) =>
       mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
     );
     setMails(updatedMails);
-    /**
-    axios.patch(`/api/v1/mail/star/${mailId}`)
+    axios.patch(`${serverURL}/api/v1/mail/star/${mailId}`,{},
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      })
       .then(response => {
         if (response.data.code === "200") {
           console.log("즐겨찾기 추가 성공");
@@ -92,8 +103,7 @@ function Mailbox() {
         }
       })
       .catch(error => console.error("즐겨찾기 추가 실패", error));
-    */
-};
+  };
 
 
   const getChatbotImage = (chatbotType) => {
@@ -113,26 +123,19 @@ function Mailbox() {
     setSeeAllActive(true);
     setSeeFavoritesActive(false);
     setSeeNotReadActive(false);
-    //fetchMails('all'); 
-
-    setMails(fetchMailsForType("all"));
+    fetchMails('all'); 
     };
   const handleSeeFavoritesToggle = () => {
-    //fetchFavoriteMails();
     setSeeFavoritesActive(true);
     setSeeAllActive(false);
     setSeeNotReadActive(false);
-    //fetchMails('starred');  
-
-    setMails(fetchMailsForType("starred"));
+    fetchMails('starred');  
     };
   const handleSeeNotReadToggle = () => {
     setSeeNotReadActive(true);
     setSeeAllActive(false);
     setSeeFavoritesActive(false);
-    //fetchMails('notRead');  
-
-    setMails(fetchMailsForType("notRead"));
+    fetchMails('notRead'); 
     };
 
   const handleCheck = (mailId) => {
@@ -144,13 +147,11 @@ function Mailbox() {
       }
     });
   };
-    
-  useEffect(() => {
-    //예시
-    setMails(fetchMailsForType("all"));
-  }, []); 
-  
 
+  useEffect(() => {
+    fetchMails();
+  }, []);
+  
   return (
     <LetterWrapper>
     <L.Container>
@@ -172,7 +173,7 @@ function Mailbox() {
                   onChange={() => handleCheck(mail.mailId)}
                 />
               </L.CheckBox>
-              <L.Letter onClick={() => handleLetterClick(mail)}>  
+              <L.Letter onClick={() => handleLetterClick(mail.mailId)}>  
                 <L.ChatBox>
                   <L.Chatbot>
                     <img src={getChatbotImage(mail.chatbotType)} alt="chatbot" />
@@ -201,13 +202,13 @@ function Mailbox() {
           </L.Letters>
           </L.LettersWrapper>
       </L.Mailbox>
-      {isLetterModalVisible && selectedMail && (
+      {isLetterModalVisible && mailDetails && (
           <Letter
-            mailId={selectedMail.mailId}
+            mailId={mailDetails.mailId}
             userId={userId}
-            content={selectedMail.content}
-            createdAt={selectedMail.createdAt}
-            chatbotType={selectedMail.chatbotType}
+            content={mailDetails.content}
+            createdAt={mailDetails.createdAt}
+            chatbotType={mailDetails.chatbotType}
             setLetterModal={setLetterModalVisible}
           />
         )}

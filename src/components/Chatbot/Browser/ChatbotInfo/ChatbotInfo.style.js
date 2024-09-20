@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import theme from '../../../constants/theme'; // theme 파일의 경로
+import theme from '../../../../constants/theme'; // theme 파일의 경로
 
 const { ALIGN } = theme;
 export const InfoBox = styled.div`

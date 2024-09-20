@@ -1,6 +1,6 @@
 import styled from "styled-components"
-import theme from '../../../constants/theme'; // theme 파일의 경로
-import sendBtn from '../../../assets/chatbot/chatStart/sendBtn.png'
+import theme from '../../../../constants/theme'; // theme 파일의 경로
+import sendBtn from '../../../../assets/chatbot/chatStart/sendBtn.png'
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 

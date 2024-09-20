@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './Chat.style'
 import * as T from '../ChatbotBox/ChatbotBox.style'
-import icon from '../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
+import icon from '../../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
 export default function Chat({message, counseling, loading}) {
   const chatbot = localStorage.getItem('result');
 

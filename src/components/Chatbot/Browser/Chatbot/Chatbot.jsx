@@ -1,20 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Chatbot.style'
-import * as T from '../../components/Chatbot/ChatbotBox/ChatbotBox.style'
-import Chair from '../../assets/chatbot/chatStart/ChairWeb.png'
-import SimmaeumImg from '../../assets/chatbot/chatStart/Simmaeum.png'
-import BanbaniImg from '../../assets/chatbot/chatStart/Banbani.png'
-import NeuraneeImg from '../../assets/chatbot/chatStart/Neuranee.png'
+import * as T from '../ChatbotBox/ChatbotBox.style'
+import Chair from '../../../../assets/chatbot/chatStart/ChairWeb.png'
+import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
+import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png'
+import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png'
 
-import { Simmaeum, Banbani, Neuranee } from '../../datas/emotion'
+import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 
 
-import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
+import ChatbotBox from '../ChatbotBox/ChatbotBox';
 import { useNavigate } from 'react-router-dom';
-import FirstModal from '../../components/Modal/Chatbot/FirstModal';
-import SecondModal from '../../components/Modal/Chatbot/SecondModal';
+import FirstModal from '../../../Modal/Chatbot/FirstModal';
+import SecondModal from '../../../Modal/Chatbot/SecondModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAnswer } from '../../redux/counseling';
+import { setAnswer } from '../../../../redux/counseling';
 import axios from 'axios';
 
 export default function Chatbot() {

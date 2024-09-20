@@ -25,8 +25,9 @@ export default function Common({openModal}) {
   };
 
 
-  function saveLocalStorage(token) {
-    localStorage.setItem('token', token);
+  function saveLocalStorage(accessToken, refreshToken) {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
   } 
 
   /* 로그인 API : 연결하면 주석 풀기 */
@@ -39,7 +40,7 @@ export default function Common({openModal}) {
       let data = res.data.data;
       let accessToken = data.token.accessToken; 
       let refreshToken = data.token.refreshToken;
-      saveLocalStorage(`Bearer ${accessToken} ${refreshToken}`);
+      saveLocalStorage(accessToken, refreshToken);
       navigate('/main')
     } catch(err) {
       console.log(err);
@@ -91,7 +92,7 @@ export default function Common({openModal}) {
         <S.Divider/>
         <div/>
         <S.SocialLogin>
-          <button></button>
+          <button onClick={handleKakaoLogin}></button>
           <button></button>
         </S.SocialLogin>
         <S.FindPw>

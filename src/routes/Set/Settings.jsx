@@ -6,11 +6,10 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LogoutModal from '../../components/Modal/LogoutModal';
 import DeleteIDModal from '../../components/Modal/DeleteIDModal';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogin } from '../../redux/user'; 
+import axios from 'axios';
 
-const fetchUserNickname = async () => {
-  //api 가져오기
-  return '000';
-};
 const SettingsWrapper = styled.div`
   background-color: #EEECE3;
   height: 89.7vh;
@@ -18,40 +17,61 @@ const SettingsWrapper = styled.div`
 `;
 
 function Settings() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
   const [logoutModal, setLogoutModal] = useState(false);
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const dispatch = useDispatch();
+  const nickname = localStorage.getItem('nickname'); 
 
-  const confirmLogout = () => {
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  const confirmLogout = async() => {
     setLogoutModal(false);
-    // 로그아웃 로직 추가
-    navigate('/login'); 
+    try {
+      const res = await axios.delete(`${serverURL}/api/v1/logout`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        }
+      });
+      if (res.status === 200) {
+        localStorage.clear();
+        navigate('/login');
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   const confirmDeleteAccount = async () => {
+    if (!accessToken) {
+      setErrorMessage('로그인이 필요합니다.');
+      return;
+    }
     setDeleteAccountModal(false);
-    /**
-     try {
-      const response = await axios.patch('/api/v1/setting/delete-account');
+
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/setting/delete-account`,
+        {},
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
+        }
+      );
  
       if (response.status === 200) {
         console.log('사용자 탈퇴 성공:', response.data.message);
+        localStorage.removeItem('token'); 
         navigate('/');
       }
     } catch (error) {
       console.error('사용자 탈퇴 실패:', error.response?.data?.message || error.message);
       setErrorMessage('탈퇴에 실패했습니다. 다시 시도해 주세요.');
-    }*/
+    }
   };
 
-  const [nickname, setNickname] = useState('');
-
-  useEffect(() => {
-    const getNickname = async () => {
-      const fetchedNickname = await fetchUserNickname();
-      setNickname(fetchedNickname);
-    };
-    getNickname();
-  }, []);
   return (
     <SettingsWrapper>
       <Set.Container>

@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function Common({openModal}) {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
-  const K_REST_API_KEY = process.env.REACT_APP_REST_API
+  const K_REST_API_KEY = process.env.REACT_APP_REST_API_KEY
   const K_REDIRECT_URI = "http://localhost:3000/oauth";
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
 

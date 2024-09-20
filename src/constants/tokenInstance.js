@@ -52,11 +52,12 @@ axiosInstance.interceptors.response.use(
         // 리프레시 토큰으로 새로운 액세스 토큰을 요청
         const newTokens = await refreshTokenRequest();
         const newAccessToken = newTokens.accessToken;
+        const newRefreshToken = newTokens.refreshToken;
 
         saveLocalStorage('accessToken', newAccessToken);
         saveLocalStorage('refreshToken', newTokens.refreshToken);
 
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken} ${newRefreshToken}`;
         return axiosInstance(originalRequest);
       } catch (tokenError) {
         console.log('토큰 재발급 실패', tokenError);

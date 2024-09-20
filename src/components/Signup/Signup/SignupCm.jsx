@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from "./Signup.style"
 import * as T from "../../Login/Login.style"
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +16,9 @@ export default function SignupCm() {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
-  
+  const [isValidEmail, setIsValidEmail] = useState();
+  const [isAllValid, setIsAllValid] = useState(false);
+
   const [errors, setErrors] = useState({
     email: '',
     pw: '',
@@ -28,6 +30,7 @@ export default function SignupCm() {
   
   const validateEmail = (email) => regexEmail.test(email);
   const validatePassword = (pw) => regexPw.test(pw);
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,12 +63,12 @@ export default function SignupCm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    let isValid = true;
+    // let isValid = true;
 
-    if (!validateEmail(email) || !validatePassword(pw) || pw !== confirmPw)
-      isValid = false;
+    // if (!validateEmail(email) || !validatePassword(pw) || pw !== confirmPw || !isValidEmail)
+    //   isValid = false;
 
-    if (isValid) {
+    if (isAllValid) {
       dispatch(setAccount({
         email: email,
         password: pw
@@ -74,11 +77,19 @@ export default function SignupCm() {
     }
   };
 
+  useEffect(() => {
+    if (validateEmail(email) && validatePassword(pw) && pw == confirmPw && isValidEmail)
+      setIsAllValid(true);
+  }, [email, pw, confirmPw, isValidEmail]);
+
   const checkEmail = async() => {
     if(validateEmail(email)) {
       try {
         const res = await axios.get(`http://simter.site:8080/api/v1/register/general/check?email=${encodeURIComponent(email)}`)
-        if (!res.data.valid) {
+        // setIsValidEmail(res.data.data.valid);
+        const valid = res.data.data.valid; 
+        setIsValidEmail(valid); 
+        if (!valid) {
           setErrors(prevErrors => ({
             ...prevErrors,
             email: '이미 가입된 이메일입니다.'
@@ -90,6 +101,8 @@ export default function SignupCm() {
           }));
         }
         console.log(res.data);
+        console.log(valid);
+
       } catch(err) {
         console.log(err);
       }
@@ -171,7 +184,9 @@ export default function SignupCm() {
           </S.Input>
         </S.Box>
         <T.Null />
-        <T.LoginButton onClick={handleSubmit}>계속하기</T.LoginButton>
+        <T.LoginButton 
+          disabled={!isAllValid}
+          onClick={handleSubmit}>계속하기</T.LoginButton>
         <S.TermsBox>
           <h6>회원가입 하시면</h6>
           <button onClick={() => navigate('/terms')}>이용약관</button>

@@ -5,19 +5,31 @@ import "../../../node_modules/react-calendar/dist/Calendar.css";
 export const StyledCalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 51.5vw;
-  height: 84.5vh;
+  align-items: center
   position: relative;
-  @media screen and (min-width: 769px) {
-    margin-top: 5.3vh;
-  }
-  @media (min-width: 769px) and (max-width: 1023px){
-    width: 80%;
-  }
   @media screen and (max-width: 768px) {
     height: 87vh; 
     width: 100%;
+  }
+  @media (min-width: 769px) and (max-width: 1023px){
+    width: 70rem;
+    height: 60rem;
+    margin-top: 5.3vh;
+  }
+  @media (min-width: 1024px) and (max-width: 1440px){
+    width: 50rem;
+    height: 45rem;
+    margin-top: 5.3vh;
+  }
+  @media (min-width: 1441px) and (max-width: 1600px){
+    width: 50rem;
+    height: 43rem;
+    margin-top: 5.3vh;
+  }
+  @media (min-width: 1601px) {
+    width: 60rem;
+    height: 55rem;
+    margin-top: 5.3vh;
   }
 
   }
@@ -105,6 +117,7 @@ export const StyledCalendarWrapper = styled.div`
     display: inline-block;
     width: 1.6rem;
     height: 1.6rem;
+    align-items: center;
     text-align: center;
     @media (max-width: 430px) {
       line-height: 20px;
@@ -141,16 +154,16 @@ export const StyledCalendarWrapper = styled.div`
       padding: 0.5rem 0 7rem;
     }
     @media (min-width: 1024px) and (max-width: 1200px) {
-      padding: 0.5rem 0 7.5rem;
+      padding: 0.5rem 0 4.5rem;
     }
     @media (min-width: 1201px) and (max-width: 1440px) {
-      padding: 0.4rem 0 7rem;
+      padding: 0.4rem 0 4.7rem;
     }
     @media (min-width: 1441px) and (max-width: 1600px) {
-      padding: 0.2rem 0 7.5rem;
+      padding: 0.2rem 0 4.5rem;
     }
     @media (min-width: 1601px) {
-      padding: 0.4rem 0 7rem;
+      padding: 0.4rem 0 6.5rem;
     }
   }
   
@@ -180,17 +193,21 @@ export const StyledEmotion = styled.div`
     width: 5.5rem;
     height: 5.5rem;
   }
-  @media (min-width: 769px) and (max-width: 1200px) {
+  @media (min-width: 769px) and (max-width: 1023px) {
     width: 4.25rem;
     height: 4.25rem;
   }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
   @media (min-width: 1201px) and (max-width: 1440px) {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 4rem;
+    height: 4rem;
   }
   @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 3.5rem;
+    height: 3.5rem;
   }
   @media (min-width: 1601px) {
     width: 5.5rem;
@@ -222,19 +239,19 @@ export const Circle = styled.div`
     top: 60%;
   }
   @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 5rem;
-    height: 5rem;
-    top: 60%;
+    width: 4.25rem;
+    height: 4.25rem;
+    top: 65%;
   }
   @media (min-width: 1201px) and (max-width: 1440px) {
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 4.5rem;
+    height: 4.5rem;
     top: 65%;
   }
   @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 6rem;
-    height: 6rem;
-    top: 60%;
+    width: 4rem;
+    height: 4rem;
+    top: 65%;
   }
   @media (min-width: 1601px) {
     width: 6.25rem;

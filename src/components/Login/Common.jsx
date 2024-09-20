@@ -6,6 +6,8 @@ import logo from '../../assets/logo.png'
 import axios from 'axios';
 
 export default function Common({openModal}) {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const K_REST_API_KEY = process.env.REACT_APP_REST_API
   const K_REDIRECT_URI = "http://localhost:3000/oauth";
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_REST_API_KEY}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
@@ -33,7 +35,7 @@ export default function Common({openModal}) {
   /* 로그인 API : 연결하면 주석 풀기 */
   const postLogin = async() => {
     try {
-      const res = await axios.post('http://simter.site:8080/api/v1/login/general', {
+      const res = await axios.post(`http://${serverURL}:8080/api/v1/login/general`, {
         email: email,
         password: pw,
       })

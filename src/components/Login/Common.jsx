@@ -35,7 +35,7 @@ export default function Common({openModal}) {
   /* 로그인 API : 연결하면 주석 풀기 */
   const postLogin = async() => {
     try {
-      const res = await axios.post(`http://${serverURL}:8080/api/v1/login/general`, {
+      const res = await axios.post(`${serverURL}/api/v1/login/general`, {
         email: email,
         password: pw,
       })

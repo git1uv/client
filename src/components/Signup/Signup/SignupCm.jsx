@@ -10,6 +10,8 @@ import { setAccount } from '../../../redux/user'
 import axios from 'axios';
 
 export default function SignupCm() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const regexPw = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,16}$/;
   
@@ -85,7 +87,7 @@ export default function SignupCm() {
   const checkEmail = async() => {
     if(validateEmail(email)) {
       try {
-        const res = await axios.get(`http://simter.site:8080/api/v1/register/general/check?email=${encodeURIComponent(email)}`)
+        const res = await axios.get(`${serverURL}/api/v1/register/general/check?email=${encodeURIComponent(email)}`)
         // setIsValidEmail(res.data.data.valid);
         const valid = res.data.data.valid; 
         setIsValidEmail(valid); 

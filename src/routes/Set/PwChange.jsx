@@ -7,13 +7,13 @@ import styled from 'styled-components';
 import axios from 'axios';
 import PwChangeModal from '../../components/Modal/PwChangeModal';
 
-
 const SettingsWrapper = styled.div`
   background-color: #EEECE3;
   height: 89.7vh;
   weight: 100vw;
 `;
 function PWChange() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
   const [currentPw, setCurrentPw] = useState('');
   const [newPw, setNewPw] = useState('');
@@ -25,12 +25,20 @@ function PWChange() {
   const [allValid, setAllValid] = useState(false);
   const [successModal, setSuccessModal] = useState(false);
 
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
     return regex.test(password);
   };
 
   const handlePWSubmit = async () => {
+
+    if (!accessToken) {
+      setErrorMessage('로그인이 필요합니다.');
+      return;
+    }
     let isValid = true;
     
     if (!validatePassword(newPw)) {
@@ -43,7 +51,6 @@ function PWChange() {
 
     if (newPw !== confirmPw) {
       setErrorMessage('새 비밀번호와 재확인 비밀번호가 일치하지 않습니다.');
-      setNewPwError(true);
       setConfirmPwError(true);
       isValid = false;
     } else {
@@ -55,32 +62,64 @@ function PWChange() {
       return;
     }
 
-    /**try {
-      const response = await axios.patch('/api/v1/setting/password', {
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/setting/password`, {
         oldPassword: currentPw,
         newPassword: newPw,
-      });
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken} ${refreshToken}`
+        },
+      }
+    );
 
       if (response.status === 200) {
         setAllValid(true);
         setErrorMessage('');
         setSuccessModal(true);
+        setCurrentPwError(false); 
       } else {
         setErrorMessage(response.data.message);
       }
     } catch (error) {
       if (error.response) {
-        if (error.response.status === 403) {
-          setErrorMessage('기존 비밀번호가 일치하지 않습니다.');
+        if (error.response.status === 403 || error.response.data.message === '기존 비밀번호가 일치하지 않습니다.') {
+          setErrorMessage('기존 비밀번호 불일치');
           setCurrentPwError(true);
         } else {
-          setErrorMessage('비밀번호 변경에 실패했습니다.');
+          console.log('서버 응답 에러 메시지:', error.response); 
+          setErrorMessage('비밀번호 변경 실패');
         }
       } else {
-        setErrorMessage('비밀번호 변경에 실패했습니다.');
+        console.log('서버 응답 에러 메시지:', error.response); 
+        setErrorMessage('비밀번호 변경 실패');
       }
-    }*/
+    }
   };
+
+  const handleCurrentPwChange = (e) => {
+    setCurrentPw(e.target.value);
+    setCurrentPwError(false); 
+  };
+  const handleNewPwChange = (e) => {
+    setNewPw(e.target.value);
+    setNewPwError(false); 
+  };
+  const handleConfirmPwChange = (e) => {
+    setConfirmPw(e.target.value);
+    setConfirmPwError(false); 
+  };
+
+  useEffect(() => {
+    if (newPw && !validatePassword(newPw)) {
+      setNewPwError(true);
+      setErrorMessage('새 비밀번호는 8~16자의 영문 대/소문자, 숫자, 특수문자를 포함해야 합니다.');
+    } else {
+      setNewPwError(false);
+      setErrorMessage('');
+    }
+  }, [newPw]);
 
   return (
     <SettingsWrapper>
@@ -101,7 +140,7 @@ function PWChange() {
           <input
             type="password"
             value={currentPw}
-            onChange={(e) => setCurrentPw(e.target.value)}
+            onChange={handleCurrentPwChange}
             className={currentPwError ? 'error' : allValid ? 'success' : ''}
           />
         </Set.PwChange>
@@ -114,7 +153,7 @@ function PWChange() {
             type="password"
             placeholder="8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요."
             value={newPw}
-            onChange={(e) => setNewPw(e.target.value)}
+            onChange={handleNewPwChange}
             className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
         </Set.PwChange>
@@ -132,7 +171,7 @@ function PWChange() {
           <input
             type="password"
             value={confirmPw}
-            onChange={(e) => setConfirmPw(e.target.value)}
+            onChange={handleConfirmPwChange}
             className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
         </Set.PwChange>

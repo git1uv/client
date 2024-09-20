@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 import * as S from "../../components/Settings/Settings.style"
 import * as Set from "../../components/Settings/Settings.change.style"
 import { FiChevronLeft } from "react-icons/fi";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -15,6 +16,7 @@ const SettingsWrapper = styled.div`
 function PWChange() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
+  const [pwVisible, setPwVisible] = useState(false);
   const [currentPw, setCurrentPw] = useState('');
   const [newPw, setNewPw] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
@@ -31,6 +33,10 @@ function PWChange() {
   const validatePassword = (password) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
     return regex.test(password);
+  };
+
+  const togglePasswordVisibility = () => {
+    setPwVisible(!pwVisible);
   };
 
   const handlePWSubmit = async () => {
@@ -138,11 +144,14 @@ function PWChange() {
         </Set.Text>
         <Set.PwChange>
           <input
-            type="password"
+            type={pwVisible ? 'text' : 'password'}
             value={currentPw}
             onChange={handleCurrentPwChange}
             className={currentPwError ? 'error' : allValid ? 'success' : ''}
           />
+          <button onClick={togglePasswordVisibility}>
+            {pwVisible ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </Set.PwChange>
         <Set.Text>
           <p className={currentPwError ? 'confirm visible' : 'confirm'}>비밀번호가 일치하지 않습니다.</p>
@@ -150,12 +159,15 @@ function PWChange() {
         </Set.Text>
         <Set.PwChange>
           <input
-            type="password"
+            type={pwVisible ? 'text' : 'password'}
             placeholder="8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해주세요."
             value={newPw}
             onChange={handleNewPwChange}
             className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
+          <button onClick={togglePasswordVisibility}>
+            {pwVisible ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </Set.PwChange>
         <Set.Text>
           {newPwError ? (
@@ -169,11 +181,14 @@ function PWChange() {
         </Set.Text>
         <Set.PwChange>
           <input
-            type="password"
+            type={pwVisible ? 'text' : 'password'}
             value={confirmPw}
             onChange={handleConfirmPwChange}
             className={newPwError || confirmPwError ? 'error' : allValid ? 'success' : ''}
           />
+          <button onClick={togglePasswordVisibility}>
+            {pwVisible ? <FaEyeSlash /> : <FaEye />}
+          </button>
         </Set.PwChange>
         <Set.Text>
         {newPwError ? (

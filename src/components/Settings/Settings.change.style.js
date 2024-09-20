@@ -86,9 +86,10 @@ export const PwChange = styled.div`
     padding: 0;
   }
   input {
-    width: 100%;
+    width: 95%;
     height: 6vh;
-    padding: 10px 20px ;
+    padding: 10px 20px;
+    margin: 0 10px 0 0;
     color: black;
     font-size: 1.125rem;
     border: 1px solid #D4D4D8;

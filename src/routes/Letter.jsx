@@ -150,6 +150,29 @@ function Mailbox() {
     });
   };
 
+  const handleDelete = async () => {
+    try {
+      const response = await axios.post(`${serverURL}/api/v1/mail/delete`, {
+        mailIds: selectedMailIds,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      });
+
+      if (response.data.code === "200") {
+        setMails(mails.filter(mail => !selectedMailIds.includes(mail.mailId)));
+        setDeleteModalVisible(false);
+      } else {
+        console.error('실패:', response.data.message);
+      }
+    } catch (error) {
+      console.error('실패:', error);
+    }
+  };
+
+
   useEffect(() => {
     fetchMails();
   }, []);
@@ -162,7 +185,7 @@ function Mailbox() {
             <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
             <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
             <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} />
-            <L.Delete onClick={() => handleDeleteClick()}/>
+            <L.Delete onClick={() => setDeleteModalVisible(true)}/>
           </L.TopRow>
           <L.LettersWrapper>
           <L.Letters>
@@ -207,22 +230,18 @@ function Mailbox() {
       {isLetterModalVisible && mailDetails && (
           <Letter
             mailId={mailDetails.mailId}
-            userId={userId}
             content={mailDetails.content}
             createdAt={mailDetails.createdAt}
             chatbotType={mailDetails.chatbotType}
             setLetterModal={setLetterModalVisible}
+            handleDelete={handleDelete} 
           />
         )}
         {isDeleteModalVisible && (
                 <DeleteLetterModal
                 isVisible={isDeleteModalVisible}
                 onClose={() => setDeleteModalVisible(false)}
-                onConfirm={() => {
-                  setMails(mails.filter(mail => !selectedMailIds.includes(mail.mailId)));
-                  setDeleteModalVisible(false);
-                }}
-                mailId={selectedMailIds}
+                onConfirm={handleDelete}
                 />
             )}
     </L.Container>

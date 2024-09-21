@@ -79,36 +79,32 @@ function Mailbox() {
     }
   };
 
-  const handleDeleteClick = () => {
-    if (selectedMailIds.length > 0) {
-      setDeleteModalVisible(true);
-    }
-    else{
-      console.log("삭제할 편지가 없습니다.");
-    }
-  };
-
-  const toggleFavorite = (mailId) => {
-    const updatedMails = mails.map((mail) =>
-      mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
-    );
-    setMails(updatedMails);
-    axios.patch(`${serverURL}/api/v1/mail/star/${mailId}`,{},
-      {
+  const toggleFavorite = async (mailId) => {
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/mail/star/${mailId}`, {}, {
         headers: {
-          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          Authorization: `Bearer ${accessToken} ${refreshToken}`,
         },
-      })
-      .then(response => {
-        if (response.data.code === "200") {
-          console.log("즐겨찾기 추가 성공");
-        }else if (response.data.code === "MAIL5001") {
-          console.error("실패:", response.data.message);
-        } else {
-          console.error("메일이 없습니다", response.data.message);
-        }
-      })
-      .catch(error => console.error("즐겨찾기 추가 실패", error));
+      });
+
+      if (response.data.code === '200') {
+        console.log('즐겨찾기 상태 변경 성공');
+        const updatedMails = mails.map((mail) =>
+          mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
+        );
+        setMails(updatedMails);
+      } else if (response.data.code === "MAIL5001") {
+        console.error("실패:", response.data.message);
+        setMails(mails);
+      } else {
+        console.error("메일이 없습니다", response.data.message);
+        setMails(mails);
+      }
+    } catch (error) {
+      console.error('즐겨찾기 요청 중 오류 발생:', error);
+      setMails(mails);
+    }
+  
   };
 
 

@@ -61,6 +61,14 @@ function Mailbox() {
       if (response.data.code === "200") {
         setMailDetails(response.data.data); 
         setLetterModalVisible(true); 
+      
+        if (seeNotReadActive) {
+          fetchMails('notRead');
+        } else if (seeFavoritesActive) {
+          fetchMails('starred');
+        } else {
+          fetchMails('all');
+        }
       } else if(response.data.code === "MAIL5001"){
         console.error("편지 가져오기 실패:", response.data.message);
       } else {

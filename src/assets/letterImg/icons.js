@@ -12,6 +12,6 @@ import Hface from './Hface.png';
 import Emptyheart from './Emptyheart.png';
 import heart from './Heart.png';
 import check from './check.png';
-import trash from './button_delete.png';
+import trash from './delete.png';
 
 export {notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, mailbox_mobile, Fface, Tface, Hface, heart, Emptyheart, check, trash};

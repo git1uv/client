@@ -5,7 +5,6 @@ import styled from "styled-components";
 import axios from 'axios';
 import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
-import dummyMails from '../datas/mail'; 
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -24,7 +23,6 @@ function Mailbox() {
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
   const [mailDetails, setMailDetails] = useState(null);
-  const userId = 1; //임시유저아이디
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const [selectedMailIds, setSelectedMailIds] = useState([]);  
 

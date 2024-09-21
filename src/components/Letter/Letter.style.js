@@ -59,12 +59,12 @@ export const Delete = styled.div`
   bottom: 10%;
   @media (max-width: 430px) {
     right: 12%;
-    width: 2.3rem;
-    height: 2.2rem;
+    width: 2.1rem;
+    height: 2.1rem;
   }
   @media (min-width: 431px){
     right: 8%;
-    width: 3.2rem;
+    width: 3.125rem;
     height: 3.125rem;
   }
 `;

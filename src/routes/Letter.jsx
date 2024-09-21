@@ -125,20 +125,20 @@ function Mailbox() {
     setSeeAllActive(true);
     setSeeFavoritesActive(false);
     setSeeNotReadActive(false);
-    fetchMails('all'); 
-    };
+    fetchMails('all');
+  };
   const handleSeeFavoritesToggle = () => {
     setSeeFavoritesActive(true);
     setSeeAllActive(false);
     setSeeNotReadActive(false);
-    fetchMails('starred');  
-    };
+    fetchMails('starred');
+  }; 
   const handleSeeNotReadToggle = () => {
     setSeeNotReadActive(true);
     setSeeAllActive(false);
     setSeeFavoritesActive(false);
-    fetchMails('notRead'); 
-    };
+    fetchMails('notRead');
+  };
 
   const handleCheck = (mailId) => {
     setSelectedMailIds((prevSelected) => {

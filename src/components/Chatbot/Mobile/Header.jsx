@@ -1,5 +1,5 @@
 import React from 'react'
-import * as S from '../ChatbotMobile.style'
+import * as S from './ChatbotMobile.style'
 import { IoIosArrowBack } from "react-icons/io";
 
 export default function Header() {

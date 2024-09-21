@@ -21,7 +21,8 @@ export const Header = styled.div`
     padding: 0 1rem;
 
     width: 100%;
-    height: 4rem;
+    // height: 4rem;
+    height: 8dvh;
     background: #F5F4F2;
     box-shadow: 0px 2px 2px #e0e0e0;
 
@@ -60,4 +61,81 @@ export const EndBtn = styled.div`
     font-size: 1.25rem;
     font-weight: 700;
     line-height: normal;
+`
+
+/* ChattingBox */
+export const ChattingBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    align-items: center;
+    position: relative;
+
+    padding: 1rem;
+
+    width: 100%;
+    height: 63dvh;
+    background: pink;
+    overflow: auto;
+`
+
+export const UserBubble = styled.div`
+    ${ALIGN.ROW_CENTER};
+    align-self: flex-end; // 오른쪽 정렬
+
+    padding: 1rem;
+    max-width: 80%;
+    margin-bottom: 1rem;
+
+    border-radius: 0.9375rem;
+    background: ${(props) => (
+        props.chatbot === 'Simmaeum' ? '#FFB48A'
+        : props.chatbot === 'Banbani' ? '#FFD258' : '#ABD5C4'
+    )};
+    
+    word-wrap: break-word;
+    white-space: pre-line;
+
+    p {
+        color: #000;
+        font-family: Pretendard;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+`
+
+export const ChatbotBubble = styled.div`
+    ${ALIGN.ROW_CENTER};
+    align-self: flex-start;
+    margin-bottom: 1rem;
+
+    padding: 1rem 2rem;
+    max-width: 90%;
+    
+    border-radius: 0.9375rem;
+    background: #FFF;
+
+    p {
+        color: #000;
+        font-family: Pretendard;
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+
+`
+
+export const ChatbotBox = styled.div`
+    width: 100%;
+    height: 21dvh;
+    background: lightblue;
+`
+
+export const InputBox = styled.div`
+    width: 100%;
+    height: 8dvh;
+    background: lightgreen;
 `

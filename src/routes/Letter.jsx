@@ -24,7 +24,7 @@ function Mailbox() {
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
   const [mailDetails, setMailDetails] = useState(null);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
-  const [selectedMailIds, setSelectedMailIds] = useState([]);  
+  const [selectedMailIds, setSelectedMailIds] = useState([]); 
 
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');

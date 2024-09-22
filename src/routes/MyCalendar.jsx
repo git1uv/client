@@ -21,10 +21,9 @@ function MyCalendar() {
   const [value, onChange] = useState(new Date());
   const [emotionData, setEmotionData] = useState([]);
   const navigate = useNavigate();
-  const today = new Date();
   const isMobile = window.innerWidth <= 430; 
 
-  /**useEffect(() => {
+  useEffect(() => {
     const fetchCalendarData = async () => {
     try {
       const year = moment(value).format('YYYY');
@@ -37,12 +36,10 @@ function MyCalendar() {
     } catch (error) {
       console.error('Error fetching calendar data:', error);
     }
-  };
+    };
 
-  fetchCalendarData();
-}, [value]);
-
-  */
+    fetchCalendarData();
+  }, [value]);
 
 const renderEmotionIcon = (emotion) => {
   switch (emotion) {

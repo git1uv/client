@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
+import axios from 'axios';
 import styled from "styled-components";
 import * as C from '../components/Calendar/CustomCalendar.style';
 import { useNavigate } from 'react-router-dom';
@@ -18,68 +19,78 @@ const CalendarWrapper = styled.div`
 `;
 
 function MyCalendar() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const [value, onChange] = useState(new Date());
   const [emotionData, setEmotionData] = useState([]);
   const navigate = useNavigate();
   const isMobile = window.innerWidth <= 430; 
+
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
 
   useEffect(() => {
     const fetchCalendarData = async () => {
     try {
       const year = moment(value).format('YYYY');
       const month = moment(value).format('MM');
-      const response = await fetch(`/api/v1/calendar/${year}/${month}/home`);
-      const result = await response.json();
-      if (result.status === 200) {
-        setEmotionData(result.data);
+      const response = await axios.get(`${serverURL}/api/v1/calendar/${year}/${month}/home`,
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      }
+    );
+      if (response.data.code === "200") {
+        setEmotionData(response.data.data);
+      } else {
+        console.error("달력 불러오기 실패:", response.data.message);
       }
     } catch (error) {
-      console.error('Error fetching calendar data:', error);
+      console.error("API 호출 중 오류 발생:", error);
     }
-    };
+  };
 
     fetchCalendarData();
   }, [value]);
 
 const renderEmotionIcon = (emotion) => {
   switch (emotion) {
-    case 'Laughing':
+    case 'laughing':
       return <C.StyledEmotion imageUrl={img1} />;
-    case 'Excited':
+    case 'excited':
       return <C.StyledEmotion imageUrl={img2} />;
-    case 'Passionate':
+    case 'passionate':
       return <C.StyledEmotion imageUrl={img3} />;
-    case 'Peaceful':
+    case 'peaceful':
       return <C.StyledEmotion imageUrl={img4} />;
-    case 'Angry':
+    case 'angry':
       return <C.StyledEmotion imageUrl={img5} />;
-    case 'Crying':
+    case 'crying':
       return <C.StyledEmotion imageUrl={img6} />;
-    case 'Dissatisfied':
+    case 'dissatisfied':
       return <C.StyledEmotion imageUrl={img7} />;
-    case 'Disappointed':
+    case 'disappointed':
       return <C.StyledEmotion imageUrl={img8} />;
-    case 'Inlove':
+    case 'inlove':
       return <C.StyledEmotion imageUrl={img9} />;
-    case 'Sick':
+    case 'sick':
       return <C.StyledEmotion imageUrl={img10} />;
-    case 'Proud':
+    case 'proud':
       return <C.StyledEmotion imageUrl={img11} />;
-    case 'Tired':
+    case 'tired':
       return <C.StyledEmotion imageUrl={img12} />;
-    case 'Surprised':
+    case 'surprised':
       return <C.StyledEmotion imageUrl={img13} />;
-    case 'Anxious':
+    case 'anxious':
       return <C.StyledEmotion imageUrl={img14} />;
-    case 'Happy':
+    case 'happy':
       return <C.StyledEmotion imageUrl={img15} />;
-    case 'Embarrassed':
+    case 'embarrassed':
       return <C.StyledEmotion imageUrl={img16} />;
     default:
       return null;
   }
 };
-
 
   const handleDateClick = (date) => {
     const formattedDate = moment(date).format('YYYY-MM-DD');

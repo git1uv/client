@@ -93,6 +93,10 @@ function Mailbox() {
           mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
         );
         setMails(updatedMails);
+        if (seeFavoritesActive) {
+            setMails(updatedMails.filter(mail => mail.starred));
+        }
+
       } else if (response.data.code === "MAIL5001") {
         console.error("실패:", response.data.message);
         setMails(mails);

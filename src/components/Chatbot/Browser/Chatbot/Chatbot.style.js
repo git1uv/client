@@ -34,7 +34,7 @@ export const Character = styled.img`
     height: auto;
     z-index: 80;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 200px;
     }
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -49,7 +49,7 @@ export const Emotion = styled.img`
     bottom: calc(50% - 90px);
     left: calc(50% - 62.5px); 
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 95px;
         bottom: calc(50% - 80px); 
         left: calc(50% - 52.5px); 
@@ -71,7 +71,7 @@ export const Chair = styled.img`
     bottom: calc(50% - 93px);  /* Chair 이미지 하단에 Character가 위치하도록 설정 */
     left: calc(50% - 155px); /* 이미지의 중앙에 캐릭터가 위치하도록 조정 */
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 370px;
         bottom: calc(50% - 80px);  /* Chair 이미지 하단에 Character가 위치하도록 설정 */
         left: calc(50% - 140px); /* 이미지의 중앙에 캐릭터가 위치하도록 조정 */
@@ -92,7 +92,7 @@ export const Bottom = styled.div`
     width: 80.5625rem;
     height: 43.41075rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60.5625rem;
         height: 30.41075rem;
 
@@ -127,7 +127,7 @@ export const Header = styled.div`
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         font-weight: 400;

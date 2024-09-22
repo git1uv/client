@@ -26,7 +26,7 @@ export const Container = styled.div`
   width: 80.5625rem;
   height: 49.80088rem;
   
-  @media (max-width: 1440px) {
+  @media (max-width: 1470px) {
     width: 60.5625rem;
     height: 34.5rem;
   }
@@ -47,7 +47,7 @@ export const Header = styled.div`
   width: 10rem;
   margin: -2.5rem 0 0 -2rem;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1470px) {
     margin: -1rem 0 0 -0.5rem;
   }
   @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -58,7 +58,7 @@ export const Header = styled.div`
     width: 12.68369rem;
     border-radius: 50%;
     
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       width: 9rem;
       margin-top: -2rem;
     }
@@ -87,7 +87,7 @@ export const TitleBox = styled.div`
 
     font-family: SeoulHangang;
     font-size: 1.75rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       font-size: 1.25rem;
       line-height: 1.2rem;
     }
@@ -101,7 +101,7 @@ export const TitleBox = styled.div`
 export const Name = styled.div` // 000의 일지
   ${ALIGN.ROW_CENTER};
   margin-top: 2rem;
-  @media (max-width: 1440px) {
+  @media (max-width: 1470px) {
     margin-top: 1rem;
   }
   div {
@@ -165,7 +165,7 @@ export const Content = styled.div`
     font-family: Pretendard;
     font-size: 1.125rem;
     line-height: 1.625rem; 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       font-size: 0.75rem;
       line-height: 1.2rem;
     }
@@ -203,7 +203,7 @@ export const Title = styled.div`
     color: #ED6243;
     font-family: Pretendard;
     font-size: 1.25rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       font-size: 1rem;
     }
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {

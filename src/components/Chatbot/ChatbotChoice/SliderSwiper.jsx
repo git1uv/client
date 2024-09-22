@@ -26,7 +26,7 @@ const StyledSwiperContainer = styled.div`
   .swiper-button-next {
     position: absolute;
     top: 133%;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       top: 150%;
     }
     color: grey;
@@ -91,7 +91,7 @@ const StyledSwiper = styled(Swiper)`
 
 const SlideImage = styled.img`
     width: 16.875rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       width: 10rem;
     }
     object-fit: cover;

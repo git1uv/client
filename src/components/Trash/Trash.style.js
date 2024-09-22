@@ -94,7 +94,7 @@ export const Card1 = styled.div`
     height: 211.6px;
     margin-right: -12vw;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     background-image: url(${card1ImageWeb});
     width: 210px;
     height: 177.7px;
@@ -137,7 +137,7 @@ export const Card2 = styled.div`
     margin-top: 41vh;
     margin-left: -12vw;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     background-image: url(${card2ImageWeb});
     width: 210px;
     height: 177.7px;
@@ -171,7 +171,7 @@ export const Card2Button = styled.button`
     width: 190px;
     height: 46.3px;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     background-image: url(${buttonImageWeb});
     width: 150px;
     height: 36.6px;
@@ -270,7 +270,7 @@ export const ThrowOut = styled.button`
     height: 45px;
     margin-top: 12px;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     background-image: url(${throwOutImageWeb});
     width: 184.5px;
     height: 45px;

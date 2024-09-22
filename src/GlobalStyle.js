@@ -14,9 +14,9 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1470px) {
     html {
-      font-size: 15px; // 화면 너비가 1440px 이하일 때
+      font-size: 15px; 
     }
   }
   @media (max-width: 1200px) {
@@ -25,11 +25,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: 768px) {
-    html {
-      font-size: 12px; // 화면 너비가 768px 이하일 때
-    }
-  }
+  // @media (max-width: 768px) {
+  //   html {
+  //     font-size: 12px; // 화면 너비가 768px 이하일 때
+  //   }
+  // }
     @font-face {
       font-family: 'seoul';
       src: url(${seoul}) format('truetype');

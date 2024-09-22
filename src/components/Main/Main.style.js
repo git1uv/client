@@ -31,7 +31,7 @@ export const Room = styled.div`
     width: 856px;
     height: 100vh;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 545px;
         height: 556px;
     }
@@ -58,7 +58,7 @@ export const Trash = styled.div`
     left: 1.6%;
     bottom: 28%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 65px;
         height: 86px;
         bottom: 21.5%;
@@ -86,7 +86,7 @@ export const Trash = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 170px;
             height: 139px;
             bottom: 17%;
@@ -109,7 +109,7 @@ export const Airplane = styled.div`
     left: 26%;
     bottom: 46%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 45px;
         height: 30px;
         left: 27%;
@@ -137,7 +137,7 @@ export const Airplane = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 156px;
             height: 72px;
             left: 18%;
@@ -160,7 +160,7 @@ export const Calendar = styled.div`
     left: 83%;
     bottom: 45%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60px;
         height: 95px;
         bottom: 43%;
@@ -187,7 +187,7 @@ export const Calendar = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 150px;
             height: 120px;
             left: 71%;
@@ -212,7 +212,7 @@ export const Chatbot = styled.div`
     left: 46%;
     bottom: 43%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 155px;
         height: 120px;
         bottom: 41%;
@@ -239,7 +239,7 @@ export const Chatbot = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 230px;
             height: 140px;
             left: 42%;
@@ -262,7 +262,7 @@ export const PencilHolder = styled.div`
     right: 79.5%;
     bottom: 42.5%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 35px;
         height: 65px;
         bottom: 40.5%;
@@ -289,7 +289,7 @@ export const PencilHolder = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 170px;
             height: 85px;
             right: 69.25%;
@@ -313,7 +313,7 @@ export const Mailbox = styled.div`
     left: 33.5%;
     bottom: 14%;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60px;
         height: 160px;
         left: 34%;
@@ -341,7 +341,7 @@ export const Mailbox = styled.div`
         
         z-index: 40;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 160px;
             height: 215px;
             left: 30.5%;

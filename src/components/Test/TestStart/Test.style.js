@@ -45,7 +45,7 @@ export const Container = styled.div`
     width: 80.5625rem;
     height: 53.0625rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60.5625rem;
         height: 38.0625rem;
     }
@@ -78,7 +78,7 @@ export const TextBox = styled.div`
     h2 {
         margin: 0;
         font-size: 1.75rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         // @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -88,7 +88,7 @@ export const TextBox = styled.div`
     h1 {
         margin: 0 0 1% 0;
         font-size: 2.5rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.5rem;
         }
     }
@@ -98,7 +98,7 @@ export const TextBox = styled.div`
         font-size: 1.5rem;
         line-height: 2.125rem;
         letter-spacing: -0.03125rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {

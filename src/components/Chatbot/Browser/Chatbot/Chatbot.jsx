@@ -103,6 +103,8 @@ export default function Chatbot() {
     // postChatting(); // 사용자 메시지 보내기 API
   }
 
+
+
   const handleKeyPress = (e) => { // 엔터키 누르면 메시지 전송
     if (e.key === 'Enter') {
       ChangeChat();

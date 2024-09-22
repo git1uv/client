@@ -3,7 +3,7 @@ import letter from "../../assets/pencilHolder/letter.png"
 import backgroundImg from "../../assets/pencilHolder/bgImg.png"
 
 export const Container = styled.div`
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         html {
             font-size: 13px; // 화면 너비가 1200px 이하일 때
         }
@@ -40,7 +40,7 @@ export const Container = styled.div`
     
     section {
         height: 2rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             height: 2rem;
         }
     }
@@ -59,7 +59,7 @@ export const Title = styled.div`
         letter-spacing: -0.408px;
         color: #000000;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 2rem;
         }
         @media (max-width: 430px) {
@@ -74,7 +74,7 @@ export const Title = styled.div`
         letter-spacing: -0.408px;
         color: #686868;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1rem;
         }
     }
@@ -89,7 +89,7 @@ export const Letter = styled.div`
     height: auto;
     // padding: 3% 1rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 50rem;
         padding: 0;
     }
@@ -103,7 +103,7 @@ export const Letter = styled.div`
 export const SizedBox = styled.div`
     height: 14rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         height: 8rem;
     }
     @media (max-width: 1200px) {
@@ -118,7 +118,7 @@ export const WriteBox = styled.div`
     width: 40rem;
     margin: 3rem 0 2rem 0;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         margin: 2rem 0 1rem 0;
     }
     @media (max-width: 1200px) {
@@ -161,7 +161,7 @@ export const WriteBox = styled.div`
     textarea {
         width: 38rem;
         height: 30vh;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             height: 25vh;
         }
 
@@ -199,7 +199,7 @@ export const SendBtn = styled.div`
     align-items: center;
     margin-bottom: 3rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         margin-bottom: 1rem;
     }
 

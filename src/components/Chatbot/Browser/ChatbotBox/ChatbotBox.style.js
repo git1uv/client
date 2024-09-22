@@ -13,14 +13,14 @@ export const Container = styled.div`
 
     padding: 2rem 4rem; 
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         padding: 1rem 2rem; 
     }
 
     width: 100%;
     height: 43.41075rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
        height: 30.41075rem;
     }
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -41,7 +41,7 @@ export const Title = styled.div`
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         font-weight: 400;
@@ -56,7 +56,7 @@ export const Warning = styled.div`
         color: #ED6243;
         font-family: Pretendard;
         font-size: 1.125rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1rem;
         }
         font-weight: 600;
@@ -68,7 +68,7 @@ export const Warning = styled.div`
         color: #27272A;
         font-family: Pretendard;
         font-size: 1rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 0.9rem;
         }
         font-style: normal;
@@ -88,7 +88,7 @@ export const InputBox = styled.div`
     position: absolute;
     bottom: calc(0% + 5.5rem);
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 45.0625rem;
         bottom: calc(0% + 1.5rem);
     }

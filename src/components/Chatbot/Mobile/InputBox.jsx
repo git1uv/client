@@ -3,6 +3,8 @@ import * as S from './ChatbotMobile.style'
 
 export default function InputBox() {
   return (
-    <S.InputBox></S.InputBox>
+    <S.InputBox>
+      <input></input>
+    </S.InputBox>
   )
 }

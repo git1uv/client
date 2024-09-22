@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import theme from '../../../constants/theme';
-import { IoIosArrowBack } from "react-icons/io";
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 
@@ -128,14 +127,43 @@ export const ChatbotBubble = styled.div`
 
 `
 
+/* ChatbotBox */
 export const ChatbotBox = styled.div`
+    display: flex;
+    align-items: flex-end;
     width: 100%;
     height: 21dvh;
     background: lightblue;
 `
+export const Chair = styled.img`
+    width: 70%;
+    height: 140%;
+    position: relative;
+    
+    z-index: 60;
+`
+
+export const Character = styled.img`
+    width: 40%;
+    height: auto;
+
+    position: absolute;
+    bottom: 8dvh;
+    left: 6vw;
+
+    z-index: 70;
+`
+
+
 
 export const InputBox = styled.div`
     width: 100%;
     height: 8dvh;
     background: lightgreen;
+
+    input {
+        width: 100%;
+        height: 100%;
+        font-size: 18px;
+    }
 `

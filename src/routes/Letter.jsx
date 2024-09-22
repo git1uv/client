@@ -154,10 +154,11 @@ function Mailbox() {
     });
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (mailId) => {
     try {
+      const mailIdsToDelete = mailId ? [mailId] : selectedMailIds; 
       const response = await axios.post(`${serverURL}/api/v1/mail/delete`, {
-        mailIds: selectedMailIds,
+        mailIds: mailIdsToDelete,
       },
       {
         headers: {
@@ -166,7 +167,7 @@ function Mailbox() {
       });
 
       if (response.data.code === "200") {
-        setMails(mails.filter(mail => !selectedMailIds.includes(mail.mailId)));
+        setMails((prevMails) => prevMails.filter(mail => !mailIdsToDelete.includes(mail.mailId)));
         setDeleteModalVisible(false);
       } else {
         console.error('실패:', response.data.message);

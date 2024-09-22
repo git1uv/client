@@ -31,34 +31,6 @@ function Browser() {
   const [message, setMessage] = useState('');
   const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
-
-  // 예시 데이터 설정
-  useEffect(() => {
-    const exampleData = {
-      emotion: "Happy",
-      diary: "오늘 맛있는 밥을 모거따",
-      counselingLog: [
-        { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
-        { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
-        { id: 3, title: "친구들에 대한 고민", chatbotType: "H", time: "11:00" },
-      ],
-      solution: [
-        { id: 1, content: "물 많이 마시기", is_completed: false },
-        { id: 2, content: "10분 명상하기", is_completed: true },
-        { id: 3, content: "10분 명상하기", is_completed: true },
-        { id: 4, content: "10분 명상하기", is_completed: true },
-        { id: 5, content: "10분 명상하기", is_completed: true },
-      ]
-    };
-
-    // 예시 데이터를 상태로 설정
-    setEmotion(exampleData.emotion);
-    setContent(exampleData.diary);
-    setCounselingLogs(exampleData.counselingLog);
-    setSolutions(exampleData.solution);
-  }, []);
-
-
   const [showModal, setShowModal] = useState(false);
   const [showEmotionModal, setShowEmotionModal] = useState(false);
   const [showGif, setShowGif] = useState(false);

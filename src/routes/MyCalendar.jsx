@@ -24,15 +24,6 @@ function MyCalendar() {
   const today = new Date();
   const isMobile = window.innerWidth <= 430; 
 
-  useEffect(() => {
-    const exampleData = [
-      { calendarId: 1, date: '2024-09-10', emotion: 'Happy', hasCounseling: true, chatbotType: "F"},
-      { calendarId: 2, date: '2024-09-20', emotion: 'none', hasCounseling: true, chatbotType: "T"},
-      { calendarId: 3, date: '2024-09-21', emotion: 'Laughing', hasCounseling: false, chatbotType: "none"},
-    ];
-    setEmotionData(exampleData);
-  }, []);
-
   /**useEffect(() => {
     const fetchCalendarData = async () => {
     try {

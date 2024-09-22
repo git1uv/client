@@ -16,7 +16,7 @@ export const StyledCalendarWrapper = styled.div`
     height: 60rem;
     margin-top: 5.3vh;
   }
-  @media (min-width: 1024px) and (max-width: 1440px){
+  @media (min-width: 1024px) and (max-width: 1470px){
     width: 50rem;
     height: 45rem;
     margin-top: 5.3vh;
@@ -156,7 +156,7 @@ export const StyledCalendarWrapper = styled.div`
     @media (min-width: 1024px) and (max-width: 1200px) {
       padding: 0.5rem 0 4.5rem;
     }
-    @media (min-width: 1201px) and (max-width: 1440px) {
+    @media (min-width: 1201px) and (max-width: 1470px) {
       padding: 0.4rem 0 4.7rem;
     }
     @media (min-width: 1441px) and (max-width: 1600px) {
@@ -201,7 +201,7 @@ export const StyledEmotion = styled.div`
     width: 3.75rem;
     height: 3.75rem;
   }
-  @media (min-width: 1201px) and (max-width: 1440px) {
+  @media (min-width: 1201px) and (max-width: 1470px) {
     width: 4rem;
     height: 4rem;
   }
@@ -243,7 +243,7 @@ export const Circle = styled.div`
     height: 4.25rem;
     top: 65%;
   }
-  @media (min-width: 1201px) and (max-width: 1440px) {
+  @media (min-width: 1201px) and (max-width: 1470px) {
     width: 4.5rem;
     height: 4.5rem;
     top: 65%;

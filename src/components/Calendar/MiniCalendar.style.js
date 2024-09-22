@@ -25,7 +25,7 @@ export const MiniCalendarWrapper = styled.div`
     width: 127px;
     height: 40px;
     }
-    @media (min-width: 1201px) and (max-width: 1440px) {
+    @media (min-width: 1201px) and (max-width: 1470px) {
       width: 150px;
       height: 50px;
     }
@@ -47,7 +47,7 @@ export const MiniCalendarWrapper = styled.div`
     height: 300px;
     margin: 30px 0 0 90px;
   }
-  @media (min-width: 1201px) and (max-width: 1440px) {
+  @media (min-width: 1201px) and (max-width: 1470px) {
     width: 270px;
     height: 340px;
     margin: 30px 0 0 90px;

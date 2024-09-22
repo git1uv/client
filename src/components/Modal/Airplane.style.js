@@ -54,7 +54,7 @@ export const Modal = styled.div`
     height: 502px;
     padding: 30px;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     background-image: url(${webLetter});
     width: 320px;
     height: 402px;
@@ -78,7 +78,7 @@ export const ButtonContainer = styled.div`
   @media (min-width: 1441px) {
     width: 440px;
   }
-  @media (min-width: 1024px) and (max-width: 1440px) {
+  @media (min-width: 1024px) and (max-width: 1470px) {
     width: 310px;
   }
   @media (min-width: 431px) and (max-width: 1023px) {
@@ -113,7 +113,7 @@ export const GoToLetterButton = styled.button`
     right: 7.4vw;
     height: 3.5rem;
   }
-  @media (min-width: 431px) and (max-width: 1440px) {
+  @media (min-width: 431px) and (max-width: 1470px) {
     top: 56.5vh;
     width: 80%;
     right: 7.4vw;
@@ -152,7 +152,7 @@ export const DownloadButton = styled.button`
     width: 3.5rem;
     height: 3.5rem;
   }
-  @media (min-width: 431px) and (max-width: 1440px) {
+  @media (min-width: 431px) and (max-width: 1470px) {
     top: 56.5vh;
     left: 7.4vw;
     width: 3rem;
@@ -194,7 +194,7 @@ export const Text = styled.div`
   @media (min-width: 1024px) and (max-width: 1200px) {
     font-size: 1.2rem;
   }
-  @media (min-width: 1201px) and (max-width: 1440px) {
+  @media (min-width: 1201px) and (max-width: 1470px) {
     font-size: 1rem;
   }
 `;

@@ -3,7 +3,7 @@ import * as S from './ChatbotMobile.style'
 import { IoIosArrowBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
-export default function Header() {
+export default function Header({openFirstModal}) {
   const result = localStorage.getItem('result');
   const navigate = useNavigate();
   return (
@@ -18,7 +18,7 @@ export default function Header() {
             : <h1>뉴러니</h1> 
           }
         </h1>
-      <S.EndBtn>끝내기</S.EndBtn>
+      <S.EndBtn onClick={openFirstModal}>끝내기</S.EndBtn>
     </S.Header>
   )
 }

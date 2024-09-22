@@ -4,7 +4,26 @@ import Header from './Header'
 import ChattingBox from './ChattingBox'
 import ChatbotBox from './ChatbotBox'
 import InputBox from './InputBox'
+import FirstModal from '../../Modal/Chatbot/FirstModal';
+import SecondModal from '../../Modal/Chatbot/SecondModal';
+
 export default function ChatbotMobile() {
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+
+  const openFirstModal = () => {
+    setIsFirstModalOpen(true);
+  }
+  const closeFirstModal = () => {
+    setIsFirstModalOpen(false);
+  }
+  const openSecondModal = () => {
+    setIsFirstModalOpen(false);
+    setIsSecondModalOpen(true);
+  }
+  const closeSecondModal = () => {
+    setIsSecondModalOpen(false);
+  }
   const [dummyData, setDummyData] = useState([
     {
       msg: '안녕 마음이 내가 왔다\n 우하하하하',
@@ -42,10 +61,19 @@ export default function ChatbotMobile() {
 
   return (
     <S.App>
-      <Header />
+      <Header openFirstModal={openFirstModal}/>
       <ChattingBox dummyData={dummyData}/>
       <ChatbotBox/>
       <InputBox setDummyData={setDummyData}/>
+      <FirstModal
+        isVisible={isFirstModalOpen} 
+        onClose={closeFirstModal} 
+        onConfirm={openSecondModal}
+      />
+      <SecondModal
+        isVisible={isSecondModalOpen} 
+        onClose={closeSecondModal} 
+      />
     </S.App>
   )
 }

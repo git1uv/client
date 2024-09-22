@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import theme from '../../../constants/theme';
+import sendBtn from '../../../assets/chatbot/chatStart/sendBtn.png'
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 
@@ -29,7 +30,7 @@ export const Header = styled.div`
         margin: 0;
         color: #27272A;
         font-family: SeoulHangang;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -70,12 +71,15 @@ export const ChattingBox = styled.div`
     align-items: center;
     position: relative;
 
+    margin-bottom: -1vh; /* 음수 마진으로 겹치게 설정 */
+
     padding: 1rem;
 
     width: 100%;
     height: 63dvh;
-    background: pink;
     overflow: auto;
+
+    position: relative;
 `
 
 export const UserBubble = styled.div`
@@ -132,38 +136,71 @@ export const ChatbotBox = styled.div`
     display: flex;
     align-items: flex-end;
     width: 100%;
-    height: 21dvh;
-    background: lightblue;
+    height: 22dvh;
+
+    background: rgb(245,244,242);
+    background: linear-gradient(0deg, rgba(245,244,242,1) -12%, rgba(245,244,242,1) 94%, rgba(245,244,242,0) 100%);
+ 
+    position: relative;
+    z-index: 10;
 `
 export const Chair = styled.img`
+    margin-left: 5vw;
     width: 70%;
-    height: 140%;
     position: relative;
     
     z-index: 60;
 `
 
 export const Character = styled.img`
-    width: 40%;
+    width: 50%;
     height: auto;
 
     position: absolute;
-    bottom: 8dvh;
-    left: 6vw;
+    left: 5vw;
 
     z-index: 70;
 `
 
+export const Emotion = styled.img`
+    position: absolute;
+    width: 30%;
+    height: auto;
+    
+    left: 15vw;  
 
+    z-index: 80;
+`
+/* InputBox */
 
 export const InputBox = styled.div`
+    ${ALIGN.ROW_CENTER};
     width: 100%;
     height: 8dvh;
-    background: lightgreen;
 
     input {
-        width: 100%;
-        height: 100%;
+        width: 95%;
+        height: 80%;
         font-size: 18px;
+        position: relative;
+        padding-left: 4%;
+        border-radius: 2.0625rem;
+        border: 1px solid #739B8B;
+        background: #FFF;
+
+        outline: none;
+    }
+
+    button {
+        position: absolute;
+        left: 86.8vw; 
+        width: 3.125rem;
+        height: 3.125rem;
+        border: none;
+        background-color: transparent;
+        background-image: url(${sendBtn});
+        background-size: cover;
+
+        z-index: 10;
     }
 `

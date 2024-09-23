@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import theme from '../../../constants/theme'
 import background from '../../../assets/chatbot/result/background.png'
-import paper from '../../../assets/chatbot/result/paper.png'
+import paper from '../../../assets/chatbot/result/paperWeb.png'
 import download from '../../../assets/chatbot/result/download.png'
 
 const {ALIGN, RESPONSIVE_SIZE} = theme;

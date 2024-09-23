@@ -100,7 +100,7 @@ function Mobile({date}) {
         },
       });
 
-      if (response.status === 200) {
+      if (response.data.code === '200') {
         setMessage('저장되었습니다.');
         setShowModal(true);
       } else {

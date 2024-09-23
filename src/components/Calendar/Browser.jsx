@@ -101,7 +101,7 @@ function Browser({ date }) {
         },
       });
 
-      if (response.status === 200) {
+      if (response.data.code === '200') {
         setMessage('저장되었습니다.');
         setShowModal(true);
       } else {
@@ -244,7 +244,7 @@ function Browser({ date }) {
         </P.Content>
       </P.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
-      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} date={date} setEmotion={setEmotion} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} calendarId={calendarId} setEmotion={setEmotion} />}
       {showGif && (
         <GifModal 
           isVisible={showGif} 

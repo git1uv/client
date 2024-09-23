@@ -9,6 +9,7 @@ import * as P from './PCDatePage.style';
 import slider_t from '../../assets/CalendarImg/slider_t.png';
 import slider_f from '../../assets/CalendarImg/slider_f.png';
 import slider_h from '../../assets/CalendarImg/slider_h.png';
+import moment from 'moment'; 
 
 const SwiperContainer = styled.div`
   display: flex;
@@ -75,6 +76,7 @@ function getChatbotBackground(chatbotType) {
 }
 
 function CustomSlider({ logs, getChatbotName }) {
+  console.log(logs);
     return (
         <SwiperContainer>
         <CustomSwiper
@@ -90,7 +92,7 @@ function CustomSlider({ logs, getChatbotName }) {
             <P.OneLine>{log.title}</P.OneLine>
             <P.SliderLineBox>
             <P.WithChat>{getChatbotName(log.chatbotType)}</P.WithChat>
-            <P.Time>{log.time}</P.Time>
+            <P.Time>{moment(log.time).format('HH:mm')}</P.Time>
             </P.SliderLineBox>
           </CustomSwiperSlide>
           ))}

@@ -37,14 +37,14 @@ function Browser({ date }) {
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
-  const handleDelete = (solutionId) => {
-    const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
-    setSolutions(updatedSolutions);
-  };
-  /**const handleDelete = async (solutionId) => {
+  const handleDelete = async (solutionId) => {
     try {
-      const response = await axios.delete(`/api/v1/calendar/today/solution/${solutionId}/delete`);
-      if (response.status === 200) {
+      const response = await axios.delete(`${serverURL}/api/v1/calendar/today/solution/${solutionId}/delete`,{
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      });
+      if (response.data.code === '200') {
         setSolutions(solutions.filter(solution => solution.id !== solutionId));
         setMessage('해결책이 삭제되었습니다.');
       } else {
@@ -54,7 +54,6 @@ function Browser({ date }) {
       setMessage(`삭제 중 오류 발생: ${error.message}`);
     }
   };
- */
 
   useEffect(() => {
     if (!accessToken || !refreshToken) {

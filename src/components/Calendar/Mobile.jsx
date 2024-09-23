@@ -36,20 +36,6 @@ function Mobile({date}) {
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
-  const handleCheck = (solutionId) => {
-    const updatedSolutions = solutions.map(solution => {
-      if (solution.id === solutionId) {
-        return { ...solution, is_completed: !solution.is_completed };
-      }
-      return solution;
-    });
-    setSolutions(updatedSolutions);
-
-    if (updatedSolutions.every(solution => solution.is_completed)) {
-      setShowGif(true);
-    }
-  };
-
   const handleDelete = (solutionId) => {
     const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
     setSolutions(updatedSolutions);
@@ -163,33 +149,34 @@ function Mobile({date}) {
     }
   };
 
-    /**
-    const handleCheck = async (solutionId) => {
-      const updatedSolutions = solutions.map(solution => {
-      if (solution.id === solutionId) {
-        return { ...solution, is_completed: !solution.is_completed };
-      }
-      return solution;
+  const handleCheck = async (solutionId) => {
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/calendar/today/solution/${solutionId}/done`, {
+        completed: !solutions.find(solution => solution.id === solutionId).completed.toString(),
+    },{
+      headers: {
+        'Authorization': `Bearer ${accessToken} ${refreshToken}`
+      },
     });
-    setSolutions(updatedSolutions);
-        
-        try {
-          const solution = updatedSolutions.find(solution => solution.id === solutionId);
-          const response = await axios.patch(`/api/v1/calendar/today/solution/${solutionId}/done`, {
-           is_completed: solution.is_completed.toString(),
-        });
-          if (response.status !== 200) {
-            setMessage(`저장 실패: ${response.data.message}`);
-            setSolutions(solutions);
-          } else if (updatedSolutions.every((solution) => solution.is_completed)) {
-            setShowGif(true);
-          }
-        } catch (error) {
-          setMessage(`저장 중 오류 발생: ${error.message}`);
-          setSolutions(solutions);
+    if (response.data.code === '200') {
+      const updatedSolutions = solutions.map(solution => {
+        if (solution.id === solutionId) {
+          return { ...solution, completed: !solution.completed };
         }
+        return solution;
+      });
+
+      setSolutions(updatedSolutions);
+      if (updatedSolutions.every(solution => solution.completed)) {
+        setShowGif(true);
+      }
+    } else {
+      setMessage(`저장 실패: ${response.data.message}`);
+    }
+  } catch (error) {
+    setMessage(`저장 중 오류 발생: ${error.message}`);
+  }
 };
-    }*/
 
   return (
     <DateWrapper>

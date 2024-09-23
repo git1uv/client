@@ -184,6 +184,7 @@ function Mailbox() {
   
   return (
     <LetterWrapper>
+    <L.Bg>
     <L.Container>
       <L.Mailbox>
           <L.TopRow>
@@ -250,6 +251,7 @@ function Mailbox() {
                 />
             )}
     </L.Container>
+    </L.Bg>
     </LetterWrapper>
   );
 }

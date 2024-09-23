@@ -26,6 +26,7 @@ function Mobile({date}) {
   const [emotion, setEmotion] = useState('none');  
   const [content, setContent] = useState(''); 
   const [message, setMessage] = useState('');
+  const [calendarId, setCalendarId] = useState(null);
   const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -88,6 +89,7 @@ function Mobile({date}) {
         );
         if (response.data.code === "200") {
           const data = response.data.data;
+          setCalendarId(data.calendarId);
           setEmotion(data.emotion);
           setContent(data.diary);
           setSolutions(data.solution);
@@ -104,11 +106,13 @@ function Mobile({date}) {
   }, [date]);
 
   const handleSaveDiary = async () => {
-    setShowModal(true);
-  /**
     try {
-      const response = await axios.patch(`/calendar/today/${calendarID}/diary`, {
+      const response = await axios.patch(`${serverURL}/api/v1/calendar/today/${calendarId}/diary`, {
         content: content,
+      },{
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
       });
 
       if (response.status === 200) {
@@ -119,7 +123,7 @@ function Mobile({date}) {
       }
     } catch (error) {
       setMessage(`저장 중 오류 발생: ${error.message}`);
-    } */
+    } 
   };
 
   const handleEmotionClick = () => {

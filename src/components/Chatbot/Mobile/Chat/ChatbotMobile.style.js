@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import theme from '../../../constants/theme';
-import sendBtn from '../../../assets/chatbot/chatStart/sendBtn.png'
+import theme from '../../../../constants/theme';
+import sendBtn from '../../../../assets/chatbot/chatStart/sendBtn.png'
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 

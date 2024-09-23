@@ -4,8 +4,8 @@ import Header from './Header'
 import ChattingBox from './ChattingBox'
 import ChatbotBox from './ChatbotBox'
 import InputBox from './InputBox'
-import FirstModal from '../../Modal/Chatbot/FirstModal';
-import SecondModal from '../../Modal/Chatbot/SecondModal';
+import FirstModal from '../../../Modal/Chatbot/FirstModal';
+import SecondModal from '../../../Modal/Chatbot/SecondModal';
 
 export default function ChatbotMobile() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);

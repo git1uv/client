@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import * as S from './ChatbotMobile.style'
-import chair from '../../../assets/chatbot/chatStart/ChairMobile.png'
-import SimmaeumImg from '../../../assets/chatbot/chatStart/Simmaeum.png'
-import BanbaniImg from '../../../assets/chatbot/chatStart/Banbani.png'
-import NeuraneeImg from '../../../assets/chatbot/chatStart/Neuranee.png'
+import chair from '../../../../assets/chatbot/chatStart/ChairMobile.png'
+import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
+import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png'
+import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png'
 
-import { Simmaeum, Banbani, Neuranee } from '../../../datas/emotion'
+import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 import { useSelector } from 'react-redux'
 
 export default function ChatbotBox() {

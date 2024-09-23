@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './ChatbotMobile.style'
-import icon from '../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
+import icon from '../../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
 
 export default function ChattingBox({message, counseling, loading, dummyData}) {
   

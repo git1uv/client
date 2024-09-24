@@ -97,19 +97,13 @@ const SlideImage = styled.img`
     object-fit: cover;
 `;
 
-export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
+export const SliderSwiper = ({setChatbot, chatbotInfo}) => {
 
     const handleSlideChange = (swiper) => {
-      let centerIndex = swiper.realIndex;
       const chatbotName = localStorage.getItem('result');
 
-      if (chatbotName === 'Simmaeum')
-        setIndex(0);
-      else if(chatbotName === 'Banbani')
-        setIndex(1);
-      else
-        setIndex(2);
-
+      let centerIndex = swiper.realIndex;
+      // let centerIndex = index;
       setChatbot(chatbotInfo[centerIndex]);
   
       swiper.slides.forEach((slide, index) => {

@@ -80,7 +80,6 @@ export default function TestResult() {
         </S.SpeechBubble>
         <S.BtnBox>
           <button onClick={() => navigate('/chatbot/choice')}>다른 캐릭터 보러가기</button>
-          {/* <button onClick={() => navigate('/chatbot')}>대화를 시작할까?</button> */}
           <button onClick={() => patchChatbot()}>대화를 시작할까?</button>
         </S.BtnBox>
       </S.Container>

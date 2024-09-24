@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const counseling = createSlice({
 	name: 'counseling',
 		initialState: { // 더미데이터
-			counselingLogId: '1',
-			emotion: '피곤',
+			counselingLogId: '',
+			emotion: '평온',
             date: '',
 		},
 		reducers: {

@@ -6,10 +6,14 @@ import ChatbotBox from './ChatbotBox'
 import InputBox from './InputBox'
 import FirstModal from '../../../Modal/Chatbot/FirstModal';
 import SecondModal from '../../../Modal/Chatbot/SecondModal';
+import counseling from '../../../../redux/counseling'
 
 export default function ChatbotMobile() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+
+  const [message, setMessage] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -62,9 +66,14 @@ export default function ChatbotMobile() {
   return (
     <S.App>
       <Header openFirstModal={openFirstModal}/>
-      <ChattingBox dummyData={dummyData}/>
+      <ChattingBox message={message} counseling={counseling} loading={loading}/>
       <ChatbotBox/>
-      <InputBox setDummyData={setDummyData}/>
+      <InputBox 
+        message={message}
+        setMessage={setMessage}
+        loading={loading}
+        setLoading={setLoading}  
+      />
       <FirstModal
         isVisible={isFirstModalOpen} 
         onClose={closeFirstModal} 

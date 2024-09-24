@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './ChatbotMobile.style'
 import chair from '../../../../assets/chatbot/chatStart/ChairMobile.png'
 import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
@@ -53,10 +53,13 @@ export default function ChatbotBox() {
         setEmotion(select.tired);
         break;
       default:
-        setEmotion(select.love);
+        setEmotion(select.basic);
     }
   }
 
+  useEffect(() => {
+    changeFace();
+  }, [emotion])
 
   return (
     <S.ChatbotBox>

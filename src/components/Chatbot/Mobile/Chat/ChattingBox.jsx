@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './ChatbotMobile.style'
 import icon from '../../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
 
-export default function ChattingBox({message, counseling, loading, dummyData}) {
+export default function ChattingBox({message, counseling, loading}) {
   
   const chatbot = localStorage.getItem('result');
     // 더미데이터
@@ -13,17 +13,17 @@ export default function ChattingBox({message, counseling, loading, dummyData}) {
     if (chatEndRef.current) {
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [dummyData]);
+  }, [message]);
 
   return (
     <S.ChattingBox>
-         { // 추후에 dummyData -> message로 바꿔야 함
-        dummyData.map((value, index) => {
+         { 
+        message.map((value, index) => {
           return (
             (value.isUser ?
               <S.UserBubble chatbot={chatbot}>{String(value.msg)}</S.UserBubble>
               :  <S.ChatbotBubble key={index}>
-              {loading && index === dummyData.length - 1 ? ( // 마지막 응답이 로딩 중일 때
+              {loading && index === message.length - 1 ? ( // 마지막 응답이 로딩 중일 때
                 <img src={icon} alt="loading icon" />
               ) : (
                 String(value.msg) // 문자열로 변환

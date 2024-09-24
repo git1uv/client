@@ -14,16 +14,26 @@ import Icon2 from '../../../assets/chatbot/result/journal2.png'
 import Icon3 from '../../../assets/chatbot/result/journal3.png'
 import axios from 'axios';
 import { setSolution } from '../../../redux/solution';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function ChatbotResult() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+  const counselingLogId = localStorage.getItem('counselingLogId');
+
+
   const [chatbot, setChatbot] = useState('');
   const componentRef = useRef(null); 
   const chatResult = useSelector((state) => state.chatResult);
   const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('');
   
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const location = useLocation(); 
+  
   const handleDownload = async () => {
     if (!componentRef.current) return;
 
@@ -41,26 +51,24 @@ export default function ChatbotResult() {
 };
 
   let result = localStorage.getItem('result');
-  let receivedToken = localStorage.getItem('token');
-  let counselingLogId = localStorage.getItem('counselingLogId');
 
   /* 특정 상담일지 가져오기 API 구현*/
-
   const getCounseling = async() => {
     try {
-      const res = await axios.get(`/api/v1/chatbot/counselinglog/${counselingLogId}`, {
+      const res = await axios.get(`${serverURL}/api/v1/chatbot/counselinglog/${counselingLogId}`, {
         headers: {
-          'Authorization': `Bearer ${receivedToken}`
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       });
       console.log(res.data);
+      let data = res.data.data
       dispatch(setSolution({
-        counselingLogId: res.data.counselingLogId,
-        title: res.data.title,
-        summary: res.data.summary,
-        suggestion: res.data.suggestion,
-        solution: res.data.solution,
-        endedAt: res.data.endedAt,
+        counselingLogId: data.counselingLogId,
+        title: data.title,
+        summary: data.summary,
+        suggestion: data.suggestion,
+        solutions: data.solutions,
+        endedAt: data.endedAt,
       }));
       const formatDate = res.data.endedAt.format('YYYY / MM / DD');
       setEndDate(formatDate);
@@ -82,6 +90,14 @@ export default function ChatbotResult() {
     else
       setChatbot('뉴러니');
   }, [])
+
+  useEffect(() => {
+    const isNavigatedFromChatbot = location.state && location.state.fromModal; // 특정 로직: 모달에서 네비게이션 여부
+
+    if (!isNavigatedFromChatbot) {
+      getCounseling(); // 달력에서 접근할 때 호출
+    }
+  }, [location]); 
   return (
     <S.App>
       <S.Container ref={componentRef}>
@@ -139,7 +155,7 @@ export default function ChatbotResult() {
       </S.Container>
       <S.BtnBox>
         <button onClick={handleDownload}></button>
-        <button>종료하기</button>
+        <button onClick={() => navigate('/main')}>종료하기</button>
       </S.BtnBox>
     </S.App>
   )

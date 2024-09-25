@@ -56,7 +56,7 @@ export default function Common({openModal}) {
       saveLocalStorage(accessToken, refreshToken);
       navigate('/main')
     } catch(err) {
-      window.alert(err.response.data.message);
+      window.alert('가입되지 않은 이메일이거나 비밀번호가 맞지 않습니다.');
       console.log(err);
     }
   }

@@ -7,23 +7,34 @@ export const StyledCalendarWrapper = styled.div`
   justify-content: center;
   align-items: center
   position: relative;
-  @media screen and (max-width: 768px) {
-    height: 87vh; 
+  @media screen and (max-width: 430px) {
+    height: 82vh; 
     width: 100%;
+    margin-top: 7vh;
   }
-  @media (min-width: 769px) and (max-width: 1023px){
-    width: 70rem;
-    height: 60rem;
+  @media (min-width: 431px) and (max-width: 768px){
+    height: 36rem; 
+    width: 40rem;
+    margin-top: 10.3vh;
+  }
+  @media (min-width: 769px) and (max-width: 1024px){
+    width: 50rem;
+    height: 46rem;
     margin-top: 5.3vh;
   }
-  @media (min-width: 1024px) and (max-width: 1470px){
-    width: 50rem;
-    height: 45rem;
+  @media (min-width: 1025px) and (max-width: 1200px) {
+    width: 48rem;
+    height: 44rem;
     margin-top: 5.3vh;
   }
-  @media (min-width: 1441px) and (max-width: 1600px){
-    width: 50rem;
-    height: 43rem;
+  @media (min-width: 1201px) and (max-width: 1470px){
+    width: 48rem;
+    height: 44rem;
+    margin-top: 5.3vh;
+  }
+  @media (min-width: 1471px) and (max-width: 1600px){
+    width: 55rem;
+    height: 50rem;
     margin-top: 5.3vh;
   }
   @media (min-width: 1601px) {
@@ -49,7 +60,7 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__navigation {
     justify-content: center;
     align-items: center;
-    margin-bottom: 5%; 
+    margin-bottom: 3%; 
     @media screen and (max-width: 430px) {
     justify-content: space-between;
     flex-wrap: nowrap;
@@ -145,25 +156,25 @@ export const StyledCalendarWrapper = styled.div`
     font-size: 1.25rem;
     border-radius: 0.8rem;
     @media (max-width: 430px) {
-      padding: 0.3rem 0.2rem 8rem;
+      padding: 0.3rem 0.2rem 6rem;
     }
     @media (min-width: 431px) and (max-width: 768px) {
-      padding: 0.5rem 0 7.5rem;
+      padding: 0.3% 0 8.5%;
     }
     @media (min-width: 769px) and (max-width: 1023px) {
-      padding: 0.5rem 0 7rem;
+      padding: 0.3% 0 11.5%;
     }
     @media (min-width: 1024px) and (max-width: 1200px) {
-      padding: 0.5rem 0 4.5rem;
+      padding: 0.2% 0 11%;
     }
     @media (min-width: 1201px) and (max-width: 1470px) {
-      padding: 0.4rem 0 4.7rem;
+      padding: 0.2% 0 11.5%;
     }
-    @media (min-width: 1441px) and (max-width: 1600px) {
-      padding: 0.2rem 0 4.5rem;
+    @media (min-width: 1471px) and (max-width: 1600px) {
+      padding: 0.4% 0 12%;
     }
     @media (min-width: 1601px) {
-      padding: 0.4rem 0 6.5rem;
+      padding: 0.8% 0 12%;
     }
   }
   
@@ -190,8 +201,8 @@ export const StyledEmotion = styled.div`
     height: 3.75rem;
   }
   @media (min-width: 431px) and (max-width: 768px) {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
   }
   @media (min-width: 769px) and (max-width: 1023px) {
     width: 4.25rem;
@@ -205,9 +216,9 @@ export const StyledEmotion = styled.div`
     width: 4rem;
     height: 4rem;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 3.5rem;
-    height: 3.5rem;
+  @media (min-width: 1471px) and (max-width: 1600px) {
+    width: 4rem;
+    height: 4rem;
   }
   @media (min-width: 1601px) {
     width: 5.5rem;
@@ -229,9 +240,9 @@ export const Circle = styled.div`
     top: 60%;
   }
   @media (min-width: 431px) and (max-width: 768px) {
-    width: 6.25rem;
-    height: 6.25rem;
-    top: 60%;
+    width: 3.25rem;
+    height: 3.25rem;
+    top: 65%;
   }
   @media (min-width: 769px) and (max-width: 1023px) {
     width: 5rem;
@@ -241,17 +252,17 @@ export const Circle = styled.div`
   @media (min-width: 1024px) and (max-width: 1200px) {
     width: 4.25rem;
     height: 4.25rem;
-    top: 65%;
+    top: 60%;
   }
   @media (min-width: 1201px) and (max-width: 1470px) {
     width: 4.5rem;
     height: 4.5rem;
-    top: 65%;
+    top: 60%;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
-    width: 4rem;
-    height: 4rem;
-    top: 65%;
+  @media (min-width: 1471px) and (max-width: 1600px) {
+    width: 5rem;
+    height: 5rem;
+    top: 60%;
   }
   @media (min-width: 1601px) {
     width: 6.25rem;

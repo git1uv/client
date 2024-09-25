@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAnswer } from '../../../../redux/counseling';
 import axios from 'axios';
 import { setSolution } from '../../../../redux/solution';
+import RedFlagModal from '../../../Modal/Chatbot/RedFlagModal';
 
 export default function Chatbot() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -30,6 +31,7 @@ export default function Chatbot() {
 
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+  const [isRedFlagModalOpen, setIsRedFlagModalOpen] = useState(false);
   const [emotion, setEmotion] = useState(Simmaeum.basic);
   const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
   const inputRef = useRef(null);
@@ -54,6 +56,12 @@ export default function Chatbot() {
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
+  }
+  const openRedFlagModal = () => {
+    setIsRedFlagModalOpen(true);
+  }
+  const closeRedFlagModal = () => {
+    setIsRedFlagModalOpen(false);
   }
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현 
@@ -156,6 +164,9 @@ export default function Chatbot() {
         msg: res.data.data.message,
         isUser: false
       }]);
+      // let redFlag = res.data.data.redFlag;
+      // if (redFlag)
+      //   openRedFlagModal();
       console.log(res.data);
     } catch(err) {
       console.log(err);
@@ -230,6 +241,10 @@ export default function Chatbot() {
       <SecondModal
         isVisible={isSecondModalOpen} 
         onClose={closeSecondModal} 
+      />
+      <RedFlagModal
+        isVisible={isRedFlagModalOpen} 
+        onClose={closeRedFlagModal} 
       />
     </S.App>
   );

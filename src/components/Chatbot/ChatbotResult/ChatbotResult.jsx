@@ -15,6 +15,7 @@ import Icon3 from '../../../assets/chatbot/result/journal3.png'
 import axios from 'axios';
 import { setSolution } from '../../../redux/solution';
 import { useLocation, useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export default function ChatbotResult() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -70,7 +71,7 @@ export default function ChatbotResult() {
         solutions: data.solutions,
         endedAt: data.endedAt,
       }));
-      const formatDate = res.data.endedAt.format('YYYY / MM / DD');
+      const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
       console.log(formatDate);

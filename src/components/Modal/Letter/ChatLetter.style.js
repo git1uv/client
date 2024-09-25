@@ -27,7 +27,7 @@ export const ModalContainer = styled.div`
     width: 762px;
     height: 744px;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     width: 696px;
     height: 680px;
   }
@@ -102,7 +102,7 @@ export const Text = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 2.25rem; 
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     font-size: 1.5rem;
   }
   @media (min-width: 1201px) and (max-width: 1470px) {

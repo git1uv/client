@@ -29,7 +29,7 @@ export const MiniCalendarWrapper = styled.div`
       width: 150px;
       height: 50px;
     }
-    @media (min-width: 1441px) and (max-width: 1600px) {
+    @media (min-width: 1471px) and (max-width: 1600px) {
       width: 150px;
       height: 50px;
     }
@@ -52,7 +52,7 @@ export const MiniCalendarWrapper = styled.div`
     height: 340px;
     margin: 30px 0 0 90px;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     width: 270px;
     height: 340px;
     margin: 30px 0 0 90px;

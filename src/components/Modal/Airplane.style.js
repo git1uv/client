@@ -60,7 +60,7 @@ export const Modal = styled.div`
     height: 402px;
     padding: 30px;
   }
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     background-image: url(${webLetter});
     width: 440px;
     height: 553px;
@@ -75,7 +75,7 @@ export const ButtonContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-top: 15px;
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     width: 440px;
   }
   @media (min-width: 1024px) and (max-width: 1470px) {
@@ -107,7 +107,7 @@ export const GoToLetterButton = styled.button`
     height: 3.5rem;
 
   }
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     top: 56.5vh;
     width: 85%;
     right: 7.4vw;
@@ -146,7 +146,7 @@ export const DownloadButton = styled.button`
     width: 3rem;
     height: 3rem;
   }
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     top: 56.5vh;
     left: 7.4vw;
     width: 3.5rem;

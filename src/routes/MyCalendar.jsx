@@ -16,6 +16,9 @@ const CalendarWrapper = styled.div`
   background-color: #EEECE3;
   height: 100vh;
   weight: 100vw;
+  @media screen and (max-width: 430px) {
+    align-items: flex-start;
+  }
 `;
 
 function MyCalendar() {

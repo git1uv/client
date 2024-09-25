@@ -20,7 +20,7 @@ export const BackButton = styled.div`
     width: 3rem;
     height: 3.5rem;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     top: -8.5%;
     left: 10.5%;
     width: 3rem;
@@ -51,7 +51,7 @@ export const Container = styled.div`
     height: 600px;
     margin: 20vh 0 0;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     width: 943px;
     height: 600px;
   }
@@ -77,7 +77,7 @@ export const Content = styled.div`
     height: 520px;
     margin: 30px 23px;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     width: 505px;
     height: 520px;
     margin: 30px 23px;
@@ -228,7 +228,7 @@ export const NotesTextarea = styled.textarea`
   @media (min-width: 1201px) and (max-width: 1470px) {
     font-size: 1.2rem;
   }
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     font-size: 1.14rem;
   }
 `;
@@ -396,7 +396,7 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
     width: 1.5rem;
     height: 1.5rem;
   }
-  @media (min-width: 1441px) and (max-width: 1600px) {
+  @media (min-width: 1471px) and (max-width: 1600px) {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -420,7 +420,7 @@ export const Todo = styled.div`
   @media (min-width: 1201px) and (max-width: 1470px) {
     font-size: 1.2rem;
   }
-  @media (min-width: 1441px) {
+  @media (min-width: 1471px) {
     font-size: 1.14rem;
   }
 `;

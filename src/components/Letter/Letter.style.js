@@ -270,7 +270,7 @@ export const Letter = styled.div`
   @media (min-width: 1371px) and (max-width: 1470px) {
     max-width: 510px;
   }
-  @media (min-width: 1441px) and (max-width: 1540px) {
+  @media (min-width: 1471px) and (max-width: 1540px) {
     max-width: 540px;
   }
   @media (min-width: 1541px) and (max-width: 1600px) {

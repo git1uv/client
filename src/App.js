@@ -8,7 +8,7 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName'
 import KakaoRedirect from './routes/KakaoRedirect'
-import Chatbot from './routes/Chatbot/Chatbot'; 
+import ChatbotPage from './routes/Chatbot/ChatbotPage'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
 import Letter from './routes/Letter'; 
@@ -37,7 +37,7 @@ function App() {
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
     '/faq', '/namechange', '/pwchange', 
-    '/simterinformation'
+    '/simterinformation', '/chatbot'
   ];  
   const hideHeader = hideHeaderPaths.includes(location.pathname) || (isMobileView && mobileHideHeaderPaths.includes(location.pathname));
   
@@ -67,7 +67,7 @@ function App() {
                 <Route path="/main" element={<Main/>}/>
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />
-                <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/chatbot" element={<ChatbotPage />} />
                 <Route path="/chatbot/choice" element={<ChatbotChoice />} />
                 <Route path="/chatbot/:counselingLogId" element={<ChatbotResultPage />} />
                 <Route path="/test" element={<TestPage />} />

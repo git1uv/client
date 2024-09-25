@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import theme from '../../../constants/theme'; // theme 파일의 경로
+import theme from '../../../../constants/theme'; // theme 파일의 경로
 
 const { ALIGN } = theme;
 export const InfoBox = styled.div`
@@ -32,7 +32,7 @@ export const IconBox = styled.div`
         height: auto;
         object-fit: cover;
 
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: ${({ id }) => id === 'howto' ? '1.2rem' : id === 'func' ? '1.7rem' : '1.9rem'};
         }
     }
@@ -42,7 +42,7 @@ export const IconBox = styled.div`
         color: #27272A;
         font-family: Pretendard;
         font-size: 1.125rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1rem;
         }
         font-weight: 600;
@@ -68,7 +68,7 @@ export const Info = styled.div`
         
         font-family: Pretendard;
         font-size: 1rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 0.8rem;
         }
         font-weight: 300;

@@ -19,7 +19,6 @@ export default function Login() {
     setIsSecondOpen(false);
   }
 
-
   return (
     <div className="App">
       <BrowserView>

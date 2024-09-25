@@ -10,35 +10,43 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function TestResult() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
   const result = localStorage.getItem('result');
   const score = localStorage.getItem('score');
   const userId = localStorage.getItem('userId');
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
 
   const isTestStart = true;
 
   const [chatbot, setChatbot] = useState();
+  
 
   const navigate = useNavigate();
 
   /* 테스트 통해서 정해진 챗봇 설정 API */
-  // const patchChatbot = async() => {
-  //   if (result === 'Neuranee')
-  //     setChatbot('T');
-  //   else if (result === 'Banbani')
-  //     setChatbot('H');
-  //   else
-  //     setChatbot('F');
-  //   try {
-  //     const res = await axios.patch(`/api/v1/chatbot/update/${userId}`, {
-  //       'chatbot': chatbot
-  //     });
-  //     navigate('/chatbot');
-  //     console.log(res.message);
-  //   } catch(err) {
-  //     if (err.response.code === 'MEMBER4001')
-  //       console.log('MEMBER4001 : 사용자가 없습니다');
-  //   }
-  // }
+  const patchChatbot = async() => {
+    if (result === 'Neuranee')
+      setChatbot('T');
+    else if (result === 'Banbani')
+      setChatbot('H');
+    else
+      setChatbot('F');
+    try {
+      const res = await axios.patch(`${serverURL}/api/v1/chatbot/update`, {
+        'chatbot': chatbot
+      }, {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        }
+      });
+      navigate('/chatbot');
+      console.log(res.data);
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   return (
     <S.App isTestStart={isTestStart}>
@@ -72,8 +80,7 @@ export default function TestResult() {
         </S.SpeechBubble>
         <S.BtnBox>
           <button onClick={() => navigate('/chatbot/choice')}>다른 캐릭터 보러가기</button>
-          <button onClick={() => navigate('/chatbot')}>대화를 시작할까?</button>
-          {/* <button onClick={patchChatbot()}>대화를 시작할까?</button> */}
+          <button onClick={() => patchChatbot()}>대화를 시작할까?</button>
         </S.BtnBox>
       </S.Container>
     </S.App>

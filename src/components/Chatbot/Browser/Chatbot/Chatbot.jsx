@@ -1,28 +1,37 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Chatbot.style'
-import * as T from '../../components/Chatbot/ChatbotBox/ChatbotBox.style'
-import Chair from '../../assets/chatbot/chatStart/ChairWeb.png'
-import SimmaeumImg from '../../assets/chatbot/chatStart/Simmaeum.png'
-import BanbaniImg from '../../assets/chatbot/chatStart/Banbani.png'
-import NeuraneeImg from '../../assets/chatbot/chatStart/Neuranee.png'
+import * as T from '../ChatbotBox/ChatbotBox.style'
+import Chair from '../../../../assets/chatbot/chatStart/ChairWeb.png'
+import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
+import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png'
+import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png'
 
-import { Simmaeum, Banbani, Neuranee } from '../../datas/emotion'
+import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 
-
-import ChatbotBox from '../../components/Chatbot/ChatbotBox/ChatbotBox';
+import ChatbotBox from '../ChatbotBox/ChatbotBox';
 import { useNavigate } from 'react-router-dom';
-import FirstModal from '../../components/Modal/Chatbot/FirstModal';
-import SecondModal from '../../components/Modal/Chatbot/SecondModal';
+import FirstModal from '../../../Modal/Chatbot/FirstModal';
+import SecondModal from '../../../Modal/Chatbot/SecondModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAnswer } from '../../redux/counseling';
+import { setAnswer } from '../../../../redux/counseling';
 import axios from 'axios';
+import { setSolution } from '../../../../redux/solution';
+import RedFlagModal from '../../../Modal/Chatbot/RedFlagModal';
 
 export default function Chatbot() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const result = localStorage.getItem('result');
-  let counseling = useSelector((state) => state.counseling)
-  const navigate = useNavigate();
+  const counselingLogIdLS = localStorage.getItem('counselingLogId');
+  
+  let counseling = useSelector((state) => state.counseling);
+
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+  const [isRedFlagModalOpen, setIsRedFlagModalOpen] = useState(false);
   const [emotion, setEmotion] = useState(Simmaeum.basic);
   const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
   const inputRef = useRef(null);
@@ -30,12 +39,13 @@ export default function Chatbot() {
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
   const [input, setInput] = useState(); // input 값
   const [current, setCurrent] = useState(); // 보낼 문장
-
-
+  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const openFirstModal = () => {
+  const openFirstModal = async() => {
     setIsFirstModalOpen(true);
+    // await exitChatting();
   }
   const closeFirstModal = () => {
     setIsFirstModalOpen(false);
@@ -46,6 +56,12 @@ export default function Chatbot() {
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
+  }
+  const openRedFlagModal = () => {
+    setIsRedFlagModalOpen(true);
+  }
+  const closeRedFlagModal = () => {
+    setIsRedFlagModalOpen(false);
   }
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현 
@@ -87,7 +103,7 @@ export default function Chatbot() {
         setEmotion(select.tired);
         break;
       default:
-        setEmotion(select.love);
+        setEmotion(select.basic);
     }
   }
 
@@ -99,71 +115,76 @@ export default function Chatbot() {
     if (!isChat) {
       setIsChat(true);
     }
+    setCurrent(input);
+    setMessage((prev) => [...prev, {
+      msg: input,
+      isUser: true,
+    }]);
     textClear();
-    // postChatting(); // 사용자 메시지 보내기 API
   }
 
   const handleKeyPress = (e) => { // 엔터키 누르면 메시지 전송
     if (e.key === 'Enter') {
       ChangeChat();
-      setMessage((prev) => [...prev, {
-        msg: input,
-        isUser: true,
-      }]);
-      setCurrent(input);
-      textClear();
-      // postChatting();  // 사용자 메시지 보내기 API
-
       // test
       dispatch(setAnswer(
         {
-          counselingLogId: 1,
-          emotion: '사랑',
+          counselingLogId: '',
+          emotion: '평온',
           date: '',
         }
       ))
-      console.log(message)
     }
   }
 
   const ChangeInput = (e) => {
     setInput(e.target.value);
   }
-  const receivedToken = localStorage.getItem('token');
 
   /* 사용자 메시지 보내기 API*/
   const postChatting = async() => {
     setLoading(true);
     try {
-      const res = await axios.post(`/api/v1/chatbot/chatting`, {
+      const res = await axios.post(`${serverURL}/api/v1/chatbot/chatting?counselingLogId=${counselingLogIdLS}`, {
         userMessage: current,
       }, {
         headers: {
-          'Authorization': `Bearer ${receivedToken}`
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       })
-      console.log(res.data);
       dispatch(setAnswer(
         {
-          counselingLogId: res.data.counselingLogId,
-          emotion: res.data.emotion,
-          date: res.data.createdAt,
+          counselingLogId: res.data.data.counselingLogId,
+          emotion: res.data.data.emotion,
+          date: res.data.data.createdAt,
         }
       ))
+      setEmotion(res.data.data.emotion);
       setMessage((prev) => [...prev, {
-        msg: res.data.message,
+        msg: res.data.data.message,
         isUser: false
       }]);
-      setLoading(false);
+      // let redFlag = res.data.data.redFlag;
+      // if (redFlag)
+      //   openRedFlagModal();
+      console.log(res.data);
     } catch(err) {
       console.log(err);
       window.alert('메시지 전송을 실패하였습니다. 다시 시도해주세요.');
+    } finally {
+      setLoading(false); // 로딩 종료
     }
   }
 
   useEffect(() => {
+    if (current !== undefined) {
+      postChatting();
+    }
+  }, [current]);
+
+  useEffect(() => {
     changeFace();
-  }, [counseling.emotion])
+  }, [emotion])
 
   return (
     <S.App>
@@ -220,6 +241,10 @@ export default function Chatbot() {
       <SecondModal
         isVisible={isSecondModalOpen} 
         onClose={closeSecondModal} 
+      />
+      <RedFlagModal
+        isVisible={isRedFlagModalOpen} 
+        onClose={closeRedFlagModal} 
       />
     </S.App>
   );

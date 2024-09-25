@@ -4,7 +4,7 @@ import ChatbotInfo from '../ChatbotInfo/ChatbotInfo'
 import Chat from '../Chat/Chat'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setAnswer } from '../../../redux/counseling';
+import { setAnswer } from '../../../../redux/counseling';
 
 export default function ChatbotBox({changeFace, loading, isChat, message}) {
   // const [isChat, setIsChat] = useState(false); // 채팅 시작 여부

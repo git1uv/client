@@ -1,8 +1,23 @@
-import styled from "styled-components";
-import theme from '../../../constants/theme'
+import styled, { keyframes } from "styled-components";
+import theme from '../../../../constants/theme'
 
 const {ALIGN, RESPONSIVE_SIZE} = theme;
 
+export const typing = keyframes`
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+`;
+
+// 깜빡이는 커서 애니메이션
+export const blink = keyframes`
+  50% {
+    border-color: transparent;
+  }
+`;
 
 export const UserBubble = styled.div`
     ${ALIGN.ROW_CENTER};
@@ -50,5 +65,6 @@ export const ChatbotBubble = styled.div`
         font-weight: 300;
         line-height: normal;
     }
-
+        
+    animation: ${typing} 3s steps(40, end), ${blink} 0.75s step-end infinite;
 `

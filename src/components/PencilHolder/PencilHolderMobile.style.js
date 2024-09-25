@@ -59,7 +59,7 @@ export const WriteBox = styled.div`
     textarea {
         width: 22rem;
         height: 30vh;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             height: 25vh;
         }
 

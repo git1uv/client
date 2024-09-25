@@ -10,7 +10,8 @@ export default function Common({openModal}) {
 
   // 카카오 로그인 관련 데이터
   const K_CLIENT_ID = process.env.REACT_APP_KAKAO_CLIENT_ID
-  const K_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URL
+  // const K_REDIRECT_URI = process.env.REACT_APP_KAKAO_REDIRECT_URL
+  const K_REDIRECT_URI = `http://localhost:3000/oauth`
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_CLIENT_ID}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
   
   // 구글 로그인 관련 데이터
@@ -55,6 +56,7 @@ export default function Common({openModal}) {
       saveLocalStorage(accessToken, refreshToken);
       navigate('/main')
     } catch(err) {
+      window.alert(err.response.data.message);
       console.log(err);
     }
   }

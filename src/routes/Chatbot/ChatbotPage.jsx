@@ -1,8 +1,9 @@
 import React from 'react'
 import { BrowserView, MobileView } from 'react-device-detect';
-import Browser from '../../components/Chatbot/ChatbotResult/ChatbotResult'
-import Mobile from '../../components/Chatbot/Mobile/Result/ResultMobile.jsx'
-export default function ChatbotResultPage() {
+import Browser from '../../components/Chatbot/Browser/Chatbot/Chatbot.jsx'
+import Mobile from '../../components/Chatbot/Mobile/Chat/ChatbotMobile.jsx'
+
+export default function ChatbotPage() {
   return (
     <div>
       <BrowserView>

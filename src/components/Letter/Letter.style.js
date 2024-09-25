@@ -1,6 +1,22 @@
 import styled from 'styled-components';
-import {mailbox, mailbox_mobile, allO, allX, notreadO, notreadX, favoriteO, favoriteX, check, trash} from "../../assets/letterImg/icons";
+import {bg, mailbox, mailbox_mobile, allO, allX, notreadO, notreadX, favoriteO, favoriteX, check, trash} from "../../assets/letterImg/icons";
 
+export const Bg = styled.div`
+  @media (max-width: 430px) {
+    display: none;
+  }
+  @media (min-width: 431px){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100vw;
+    z-index: 1;
+    background-image: url(${bg});
+    height: 100vh;
+`;
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -59,12 +75,12 @@ export const Delete = styled.div`
   bottom: 10%;
   @media (max-width: 430px) {
     right: 12%;
-    width: 2.3rem;
-    height: 2.2rem;
+    width: 2.1rem;
+    height: 2.1rem;
   }
   @media (min-width: 431px){
     right: 8%;
-    width: 3.2rem;
+    width: 3.125rem;
     height: 3.125rem;
   }
 `;
@@ -120,7 +136,6 @@ export const SeeAll = styled.div`
   }
 `;
 export const LettersWrapper = styled.div`
-  width: 100%;
   z-index: 3;
   display: flex;  
   justify-content: center;
@@ -128,16 +143,16 @@ export const LettersWrapper = styled.div`
   border-radius: 55px;
   background-color: #280502;
   @media (max-width: 430px) {
-    width: 90%;
+    width: 81vw;
     height: 60%;
     margin-bottom: 20%;
   }
   @media (min-width: 431px){
+    width: 44.62vw;
     height: 70%;
   }
 `;
 export const Letters = styled.div`
-  width: 90%;
   height: 90%;
   z-index: 4;
   display: grid;
@@ -165,6 +180,7 @@ export const Letters = styled.div`
     border-right: 8px solid transparent;
   }
   @media (max-width: 430px) {
+    width: 72.9vw;
     grid-template-rows: repeat(auto-fill, 50px);
     row-gap: 1vh; 
     border-radius: 17px;
@@ -172,6 +188,7 @@ export const Letters = styled.div`
     padding: 2% 0;
   }
   @media (min-width: 431px){
+    width: 40.158vw;
     grid-template-rows: repeat(auto-fill, 100px);
     row-gap: 2vh; 
     border-radius: 55px;
@@ -184,11 +201,12 @@ export const LetterContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 97%;
   @media (max-width: 430px) {
+    width: 78.57vw;
     height: 50px;
   }
   @media (min-width: 431px){
+    width: 97%;
     height: 100px;
   }
 `;
@@ -249,7 +267,7 @@ export const Letter = styled.div`
   @media (min-width: 1261px) and (max-width: 1370px) {
     max-width: 470px;
   }
-  @media (min-width: 1371px) and (max-width: 1440px) {
+  @media (min-width: 1371px) and (max-width: 1470px) {
     max-width: 510px;
   }
   @media (min-width: 1441px) and (max-width: 1540px) {
@@ -262,7 +280,7 @@ export const Letter = styled.div`
     max-width: 600px;
   }
   @media (min-width: 1701px){
-    max-width: 620px;
+    max-width: 680px;
   }
 `;
 export const ChatBox = styled.div`

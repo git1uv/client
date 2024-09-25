@@ -20,69 +20,30 @@ const DateWrapper = styled.div`
   weight: 100vw;
 `;
 
-function Mobile() {
+function Mobile({date}) {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const navigate = useNavigate();
-  const { date } = useParams();
-  const formattedDate = moment(date).format('YYYY년 MM월 DD일');
-  const { calendarID } = useParams(); 
   const [emotion, setEmotion] = useState('none');  
   const [content, setContent] = useState(''); 
   const [message, setMessage] = useState('');
+  const [calendarId, setCalendarId] = useState(null);
   const [solutions, setSolutions] = useState([]);
   const [counselingLogs, setCounselingLogs] = useState([]);
-
-  // 예시 데이터 설정
-  useEffect(() => {
-    const exampleData = {
-      emotion: "Happy",
-      diary: "오늘 맛있는 밥을 모거따",
-      counselingLog: [
-        { id: 1, title: "저녁밥 메뉴에 대한 토론", chatbotType: "F", time: "23:38" },
-        { id: 2, title: "친구들에 대한 고민", chatbotType: "T", time: "11:00" },
-        { id: 3, title: "친구들에 대한 고민", chatbotType: "H", time: "11:00" },
-      ],
-      solution: [
-        { id: 1, content: "물 많이 마시기", is_completed: false },
-        { id: 2, content: "10분 명상하기", is_completed: true },
-        { id: 3, content: "10분 명상하기", is_completed: true },
-        { id: 4, content: "10분 명상하기", is_completed: true },
-        { id: 5, content: "10분 명상하기", is_completed: true },
-      ]
-    };
-
-    // 예시 데이터를 상태로 설정
-    setEmotion(exampleData.emotion);
-    setContent(exampleData.diary);
-    setCounselingLogs(exampleData.counselingLog);
-    setSolutions(exampleData.solution);
-  }, []);
-
   const [showModal, setShowModal] = useState(false);
   const [showEmotionModal, setShowEmotionModal] = useState(false);
   const [showGif, setShowGif] = useState(false);
 
-  const handleCheck = (solutionId) => {
-    const updatedSolutions = solutions.map(solution => {
-      if (solution.id === solutionId) {
-        return { ...solution, is_completed: !solution.is_completed };
-      }
-      return solution;
-    });
-    setSolutions(updatedSolutions);
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
 
-    if (updatedSolutions.every(solution => solution.is_completed)) {
-      setShowGif(true);
-    }
-  };
-
-  const handleDelete = (solutionId) => {
-    const updatedSolutions = solutions.filter(solution => solution.id !== solutionId);
-    setSolutions(updatedSolutions);
-  };
-  /**const handleDelete = async (solutionId) => {
+  const handleDelete = async (solutionId) => {
     try {
-      const response = await axios.delete(`/api/v1/calendar/today/solution/${solutionId}/delete`);
-      if (response.status === 200) {
+      const response = await axios.delete(`${serverURL}/api/v1/calendar/today/solution/${solutionId}/delete`,{
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      });
+      if (response.data.code === '200') {
         setSolutions(solutions.filter(solution => solution.id !== solutionId));
         setMessage('해결책이 삭제되었습니다.');
       } else {
@@ -92,22 +53,32 @@ function Mobile() {
       setMessage(`삭제 중 오류 발생: ${error.message}`);
     }
   };
- */
-/**
+
   useEffect(() => {
+    if (!accessToken || !refreshToken) {
+      console.error("토큰이 없습니다.");
+      return;
+    }
     const fetchDiaryData = async () => {
       try {
         const year = moment(date).format('YYYY');
         const month = moment(date).format('MM');
         const day = moment(date).format('DD');
 
-        const response = await axios.get(`/api/v1/calendar/today/${year}/${month}/${day}`);
-        if (response.status === 200) {
+        const response = await axios.get(`${serverURL}/api/v1/calendar/today/${year}/${month}/${day}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${accessToken} ${refreshToken}`
+            },
+          }
+        );
+        if (response.data.code === "200") {
           const data = response.data.data;
+          setCalendarId(data.calendarId);
           setEmotion(data.emotion);
           setContent(data.diary);
           setSolutions(data.solution);
-          setCounselingLogs(data.counselinglog);
+          setCounselingLogs(data.counselingLog);
         } else {
         setMessage(`데이터 불러오기 실패: ${response.data.message}`);
       }
@@ -117,17 +88,19 @@ function Mobile() {
     };
 
     fetchDiaryData();
-  }, [calendarID]);*/
+  }, [date]);
 
   const handleSaveDiary = async () => {
-    setShowModal(true);
-  /**
     try {
-      const response = await axios.patch(`/calendar/today/${calendarID}/diary`, {
+      const response = await axios.patch(`${serverURL}/api/v1/calendar/today/${calendarId}/diary`, {
         content: content,
+      },{
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
       });
 
-      if (response.status === 200) {
+      if (response.data.code === '200') {
         setMessage('저장되었습니다.');
         setShowModal(true);
       } else {
@@ -135,29 +108,29 @@ function Mobile() {
       }
     } catch (error) {
       setMessage(`저장 중 오류 발생: ${error.message}`);
-    } */
+    } 
   };
 
   const handleEmotionClick = () => {
     setShowEmotionModal(true);
   };
   const emotionImages = {
-    Laughing: img1,
-    Excited: img2,
-    Passionate: img3,
-    Peaceful: img4,
-    Angry: img5,
-    Crying: img6,
-    Dissatisfied: img7,
-    Disappointed: img8,
-    Inlove: img9,
-    Sick: img10,
-    Proud: img11,
-    Tired: img12,
-    Surprised: img13,
-    Anxious: img14,
-    Happy: img15,
-    Embarrassed: img16,
+    laughing: img1,
+    excited: img2,
+    passionate: img3,
+    peaceful: img4,
+    angry: img5,
+    crying: img6,
+    dissatisfied: img7,
+    disappointed: img8,
+    inlove: img9,
+    sick: img10,
+    proud: img11,
+    tired: img12,
+    surprised: img13,
+    anxious: img14,
+    happy: img15,
+    embarrassed: img16,
   };
 
   const currentEmotionImage = emotion !== 'none' ? emotionImages[emotion] : null;
@@ -175,33 +148,34 @@ function Mobile() {
     }
   };
 
-    /**
-    const handleCheck = async (solutionId) => {
-      const updatedSolutions = solutions.map(solution => {
-      if (solution.id === solutionId) {
-        return { ...solution, is_completed: !solution.is_completed };
-      }
-      return solution;
+  const handleCheck = async (solutionId) => {
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/calendar/today/solution/${solutionId}/done`, {
+        completed: !solutions.find(solution => solution.id === solutionId).completed.toString(),
+    },{
+      headers: {
+        'Authorization': `Bearer ${accessToken} ${refreshToken}`
+      },
     });
-    setSolutions(updatedSolutions);
-        
-        try {
-          const solution = updatedSolutions.find(solution => solution.id === solutionId);
-          const response = await axios.patch(`/api/v1/calendar/today/solution/${solutionId}/done`, {
-           is_completed: solution.is_completed.toString(),
-        });
-          if (response.status !== 200) {
-            setMessage(`저장 실패: ${response.data.message}`);
-            setSolutions(solutions);
-          } else if (updatedSolutions.every((solution) => solution.is_completed)) {
-            setShowGif(true);
-          }
-        } catch (error) {
-          setMessage(`저장 중 오류 발생: ${error.message}`);
-          setSolutions(solutions);
+    if (response.data.code === '200') {
+      const updatedSolutions = solutions.map(solution => {
+        if (solution.id === solutionId) {
+          return { ...solution, completed: !solution.completed };
         }
+        return solution;
+      });
+
+      setSolutions(updatedSolutions);
+      if (updatedSolutions.every(solution => solution.completed)) {
+        setShowGif(true);
+      }
+    } else {
+      setMessage(`저장 실패: ${response.data.message}`);
+    }
+  } catch (error) {
+    setMessage(`저장 중 오류 발생: ${error.message}`);
+  }
 };
-    }*/
 
   return (
     <DateWrapper>
@@ -239,7 +213,7 @@ function Mobile() {
               <M.Explain>이전 대화 기록을 확인할 수 있어요</M.Explain>
             </M.ChatTopRow>
             <M.Film>
-            <CustomSlider logs={counselingLogs} getChatbotName={getChatbotName} />
+            <CustomSlider logs={counselingLogs || []} getChatbotName={getChatbotName} />
             </M.Film>
           </M.ChatBox>
           <M.ToDoListBox>
@@ -268,7 +242,7 @@ function Mobile() {
         </M.Content>
       </M.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
-      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} calendarID={calendarID} setEmotion={setEmotion} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} date={date} setEmotion={setEmotion} />}
       {showGif && (
         <GifModal 
           isVisible={showGif} 

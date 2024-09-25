@@ -14,9 +14,9 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1470px) {
     html {
-      font-size: 15px; // 화면 너비가 1440px 이하일 때
+      font-size: 15px; // 화면 너비가 1470px 이하일 때
     }
   }
   @media (max-width: 1200px) {

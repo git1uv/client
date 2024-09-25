@@ -21,9 +21,13 @@ export const MiniCalendarWrapper = styled.div`
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 6;
+    @media (min-width: 769px) and (max-width: 1023px) {
+      width: 80px;
+      height: 25px;
+    }
     @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 127px;
-    height: 40px;
+      width: 127px;
+      height: 40px;
     }
     @media (min-width: 1201px) and (max-width: 1470px) {
       width: 150px;
@@ -39,8 +43,13 @@ export const MiniCalendarWrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 1023px) {
+  @media screen and (max-width: 768px) {
     display: none;
+  }
+  @media (min-width: 769px) and (max-width: 1023px) {
+    width: 200px;
+    height: 250px;
+    margin: 30px 0 0 80px;
   }
   @media (min-width: 1024px) and (max-width: 1200px) {
     width: 240px;
@@ -109,7 +118,7 @@ export const MiniCalendarWrapper = styled.div`
 
   }
   .react-calendar__month-view__weekdays{
-    margin-bottom: 1vh;
+    margin-bottom: 0;
   }
   .react-calendar__month-view__days {
     display: flex;

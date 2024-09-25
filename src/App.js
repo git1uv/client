@@ -32,7 +32,7 @@ import ChatbotResultPage from './routes/Chatbot/ChatbotResultPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
-  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 430);
+  const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
   const hideHeaderPaths = ['/login', '/signup', '/signup/nickname', '/term', '/'];
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
@@ -43,7 +43,7 @@ function App() {
   
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 430);
+      setIsMobileView(window.innerWidth <= 768);
     };
 
     window.addEventListener('resize', handleResize);

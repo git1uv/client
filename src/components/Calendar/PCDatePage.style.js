@@ -8,8 +8,14 @@ export const BackButton = styled.div`
   background-image: url(${buttonBack});
   background-size: contain;
   background-repeat: no-repeat;
+  @media (min-width: 769px) and (max-width: 1023px) {
+    top: -9%;
+    left: 10.5%;
+    width: 3rem;
+    height: 3.5rem;
+  }
   @media (min-width: 1024px) and (max-width: 1200px) {
-    top: -10.5%;
+    top: -8%;
     left: 10.5%;
     width: 3rem;
     height: 3.5rem;
@@ -42,6 +48,10 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   flex-direction: row;
   margin: 10.4vh 0 0;
+  @media (min-width: 769px) and (max-width: 1023px) {
+    width: 750px;
+    height: 477px;
+  }
   @media (min-width: 1024px) and (max-width: 1200px) {
     width: 833px;
     height: 530px;
@@ -49,7 +59,6 @@ export const Container = styled.div`
   @media (min-width: 1201px) and (max-width: 1470px) {
     width: 943px;
     height: 600px;
-    margin: 20vh 0 0;
   }
   @media (min-width: 1471px) and (max-width: 1600px) {
     width: 943px;
@@ -67,6 +76,11 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: flex-start; 
   background-color: transparent;
+  @media (min-width: 769px) and (max-width: 1023px) {
+    width: 400px;
+    height: 400px;
+    margin: 30px 23px;
+  }
   @media (min-width: 1024px) and (max-width: 1200px) {
     width: 450px;
     height: 456px;
@@ -388,18 +402,8 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
     background-repeat: no-repeat;
     background-color: #739B8B;
   }
-  @media (min-width: 1024px) and (max-width: 1200px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  @media (min-width: 1201px) and (max-width: 1470px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  @media (min-width: 1471px) and (max-width: 1600px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
+  width: 1.5rem;
+  height: 1.5rem;
   @media (min-width: 1601px) {
     width: 1.75rem;
     height: 1.75rem;
@@ -414,7 +418,7 @@ export const Todo = styled.div`
   line-height: 22px;
   color: ${(props) => (props.completed ? "#9C9C9C" : "#4C434E")};
   text-decoration: ${(props) => (props.completed ? "line-through" : "none")};
-  @media (min-width: 1024px) and (max-width: 1200px) {
+  @media (min-width: 769px) and (max-width: 1200px) {
     font-size: 1rem;
   }
   @media (min-width: 1201px) and (max-width: 1470px) {

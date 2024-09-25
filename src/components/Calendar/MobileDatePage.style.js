@@ -10,10 +10,8 @@ export const BackButton = styled.div`
   background-repeat: no-repeat;
   width: 3.75rem;
   height: 4.3rem;
-  @media (max-width: 430px) {
-    top: -52px;
-    left: 20px;
-  }
+  top: -52px;
+  left: 20px;
 `;
 
 export const Container = styled.div`
@@ -25,9 +23,10 @@ export const Container = styled.div`
   background-repeat: no-repeat;
   flex-direction: column;
   margin: 35vh 0 0;
-  @media (max-width: 430px) {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
+  @media (min-width: 431px){
+    margin: 30rem 0 0;
   }
 `;
 
@@ -37,11 +36,9 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: flex-start; 
   background-color: transparent;
-  @media (max-width: 430px) {
-    width: 90%;
-    height: 100%;
-    margin: 2%;
-  }
+  width: 90%;
+  height: 100%;
+  margin: 2%;
 `;
 
 export const DiaryBox = styled.div`

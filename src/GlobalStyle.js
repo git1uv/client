@@ -16,7 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   @media (max-width: 1470px) {
     html {
-      font-size: 15px; 
+      font-size: 15px; // 화면 너비가 1470px 이하일 때
     }
   }
   @media (max-width: 1200px) {

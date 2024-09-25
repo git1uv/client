@@ -14,12 +14,10 @@ export default function Common({openModal}) {
   const K_REDIRECT_URI = `http://localhost:3000/oauth`
   const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${K_CLIENT_ID}&redirect_uri=${K_REDIRECT_URI}&response_type=code`;
   
-  
   // 구글 로그인 관련 데이터
   const G_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID
   const G_REDIRECT_URI = process.env.REACT_APP_GOOGLE_REDIRECT_URL
   const googleURL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${G_CLIENT_ID}&redirect_uri=${G_REDIRECT_URI}&response_type=code&scope=email`;
-
 
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');

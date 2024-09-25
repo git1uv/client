@@ -81,14 +81,15 @@ export const PwChange = styled.div`
   justify-content: center;
   font-size: 1.25rem;
   align-items: center;
-  margin: 1vh 3.5vw 4vh 3.5vw;
+  margin: 1vh 3.5vw 2vh 3.5vw;
   button {
     padding: 0;
   }
   input {
-    width: 100%;
+    width: 95%;
     height: 6vh;
-    padding: 10px 20px ;
+    padding: 10px 20px;
+    margin: 0 10px 0 0;
     color: black;
     font-size: 1.125rem;
     border: 1px solid #D4D4D8;
@@ -100,44 +101,42 @@ export const PwChange = styled.div`
     &.success {
       border-color: #95DD98;
     }
-      @media (max-width: 430px) {
+    @media (max-width: 430px) {
     margin: 0 1.8vw;
-  }
-
+    }
   }
 `;
 
 export const Text = styled.div`
   background-color: transparent;
   .title{
-  font-size: 1.125rem;
-  color: #000;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.54px;
-  margin: 3vh 0 0 3.5vw;
-  @media (max-width: 430px) {
-    margin: 3vh 0 0 5.3vw;
-  }
+    font-size: 1.125rem;
+    color: #000;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.54px;
+    margin: 3vh 0 0 3.5vw;
+    @media (max-width: 430px) {
+      margin: 3vh 0 0 5.3vw;
+    }
   }
   .confirm{
-  font-size: 1rem;
-  color: #A1A1AA;
-  font-family: Pretendard;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  letter-spacing: -0.48px;
-  margin: 0 0 0 3.5vw;
-  display: none;
+    display: none;
+  }
+  .confirm.visible {
+    font-size: 1rem;
+    color: #A1A1AA;
+    font-family: Pretendard;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: -0.48px;
+    margin: 0 0 0 3.5vw;
+    display: block;
   }
   @media (max-width: 430px) {
     margin: 0 1.8vw;
-  }
-
-  .confirm.visible {
-    display: block;
   }
 `;

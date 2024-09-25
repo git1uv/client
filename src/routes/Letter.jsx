@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import * as L from "../components/Letter/Letter.style";
-import { FaHeart, FaTrash} from "react-icons/fa";
 import Letter from '../components/Modal/Letter/ChatLetter';
 import styled from "styled-components";
 import axios from 'axios';
 import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
-import data from '../datas/mail';
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -18,82 +16,100 @@ const LetterWrapper = styled.div`
 `;
 
 function Mailbox() {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
   const [isLetterModalVisible, setLetterModalVisible] = useState(false);
   const [mails, setMails] = useState([]);
-  const [selectedMail, setSelectedMail] = useState(null);
   const [seeAllActive, setSeeAllActive] = useState(true);
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
-  const userId = 1; //임시유저아이디
+  const [mailDetails, setMailDetails] = useState(null);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
-  const [selectedMailIds, setSelectedMailIds] = useState([]);  
+  const [selectedMailIds, setSelectedMailIds] = useState([]); 
 
-  const handleLetterClick = (mail) => {
-    setSelectedMail(mail);
-    setLetterModalVisible(true);
-  };
-  const handleDeleteClick = () => {
-    if (selectedMailIds.length > 0) {
-      setDeleteModalVisible(true);
-    }
-    else{
-      console.log("삭제할 편지가 없습니다.");
-    }
-  };
+  const accessToken = localStorage.getItem('accessToken'); 
+  const refreshToken = localStorage.getItem('refreshToken');
 
-  // 예시 데이터 설정
-  const fetchMailsForType = (listType = "all") => {
-    switch (listType) {
-      case "starred":
-        return data.filter(mail => mail.starred);
-      case "notRead":
-        return data.filter(mail => !mail.read);
-      case "all":
-      default:
-        return data;
-    }
-  };
-
-  
-
-/**useEffect(() => {
-    const fetchMails = async (listType = '') => {
-      try {
-        const response = await axios.get(`/api/v1/mail/list${listType ? `?listType=${listType}` : ''}`);
-        if (response.data.code === "200") {
-          setMails(response.data.data.mails); 
-        } else if (response.data.code === "MAIL5001") {
-          console.error("편지 가져오기 실패:", response.data.message);
-        } else {
-          console.error("편지가 없습니다", response.data.message);
+  const fetchMails = async (listType = '') => {
+    try {
+      const response = await axios.get(`${serverURL}/api/v1/mail/list${listType ? `?listType=${listType}` : ''}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
         }
-      } catch (error) {
-        console.error("API 호출 중 오류 발생:", error);
+      );
+      if (response.data.code === "200") {
+        setMails(response.data.data.mails);
+      } else if (response.data.code === "MAIL5001") {
+        console.error("편지 가져오기 실패:", response.data.message);
+      } else {
+        console.error("편지가 없습니다:", response.data.message);
       }
-    };
-    fetchMails('');
-  }, []);
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }
+  };
 
- */
-  const toggleFavorite = (mailId) => {
-    const updatedMails = mails.map((mail) =>
-      mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
-    );
-    setMails(updatedMails);
-    /**
-    axios.patch(`/api/v1/mail/star/${mailId}`)
-      .then(response => {
-        if (response.data.code === "200") {
-          console.log("즐겨찾기 추가 성공");
-        }else if (response.data.code === "MAIL5001") {
-          console.error("실패:", response.data.message);
+  const handleLetterClick = async (mailId) => {
+    try {
+      const response = await axios.get(`${serverURL}/api/v1/mail?mailId=${mailId}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${accessToken} ${refreshToken}`
+          },
+        });
+      if (response.data.code === "200") {
+        setMailDetails(response.data.data); 
+        setLetterModalVisible(true); 
+      
+        if (seeNotReadActive) {
+          fetchMails('notRead');
+        } else if (seeFavoritesActive) {
+          fetchMails('starred');
         } else {
-          console.error("메일이 없습니다", response.data.message);
+          fetchMails('all');
         }
-      })
-      .catch(error => console.error("즐겨찾기 추가 실패", error));
-    */
-};
+      } else if(response.data.code === "MAIL5001"){
+        console.error("편지 가져오기 실패:", response.data.message);
+      } else {
+        console.error("편지가 없습니다:", response.data.message);
+      }
+    } catch (error) {
+      console.error("API 호출 중 오류 발생:", error);
+    }
+  };
+
+  const toggleFavorite = async (mailId) => {
+    try {
+      const response = await axios.patch(`${serverURL}/api/v1/mail/star/${mailId}`, {}, {
+        headers: {
+          Authorization: `Bearer ${accessToken} ${refreshToken}`,
+        },
+      });
+
+      if (response.data.code === '200') {
+        console.log('즐겨찾기 상태 변경 성공');
+        const updatedMails = mails.map((mail) =>
+          mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
+        );
+        setMails(updatedMails);
+        if (seeFavoritesActive) {
+            setMails(updatedMails.filter(mail => mail.starred));
+        }
+
+      } else if (response.data.code === "MAIL5001") {
+        console.error("실패:", response.data.message);
+        setMails(mails);
+      } else {
+        console.error("메일이 없습니다", response.data.message);
+        setMails(mails);
+      }
+    } catch (error) {
+      console.error('즐겨찾기 요청 중 오류 발생:', error);
+      setMails(mails);
+    }
+  
+  };
 
 
   const getChatbotImage = (chatbotType) => {
@@ -113,27 +129,20 @@ function Mailbox() {
     setSeeAllActive(true);
     setSeeFavoritesActive(false);
     setSeeNotReadActive(false);
-    //fetchMails('all'); 
-
-    setMails(fetchMailsForType("all"));
-    };
+    fetchMails('all');
+  };
   const handleSeeFavoritesToggle = () => {
-    //fetchFavoriteMails();
     setSeeFavoritesActive(true);
     setSeeAllActive(false);
     setSeeNotReadActive(false);
-    //fetchMails('starred');  
-
-    setMails(fetchMailsForType("starred"));
-    };
+    fetchMails('starred');
+  }; 
   const handleSeeNotReadToggle = () => {
     setSeeNotReadActive(true);
     setSeeAllActive(false);
     setSeeFavoritesActive(false);
-    //fetchMails('notRead');  
-
-    setMails(fetchMailsForType("notRead"));
-    };
+    fetchMails('notRead');
+  };
 
   const handleCheck = (mailId) => {
     setSelectedMailIds((prevSelected) => {
@@ -144,22 +153,45 @@ function Mailbox() {
       }
     });
   };
-    
-  useEffect(() => {
-    //예시
-    setMails(fetchMailsForType("all"));
-  }, []); 
-  
 
+  const handleDelete = async (mailId) => {
+    try {
+      const mailIdsToDelete = mailId ? [mailId] : selectedMailIds; 
+      const response = await axios.post(`${serverURL}/api/v1/mail/delete`, {
+        mailIds: mailIdsToDelete,
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        },
+      });
+
+      if (response.data.code === "200") {
+        setMails((prevMails) => prevMails.filter(mail => !mailIdsToDelete.includes(mail.mailId)));
+        setDeleteModalVisible(false);
+      } else {
+        console.error('실패:', response.data.message);
+      }
+    } catch (error) {
+      console.error('실패:', error);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchMails();
+  }, []);
+  
   return (
     <LetterWrapper>
+    <L.Bg>
     <L.Container>
       <L.Mailbox>
           <L.TopRow>
             <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
             <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
             <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} />
-            <L.Delete onClick={() => handleDeleteClick()}/>
+            <L.Delete onClick={() => setDeleteModalVisible(true)}/>
           </L.TopRow>
           <L.LettersWrapper>
           <L.Letters>
@@ -172,7 +204,7 @@ function Mailbox() {
                   onChange={() => handleCheck(mail.mailId)}
                 />
               </L.CheckBox>
-              <L.Letter onClick={() => handleLetterClick(mail)}>  
+              <L.Letter onClick={() => handleLetterClick(mail.mailId)}>  
                 <L.ChatBox>
                   <L.Chatbot>
                     <img src={getChatbotImage(mail.chatbotType)} alt="chatbot" />
@@ -201,28 +233,25 @@ function Mailbox() {
           </L.Letters>
           </L.LettersWrapper>
       </L.Mailbox>
-      {isLetterModalVisible && selectedMail && (
+      {isLetterModalVisible && mailDetails && (
           <Letter
-            mailId={selectedMail.mailId}
-            userId={userId}
-            content={selectedMail.content}
-            createdAt={selectedMail.createdAt}
-            chatbotType={selectedMail.chatbotType}
+            mailId={mailDetails.mailId}
+            content={mailDetails.content}
+            createdAt={mailDetails.createdAt}
+            chatbotType={mailDetails.chatbotType}
             setLetterModal={setLetterModalVisible}
+            handleDelete={handleDelete} 
           />
         )}
         {isDeleteModalVisible && (
                 <DeleteLetterModal
                 isVisible={isDeleteModalVisible}
                 onClose={() => setDeleteModalVisible(false)}
-                onConfirm={() => {
-                  setMails(mails.filter(mail => !selectedMailIds.includes(mail.mailId)));
-                  setDeleteModalVisible(false);
-                }}
-                mailId={selectedMailIds}
+                onConfirm={handleDelete}
                 />
             )}
     </L.Container>
+    </L.Bg>
     </LetterWrapper>
   );
 }

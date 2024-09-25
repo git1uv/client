@@ -7,13 +7,17 @@ import * as A from './Airplane.style';
 import x from '../../assets/x.png';
 import download from '../../assets/letterImg/download.png';
 
-function Airplane({setAirplaneModal, receiverId }) {
+function Airplane({setAirplaneModal}) {
+    const serverURL = process.env.REACT_APP_SERVER_URL;
     const navigate = useNavigate();
     const location = useLocation(); 
     const [sender, setSender] = useState('');
     const [content, setContent] = useState('');
     const [date, setDate] = useState('');
     const modalRef = useRef(null); 
+
+    const accessToken = localStorage.getItem('accessToken'); 
+    const refreshToken = localStorage.getItem('refreshToken');
 
     const handleDownload = async () => {
         if (!modalRef.current) return;
@@ -31,20 +35,15 @@ function Airplane({setAirplaneModal, receiverId }) {
 
     };
     useEffect(() => {
-        // 예시 데이터 사용
-        setSender('팟팅인간');
-        setContent('2024 파리 올림픽에서 단체전 3연패에 도전하는 한국 펜싱 남자 사브르 대표팀이 8강전에서 캐나다를 꺾고 준결승전에 진출했다. 다음 상대는 개최국 프랑스다. 경기 초반 맏형 구본길이 다소 흔들렸으나 오상욱과 박상원이 차분하게 점수를 쌓았다. 구본길도 7라운드에서 프랑수아 코숑에게 5-1로 앞서며 컨디션을 되찾았다.2024 파리 올림픽에서 단체전 3연패에 도전하는 한국 펜싱 남자 사브르 대표팀이 8강전에서 캐나다를 꺾고 준결승전에 진출했다.');
-        setDate('2024-08-30');
-
-        return () => {
-            setAirplaneModal(false);
-        };
-    }, [location, setAirplaneModal]);
-    /**
-    useEffect(() => {
          const fetchLetterData = async () => {
             try {
-                const response = await axios.get('/api/v1/airplane');
+                const response = await axios.get(`${serverURL}/api/v1/airplane`,
+                    {
+                      headers: {
+                        'Authorization': `Bearer ${accessToken} ${refreshToken}`
+                      },
+                    }
+                );
                 if (response.status === 200) {
                     const { writerName, content, createdAt } = response.data.data;
                     setSender(writerName);
@@ -62,7 +61,7 @@ function Airplane({setAirplaneModal, receiverId }) {
         return () => {
             setAirplaneModal(false);
         };
-    }, [location, setAirplaneModal]);*/
+    }, [location, setAirplaneModal]);
 
     return (
         <A.ModalBg>

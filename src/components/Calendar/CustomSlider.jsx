@@ -9,6 +9,8 @@ import * as P from './PCDatePage.style';
 import slider_t from '../../assets/CalendarImg/slider_t.png';
 import slider_f from '../../assets/CalendarImg/slider_f.png';
 import slider_h from '../../assets/CalendarImg/slider_h.png';
+import moment from 'moment'; 
+import { useNavigate } from 'react-router-dom';
 
 const SwiperContainer = styled.div`
   display: flex;
@@ -75,6 +77,11 @@ function getChatbotBackground(chatbotType) {
 }
 
 function CustomSlider({ logs, getChatbotName }) {
+  const navigate = useNavigate();
+
+    const handleSlideClick = (logId) => {
+      navigate(`/chatbot/${logId}`);
+    };
     return (
         <SwiperContainer>
         <CustomSwiper
@@ -86,11 +93,15 @@ function CustomSlider({ logs, getChatbotName }) {
           className="mySwiper"
         >
           {logs.map((log) => (
-          <CustomSwiperSlide key={log.id} chatbotType={log.chatbotType}>
+          <CustomSwiperSlide 
+            key={log.id}
+            chatbotType={log.chatbotType}
+            onClick={() => handleSlideClick(log.id)}
+            >
             <P.OneLine>{log.title}</P.OneLine>
             <P.SliderLineBox>
             <P.WithChat>{getChatbotName(log.chatbotType)}</P.WithChat>
-            <P.Time>{log.time}</P.Time>
+            <P.Time>{moment(log.time).format('HH:mm')}</P.Time>
             </P.SliderLineBox>
           </CustomSwiperSlide>
           ))}

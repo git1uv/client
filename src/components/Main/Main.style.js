@@ -39,7 +39,6 @@ export const Container = styled.div`
 
     background-image: url(${(props) => (props.time >= 7 && props.time < 17 ? morning : props.time >= 17 && props.time < 19 ? evening : night)});
     background-size: cover;
-    // background-color: #EEECE3;
   
     background-position: center;
 

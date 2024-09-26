@@ -99,9 +99,9 @@ export default function ChatbotResult() {
     if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
       getCounseling();
 
-      if (solution.chatbotType === 'Simmaeum')
+      if (solution.chatbotType === 'F')
         setChatbot('심마음');
-      else if (solution.chatbotType === 'Banbani')
+      else if (solution.chatbotType === 'H')
         setChatbot('반바니');
       else
         setChatbot('뉴러니');

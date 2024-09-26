@@ -37,8 +37,12 @@ export default function InputBox({message, setMessage, loading, setLoading}) {
       inputRef.current.value = null;
       inputRef.current.focus(); // 전송 후 input에 포커스 유지
     }
+    textClear();
   };
 
+  const textClear = () => { // input 창 초기화
+    inputRef.current.value = null;
+  }
 
 
   /* 사용자 메시지 보내기 API*/
@@ -83,6 +87,7 @@ export default function InputBox({message, setMessage, loading, setLoading}) {
     <S.InputBox>
       <input
         type="text"
+          disabled={loading}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="메시지를 입력하세요"

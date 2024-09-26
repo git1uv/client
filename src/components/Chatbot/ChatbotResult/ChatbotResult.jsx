@@ -27,7 +27,6 @@ export default function ChatbotResult() {
 
   const [chatbot, setChatbot] = useState('');
   const componentRef = useRef(null); 
-  const chatResult = useSelector((state) => state.chatResult);
   const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('');
   
@@ -48,8 +47,7 @@ export default function ChatbotResult() {
     } catch (error) {
         console.error("Error converting div to image:", error);
     }
-
-};
+  };
 
   let result = localStorage.getItem('result');
 
@@ -99,6 +97,7 @@ export default function ChatbotResult() {
       getCounseling(); // 달력에서 접근할 때 호출
     }
   }, [location]); 
+  
   return (
     <S.App>
       <S.Container ref={componentRef}>

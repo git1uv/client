@@ -42,10 +42,9 @@ export default function Chatbot() {
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+ 
   const openFirstModal = async() => {
     setIsFirstModalOpen(true);
-    // await exitChatting();
   }
   const closeFirstModal = () => {
     setIsFirstModalOpen(false);

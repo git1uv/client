@@ -174,20 +174,23 @@ export const Emotion = styled.img`
 /* InputBox */
 
 export const InputBox = styled.div`
-    ${ALIGN.ROW_CENTER};
-    width: 100%;
-    height: 8dvh;
+    display: flex;
+    align-items: center;
+    width: 96%;
+    height: 7dvh;
+    margin: 1% 2%;
+    border-radius: 2.0625rem;
+    border: 1px solid #739B8B;
+    background: #FFF;
 
     input {
-        width: 95%;
+        width: 80%;
         height: 80%;
         font-size: 18px;
         position: relative;
+        margin-left: 2%;
         padding-left: 4%;
-        border-radius: 2.0625rem;
-        border: 1px solid #739B8B;
-        background: #FFF;
-
+        border: none;
         outline: none;
     }
 

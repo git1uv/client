@@ -164,10 +164,10 @@ export const Character = styled.img`
 
 export const Emotion = styled.img`
     position: absolute;
-    width: 30%;
+    width: 25%;
     height: auto;
     
-    left: 15vw;  
+    left: 16%;  
 
     z-index: 80;
 `

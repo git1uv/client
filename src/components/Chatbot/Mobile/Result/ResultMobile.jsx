@@ -22,6 +22,9 @@ export default function ResultMobile() {
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
 
+  let result = localStorage.getItem('result');
+  let counselingLogId = localStorage.getItem('counselingLogId');
+
   const [chatbot, setChatbot] = useState('');
   const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('2024 / 09 / 04');
@@ -30,9 +33,6 @@ export default function ResultMobile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
-
-  let result = localStorage.getItem('result');
-  let counselingLogId = localStorage.getItem('counselingLogId');
 
   const handleDownload = async () => {
     if (!componentRef.current) return;
@@ -105,12 +105,15 @@ export default function ResultMobile() {
   }, [])
 
   useEffect(() => {
-    const isNavigatedFromChatbot = location.state && location.state.fromModal; // 특정 로직: 모달에서 네비게이션 여부
+    const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 
+    const isNavigatedFromChatbot = location.state && location.state.fromChatbot;
 
-    if (!isNavigatedFromChatbot) {
-      getCounseling(); // 달력에서 접근할 때 호출
+    if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
+      getCounseling();
     }
-  }, [location]); 
+    
+  }, [location, counselingLogId]);
+
 
   return (
     <S.App>

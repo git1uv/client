@@ -91,13 +91,15 @@ export default function ChatbotResult() {
   }, [])
 
   useEffect(() => {
-    const isNavigatedFromChatbot = location.state && location.state.fromModal; // 특정 로직: 모달에서 네비게이션 여부
+    const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 
+    const isNavigatedFromChatbot = location.state && location.state.fromChatbot;
 
-    if (!isNavigatedFromChatbot) {
-      getCounseling(); // 달력에서 접근할 때 호출
+    if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
+      getCounseling();
     }
-  }, [location]); 
-  
+    
+  }, [location, counselingLogId]);
+
   return (
     <S.App>
       <S.Container ref={componentRef}>

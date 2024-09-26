@@ -22,13 +22,15 @@ export default function ChatbotResult() {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
-  const counselingLogId = localStorage.getItem('counselingLogId');
 
+  let result = localStorage.getItem('result');
+  let counselingLogId = localStorage.getItem('counselingLogId');
 
-  const [chatbot, setChatbot] = useState('');
-  const componentRef = useRef(null); 
-  const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('');
+  const [chatbot, setChatbot] = useState('');
+
+  const solution = useSelector((state) => state.solution);
+  const componentRef = useRef(null); 
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -49,7 +51,6 @@ export default function ChatbotResult() {
     }
   };
 
-  let result = localStorage.getItem('result');
 
   /* 특정 상담일지 가져오기 API 구현*/
   const getCounseling = async() => {
@@ -63,6 +64,7 @@ export default function ChatbotResult() {
       let data = res.data.data
       dispatch(setSolution({
         counselingLogId: data.counselingLogId,
+        chatbotType: data.chatbotType,
         title: data.title,
         summary: data.summary,
         suggestion: data.suggestion,
@@ -96,6 +98,13 @@ export default function ChatbotResult() {
 
     if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
       getCounseling();
+
+      if (solution.chatbotType === 'Simmaeum')
+        setChatbot('심마음');
+      else if (solution.chatbotType === 'Banbani')
+        setChatbot('반바니');
+      else
+        setChatbot('뉴러니');
     }
     
   }, [location, counselingLogId]);

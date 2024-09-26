@@ -143,6 +143,9 @@ export default function Chatbot() {
 
   /* 사용자 메시지 보내기 API*/
   const postChatting = async() => {
+    const loadingMessage = { msg: '', isUser: false, isLoading: true };
+    setMessage((prevMessages) => [...prevMessages, loadingMessage]);
+    
     setLoading(true);
     try {
       const res = await axios.post(`${serverURL}/api/v1/chatbot/chatting?counselingLogId=${counselingLogIdLS}`, {
@@ -160,10 +163,13 @@ export default function Chatbot() {
         }
       ))
       setEmotion(res.data.data.emotion);
-      setMessage((prev) => [...prev, {
-        msg: res.data.data.message,
-        isUser: false
-      }]);
+   
+      setMessage((prevMessages) => {
+        const updatedMessages = [...prevMessages];
+        updatedMessages.pop(); // 마지막 로딩 메시지 제거
+        updatedMessages.push({ msg: res.data.data.message, isUser: false, isLoading: false }); // 응답 메시지 추가
+        return updatedMessages;
+      });
       // let redFlag = res.data.data.redFlag;
       // if (redFlag)
       //   openRedFlagModal();

@@ -11,7 +11,8 @@ export default function Chat({message, counseling, loading, isTyping, setIsTypin
   useEffect(() => {
     if (message.length > 0) {
       const latestMessage = message[message.length - 1];
-
+      if (latestMessage.msg === '')
+        return;
       if (!latestMessage.isUser) {
         if (!isTyping) {
           setAnimatedMessage(''); // 초기화
@@ -41,7 +42,7 @@ export default function Chat({message, counseling, loading, isTyping, setIsTypin
   const displayChatbotBubble = (value, index) => {
     return (
       <S.ChatbotBubble key={index}>
-        {loading && index === message.length - 1 ? (
+        {value.isLoading ? (
           <img src={icon} alt="loading icon" />
         ) : (
           index === message.length - 1 && !loading ? animatedMessage : value.msg
@@ -65,6 +66,3 @@ export default function Chat({message, counseling, loading, isTyping, setIsTypin
     </T.Container>
   )
 }
-
-
-// 마음아 나 배고파서 떡볶이 시켜먹으려고 했는데, 배달비 너무 비싸서 못 먹었어..ㅜ

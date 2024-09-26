@@ -6,7 +6,7 @@ import { setAnswer } from '../../../../redux/counseling';
 
 import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 
-export default function InputBox({message, setMessage, loading, setLoading}) {
+export default function InputBox({message, setMessage, loading, setLoading, isTyping}) {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
   const accessToken = localStorage.getItem('accessToken');
@@ -87,7 +87,7 @@ export default function InputBox({message, setMessage, loading, setLoading}) {
     <S.InputBox>
       <input
         type="text"
-          disabled={loading}
+          disabled={isTyping || loading}
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="메시지를 입력하세요"

@@ -2,10 +2,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './ChatbotMobile.style'
 import icon from '../../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
 
-export default function ChattingBox({message, counseling, loading}) {
+export default function ChattingBox({message, counseling, loading, isTyping, setIsTyping}) {
   
   const chatbot = localStorage.getItem('result');
   const [animatedMessage, setAnimatedMessage] = useState(''); // 타이핑 중인 메시지
+  const typingIndexRef = useRef(0); // 인덱스를 저장할 ref
+  const intervalRef = useRef(null); // interval을 저장할 ref
 
     // 더미데이터
   const chatEndRef = useRef(null); // 스크롤을 위해 ref 생성
@@ -18,28 +20,32 @@ export default function ChattingBox({message, counseling, loading}) {
   }, [message]);
 
   useEffect(() => {
-    if (!loading && message.length > 0) {
+    if (message.length > 0) {
       const latestMessage = message[message.length - 1];
-      
-      // 사용자가 보낸 메시지가 아닌 경우 (챗봇 메시지에만 타이핑 애니메이션 적용)
+
       if (!latestMessage.isUser) {
-        let index = 0;
-        setAnimatedMessage(''); // 초기화
-        
-        const interval = setInterval(() => {
-          setAnimatedMessage((prev) => prev + latestMessage.msg[index]);
-          index++;
+        if (!isTyping) {
+          setAnimatedMessage(''); // 초기화
+          setIsTyping(true); // 애니메이션 시작
+          typingIndexRef.current = -1; // 인덱스 초기화
 
-          // 메시지를 모두 타이핑하면 멈춤
-          if (index === latestMessage.msg.length) {
-            clearInterval(interval);
-          }
-        }, 50); // 글자마다 50ms 간격으로 타이핑
+          intervalRef.current = setInterval(() => {
+            setAnimatedMessage((prev) => prev + latestMessage.msg[typingIndexRef.current]);
+            typingIndexRef.current++;
 
-        return () => clearInterval(interval); // 컴포넌트 unmount 시 타이핑 멈춤
+            // 메시지를 모두 타이핑하면 애니메이션 종료
+            if (typingIndexRef.current+1 === latestMessage.msg.length) {
+              clearInterval(intervalRef.current);
+              setIsTyping(false); // 애니메이션 종료
+            }
+          }, 50);
+        }
+      } else {
+        // 사용자가 보낸 메시지는 즉시 표시
+        setAnimatedMessage(latestMessage.msg);
       }
     }
-  }, [message, loading]);
+  }, [message]);
 
   const displayChatbotBubble = (value, index) => {
     return (

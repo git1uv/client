@@ -34,6 +34,7 @@ export default function Chatbot() {
   const [isRedFlagModalOpen, setIsRedFlagModalOpen] = useState(false);
   const [emotion, setEmotion] = useState(Simmaeum.basic);
   const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 중
   const inputRef = useRef(null);
   const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
@@ -220,11 +221,13 @@ export default function Chatbot() {
           setLoading={setLoading}
           isChat={isChat}
           message={message}
+          isTyping={isTyping}
+          setIsTyping={setIsTyping}
         />
       </S.Bottom>
       <T.InputBox>
         <input
-          disabled={loading}
+          disabled={loading || isTyping}
           placeholder='고민부터 털어놓고 싶은 것, 오늘 있었던 일 등 뭐든 말해보아요!'
           onChange={ChangeInput}
           onKeyPress={handleKeyPress}

@@ -14,6 +14,7 @@ export default function ChatbotMobile() {
 
   const [message, setMessage] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 중
 
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -66,13 +67,14 @@ export default function ChatbotMobile() {
   return (
     <S.App>
       <Header openFirstModal={openFirstModal}/>
-      <ChattingBox message={message} counseling={counseling} loading={loading}/>
+      <ChattingBox message={message} counseling={counseling} loading={loading} isTyping={isTyping} setIsTyping={setIsTyping}/>
       <ChatbotBox/>
       <InputBox 
         message={message}
         setMessage={setMessage}
         loading={loading}
-        setLoading={setLoading}  
+        setLoading={setLoading} 
+        isTyping={isTyping} 
       />
       <FirstModal
         isVisible={isFirstModalOpen} 

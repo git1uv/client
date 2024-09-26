@@ -4,7 +4,7 @@ import * as H from './Header.style';
 import setting from '../../assets/headerImg/Settings_big.png';
 import logo from '../../assets/logo.png';
 
-function WebHeader() {
+function WebHeader({isMain}) {
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,7 +35,7 @@ function WebHeader() {
 */
 
     return (
-        <H.Header>
+        <H.Header isMain={isMain}>
             <H.HeaderWrapper>
                 <H.HeaderStart>
                     <H.HeaderHome onClick={() => navigate('/main')}><img src={logo} alt='logo' /></H.HeaderHome>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import onboarding from '../assets/onboarding/onboarding.png';
 import onboardingMobile from '../assets/onboarding/onboardingMobile.png';
 import styled from 'styled-components';
@@ -12,6 +12,7 @@ const RESPONSIVE_SIZE = theme;
 const App = styled.div`
     position: relative; 
     overflow-y: auto; 
+    height: auto;
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         height: 100dvh;
     }
@@ -44,8 +45,13 @@ const Button = styled.button`
     }
 `;
 
+
 export default function Onboarding() {
     const navigate = useNavigate();
+    useEffect(() => {
+        // 컴포넌트가 마운트될 때 스크롤을 최상단으로 이동
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <>
         <BrowserView>

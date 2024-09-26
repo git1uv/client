@@ -9,29 +9,46 @@ import Icon2 from '../../../../assets/chatbot/result/journal2.png'
 import Icon3 from '../../../../assets/chatbot/result/journal3.png'
 
 import * as S from './ResultMobile.style'
+import dayjs from 'dayjs';
+import { setSolution } from '../../../../redux/solution';
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import html2canvas from 'html2canvas';
+import saveAs from 'file-saver';
 
 export default function ResultMobile() {
-    const [chatbot, setChatbot] = useState('');
-  const componentRef = useRef(null); 
-  const chatResult = useSelector((state) => state.chatResult);
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  const [chatbot, setChatbot] = useState('');
   const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('2024 / 09 / 04');
-  
+  const componentRef = useRef(null); 
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   let result = localStorage.getItem('result');
-  let receivedToken = localStorage.getItem('token');
   let counselingLogId = localStorage.getItem('counselingLogId');
 
-  useEffect(() => {
-    // getCounseling(); /* 특정 상담일지 가져오기 API */
-    if (result === 'Simmaeum')
-      setChatbot('심마음');
-    else if (result === 'Banbani')
-      setChatbot('반바니');
-    else
-      setChatbot('뉴러니');
-  }, [])
+  const handleDownload = async () => {
+    if (!componentRef.current) return;
+
+    try {
+        const canvas = await html2canvas(componentRef.current, { scale: 2 });
+        canvas.toBlob((blob) => {
+            if (blob !== null) {
+                saveAs(blob, "Counseling diary.png");
+            }
+        });
+    } catch (error) {
+        console.error("Error converting div to image:", error);
+    }
+  };
+
 
   const contentData = [
     {
@@ -50,10 +67,54 @@ export default function ResultMobile() {
       content: solution.solutions.map((sol) => sol.content),
     },
   ];
+  /* 특정 상담일지 가져오기 API 구현*/
+  const getCounseling = async() => {
+    try {
+      const res = await axios.get(`${serverURL}/api/v1/chatbot/counselinglog/${counselingLogId}`, {
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        }
+      });
+      console.log(res.data);
+      let data = res.data.data
+      dispatch(setSolution({
+        counselingLogId: data.counselingLogId,
+        title: data.title,
+        summary: data.summary,
+        suggestion: data.suggestion,
+        solutions: data.solutions,
+        endedAt: data.endedAt,
+      }));
+      const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
+      setEndDate(formatDate);
+
+      console.log(formatDate);
+
+    } catch(err) {
+      console.log(err);
+    }
+  }
+  useEffect(() => {
+    // getCounseling(); /* 특정 상담일지 가져오기 API */
+    if (result === 'Simmaeum')
+      setChatbot('심마음');
+    else if (result === 'Banbani')
+      setChatbot('반바니');
+    else
+      setChatbot('뉴러니');
+  }, [])
+
+  useEffect(() => {
+    const isNavigatedFromChatbot = location.state && location.state.fromModal; // 특정 로직: 모달에서 네비게이션 여부
+
+    if (!isNavigatedFromChatbot) {
+      getCounseling(); // 달력에서 접근할 때 호출
+    }
+  }, [location]); 
 
   return (
     <S.App>
-       <S.Container>
+       <S.Container ref={componentRef}>
         <S.Top>
             <S.Header>
                 <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
@@ -86,6 +147,10 @@ export default function ResultMobile() {
                 </S.Content>
             </S.ContentBox>
             ))}
+        <S.BtnBox>
+            <button onClick={handleDownload}></button>
+            <button onClick={() => navigate('/main')}>종료하기</button>
+        </S.BtnBox>
         </S.Bottom>
        </S.Container>
     </S.App>

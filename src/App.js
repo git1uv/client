@@ -8,6 +8,7 @@ import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import SettingName from './routes/SettingName'
 import KakaoRedirect from './routes/KakaoRedirect'
+import GoogleRedirect from './routes/GoogleRedirect'
 import ChatbotPage from './routes/Chatbot/ChatbotPage'; 
 import Trash from './routes/Trash'; 
 import TrashPaper from './routes/TrashPaper';
@@ -28,10 +29,14 @@ import TestContent from './components/Test/TestContent/TestContent';
 import TestResult from './routes/Chatbot/TestResultPage';
 import ChatbotChoice from './components/Chatbot/ChatbotChoice/ChatbotChoice';
 import ChatbotResultPage from './routes/Chatbot/ChatbotResultPage';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import Onboarding from './routes/Onboarding';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
+  const isMain = location.pathname === '/main';
+
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 430);
   const hideHeaderPaths = ['/login', '/signup', '/signup/nickname', '/term', '/'];
   const mobileHideHeaderPaths = [
@@ -56,14 +61,17 @@ function App() {
           <div>
           {!hideHeader && (
           isMobileView ? 
-          <AppHeader isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> :
-          <WebHeader isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          <AppHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> :
+          <WebHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         )}
               <Routes>
+                <Route path="/" element={<Onboarding/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/signup/nickname" element={<SettingName/>}/>
                 <Route path="/oauth" element={<KakaoRedirect />}/>
+                <Route path="/oauth2" element={<GoogleRedirect />}/>
                 <Route path="/main" element={<Main/>}/>
                 <Route path="/calendar" element={<MyCalendar />} />
                 <Route path="/date/:date" element={<DatePage />} />
@@ -85,6 +93,7 @@ function App() {
                 <Route path="/pwchange" element={<PwChange />}/>
                 <Route path="/simterinformation" element={<SimterInformation />}/>
               </Routes>
+          
           </div>
         </>
   );

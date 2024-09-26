@@ -52,7 +52,10 @@ export default function TestResult() {
     <S.App isTestStart={isTestStart}>
       <S.Container>
         <S.ResultBox>
-          T/F의 성향이 {score}% {100-score}%인
+        {result === 'Neuranee'
+        ? '공감형보다는 현실적인 조언을 좋아하는'
+        : result === 'Banbani' ? '공감도 하면서 현실적인 조언도 주는'
+        : '현실적인 조언보다는 공감을 좋아하는'  }
         </S.ResultBox>
         <h1>나에게 맞는 심터 캐릭터는</h1>
         {result === 'Neuranee'

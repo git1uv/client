@@ -20,6 +20,9 @@ export default function SettingNameCm() {
   const user = useSelector((state) => state.user);
   const validateNickname = (nickname) => regexName.test(nickname);
 
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const handleChange = (e) => {
     const { value } = e.target;
     setNickname(value);
@@ -67,7 +70,12 @@ export default function SettingNameCm() {
       const res = await axios.post(`${serverURL}/api/v1/register/social`, {
         nickname: nickname,
         email: user.email,
-        loginType: user.loginType
+        loginType: user.loginType,
+        token: {
+          grantType: 'Bearer',
+          accessToken: accessToken,
+          refreshToken: refreshToken
+        }
       })
       console.log(res.data);
       window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');

@@ -78,8 +78,8 @@ export default function SettingNameCm() {
         }
       })
       console.log(res.data);
-      window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
-      navigate('/login');
+      // window.alert('심ㅌ터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
+      navigate('/main');
     } catch (err) {
       console.log(err);
     }

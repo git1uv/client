@@ -85,7 +85,6 @@ export const Letter = styled.div`
 
     @media (max-width: 1470px) {
         width: 45rem;
-        height: 32.5rem;
         padding: 0;
     }
 
@@ -110,17 +109,19 @@ export const WriteBox = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40rem;
-    margin: 3rem 0 2rem 0;
+    align-items: center;
+    width: 100%;
+    margin: 3rem 0 2rem 5rem;
 
     @media (max-width: 1470px) {
-        margin: 2rem 0 1rem 0;
+        margin: 2rem 0 1rem 4rem;
     }
     @media (max-width: 1200px) {
-        margin: 3rem 0 2rem 0;
+        margin: 3rem 0 2rem 4rem;
     }
 
     h3 {
+        align-self: flex-start;
         color: #ED6243;
         font-family: Pretendard;
         font-size: 1rem;
@@ -130,9 +131,11 @@ export const WriteBox = styled.div`
     }
 
     input {
+        align-self: flex-start;
         position: relative;
-        width: 22rem;
+        width: 90%;
         height: 3rem;
+
         border: none;
         border-radius: 0.3125rem;
         background: #FFF;
@@ -140,6 +143,9 @@ export const WriteBox = styled.div`
 
         font-family: SeoulHangang;
         font-size: 1.25rem;
+         @media (max-width: 1470px) {
+            font-size: 1rem;
+        }
         font-weight: 400;
         line-height: normal;
         padding-left: 10px;
@@ -154,7 +160,8 @@ export const WriteBox = styled.div`
     }
 
     textarea {
-        width: 38rem;
+        align-self: flex-start;
+        width: 90%;
         height: 30vh;
         @media (max-width: 1470px) {
             height: 25vh;
@@ -167,6 +174,9 @@ export const WriteBox = styled.div`
 
         font-family: SeoulHangang;
         font-size: 1.25rem;
+        @media (max-width: 1470px) {
+            font-size: 1rem;
+        }
         font-weight: 400;
         line-height: normal;
         padding: 10px;
@@ -192,14 +202,20 @@ export const SendBtn = styled.div`
     padding-left: 1rem;
     display: flex;
     align-items: center;
-    margin-bottom: 3rem;
+    align-self: flex-start;
+    margin: 0 0 3rem 3rem;
 
     @media (max-width: 1470px) {
-        margin-bottom: 1rem;
+        margin: 0 0 1rem 2rem;
     }
 
     width: 14.375rem;
     height: 3.75rem;
+
+    @media (max-width: 1470px) {
+        width: 10.375rem;
+        height: 3rem;
+    }
 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     border: none;
@@ -208,11 +224,14 @@ export const SendBtn = styled.div`
 
     cursor: pointer;
     p {
-        margin: 0 0 0 3rem;
+        margin: 0 0 0 2rem;
         color: white;
         text-align: center;
         font-family: Pretendard;
         font-size: 1.5625rem;
+        @media (max-width: 1470px) {
+           font-size: 1rem;
+        }
         font-weight: 800;
         line-height: 1.375rem;
         letter-spacing: -0.0255rem;
@@ -225,6 +244,10 @@ export const PencilIcon = styled.div`
     align-items: center;
     width: 2.8125rem;
     height: 2.8125rem;
+    @media (max-width: 1470px) {
+        width: 2rem;
+        height: 2rem;
+    }
     flex-shrink: 0;
     background: #F5F3ED; 
     border-radius: 100%;
@@ -232,5 +255,9 @@ export const PencilIcon = styled.div`
     img {
         width: 2rem;
         height: 2rem;
+        @media (max-width: 1470px) {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
     }
 `

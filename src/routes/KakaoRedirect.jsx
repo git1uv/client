@@ -24,8 +24,13 @@ export default function KakaoRedirect() {
 
       let data = res.data.data; 
       let accessToken = data.token.accessToken; 
+      accessToken = accessToken.replace(/"/g, '');
+
       let refreshToken = data.token.refreshToken;
+      refreshToken = refreshToken.replace(/"/g, '');
+
       saveLocalStorage(accessToken, refreshToken);
+
       dispatch(setAccount({
         email: data.email,
         loginType: data.loginType

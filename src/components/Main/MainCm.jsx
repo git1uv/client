@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/user';
 import moment from 'moment/moment';
+import MailAlert from '../Modal/MailAlert';
 
 export default function MainCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -15,13 +16,17 @@ export default function MainCm() {
 
   const [airplaneModal, setAirplaneModal] = useState(false);
   const [airplane, setAirplane] = useState(true);
-  const [mailAlert, setMailAlert] = useState();
+  const [mailAlert, setMailAlert] = useState(false);
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
 
   const date = new Date();
   const time = date.getHours();
+
+  const closeMailAlert = () => {
+    setMailAlert(false);
+  }
 
   const getData = async() => {
     try {
@@ -41,13 +46,32 @@ export default function MainCm() {
       console.log(err);
     }
   }
- 
+
+  /* 메인화면 새 편지 알림 끄기 API */
+  const patchIsReadMail = async() => {
+    try {
+      const res = await axios.patch(`${serverURL}/api/v1/main/update-mail-alert`, {
+        mailAlert: 'false'
+      })
+      console.log(res.data);
+
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const readMail = async() => {
+    closeMailAlert();
+    await patchIsReadMail();
+    navigate('/letter');
+  }
+
   useEffect(() => {
-    // getData();
+    getData();
   }, [])
 
   return (
-    // <S.Sky time={time}>
+    <>
       <S.Container time={time}>
         <S.Room>
         <S.Trash onClick={() => navigate('/trash')}/>
@@ -57,10 +81,14 @@ export default function MainCm() {
         <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
         <S.Mailbox onClick={() => navigate('/letter')}/>
         </S.Room>
-        {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} />}
+        {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} />} 
       </S.Container>
-    // </S.Sky>
-    
+      <MailAlert 
+        isVisible={mailAlert}
+        onClose={closeMailAlert}
+        onConfirm={readMail}
+      />
+    </>    
   )
 }
 

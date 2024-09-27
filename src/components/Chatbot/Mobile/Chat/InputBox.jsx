@@ -38,6 +38,8 @@ export default function InputBox({message, setMessage, loading, setLoading, isTy
       inputRef.current.focus(); // 전송 후 input에 포커스 유지
     }
     textClear();
+    setInput(''); // input 상태를 초기화
+      inputRef.current.focus(); // 전송 후 input에 포커스 유지
   };
 
   const textClear = () => { // input 창 초기화

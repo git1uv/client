@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import backgroundImg from "../../assets/backgroundImg.png"
 import theme from "../../constants/theme";
+import kakao from '../../assets/login/kakao.webp'
+import google from '../../assets/login/google.webp'
 
 export const Container = styled.div`
   display: flex;
@@ -229,16 +231,28 @@ export const LoginButton = styled.button`
 
 export const SocialLogin = styled.div`
   display: flex;
-  gap: 0.625rem;
+  gap: 1.5rem;
   justify-content: center;
 
   button {
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
     
     margin-bottom: 1.6rem;
     border-radius: 100%;
     border: none;
+    box-shadow: 2px 3px 4px #D9D9D9;
+
+
+    &:first-child {
+      background-image: url(${kakao});
+      background-size: 100%;
+    } 
+    &:last-child {
+      background-image: url(${google});
+      background-size: 100%;
+
+    } 
   }
     
 `

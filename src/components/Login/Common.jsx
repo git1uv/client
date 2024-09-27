@@ -67,7 +67,7 @@ export default function Common({openModal}) {
       navigate('/main')
       // 구글 로그인 성공 시 처리할 로직
     },
-    onFailure: err => {
+    onError: err => {
       console.log(err);
       // 구글 로그인 실패 시 처리할 로직
     },
@@ -123,17 +123,8 @@ export default function Common({openModal}) {
           <S.Divider/>
           <div/>
           <S.SocialLogin>
-            <button onClick={handleKakaoLogin}></button>
-            <GoogleLogin
-              onSuccess={(response) => {
-                console.log('Login Success:', response);
-                // 서버로 토큰을 보내거나 필요한 후속 작업을 여기에 구현
-                navigate('/main');
-              }}
-              onError={() => {
-                console.log('Login Failed');
-              }}
-            />
+            <button onClick={handleKakaoLogin} />
+            <button onClick={login} />
           </S.SocialLogin>
           <S.FindPw>
             <h6>아직 회원이 아니신가요?</h6>

@@ -4,7 +4,7 @@ import {bg, mailbox, mailbox_mobile, allO, allX, notreadO, notreadX, favoriteO, 
 export const Bg = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -18,34 +18,51 @@ export const Bg = styled.div`
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  width: 100vw;
+  background-image: url(${mailbox});
   z-index: 1;
   @media (max-width: 430px) {
     background-image: url(${mailbox_mobile});
-    height: 100vh;
+    height: 50rem;
+    width: 100vw;
   }
-  @media (min-width: 431px){
-    background-image: url(${mailbox});
-    height: 100vh;
+  @media (min-width: 431px) and (max-width: 768px) {
+    height: 40rem;
+    width: 36rem;
+  }
+  @media (min-width: 769px) and (max-width: 1023px) {
+    height: 40rem;
+    width: 36rem;
+  }
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    height: 44rem;
+    width: 40rem;
+  }
+  @media (min-width: 1201px) and (max-width: 1600px) {
+    height: 45rem;
+    width: 41.25rem;
+  }
+  @media (min-width: 1601px){
+    height: 60rem;
+    width: 55rem;
+  }
 `;
 
 export const Mailbox = styled.div`
   z-index: 2;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  width: 90%;
   @media (max-width: 430px) {
-    width: 90vw;
-    height: 50vh;
+    height: 52%;
   }
   @media (min-width: 431px){
-    width: 46vw;
-    height: 80vh;
+    height: 85%;
   }
 `;
 
@@ -58,7 +75,8 @@ export const TopRow = styled.div`
   flex-direction: row;
   position: relative;
   @media (max-width: 430px) {
-    height: 20%;
+    height: 28%;
+    margin-bottom: 2%;
   }
   @media (min-width: 431px){
     height: 30%;
@@ -92,7 +110,13 @@ export const Favorites = styled.div`
     border-radius: 15px;
     margin: 8% 2% 2%;
   }
-  @media (min-width: 431px){
+  @media (min-width: 431px) and (max-width: 1200px){
+    width: 5rem;
+    height: 5rem;
+    border-radius: 44px;
+    margin: 5% 2%;
+  }
+  @media (min-width: 1201px){
     width: 6.68rem;
     height: 6.68rem;
     border-radius: 44px;
@@ -109,7 +133,13 @@ export const NotRead = styled.div`
     border-radius: 15px;
     margin: 8% 2% 2%;
   }
-  @media (min-width: 431px){
+  @media (min-width: 431px) and (max-width: 1200px){
+    width: 5rem;
+    height: 5rem;
+    border-radius: 44px;
+    margin: 5% 2%;
+  }
+  @media (min-width: 1201px){
     width: 6.68rem;
     height: 6.68rem;
     border-radius: 44px;
@@ -126,7 +156,13 @@ export const SeeAll = styled.div`
     border-radius: 15px;
     margin: 8% 2% 2%;
   }
-  @media (min-width: 431px){
+  @media (min-width: 431px) and (max-width: 1200px){
+    width: 5rem;
+    height: 5rem;
+    border-radius: 44px;
+    margin: 5% 2%;
+  }
+  @media (min-width: 1201px){
     width: 6.68rem;
     height: 6.68rem;
     border-radius: 44px;
@@ -141,16 +177,16 @@ export const LettersWrapper = styled.div`
   border-radius: 55px;
   background-color: #280502;
   @media (max-width: 430px) {
-    width: 81vw;
-    height: 60%;
-    margin-bottom: 20%;
+    width: 92%;
+    height: 70%;
   }
   @media (min-width: 431px){
-    width: 44.62vw;
+    width: 100%;
     height: 70%;
   }
 `;
 export const Letters = styled.div`
+  width: 100%;
   height: 90%;
   z-index: 4;
   display: grid;
@@ -178,15 +214,27 @@ export const Letters = styled.div`
     border-right: 8px solid transparent;
   }
   @media (max-width: 430px) {
-    width: 72.9vw;
     grid-template-rows: repeat(auto-fill, 50px);
     row-gap: 1vh; 
     border-radius: 17px;
     margin-top: 3%;
     padding: 2% 0;
   }
-  @media (min-width: 431px){
-    width: 40.158vw;
+  @media (min-width: 431px) and (max-width: 1200px){
+    grid-template-rows: repeat(auto-fill, 70px);
+    row-gap: 2vh; 
+    border-radius: 55px;
+    margin-top: 5%;
+    padding: 2% 1% 1% 0;
+  }
+  @media (min-width: 1201px) and (max-width: 1470px){
+    grid-template-rows: repeat(auto-fill, 80px);
+    row-gap: 2vh; 
+    border-radius: 55px;
+    margin-top: 5%;
+    padding: 2% 1% 1% 0;
+  }
+  @media (min-width: 1471px){
     grid-template-rows: repeat(auto-fill, 100px);
     row-gap: 2vh; 
     border-radius: 55px;
@@ -195,30 +243,35 @@ export const Letters = styled.div`
   }
 `;
 export const LetterContainer = styled.div`
+  width: 95%;
   z-index: 5;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   @media (max-width: 430px) {
-    width: 78.57vw;
     height: 50px;
   }
-  @media (min-width: 431px){
-    width: 97%;
+  @media (min-width: 431px) and (max-width: 1200px){
+    height: 70px;
+  }
+  @media (min-width: 1201px) and (max-width: 1470px){
+    height: 80px;
+  }
+  @media (min-width: 1471px){
     height: 100px;
   }
 `;
 export const CheckBox = styled.div`
   z-index: 6;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   height: 100%;
   @media (max-width: 430px) {
     width: 7%;
   }
   @media (min-width: 431px){
-    width: 5%;
+    width: 10%;
   }
 `;
 export const Check = styled.input.attrs({ type: 'checkbox' })`
@@ -242,42 +295,33 @@ export const Letter = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 95%;
+  width: 90%;
   height: 100%;
   border-radius: 30px;
   background: #FBFBFB;
   position: relative;
   @media (max-width: 430px) {
-    max-width: 240px;
-  }
-  @media (min-width: 431px) and (max-width: 1023px) {
     max-width: 270px;
   }
-  @media (min-width: 1024px) and (max-width: 1130px) {
-    max-width: 370px;
+  @media (min-width: 431px) and (max-width: 500px) {
+    max-width: 300px;
   }
-  @media (min-width: 1131px) and (max-width: 1200px) {
-    max-width: 400px;
+  @media (min-width: 501px) and (max-width: 768px) {
+    max-width: 350px;
   }
-  @media (min-width: 1201px) and (max-width: 1260px) {
-    max-width: 430px;
+  @media (min-width: 769px) and (max-width: 1023px) {
+    max-width: 350px;
   }
-  @media (min-width: 1261px) and (max-width: 1370px) {
-    max-width: 470px;
+  @media (min-width: 1024px) and (max-width: 1200px) {
+    max-width: 420px;
   }
-  @media (min-width: 1371px) and (max-width: 1470px) {
-    max-width: 510px;
+  @media (min-width: 1201px) and (max-width: 1470px) {
+    max-width: 500px;
   }
-  @media (min-width: 1471px) and (max-width: 1540px) {
-    max-width: 540px;
+  @media (min-width: 1471px) and (max-width: 1600px) {
+    max-width: 500px;
   }
-  @media (min-width: 1541px) and (max-width: 1600px) {
-    max-width: 570px;
-  }
-  @media (min-width: 1601px) and (max-width: 1700px) {
-    max-width: 600px;
-  }
-  @media (min-width: 1701px){
+  @media (min-width: 1601px){
     max-width: 680px;
   }
 `;

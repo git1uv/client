@@ -388,7 +388,7 @@ export const ToDoListContainer = styled.div`
 `;
 export const ToDoItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   margin-bottom: 2%;
   width: 100%;
@@ -403,8 +403,9 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
     background-repeat: no-repeat;
     background-color: #739B8B;
   }
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 1.5%;
   @media (min-width: 1601px) {
     width: 1.75rem;
     height: 1.75rem;

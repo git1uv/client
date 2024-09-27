@@ -3,11 +3,6 @@ import letter from "../../assets/pencilHolder/letter.webp"
 import backgroundImg from "../../assets/pencilHolder/bgImg.webp"
 
 export const Container = styled.div`
-    @media (max-width: 1470px) {
-        html {
-            font-size: 13px; // 화면 너비가 1200px 이하일 때
-        }
-    } 
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -50,9 +45,9 @@ export const Title = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    height: auto;
-
+    
     h1 {
+        margin: 0 0 1% 0;
         font-family: 'Pretendard';
         font-weight: 500;
         font-size: 2.5rem;
@@ -60,7 +55,7 @@ export const Title = styled.div`
         color: #000000;
 
         @media (max-width: 1470px) {
-            font-size: 2rem;
+            font-size: 1.5rem;
         }
         @media (max-width: 430px) {
             font-size: 1.75rem;
@@ -75,7 +70,7 @@ export const Title = styled.div`
         color: #686868;
 
         @media (max-width: 1470px) {
-            font-size: 1rem;
+            font-size: 0.75rem;
         }
     }
 `
@@ -87,10 +82,10 @@ export const Letter = styled.div`
     justify-content: space-around;
     width: 55rem;
     height: auto;
-    // padding: 3% 1rem;
 
     @media (max-width: 1470px) {
-        width: 50rem;
+        width: 45rem;
+        height: 32.5rem;
         padding: 0;
     }
 

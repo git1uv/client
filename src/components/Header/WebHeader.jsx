@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import * as H from './Header.style';
-import setting from '../../assets/headerImg/Settings_big.png';
-import logo from '../../assets/logo.png';
+import setting from '../../assets/headerImg/Settings_big.webp';
+import logo from '../../assets/logo.webp';
 
 function WebHeader({isMain}) {
     const navigate = useNavigate();

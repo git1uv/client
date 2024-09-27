@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as M from '../Modal/LogoutModal.style';
-import x from '../../assets/x.png';
+import x from '../../assets/x.webp';
 import { useNavigate } from 'react-router-dom';
 import gif from '../../assets/trashImg/delete.gif'
 

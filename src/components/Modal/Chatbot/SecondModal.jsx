@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as M from '../LogoutModal.style';
-import x from '../../../assets/x.png';
+import x from '../../../assets/x.webp';
 import write from '../../../assets/chatbot/writeAni.gif'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import x from '../../../assets/x.png';
-import d from '../../../assets/letterImg/button_delete.png'
+import x from '../../../assets/x.webp';
+import d from '../../../assets/letterImg/button_delete.webp'
 import * as C from './ChatLetter.style';
 import DeleteLetterModal from './DeleteLetter';
 

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import leftArrow from '../../assets/CalendarImg/left-arrow.png'; 
-import rightArrow from '../../assets/CalendarImg/right-arrow.png'; 
+import leftArrow from '../../assets/CalendarImg/left-arrow.webp'; 
+import rightArrow from '../../assets/CalendarImg/right-arrow.webp'; 
 import Calendar from 'react-calendar'; 
 import * as M from './MiniCalendar.style';
 

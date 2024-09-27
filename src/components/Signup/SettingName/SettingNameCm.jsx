@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import * as S from "../Signup/Signup.style"
 import * as T from "../../Login/Login.style"
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/logo.png'
-import notCheck from '../../../assets/notCheck.png'
-import check from '../../../assets/Check.png'
+import logo from '../../../assets/logo.webp'
+import notCheck from '../../../assets/notCheck.webp'
+import check from '../../../assets/Check.webp'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
@@ -38,19 +38,36 @@ export default function SettingNameCm() {
       return;
     }
     /* 회원가입 API : 연결하면 주석 풀기 */
-    await postRegister();
-    // navigate('/login');  /* 회원가입 API : 연결하면 지우기 */
+    if (user.loginType === "general")
+      await postRegister();
+    else
+      await postSocialLogin();
   };
 
 
-  /* 회원가입 API : 연결하면 주석 풀기 */
+  /* 일반 회원가입 API : 연결하면 주석 풀기 */
   const postRegister = async() => {
     try {
       const res = await axios.post(`${serverURL}/api/v1/register/general`, {
         nickname: nickname,
         email: user.email,
         password: user.password,
-        loginType: 'general'
+        loginType: user.loginType
+      })
+      console.log(res.data);
+      window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
+      navigate('/login');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  /* 소셜 로그인 회원가입 API : 연결하면 주석 풀기 */
+  const postSocialLogin = async() => {
+    try {
+      const res = await axios.post(`${serverURL}/api/v1/register/social`, {
+        nickname: nickname,
+        email: user.email,
+        loginType: user.loginType
       })
       console.log(res.data);
       window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');

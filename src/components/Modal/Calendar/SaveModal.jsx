@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect  } from 'react';
 import * as M from '../LogoutModal.style';
-import x from '../../../assets/x.png';
+import x from '../../../assets/x.webp';
 
 const SaveModal = ({ isVisible, onClose}) => {
   const [opacity, setOpacity] = useState(1);

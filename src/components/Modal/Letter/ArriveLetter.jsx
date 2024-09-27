@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as M from '../../LogoutModal.style';
-import x from '../../../assets/x.png';
+import x from '../../../assets/x.webp';
 import { useNavigate } from 'react-router-dom';
-import Arrive from '../../../assets/letterImg/arrive.png'
+import Arrive from '../../../assets/letterImg/arrive.webp'
 
 const ArriveLetterModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
@@ -27,4 +27,4 @@ const ArriveLetterModal = ({ isVisible, onClose, onConfirm }) => {
   );
 };
 
-export default ArriiveLetterModal;
+export default ArriveLetterModal;

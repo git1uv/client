@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImg from '../../../../assets/chatbot/background.png'
+import backgroundImg from '../../../../assets/chatbot/background.webp'
 import { IoIosArrowBack } from "react-icons/io";
 import theme from '../../../../constants/theme'; // theme 파일의 경로
 

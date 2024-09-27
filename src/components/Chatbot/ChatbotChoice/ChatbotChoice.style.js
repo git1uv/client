@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import theme from '../../../constants/theme'
-import backgroundImg from "../../../assets/chatbot/background.png"
+import backgroundImg from "../../../assets/chatbot/background.webp"
 
 const {ALIGN, RESPONSIVE_SIZE} = theme;
 

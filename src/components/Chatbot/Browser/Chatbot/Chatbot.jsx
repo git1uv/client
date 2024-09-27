@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as S from './Chatbot.style'
 import * as T from '../ChatbotBox/ChatbotBox.style'
-import Chair from '../../../../assets/chatbot/chatStart/ChairWeb.png'
-import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
-import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png'
-import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png'
+import Chair from '../../../../assets/chatbot/chatStart/ChairWeb.png.webp'
+import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png.webp'
+import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png.webp'
+import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png.webp'
 
 import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 

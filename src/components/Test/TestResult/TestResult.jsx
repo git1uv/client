@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import * as S from './TestResult.style'
 
-import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png'
-import Banbani from '../../../assets/chatbot/test/Banbani.png'
-import Neuranee from '../../../assets/chatbot/test/Neuranee.png'
+import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png.webp'
+import Banbani from '../../../assets/chatbot/test/Banbani.png.webp'
+import Neuranee from '../../../assets/chatbot/test/Neuranee.png.webp'
 
 import chatbotInfo from '../../../datas/chatbot'
 import { useNavigate } from 'react-router-dom'

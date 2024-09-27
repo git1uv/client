@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './ChatbotMobile.style'
-import chair from '../../../../assets/chatbot/chatStart/ChairMobile.png'
-import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png'
-import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png'
-import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png'
+import chair from '../../../../assets/chatbot/chatStart/ChairMobile.png.webp'
+import SimmaeumImg from '../../../../assets/chatbot/chatStart/Simmaeum.png.webp'
+import BanbaniImg from '../../../../assets/chatbot/chatStart/Banbani.png.webp'
+import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png.webp'
 
 import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 import { useSelector } from 'react-redux'

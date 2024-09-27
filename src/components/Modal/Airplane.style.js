@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import webLetter from '../../assets/letterImg/modal_letter_web.png';
-import mobileLetter from '../../assets/letterImg/modal_letter_mobile.png';
+import webLetter from '../../assets/letterImg/modal_letter_web.webp';
+import mobileLetter from '../../assets/letterImg/modal_letter_mobile.webp';
 
 export const ModalBg = styled.div`
   position: fixed;

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import * as M from './LogoutModal.style';
-import x from '../../assets/x.png';
+import x from '../../assets/x.webp';
 
 const DeleteModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {buttonBack, film, note, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
-import x from '../../assets/x.png';
+import x from '../../assets/x.webp';
 
 export const BackButton = styled.div`
   display: flex;

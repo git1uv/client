@@ -37,11 +37,11 @@ function App() {
   const location = useLocation();
   const [isMobileView, setIsMobileView] = useState(window.innerWidth <= 768);
   const isMain = location.pathname === '/main';
-  const hideHeaderPaths = ['/login', '/signup', '/signup/nickname', '/term', '/'];
+  const hideHeaderPaths = ['/login', '/signup', '/signup/nickname', '/term', '/', '/oauth'];
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
     '/faq', '/namechange', '/pwchange', 
-    '/simterinformation', '/chatbot'
+    '/simterinformation', '/chatbot',
   ];  
   const hideHeader = hideHeaderPaths.includes(location.pathname) || (isMobileView && mobileHideHeaderPaths.includes(location.pathname));
   

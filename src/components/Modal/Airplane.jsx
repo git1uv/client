@@ -4,8 +4,8 @@ import axios from 'axios';
 import html2canvas from 'html2canvas';
 import saveAs from 'file-saver';
 import * as A from './Airplane.style';
-import x from '../../assets/x.png';
-import download from '../../assets/letterImg/download.png';
+import x from '../../assets/x.webp';
+import download from '../../assets/letterImg/download.webp';
 
 function Airplane({setAirplaneModal}) {
     const serverURL = process.env.REACT_APP_SERVER_URL;

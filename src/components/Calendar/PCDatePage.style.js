@@ -285,7 +285,7 @@ export const Film = styled.div`
   left: -3%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `;
 export const OneLine = styled.div`
   width: 100%;
@@ -307,7 +307,8 @@ export const SliderLineBox = styled.div`
   align-items: center;
   flex-direction: row;
   width: 100%;
-  height: 30%;
+  height: 40%;
+  margin-bottom: 10%;
 `;
 export const Time = styled.div`
   width: auto;

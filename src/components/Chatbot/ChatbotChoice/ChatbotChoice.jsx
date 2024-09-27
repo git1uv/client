@@ -18,9 +18,9 @@ export default function ChatbotChoice()  {
   const [chatbot, setChatbot] = useState(chatbotInfo[0]);
   const navigate = useNavigate();
 
-  const handleChoiceChatbot = async() => {
+  const handleChoiceChatbot = () => {
     localStorage.setItem('result', chatbot.name);
-    await postSelectedChatbot(); // API 연결
+    postSelectedChatbot(); // API 연결
     navigate('/chatbot');
     console.log(chatbot.name);
   }

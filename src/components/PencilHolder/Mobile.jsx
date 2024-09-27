@@ -113,7 +113,7 @@ export default function Mobile() {
       <FirstModal 
         isVisible={isFirstModalOpen} 
         onClose={closeFirstModal} 
-        onConfirm={openSecondModal}
+        onConfirm={writeLetter}
         name={name}
         content={content}
       />

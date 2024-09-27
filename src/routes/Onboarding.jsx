@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import onboarding from '../assets/onboarding/onboarding.webp';
 import onboardingMobile from '../assets/onboarding/onboardingMobile.webp';
 import styled from 'styled-components';
@@ -48,24 +48,36 @@ const Button = styled.button`
 
 export default function Onboarding() {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     useEffect(() => {
         // 컴포넌트가 마운트될 때 스크롤을 최상단으로 이동
         window.scrollTo(0, 0);
     }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
-        <BrowserView>
-            <App>
-                <Img src={onboarding} alt="Onboarding" />
-                <Button onClick={() => navigate('/login')} />
-            </App>
-        </BrowserView>
-        <MobileView>
+        {isMobile ? (
             <App>
                 <Img src={onboardingMobile} alt="Onboarding" />
                 <Button onClick={() => navigate('/login')} />
             </App>
-        </MobileView>
+            ) : (
+            <App>
+                <Img src={onboarding} alt="Onboarding" />
+                <Button onClick={() => navigate('/login')} />
+            </App>
+        )}
     </>
   );
 }

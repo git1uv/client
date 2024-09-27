@@ -39,6 +39,13 @@ export default function MainCm() {
       dispatch(setLogin({nickname: data.nickname}));
       localStorage.setItem('nickname', data.nickname);
 
+      let isMailAlert = data.mailAlert;
+
+      if (isMailAlert) 
+        setMailAlert(true);
+      else 
+        setMailAlert(false);
+
       console.log(data);
       // data.airplane ? setAirplane(true) : setAirplane(false);
 
@@ -52,6 +59,10 @@ export default function MainCm() {
     try {
       const res = await axios.patch(`${serverURL}/api/v1/main/update-mail-alert`, {
         mailAlert: 'false'
+      }, {
+        headers : {
+          'Authorization' : `Bearer ${accessToken} ${refreshToken}`
+        }
       })
       console.log(res.data);
 
@@ -60,9 +71,9 @@ export default function MainCm() {
     }
   }
 
-  const readMail = async() => {
+  const readMail = () => {
     closeMailAlert();
-    await patchIsReadMail();
+    patchIsReadMail();
     navigate('/letter');
   }
 

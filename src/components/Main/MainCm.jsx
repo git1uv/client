@@ -91,7 +91,7 @@ export default function MainCm() {
         <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
         <S.Mailbox onClick={() => navigate('/letter')}/>
         </S.Room>
-        {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} />} 
+        {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} setIsExistAirplane={setIsExistAirplane} />} 
       </S.Container>
       <MailAlert 
         isVisible={mailAlert}

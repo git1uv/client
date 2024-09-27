@@ -2,20 +2,18 @@ import styled from 'styled-components';
 import {bg, mailbox, mailbox_mobile, allO, allX, notreadO, notreadX, favoriteO, favoriteX, check, trash} from "../../assets/letterImg/icons";
 
 export const Bg = styled.div`
-  @media (max-width: 430px) {
-    display: none;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
   @media (min-width: 431px){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    width: 100vw;
-    z-index: 1;
     background-image: url(${bg});
-    height: 100vh;
+  }
 `;
 export const Container = styled.div`
   display: flex;

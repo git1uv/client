@@ -51,7 +51,7 @@ function MyCalendar() {
   };
 
   useEffect(() => {
-    fetchCalendarData(value); // 처음 페이지 로드 시 현재 달의 데이터 로드
+    fetchCalendarData(value);
   }, [value]);
 
 const renderEmotionIcon = (emotion) => {

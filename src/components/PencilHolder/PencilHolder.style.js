@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import letter from "../../assets/pencilHolder/letter.png"
-import backgroundImg from "../../assets/pencilHolder/bgImg.png"
+import letter from "../../assets/pencilHolder/letter.webp"
+import backgroundImg from "../../assets/pencilHolder/bgImg.webp"
 
 export const Container = styled.div`
     @media (max-width: 1470px) {

@@ -7,7 +7,7 @@ import * as A from './Airplane.style';
 import x from '../../assets/x.webp';
 import download from '../../assets/letterImg/download.webp';
 
-function Airplane({setAirplaneModal}) {
+function Airplane({setAirplaneModal, setIsExistAirplane}) {
     const serverURL = process.env.REACT_APP_SERVER_URL;
     const navigate = useNavigate();
     const location = useLocation(); 
@@ -49,6 +49,7 @@ function Airplane({setAirplaneModal}) {
                     setSender(writerName);
                     setContent(content);
                     setDate(createdAt);
+                    setIsExistAirplane(false);
                 } else {
                     console.error('Failed to fetch letter data');
                 }

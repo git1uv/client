@@ -130,64 +130,23 @@ export const Trash = styled.div`
 
     }
 `
-export const Airplane = styled.div`
+export const Airplane = styled.img`
     position: absolute;
-
-    visibility: ${(props) => (props.airplane ? 'visible' : 'hidden')};
+    visibility: ${(props) => (props.isExistAirplane ? 'visible' : 'hidden')};
 
     width: 80px;
-    height: 40px;
     left: 26%;
-    bottom: 46%;
+    bottom: 44%;
 
     @media (max-width: 1470px) {
-        width: 45px;
-        height: 30px;
-        left: 27%;
-        bottom: 44.5%;
+        width: 50px;
     }
-    @media (max-width: 1200px) {
-    
-    } 
 
     @media (max-width: 630px) {
         width: 30px;
-        height: 16px;
-        bottom: 45%;
     }
     cursor: pointer;
     z-index: 100;
-
-    &:hover {      
-        width: 246px;
-        height: 172px;
-        left: 18%;
-        bottom: 42%;
-        
-        background-image: url(${airplane});
-        background-size: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-        
-        z-index: 40;
-
-        @media (max-width: 1470px) {
-            width: 156px;
-            height: 72px;
-            left: 18%;
-            bottom: 44%;
-        }
-        @media (max-width: 1200px) {
-
-        } 
-
-        @media (max-width: 630px) {
-            width: 100px;
-            height: 50px;
-            left: 17.5%;
-            bottom: 43.5%;
-        }
-    }
 `
 export const Calendar = styled.div`
     position: absolute;

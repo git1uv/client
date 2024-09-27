@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import onboarding from '../assets/onboarding/onboarding.png';
+import onboarding from '../assets/onboarding/onboarding.webp';
 import onboardingMobile from '../assets/onboarding/onboardingMobile.png';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';

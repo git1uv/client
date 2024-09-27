@@ -4,6 +4,9 @@ import theme from "../../constants/theme";
 import kakao from '../../assets/login/kakao.webp'
 import google from '../../assets/login/google.webp'
 
+const {ALIGN} = theme;
+
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -49,8 +52,12 @@ export const Wrapper = styled.div`
 
   box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  width: 40%;
-  min-width: 393px;
+
+  width: 40rem;
+
+  @media (max-width: 1470px) {
+    width: 30rem;
+  }
 
   @media ${theme.WINDOW_SIZE.MOBILE} {
     border-radius: 0px;
@@ -59,14 +66,18 @@ export const Wrapper = styled.div`
 `
 
 export const Title = styled.div`
-  margin-top: 3rem;
+  margin-top: 20%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 90%;
+  width: 75%;
 
-  @media (min-width: 430px) {
-   width: 75%;
+  @media (max-width: 1470px) {
+    margin-top: 10%;
+  }
+  @media (max-width: 430px) {
+    margin-top: 15%;
+    width: 80%;
   }
 
   section {
@@ -82,10 +93,16 @@ export const Title = styled.div`
     object-fit: cover;
   }
   h1 {
-    margin: 1.875rem 0 0 0;
+    margin: 7% 0 0 0;
     font-family: 'Pretendard';
     font-weight: 600;
     font-size: 1.8rem;
+    @media (max-width: 1470px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 430px) {
+      font-size: 1.75rem;
+    }
     letter-spacing: -0.03em;
 
     color: #4C434E;
@@ -95,6 +112,12 @@ export const Title = styled.div`
     font-family: 'Pretendard';
     font-weight: 300;
     font-size: 1rem;
+    @media (max-width: 1470px) {
+      font-size: 0.9rem;
+    }
+    @media (max-width: 430px) {
+      font-size: 1rem;
+    }
     letter-spacing: -0.03em;
 
     color: #52525B;
@@ -102,14 +125,11 @@ export const Title = styled.div`
 `;
 
 export const InputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
+  ${ALIGN.COLUMN_CENTER};
+  width: 75%;
 
-  @media (min-width: 400px) {
-    width: 75%;
+  @media (max-width: 430px) {
+    width: 80%;
   }
 `;
 
@@ -118,7 +138,12 @@ export const Input = styled.div`
   flex-direction: column;
   width: 100%;
   position: relative;
+
   margin-top: 2.5rem;
+
+  @media (max-width: 1470px) {
+    margin-top: 2rem;
+  }
 
   input {
     height: 2.6rem;
@@ -201,13 +226,17 @@ export const FindPw = styled.div`
 `;
 
 export const LoginButton = styled.button`
-  width: 90%;
+  width: 75%;
   height: 3.75rem;
   min-height: 40px;
+
   margin-top: 1.25rem;
 
-  @media (min-width: 400px) {
-    width: 75%;
+  @media (max-width: 1470px) {
+    margin-top: 2rem;
+  }
+  @media (max-width: 430px) {
+    width: 80%;
   }
     
   background: #FBEEA0;
@@ -232,13 +261,19 @@ export const LoginButton = styled.button`
 export const SocialLogin = styled.div`
   display: flex;
   gap: 1.5rem;
+
   justify-content: center;
 
   button {
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
+
+    @media (max-width: 1470px) {
+      width: 4rem;
+      height: 4rem;
+    }
     
-    margin-bottom: 1.6rem;
+    margin: 1rem 0;
     border-radius: 100%;
     border: none;
     box-shadow: 2px 3px 4px #D9D9D9;
@@ -251,15 +286,14 @@ export const SocialLogin = styled.div`
     &:last-child {
       background-image: url(${google});
       background-size: 100%;
-
     } 
   }
     
 `
 
 export const Divider = styled.div`
-  margin: 1.25rem 0;
-  width: 90%;
+  margin: 2rem 0 1rem 0;
+  width: 80%;
   height: 0.0625rem;
   background-color: #ccc;
 

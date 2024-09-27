@@ -6,14 +6,13 @@ const user = createSlice({
 			userId: '',
 			nickname: '',
 			email: '',
-			password: '',
-			accessToken: ''
+			loginType: 'general'
 		},
 		reducers: {
 			setAccount(state, action) {
-				const {email, password} = action.payload;
+				const {email, loginType} = action.payload;
 				state.email = email;
-				state.password = password;
+				state.loginType = loginType;
 			},
 			setLogin(state, action) {
 				const {nickname} = action.payload;

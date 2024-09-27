@@ -49,7 +49,7 @@ const CustomSwiperSlide = styled(SwiperSlide)`
   align-items: center;
   background-image: ${({ chatbotType }) => getChatbotBackground(chatbotType)};
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   transform: translateX(-50%, -50%);
   width: 100%; 

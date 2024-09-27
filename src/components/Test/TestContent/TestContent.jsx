@@ -4,7 +4,7 @@ import * as T from '../TestStart/Test.style'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { titles, questions, answerF, answerT } from '../../../datas/question';
 
-import profile from '../../../assets/chatbot/test/profile.png'
+import profile from '../../../assets/chatbot/test/profile.png.webp'
 import loading from '../../../assets/chatbot/test/loading.gif'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

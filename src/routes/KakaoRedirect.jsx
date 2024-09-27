@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -6,7 +6,6 @@ export default function KakaoRedirect() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
   const code = new URL(window.location.href).searchParams.get("code");
-  console.log(code);
   let navigate = useNavigate();
 
   function saveLocalStorage(accessToken, refreshToken) {
@@ -14,12 +13,14 @@ export default function KakaoRedirect() {
     localStorage.setItem('refreshToken', refreshToken);
   } 
 
-  const fetchKakaoData = async () => {
+  const fetchKakaoData = async() => {
+    // setError(null); // 에러 초기화
+    console.log(code)
     try {
-      const res = await axios.post(`${serverURL}/api/v1/login/kakao?code=${code}`, {});
+      const res = await axios.post(`/api/v1/login/kakao?code=${code}`, {});
       console.log(res.data);
 
-      let data = res.data.data;
+      let data = res.data.data; 
       let accessToken = data.token.accessToken; 
       let refreshToken = data.token.refreshToken;
       saveLocalStorage(accessToken, refreshToken);
@@ -28,12 +29,14 @@ export default function KakaoRedirect() {
       else 
         navigate("/signup/nickname");
     } catch (error) {
+      // setError(error.response); // 에러 상태 저장
       console.log(error);
+
     }
   };
 
   useEffect(() => {
-    // fetchKakaoData();
+    fetchKakaoData();
   }, []);
 
   return (

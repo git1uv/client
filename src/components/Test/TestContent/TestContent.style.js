@@ -53,7 +53,7 @@ export const Question = styled.div`
         color: #27272A;
         font-family: Pretendard;
         font-size: 2rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.5rem;
         }
 
@@ -90,7 +90,7 @@ export const Content = styled.div`
         color: #52525B;
         font-family: Pretendard;
         font-size: 1.5rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -122,7 +122,7 @@ export const Plus = styled.div`
         color: #52525B;
         font-family: Pretendard;
         font-size: 1.5rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.25rem;
         }
         @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {

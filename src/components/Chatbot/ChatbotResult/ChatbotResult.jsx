@@ -5,25 +5,37 @@ import { useDispatch, useSelector } from 'react-redux';
 import html2canvas from 'html2canvas';
 import saveAs from 'file-saver';
 
-import Simmaeum from '../../../assets/chatbot/result/Simmaeum.png'
-import Banbani from '../../../assets/chatbot/result/Banbani.png'
-import Neuranee from '../../../assets/chatbot/result/Neuranee.png'
+import Simmaeum from '../../../assets/chatbot/result/Simmaeum.png.webp'
+import Banbani from '../../../assets/chatbot/result/Banbani.png.webp'
+import Neuranee from '../../../assets/chatbot/result/Neuranee.png.webp'
 
-import Icon1 from '../../../assets/chatbot/result/journal1.png'
-import Icon2 from '../../../assets/chatbot/result/journal2.png'
-import Icon3 from '../../../assets/chatbot/result/journal3.png'
+import Icon1 from '../../../assets/chatbot/result/journal1.png.webp'
+import Icon2 from '../../../assets/chatbot/result/journal2.png.webp'
+import Icon3 from '../../../assets/chatbot/result/journal3.png.webp'
 import axios from 'axios';
 import { setSolution } from '../../../redux/solution';
+import { useLocation, useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export default function ChatbotResult() {
-  const [chatbot, setChatbot] = useState('');
-  const componentRef = useRef(null); 
-  const chatResult = useSelector((state) => state.chatResult);
-  const solution = useSelector((state) => state.solution);
-  let [endDate, setEndDate] = useState('');
-  
-  const dispatch = useDispatch();
+  const serverURL = process.env.REACT_APP_SERVER_URL;
 
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  let result = localStorage.getItem('result');
+  let counselingLogId = localStorage.getItem('counselingLogId');
+
+  let [endDate, setEndDate] = useState('');
+  const [chatbot, setChatbot] = useState('');
+
+  const solution = useSelector((state) => state.solution);
+  const componentRef = useRef(null); 
+  
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation(); 
+  
   const handleDownload = async () => {
     if (!componentRef.current) return;
 
@@ -37,32 +49,29 @@ export default function ChatbotResult() {
     } catch (error) {
         console.error("Error converting div to image:", error);
     }
+  };
 
-};
-
-  let result = localStorage.getItem('result');
-  let receivedToken = localStorage.getItem('token');
-  let counselingLogId = localStorage.getItem('counselingLogId');
 
   /* 특정 상담일지 가져오기 API 구현*/
-
   const getCounseling = async() => {
     try {
-      const res = await axios.get(`/api/v1/chatbot/counselinglog/${counselingLogId}`, {
+      const res = await axios.get(`${serverURL}/api/v1/chatbot/counselinglog/${counselingLogId}`, {
         headers: {
-          'Authorization': `Bearer ${receivedToken}`
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       });
       console.log(res.data);
+      let data = res.data.data
       dispatch(setSolution({
-        counselingLogId: res.data.counselingLogId,
-        title: res.data.title,
-        summary: res.data.summary,
-        suggestion: res.data.suggestion,
-        solution: res.data.solution,
-        endedAt: res.data.endedAt,
+        counselingLogId: data.counselingLogId,
+        chatbotType: data.chatbotType,
+        title: data.title,
+        summary: data.summary,
+        suggestion: data.suggestion,
+        solutions: data.solutions,
+        endedAt: data.endedAt,
       }));
-      const formatDate = res.data.endedAt.format('YYYY / MM / DD');
+      const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
       console.log(formatDate);
@@ -82,6 +91,24 @@ export default function ChatbotResult() {
     else
       setChatbot('뉴러니');
   }, [])
+
+  useEffect(() => {
+    const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 
+    const isNavigatedFromChatbot = location.state && location.state.fromChatbot;
+
+    if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
+      getCounseling();
+
+      if (solution.chatbotType === 'F')
+        setChatbot('심마음');
+      else if (solution.chatbotType === 'H')
+        setChatbot('반바니');
+      else
+        setChatbot('뉴러니');
+    }
+    
+  }, [location, counselingLogId]);
+
   return (
     <S.App>
       <S.Container ref={componentRef}>
@@ -139,7 +166,7 @@ export default function ChatbotResult() {
       </S.Container>
       <S.BtnBox>
         <button onClick={handleDownload}></button>
-        <button>종료하기</button>
+        <button onClick={() => navigate('/main')}>종료하기</button>
       </S.BtnBox>
     </S.App>
   )

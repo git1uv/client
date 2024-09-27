@@ -25,11 +25,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media (max-width: 768px) {
-    html {
-      font-size: 12px; // 화면 너비가 768px 이하일 때
-    }
-  }
+  // @media (max-width: 768px) {
+  //   html {
+  //     font-size: 12px; // 화면 너비가 768px 이하일 때
+  //   }
+  // }
     @font-face {
       font-family: 'seoul';
       src: url(${seoul}) format('truetype');

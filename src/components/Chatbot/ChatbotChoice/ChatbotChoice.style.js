@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import theme from '../../../constants/theme'
-import backgroundImg from "../../../assets/chatbot/background.png"
+import backgroundImg from "../../../assets/chatbot/background.webp"
 
 const {ALIGN, RESPONSIVE_SIZE} = theme;
 
@@ -30,7 +30,7 @@ export const Container = styled.div`
     width: 80.5625rem;
     height: 53.0625rem;
 
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60.5625rem;
         height: 38.0625rem;
     }
@@ -46,7 +46,7 @@ export const Container = styled.div`
 export const SliderWrapper = styled.div`
     width: 80%;
     margin: 0;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 90%;
     }
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
@@ -66,7 +66,7 @@ export const Title = styled.h1`
     color: #27272A;
     font-family: Pretendard;
     font-size: 2.125rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         font-size: 1.75rem;
     }
     font-style: normal;

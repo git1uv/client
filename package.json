@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
+    "dayjs": "^1.11.13",
     "file-saver": "^2.0.5",
     "framer-motion": "^11.3.24",
     "html2canvas": "^1.4.1",
@@ -33,6 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://main--simter.netlify.app/",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -24,7 +24,6 @@ export const LogoutModal = styled.div`
   padding: 20px;
   border-radius: 24px;
   text-align: center;
-  width: 74%; 
   .sub{
     font-size: 1.25rem;
     margin: 0;
@@ -43,15 +42,15 @@ export const LogoutModal = styled.div`
     margin:0;
   }
   @media (min-width: 431px) {
-    width: 24%;
+    width: 417px;
     .sub{
-      padding: 0 1vw;
+      padding: 0 1%;
     }
   }
   @media (max-width: 430px) {
-    width: 76%;
+    width: 300px;
     .sub{
-      padding: 0 5vw;
+      padding: 0 3%;
     }
   }
 `;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import theme from '../../../constants/theme'; // theme 파일의 경로
-import backgroundImg from "../../../assets/chatbot/background.png"
+import backgroundImg from "../../../assets/chatbot/background.webp"
 
 const { ALIGN, RESPONSIVE_SIZE } = theme;
 

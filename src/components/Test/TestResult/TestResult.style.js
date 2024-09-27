@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from '../../../constants/theme'; // theme 파일의 경로
-import backgroundImg from "../../../assets/chatbot/background.png"
-import percent from '../../../assets/chatbot/test/percent.png'
+import backgroundImg from "../../../assets/chatbot/background.webp"
+import percent from '../../../assets/chatbot/test/percent.png.webp'
 
 const { ALIGN,RESPONSIVE_SIZE } = theme;
 
@@ -30,7 +30,7 @@ export const Container = styled.div`
     width: 80.5625rem;
     height: 53.0625rem;
     
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         width: 60.5625rem;
         height: 38.0625rem;
     }
@@ -51,7 +51,7 @@ export const Container = styled.div`
         color: #27272A;
         font-family: Pretendard;
         font-size: 2.125rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             font-size: 1.75rem;
         }
         font-style: normal;
@@ -62,7 +62,7 @@ export const Container = styled.div`
 
     img {
         width: 16.875rem;
-        @media (max-width: 1440px) {
+        @media (max-width: 1470px) {
             width: 10rem;
         }
         object-fit: cover;
@@ -81,7 +81,7 @@ export const ResultBox = styled.div`
 
     color: #27272A;
     font-family: Pretendard;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 2.1875rem;
@@ -94,7 +94,7 @@ export const SpeechBubble = styled.div`
     position: relative;
     width: 60%;
     height: 10rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
         height: 8rem;
     }  
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {

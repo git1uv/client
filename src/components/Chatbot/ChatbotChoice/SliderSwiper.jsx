@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png';
-import Banbani from '../../../assets/chatbot/test/Banbani.png';
-import Neuranee from '../../../assets/chatbot/test/Neuranee.png';
+import Simmaeum from '../../../assets/chatbot/test/Simmaeum.png.webp';
+import Banbani from '../../../assets/chatbot/test/Banbani.png.webp';
+import Neuranee from '../../../assets/chatbot/test/Neuranee.png.webp';
 import { Navigation } from 'swiper/modules';
 import styled from 'styled-components';
 import theme from '../../../constants/theme';
@@ -26,7 +26,7 @@ const StyledSwiperContainer = styled.div`
   .swiper-button-next {
     position: absolute;
     top: 133%;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       top: 150%;
     }
     color: grey;
@@ -91,25 +91,19 @@ const StyledSwiper = styled(Swiper)`
 
 const SlideImage = styled.img`
     width: 16.875rem;
-    @media (max-width: 1440px) {
+    @media (max-width: 1470px) {
       width: 10rem;
     }
     object-fit: cover;
 `;
 
-export const SliderSwiper = ({setChatbot, chatbotInfo, setIndex}) => {
+export const SliderSwiper = ({setChatbot, chatbotInfo}) => {
 
     const handleSlideChange = (swiper) => {
-      let centerIndex = swiper.realIndex;
       const chatbotName = localStorage.getItem('result');
 
-      if (chatbotName === 'Simmaeum')
-        setIndex(0);
-      else if(chatbotName === 'Banbani')
-        setIndex(1);
-      else
-        setIndex(2);
-
+      let centerIndex = swiper.realIndex;
+      // let centerIndex = index;
       setChatbot(chatbotInfo[centerIndex]);
   
       swiper.slides.forEach((slide, index) => {

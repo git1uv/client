@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as S from './Test.style.js'
-import testBots from '../../../assets/chatbot/test/testBots.png'
+import testBots from '../../../assets/chatbot/test/testBots.png.webp'
 import { useNavigate } from 'react-router-dom';
 
 export default function Browser() {

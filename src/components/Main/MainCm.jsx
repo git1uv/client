@@ -5,6 +5,7 @@ import  Airplane  from '../Modal/Airplane';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/user';
+import moment from 'moment/moment';
 
 export default function MainCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -18,6 +19,9 @@ export default function MainCm() {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+
+  const date = new Date();
+  const time = date.getHours();
 
   const getData = async() => {
     try {
@@ -39,21 +43,23 @@ export default function MainCm() {
   }
  
   useEffect(() => {
-    getData();
+    // getData();
   }, [])
 
   return (
-    <S.Container>
-      <S.Room>
-      <S.Trash onClick={() => navigate('/trash')}/>
-      <S.Airplane airplane={airplane} onClick={() => setAirplaneModal(true)}/>
-      <S.Calendar onClick={() => navigate('/calendar')}/>
-      <S.Chatbot onClick={() => navigate('/test')}/>
-      <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
-      <S.Mailbox onClick={() => navigate('/letter')}/>
-      </S.Room>
-      {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} />}
-    </S.Container>
+    // <S.Sky time={time}>
+      <S.Container time={time}>
+        <S.Room>
+        <S.Trash onClick={() => navigate('/trash')}/>
+        <S.Airplane airplane={airplane} onClick={() => setAirplaneModal(true)}/>
+        <S.Calendar onClick={() => navigate('/calendar')}/>
+        <S.Chatbot onClick={() => navigate('/test')}/>
+        <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
+        <S.Mailbox onClick={() => navigate('/letter')}/>
+        </S.Room>
+        {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} />}
+      </S.Container>
+    // </S.Sky>
     
   )
 }

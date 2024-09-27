@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as S from "./PencilHolderMobile.style"
 import * as T from "./PencilHolder.style"
-import Pencil from '../../assets/pencilHolder/Pencil.png'
+import Pencil from '../../assets/pencilHolder/Pencil.webp'
 import FirstModal from '../Modal/PencilHolder/FirstModal'
 import SecondModal from '../Modal/PencilHolder/SecondModal'
 import { useNavigate } from 'react-router-dom'
@@ -113,7 +113,7 @@ export default function Mobile() {
       <FirstModal 
         isVisible={isFirstModalOpen} 
         onClose={closeFirstModal} 
-        onConfirm={openSecondModal}
+        onConfirm={writeLetter}
         name={name}
         content={content}
       />

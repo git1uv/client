@@ -10,61 +10,46 @@ import 'swiper/css/navigation';
 import axios from 'axios';
 
 export default function ChatbotChoice()  {
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
   const [chatbot, setChatbot] = useState(chatbotInfo[0]);
-  const [index, setIndex] = useState();
   const navigate = useNavigate();
 
-  const [counselingId, setCounselingId] = useState(''); // 일단 임시, 기능 구현하면 바뀔지도
-
-  const handleChoiceChatbot = () => {
+  const handleChoiceChatbot = async() => {
     localStorage.setItem('result', chatbot.name);
-    // postSelectedChatbot(); // API 연결
+    await postSelectedChatbot(); // API 연결
     navigate('/chatbot');
     console.log(chatbot.name);
   }
-  const userId = localStorage.getItem('userId');
-  const receivedToken = localStorage.getItem('token');
 
   /* 사용할 챗봇 선택 API */
-  // const postSelectedChatbot = async() => {
-  //   let selectedChatbot;
-  //   if (chatbot.name === 'Simmaeum')
-  //     selectedChatbot = 'F'
-  //   else if (chatbot.name === 'Banbani')
-  //     selectedChatbot = 'H'
-  //   else
-  //     selectedChatbot = 'T'
+  const postSelectedChatbot = async() => {
+    let selectedChatbot;
+    if (chatbot.name === 'Simmaeum')
+      selectedChatbot = 'F'
+    else if (chatbot.name === 'Banbani')
+      selectedChatbot = 'H'
+    else
+      selectedChatbot = 'T'
 
-  //   try {
-  //     const res = await axios.get(`/api/v1/chatbot/select`, {
-  //       chatbot_type: selectedChatbot
-  //     },{
-  //       headers: {
-  //         'Authorization': `Bearer ${receivedToken}`
-  //       }
-  //     });
-  //     setCounselingId(res.data.counselingId);
-  //   } catch(err) {
-  //     if (err.response.status === 500)
-  //       console.log('서버 에러, 관리자에게 문의 바랍니다.');
-  //   }
-  // }
-
-
-  /* 사용할 default 챗봇 가져오기 API */
-  // const getDefaultChatbot = async() => {
-  //   try {
-  //     const res = await axios.get(`api/v1/chatbot/${userId}`);
-  //     localStorage.setItem('result', res.data.chatbot);
-  //   } catch(err) {
-  //     if (err.response.status === 500)
-  //       console.log('ERROR500 : 디폴트 챗봇 불러오기에 실패하였습니다.')
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getDefaultChatbot();
-  // }, []);
+    try {
+      const res = await axios.post(`${serverURL}/api/v1/chatbot/session`, {
+        chatbotType: selectedChatbot
+      },{
+        headers: {
+          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+        }
+      });
+      console.log(res.data);
+      localStorage.setItem('counselingLogId', res.data.data.counselingLogId);
+    } catch(err) {
+        console.log(err);
+        console.log('서버 에러, 관리자에게 문의 바랍니다.');
+    }
+  }
 
   return (
     <S.App>
@@ -75,14 +60,13 @@ export default function ChatbotChoice()  {
           <SliderSwiper 
             setChatbot={setChatbot}
             chatbotInfo={chatbotInfo}
-            setIndex={setIndex}
           />
         </S.SliderWrapper>
         <S.ChatbotInfo>
           <T.SpeechBubble isChoice={true}>
             <S.TextContainer>
-              <h2>{chatbot.title}</h2>
-              <p>{window.innerWidth >= 430 ? chatbot.info : chatbot.mobile}</p>
+              <h2>{chatbot?.title}</h2>
+              <p>{window.innerWidth >= 430 ? chatbot?.info : chatbot?.mobile}</p>
             </S.TextContainer>
           </T.SpeechBubble>
           <button onClick={() => handleChoiceChatbot()}>대화를 시작할까?</button>

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import * as S from "../Signup/Signup.style"
 import * as T from "../../Login/Login.style"
 import { useNavigate } from 'react-router-dom';
-import logo from '../../../assets/logo.png'
-import notCheck from '../../../assets/notCheck.png'
-import check from '../../../assets/Check.png'
+import logo from '../../../assets/logo.webp'
+import notCheck from '../../../assets/notCheck.webp'
+import check from '../../../assets/Check.webp'
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 

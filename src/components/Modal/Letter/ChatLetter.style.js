@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import FBackground from '../../../assets/letterImg/letter_f.png';
-import TBackground from '../../../assets/letterImg/letter_t.png';
-import HBackground from '../../../assets/letterImg/letter_half.png';
+import FBackground from '../../../assets/letterImg/letter_f.webp';
+import TBackground from '../../../assets/letterImg/letter_t.webp';
+import HBackground from '../../../assets/letterImg/letter_half.webp';
 
 export const ModalBg = styled.div`
   position: fixed;

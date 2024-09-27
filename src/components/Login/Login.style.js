@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImg from "../../assets/backgroundImg.png"
+import backgroundImg from "../../assets/backgroundImg.webp"
 import theme from "../../constants/theme";
 import kakao from '../../assets/login/kakao.webp'
 import google from '../../assets/login/google.webp'

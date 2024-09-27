@@ -6,9 +6,9 @@ import 'swiper/css/pagination';
 import { FreeMode, Pagination } from 'swiper/modules';
 import styled from "styled-components";
 import * as P from './PCDatePage.style';
-import slider_t from '../../assets/CalendarImg/slider_t.png';
-import slider_f from '../../assets/CalendarImg/slider_f.png';
-import slider_h from '../../assets/CalendarImg/slider_h.png';
+import slider_t from '../../assets/CalendarImg/slider_t.webp';
+import slider_f from '../../assets/CalendarImg/slider_f.webp';
+import slider_h from '../../assets/CalendarImg/slider_h.webp';
 import moment from 'moment'; 
 import { useNavigate } from 'react-router-dom';
 

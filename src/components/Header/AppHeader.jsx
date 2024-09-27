@@ -3,15 +3,15 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import * as H from './Header.style';
 import * as M from './Menu.style';
 import { FiMenu } from "react-icons/fi";
-import logo from '../../assets/logo.png';
-import x from '../../assets/x.png';
-import trash from '../../assets/headerImg/감쓰.png';
-import cal from '../../assets/headerImg/달력.png';
-import pencil from '../../assets/headerImg/연필꽂이.png';
-import chat from '../../assets/headerImg/챗봇.png';
-import letter from '../../assets/headerImg/편지.png';
-import setting from '../../assets/headerImg/Settings_big.png';
-import logout from '../../assets/headerImg/로그아웃.png';
+import logo from '../../assets/logo.webp';
+import x from '../../assets/x.webp';
+import trash from '../../assets/headerImg/감쓰.webp';
+import cal from '../../assets/headerImg/달력.webp';
+import pencil from '../../assets/headerImg/연필꽂이.webp';
+import chat from '../../assets/headerImg/챗봇.webp';
+import letter from '../../assets/headerImg/편지.webp';
+import setting from '../../assets/headerImg/Settings_big.webp';
+import logout from '../../assets/headerImg/로그아웃.webp';
 import LogoutModal from '../Modal/LogoutModal';
 
 function AppHeader({ isMain, isLoggedIn, setIsLoggedIn }) {

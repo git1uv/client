@@ -14,6 +14,8 @@ const SettingsWrapper = styled.div`
   background-color: #EEECE3;
   height: 89.7vh;
   weight: 100vw;
+  justify-content: center;
+  align-items: flex-start;
 `;
 
 const token = localStorage.getItem('token');

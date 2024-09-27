@@ -4,10 +4,11 @@ export const Container = styled.div`
   display: flex;
   z-index: 20;
   background-color: #FAF9F5;
-  width: 40vw;
+  width: 38.125rem;
   height: 89.7vh;
   flex-direction: column;
   padding: 0;
+  margin: 10.3vh auto 0;
   button {
     background-color: transparent;
     border: none;
@@ -19,8 +20,8 @@ export const Container = styled.div`
     height: 100vh;
     margin: 0 auto;
   }
-  @media (min-width: 431px) {
-    margin: 10.3vh auto 0;
+  @media (min-width: 431px) and (max-width: 550px) {
+    width: 30rem; 
   }
 `;
 

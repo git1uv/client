@@ -209,7 +209,7 @@ function PWChange() {
           isVisible={successModal} 
           onClose={() => {
             setSuccessModal(false);
-            navigate(-1); }
+            navigate(`/main`); }
           } 
         />
       )}

@@ -22,16 +22,17 @@ export const Modal = styled.div`
   padding: 20px;
   border-radius: 24px;
   text-align: center;
-  @media (min-width: 431px) {
-    width: 24vw;
+  @media (min-width: 769px) {
+    width: 25.875rem;
     top: 30%;
     left: 50%;
-    height: 50vh;
+    height: 34.875rem;
   }
-  @media (max-width: 430px) {
-    width: 78vw;
+  @media (max-width: 768px) {
+    width: 25.5rem;
     top: 25%;
-    height: 48vh;
+    left: 10%;
+    height: 32rem;
   }
 `;
 export const ModalCloseButton = styled.button`
@@ -63,16 +64,28 @@ export const EmotionImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center; 
-  @media (min-width: 431px) {
+  @media (min-width: 1201px){
     img{
-      width: 5vw;
-      height: 10vh;
+      width: 5.5rem;
+      height: 7rem;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1200px) {
+    img{
+      width: 5.2rem;
+      height: 6.6rem;
+    }
+  }
+  @media (min-width: 431px) and (max-width: 768px) {
+    img{
+      width: 4.5rem;
+      height: 5.7rem;
     }
   }
   @media (max-width: 430px) {
     img{
-      width: 15vw;
-      height: 9vh;
+      width: 5rem;
+      height: 6.3rem;
     }
   }
 

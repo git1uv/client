@@ -31,18 +31,15 @@ function MyCalendar() {
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
-  useEffect(() => {
-    const fetchCalendarData = async () => {
+  const fetchCalendarData = async (date) => {
     try {
-      const year = moment(value).format('YYYY');
-      const month = moment(value).format('MM');
-      const response = await axios.get(`${serverURL}/api/v1/calendar/${year}/${month}/home`,
-      {
+      const year = moment(date).format('YYYY');
+      const month = moment(date).format('MM');
+      const response = await axios.get(`${serverURL}/api/v1/calendar/${year}/${month}/home`, {
         headers: {
           'Authorization': `Bearer ${accessToken} ${refreshToken}`
         },
-      }
-    );
+      });
       if (response.data.code === "200") {
         setEmotionData(response.data.data);
       } else {
@@ -53,7 +50,8 @@ function MyCalendar() {
     }
   };
 
-    fetchCalendarData();
+  useEffect(() => {
+    fetchCalendarData(value);
   }, [value]);
 
 const renderEmotionIcon = (emotion) => {
@@ -169,7 +167,7 @@ const renderEmotionIcon = (emotion) => {
         calendarType="gregory"
         onClickDay={handleDateClick}
         tileContent={tileContent}
-
+        onActiveStartDateChange={({ activeStartDate }) => fetchCalendarData(activeStartDate)}
       />
 
     </C.StyledCalendarWrapper>

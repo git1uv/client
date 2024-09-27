@@ -2,10 +2,10 @@ import React,{ useEffect, useState } from 'react'
 import * as S from "./Main.style"
 import { useNavigate } from 'react-router-dom';
 import  Airplane  from '../Modal/Airplane';
+import airplaneIcon from '../../assets/main/airplane.webp'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/user';
-import moment from 'moment/moment';
 import MailAlert from '../Modal/MailAlert';
 
 export default function MainCm() {
@@ -14,9 +14,10 @@ export default function MainCm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [airplaneModal, setAirplaneModal] = useState(false);
-  const [airplane, setAirplane] = useState(true);
-  const [mailAlert, setMailAlert] = useState(false);
+  const [airplaneModal, setAirplaneModal] = useState(false); // 종이비행기 모달창 on/off
+  const [mailAlert, setMailAlert] = useState(false); // 편지함 알림 확인 여부
+  const [isExistAirplane, setIsExistAirplane] = useState(''); // 종이비행기 존재 여부
+
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
@@ -39,19 +40,17 @@ export default function MainCm() {
       dispatch(setLogin({nickname: data.nickname}));
       localStorage.setItem('nickname', data.nickname);
 
-      let isMailAlert = data.mailAlert;
-
-      if (isMailAlert) 
-        setMailAlert(true);
-      else 
-        setMailAlert(false);
-
       console.log(data);
-      // data.airplane ? setAirplane(true) : setAirplane(false);
+
+      let isMailAlert = data.mailAlert;
+      isMailAlert ? setMailAlert(true) : setMailAlert(false);
+
+      let airplane = data.airplane;
+      airplane ? setIsExistAirplane(true) : setIsExistAirplane(false);
 
     } catch(err) {
       console.log(err);
-    }
+    } 
   }
 
   /* 메인화면 새 편지 알림 끄기 API */
@@ -86,7 +85,7 @@ export default function MainCm() {
       <S.Container time={time}>
         <S.Room>
         <S.Trash onClick={() => navigate('/trash')}/>
-        <S.Airplane airplane={airplane} onClick={() => setAirplaneModal(true)}/>
+        <S.Airplane src={airplaneIcon} isExistAirplane={isExistAirplane} onClick={() => setAirplaneModal(true)}/>
         <S.Calendar onClick={() => navigate('/calendar')}/>
         <S.Chatbot onClick={() => navigate('/test')}/>
         <S.PencilHolder onClick={() => navigate('/pencilholder')}/>

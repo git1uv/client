@@ -17,7 +17,7 @@ export default function KakaoRedirect() {
     // setError(null); // 에러 초기화
     console.log(code)
     try {
-      const res = await axios.post(`/api/v1/login/kakao?code=${code}`, {});
+      const res = await axios.post(`${serverURL}/api/v1/login/kakao?code=${code}`, {});
       console.log(res.data);
 
       let data = res.data.data; 

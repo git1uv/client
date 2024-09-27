@@ -35,13 +35,13 @@ export const ModalContainer = styled.div`
     width: 557px;
     height: 544px;
   }
-  @media (min-width: 1024px) and (max-width: 1200px) {
+  @media (min-width: 769px) and (max-width: 1200px) {
     width: 512px;
     height: 500px;
   }
-  @media (min-width: 431px) and (max-width: 1023px) {
-    width: 512px;
-    height: 500px;
+  @media (min-width: 431px) and (max-width: 768px) {
+    width: 400px;
+    height: 391px;
   }
   @media (max-width: 430px) {
     width: 371px;

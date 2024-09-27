@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {trashImage, trashImageFront, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
+import {trashImageFront, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
 
 export const Container = styled.div`
   display: flex;
@@ -67,6 +67,24 @@ export const TrashFront = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   z-index: 15; 
+`;
+
+export const Text = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-family: SeoulHangang;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2rem;
+  width: 20vw;
+  height: 60vh;
+  z-index: 50;
 `;
 
 export const Card1 = styled.div`

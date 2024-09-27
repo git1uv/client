@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as T from "../components/Trash/Trash.style";
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { IoIosArrowRoundDown } from "react-icons/io";
 
 const card1Variants = {
   hidden: { y: '100%', opacity: 0, rotate: -6},
@@ -46,12 +47,14 @@ const card2Variants = {
 function Trash() {
   const [isCard1Visible, setIsCard1Visible] = useState(false);
   const [isCard2Visible, setIsCard2Visible] = useState(false);
+  const [isTextVisible, setIsTextVisible] = useState(true);
   const navigate = useNavigate();
 
 
   const handleTrashClick = () => {
     setIsCard1Visible(true);
     setIsCard2Visible(true);
+    setIsTextVisible(false);
   };
   const handleCard2ButtonClick = () => {
     setIsCard1Visible(false);
@@ -64,6 +67,21 @@ function Trash() {
   return (
     <T.Container>
       <T.CenterSection>
+        <AnimatePresence>
+          {isTextVisible && !isCard1Visible && !isCard2Visible && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0 }}
+            >
+              <T.Text>
+                <p>눌러보세요</p>
+                <IoIosArrowRoundDown size="60"/>
+              </T.Text>
+            </motion.div>
+          )}
+        </AnimatePresence>
         <AnimatePresence mode="wait">
           {isCard1Visible && (<T.Card1 
               as={motion.div}

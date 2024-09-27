@@ -18,18 +18,15 @@ function MiniCalendar() {
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
-  useEffect(() => {
-    const fetchCalendarData = async () => {
+  const fetchCalendarData = async (date) => {
     try {
-      const year = moment(value).format('YYYY');
-      const month = moment(value).format('MM');
-      const response = await axios.get(`${serverURL}/api/v1/calendar/${year}/${month}/home`,
-      {
+      const year = moment(date).format('YYYY');
+      const month = moment(date).format('MM');
+      const response = await axios.get(`${serverURL}/api/v1/calendar/${year}/${month}/home`, {
         headers: {
           'Authorization': `Bearer ${accessToken} ${refreshToken}`
         },
-      }
-    );
+      });
       if (response.data.code === "200") {
         setCounselingDays(response.data.data);
       } else {
@@ -40,7 +37,8 @@ function MiniCalendar() {
     }
   };
 
-    fetchCalendarData();
+  useEffect(() => {
+    fetchCalendarData(value);
   }, [value]);
 
   const tileContent = ({ date, view }) => {
@@ -82,8 +80,8 @@ function MiniCalendar() {
         calendarType="gregory"
         onClickDay={handleDateClick}
         tileClassName={tileClassName}
-
         tileContent={tileContent}
+        onActiveStartDateChange={({ activeStartDate }) => fetchCalendarData(activeStartDate)}
       />
 
   </M.MiniCalendarWrapper>

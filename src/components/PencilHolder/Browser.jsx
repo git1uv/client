@@ -86,7 +86,7 @@ export default function Browser() {
           </S.Title>
           <section/>
           <S.Letter>
-            <S.Wrapper>
+            {/* <S.Wrapper> */}
               <S.WriteBox>
                 <h3>표시할 이름</h3>
                 <input 
@@ -107,7 +107,7 @@ export default function Browser() {
                 </S.PencilIcon>
                 <p>보내기</p>
               </S.SendBtn>
-            </S.Wrapper>
+            {/* </S.Wrapper> */}
           </S.Letter>
         </S.Wrapper>
       </S.Container>

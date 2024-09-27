@@ -69,7 +69,10 @@ export default function ChatbotChoice()  {
               <p>{window.innerWidth >= 430 ? chatbot?.info : chatbot?.mobile}</p>
             </S.TextContainer>
           </T.SpeechBubble>
-          <button onClick={() => handleChoiceChatbot()}>대화를 시작할까?</button>
+          <S.BtnBox>
+            <button onClick={() => navigate('/test')}>테스트로 챗봇 정하기</button>
+            <button onClick={() => handleChoiceChatbot()}>대화를 시작할까?</button>
+          </S.BtnBox>
         </S.ChatbotInfo>
       </S.Container>
     </S.App>

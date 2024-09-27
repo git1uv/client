@@ -9,7 +9,6 @@ export default function ChattingBox({message, counseling, loading, isTyping, set
   const typingIndexRef = useRef(0); // 인덱스를 저장할 ref
   const intervalRef = useRef(null); // interval을 저장할 ref
 
-    // 더미데이터
   const chatEndRef = useRef(null); // 스크롤을 위해 ref 생성
 
   useEffect(() => {
@@ -18,6 +17,16 @@ export default function ChattingBox({message, counseling, loading, isTyping, set
       chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [message]);
+
+  // 메시지가 추가되거나 타이핑 애니메이션이 진행될 때마다 스크롤 최하단으로 이동
+  const scrollToBottom = () => {
+    if (chatEndRef.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [message, animatedMessage]); //
 
   useEffect(() => {
     if (message.length > 0) {

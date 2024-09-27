@@ -88,7 +88,21 @@ const fadeIn = keyframes`
 export const ChatbotInfo = styled.div`
     ${ALIGN.COLUMN_CENTER};
     width: 100%;
-    
+`
+export const TextContainer = styled.div`
+    ${ALIGN.COLUMN_CENTER}
+    position: relative;
+    white-space: pre-line;
+    text-align: center;
+    width: 100%;
+    transition: opacity 0.5s ease-in-out;
+`;
+
+export const BtnBox = styled.div`
+    ${ALIGN.ROW_CENTER};
+    width: 85%;
+    gap: 3%;
+
     button { 
         ${ALIGN.ROW_CENTER};
         width: 30%;
@@ -111,13 +125,14 @@ export const ChatbotInfo = styled.div`
         font-weight: 500;
         line-height: normal;
         letter-spacing: -0.03375rem;
+
+        &:first-child {
+            background: #D9D9D9;
+            color: #000;
+        }
+        &:last-child {
+            background: #ED6243;
+            color: #FFF;
+        }
     }
 `
-export const TextContainer = styled.div`
-    ${ALIGN.COLUMN_CENTER}
-    position: relative;
-    white-space: pre-line;
-    text-align: center;
-    width: 100%;
-    transition: opacity 0.5s ease-in-out;
-`;

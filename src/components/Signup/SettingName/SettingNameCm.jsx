@@ -91,7 +91,7 @@ export default function SettingNameCm() {
         <T.Title>
           <img src={logo} alt='로고' />
           <section />
-          <h1>회원가입</h1>
+          {user.loginType === "general" && <h1>회원가입</h1>}
         </T.Title>
         <S.Box>
           <S.Input>

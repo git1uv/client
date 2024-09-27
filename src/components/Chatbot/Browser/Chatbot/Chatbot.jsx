@@ -252,6 +252,7 @@ export default function Chatbot() {
       />
       <RedFlagModal
         isVisible={isRedFlagModalOpen} 
+        // isVisible={true} 
         onClose={closeRedFlagModal} 
       />
     </S.App>

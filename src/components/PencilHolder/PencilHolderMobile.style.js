@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import letter from "../../assets/pencilHolder/letter_mobile.png"
+import letter from "../../assets/pencilHolder/letter_mobile.webp"
 
 export const Letter = styled.div`
     display: flex;

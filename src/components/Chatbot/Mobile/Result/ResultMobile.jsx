@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import Simmaeum from '../../../../assets/chatbot/result/Simmaeum.png'
-import Banbani from '../../../../assets/chatbot/result/Banbani.png'
-import Neuranee from '../../../../assets/chatbot/result/Neuranee.png'
+import Simmaeum from '../../../../assets/chatbot/result/Simmaeum.png.webp'
+import Banbani from '../../../../assets/chatbot/result/Banbani.png.webp'
+import Neuranee from '../../../../assets/chatbot/result/Neuranee.png.webp'
 import { useDispatch, useSelector } from 'react-redux';
 
-import Icon1 from '../../../../assets/chatbot/result/journal1.png'
-import Icon2 from '../../../../assets/chatbot/result/journal2.png'
-import Icon3 from '../../../../assets/chatbot/result/journal3.png'
+import Icon1 from '../../../../assets/chatbot/result/journal1.png.webp'
+import Icon2 from '../../../../assets/chatbot/result/journal2.png.webp'
+import Icon3 from '../../../../assets/chatbot/result/journal3.png.webp'
 
 import * as S from './ResultMobile.style'
 import dayjs from 'dayjs';

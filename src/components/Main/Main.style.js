@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import room from "../../assets/main/room.webp";
 import {airplane, chatbot, calendar, mailbox, pencilHolder, trash} from '../../assets/main/icons'
-import morning from "../../assets/main/sky/morning.png"
-import evening from "../../assets/main/sky/evening.png"
-import night from "../../assets/main/sky/night.png"
+import morning from "../../assets/main/sky/morning.webp"
+import evening from "../../assets/main/sky/evening.webp"
+import night from "../../assets/main/sky/night.webp"
 
 export const Sky = styled.div`
     display: flex;

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import onboarding from '../assets/onboarding/onboarding.webp';
-import onboardingMobile from '../assets/onboarding/onboardingMobile.png';
+import onboardingMobile from '../assets/onboarding/onboardingMobile.webp';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { BrowserView, MobileView } from 'react-device-detect';
@@ -14,7 +14,7 @@ const App = styled.div`
     overflow-y: auto; 
     height: auto;
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-        height: 100dvh;
+        height: 30dvh;
     }
   }
 `;
@@ -39,7 +39,7 @@ const Button = styled.button`
     margin-bottom: 7.9%;
     
     @media (max-width: 430px) {
-        margin-bottom: 16%;
+        margin-bottom: 18%;
         width: 92%;
         height: 2.6%;
     }
@@ -48,24 +48,36 @@ const Button = styled.button`
 
 export default function Onboarding() {
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     useEffect(() => {
         // 컴포넌트가 마운트될 때 스크롤을 최상단으로 이동
         window.scrollTo(0, 0);
     }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <>
-        <BrowserView>
-            <App>
-                <Img src={onboarding} alt="Onboarding" />
-                <Button onClick={() => navigate('/login')} />
-            </App>
-        </BrowserView>
-        <MobileView>
+        {isMobile ? (
             <App>
                 <Img src={onboardingMobile} alt="Onboarding" />
                 <Button onClick={() => navigate('/login')} />
             </App>
-        </MobileView>
+            ) : (
+            <App>
+                <Img src={onboarding} alt="Onboarding" />
+                <Button onClick={() => navigate('/login')} />
+            </App>
+        )}
     </>
   );
 }

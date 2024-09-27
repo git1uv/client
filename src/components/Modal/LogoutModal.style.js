@@ -42,13 +42,13 @@ export const LogoutModal = styled.div`
     margin:0;
   }
   @media (min-width: 431px) {
-    width: 417px;
+    width: 26rem;
     .sub{
       padding: 0 1%;
     }
   }
   @media (max-width: 430px) {
-    width: 300px;
+    width: 25rem;
     .sub{
       padding: 0 3%;
     }

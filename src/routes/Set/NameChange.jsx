@@ -61,7 +61,7 @@ function NameChange() {
 
   const closeModal = () => {
     setIsModalVisible(false);
-    navigate(-1); 
+    navigate(`/main`); 
   };
 
 

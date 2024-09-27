@@ -1,8 +1,8 @@
-import airplane from './airplane.png'
-import chatbot from './chatbot.png'
-import calendar from './calendar.png'
-import mailbox from './mailbox.png'
-import pencilHolder from './pencilHolder.png'
-import trash from './trash.png'
+import airplane from './airplane.webp'
+import chatbot from './chatbot.webp'
+import calendar from './calendar.webp'
+import mailbox from './mailbox.webp'
+import pencilHolder from './pencilHolder.webp'
+import trash from './trash.webp'
 
 export {airplane, chatbot, calendar, mailbox, pencilHolder, trash};

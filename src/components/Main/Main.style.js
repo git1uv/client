@@ -1,8 +1,6 @@
 import styled from "styled-components";
-import backgroundImg from "../../assets/backgroundImg.png"
-import room from "../../assets/main/room.png";
+import room from "../../assets/main/room.webp";
 import {airplane, chatbot, calendar, mailbox, pencilHolder, trash} from '../../assets/main/icons'
-import theme from "../../constants/theme";
 import morning from "../../assets/main/sky/morning.png"
 import evening from "../../assets/main/sky/evening.png"
 import night from "../../assets/main/sky/night.png"

@@ -62,6 +62,7 @@ export default function Common({openModal}) {
   }
 
   const login = useGoogleLogin({
+    clientId: G_CLIENT_ID,
     onSuccess: res => {
       console.log(res);
       navigate('/main')

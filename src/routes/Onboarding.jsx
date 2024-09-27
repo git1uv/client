@@ -14,7 +14,7 @@ const App = styled.div`
     overflow-y: auto; 
     height: auto;
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
-        height: 100dvh;
+        height: 30dvh;
     }
   }
 `;
@@ -35,11 +35,11 @@ const Button = styled.button`
     width: 70%;
     height: 3%;
     border: none;
-    // border: 1px solid black;
+    border: 1px solid black;
     margin-bottom: 7.9%;
     
     @media (max-width: 430px) {
-        margin-bottom: 16%;
+        margin-bottom: 18%;
         width: 92%;
         height: 2.6%;
     }

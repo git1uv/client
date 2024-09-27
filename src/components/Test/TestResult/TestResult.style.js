@@ -81,7 +81,7 @@ export const ResultBox = styled.div`
 
     color: #27272A;
     font-family: Pretendard;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 600;
     line-height: 2.1875rem;

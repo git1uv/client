@@ -164,30 +164,33 @@ export const Character = styled.img`
 
 export const Emotion = styled.img`
     position: absolute;
-    width: 30%;
+    width: 25%;
     height: auto;
     
-    left: 15vw;  
+    left: 16%;  
 
     z-index: 80;
 `
 /* InputBox */
 
 export const InputBox = styled.div`
-    ${ALIGN.ROW_CENTER};
-    width: 100%;
-    height: 8dvh;
+    display: flex;
+    align-items: center;
+    width: 96%;
+    height: 7dvh;
+    margin: 1% 2%;
+    border-radius: 2.0625rem;
+    border: 1px solid #739B8B;
+    background: #FFF;
 
     input {
-        width: 95%;
+        width: 80%;
         height: 80%;
         font-size: 18px;
         position: relative;
+        margin-left: 2%;
         padding-left: 4%;
-        border-radius: 2.0625rem;
-        border: 1px solid #739B8B;
-        background: #FFF;
-
+        border: none;
         outline: none;
     }
 

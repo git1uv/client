@@ -22,14 +22,15 @@ export default function ChatbotResult() {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
-  const counselingLogId = localStorage.getItem('counselingLogId');
 
+  let result = localStorage.getItem('result');
+  let counselingLogId = localStorage.getItem('counselingLogId');
 
-  const [chatbot, setChatbot] = useState('');
-  const componentRef = useRef(null); 
-  const chatResult = useSelector((state) => state.chatResult);
-  const solution = useSelector((state) => state.solution);
   let [endDate, setEndDate] = useState('');
+  const [chatbot, setChatbot] = useState('');
+
+  const solution = useSelector((state) => state.solution);
+  const componentRef = useRef(null); 
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -48,10 +49,8 @@ export default function ChatbotResult() {
     } catch (error) {
         console.error("Error converting div to image:", error);
     }
+  };
 
-};
-
-  let result = localStorage.getItem('result');
 
   /* 특정 상담일지 가져오기 API 구현*/
   const getCounseling = async() => {
@@ -65,6 +64,7 @@ export default function ChatbotResult() {
       let data = res.data.data
       dispatch(setSolution({
         counselingLogId: data.counselingLogId,
+        chatbotType: data.chatbotType,
         title: data.title,
         summary: data.summary,
         suggestion: data.suggestion,
@@ -93,12 +93,22 @@ export default function ChatbotResult() {
   }, [])
 
   useEffect(() => {
-    const isNavigatedFromChatbot = location.state && location.state.fromModal; // 특정 로직: 모달에서 네비게이션 여부
+    const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 
+    const isNavigatedFromChatbot = location.state && location.state.fromChatbot;
 
-    if (!isNavigatedFromChatbot) {
-      getCounseling(); // 달력에서 접근할 때 호출
+    if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
+      getCounseling();
+
+      if (solution.chatbotType === 'F')
+        setChatbot('심마음');
+      else if (solution.chatbotType === 'H')
+        setChatbot('반바니');
+      else
+        setChatbot('뉴러니');
     }
-  }, [location]); 
+    
+  }, [location, counselingLogId]);
+
   return (
     <S.App>
       <S.Container ref={componentRef}>

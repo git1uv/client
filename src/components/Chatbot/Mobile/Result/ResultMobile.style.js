@@ -8,15 +8,17 @@ const {ALIGN, RESPONSIVE_SIZE} = theme;
 export const App = styled.div`
   ${ALIGN.ROW_CENTER};
   width: 100%;
-//   height: 93vh;
+  height: auto;
   margin-top: 7dvh;
   padding: 2dvh;
   background: #F4F2EC;
 `
 export const Container = styled.div`
+    margin-top: 7dvh;
     width: 100%; /* 양옆으로 꽉 차게 하기 */
-    height: 1200px; /* 모바일 화면 높이의 두 배 */
-    overflow-y: auto; /* 수직 스크롤 가능하게 */
+    height: 150vh; /* 모바일 화면 높이의 두 배 */
+    overflow-y: hidden; /* 수직 스크롤 가능하게 */
+    
 
     background-image: url(${paper}); /* 배경 이미지 */
     background-size: contain; /* 배경 이미지 크기 조절 */
@@ -24,7 +26,7 @@ export const Container = styled.div`
     background-position: center; /* 배경 이미지 중앙 정렬 */
     margin: 0 auto; /* 가운데 정렬 */
 
-    border: 1px black solid;
+    // border: 1px black solid;
 
 `
 
@@ -36,7 +38,7 @@ export const Top = styled.div`
 export const Header = styled.div`
   border-radius: 50%; // 원형을 만들기 위해 50%로 설정
   width: 28%;
-  margin: 11% 0 0 2%;
+  margin: 8% 0 0 3%;
 
   img {
     width: 100%;
@@ -50,7 +52,7 @@ export const TitleBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  margin: 22% 0 0 2%;
+  margin: 20% 0 0 2%;
   width: 60%;
 
   section {
@@ -117,7 +119,8 @@ export const ContentBox = styled.div`
 export const Content = styled.div`
   ${ALIGN.COLUMN_CENTER};
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  height: 32vh;
   background: white;
   border-radius: 20px;
   // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
@@ -166,4 +169,42 @@ export const Title = styled.div`
     font-weight: 300;
     line-height: normal;
     }
+`
+export const BtnBox = styled.div`
+  ${ALIGN.ROW_CENTER};
+  width: 100%;
+  gap: 2%;
+  margin-top: 5%;
+  button {
+    &:first-child {
+      background-image: url(${download});
+      background-size: 50%;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 3.75rem;
+      height: 3.75rem;
+
+      box-shadow: 0px 4px 6px #E3DECB;
+      border: none;
+      border-radius: 50%;
+    }
+    &:last-child {
+      ${ALIGN.ROW_CENTER};
+      width: 23.125rem;
+      height: 3.375rem;
+
+      border-radius: 0.9375rem;
+      border: none;
+      background: #ED6243;
+
+      color: #FFF;
+      text-align: center;
+      font-family: Pretendard;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: -0.03375rem;
+    }
+  }
 `

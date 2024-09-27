@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as H from './Header.style';
 import * as M from './Menu.style';
 import { FiMenu } from "react-icons/fi";
@@ -14,7 +14,7 @@ import setting from '../../assets/headerImg/Settings_big.png';
 import logout from '../../assets/headerImg/로그아웃.png';
 import LogoutModal from '../Modal/LogoutModal';
 
-function AppHeader({ isLoggedIn, setIsLoggedIn }) {
+function AppHeader({ isMain, isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate();
     const [modal, setModal] = useState(false);
     const [logoutModal, setLogoutModal] = useState(false);
@@ -31,7 +31,7 @@ function AppHeader({ isLoggedIn, setIsLoggedIn }) {
     };
 
     return (
-        <H.Header>
+        <H.Header isMain={isMain}>
             <H.HeaderWrapper>
                 <H.HeaderStart>
                     <H.HeaderHome onClick={() => navigate('/main')}><img src={logo} alt='logo' /></H.HeaderHome>

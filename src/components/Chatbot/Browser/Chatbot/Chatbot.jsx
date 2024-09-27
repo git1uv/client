@@ -34,6 +34,7 @@ export default function Chatbot() {
   const [isRedFlagModalOpen, setIsRedFlagModalOpen] = useState(false);
   const [emotion, setEmotion] = useState(Simmaeum.basic);
   const [loading, setLoading] = useState(false); // 챗봇 응답 불러오는 중
+  const [isTyping, setIsTyping] = useState(false); // 타이핑 중
   const inputRef = useRef(null);
   const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
@@ -42,10 +43,9 @@ export default function Chatbot() {
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+ 
   const openFirstModal = async() => {
     setIsFirstModalOpen(true);
-    // await exitChatting();
   }
   const closeFirstModal = () => {
     setIsFirstModalOpen(false);
@@ -143,6 +143,9 @@ export default function Chatbot() {
 
   /* 사용자 메시지 보내기 API*/
   const postChatting = async() => {
+    const loadingMessage = { msg: '', isUser: false, isLoading: true };
+    setMessage((prevMessages) => [...prevMessages, loadingMessage]);
+    
     setLoading(true);
     try {
       const res = await axios.post(`${serverURL}/api/v1/chatbot/chatting?counselingLogId=${counselingLogIdLS}`, {
@@ -160,10 +163,13 @@ export default function Chatbot() {
         }
       ))
       setEmotion(res.data.data.emotion);
-      setMessage((prev) => [...prev, {
-        msg: res.data.data.message,
-        isUser: false
-      }]);
+   
+      setMessage((prevMessages) => {
+        const updatedMessages = [...prevMessages];
+        updatedMessages.pop(); // 마지막 로딩 메시지 제거
+        updatedMessages.push({ msg: res.data.data.message, isUser: false, isLoading: false }); // 응답 메시지 추가
+        return updatedMessages;
+      });
       // let redFlag = res.data.data.redFlag;
       // if (redFlag)
       //   openRedFlagModal();
@@ -221,11 +227,13 @@ export default function Chatbot() {
           setLoading={setLoading}
           isChat={isChat}
           message={message}
+          isTyping={isTyping}
+          setIsTyping={setIsTyping}
         />
       </S.Bottom>
       <T.InputBox>
         <input
-          disabled={loading}
+          disabled={loading || isTyping}
           placeholder='고민부터 털어놓고 싶은 것, 오늘 있었던 일 등 뭐든 말해보아요!'
           onChange={ChangeInput}
           onKeyPress={handleKeyPress}
@@ -244,6 +252,7 @@ export default function Chatbot() {
       />
       <RedFlagModal
         isVisible={isRedFlagModalOpen} 
+        // isVisible={true} 
         onClose={closeRedFlagModal} 
       />
     </S.App>

@@ -33,6 +33,7 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
       console.log(res.data);
       dispatch(setSolution({
         counselingLogId: counselingId,
+        chatbotType: res.data.data.chatbotType,
         title: res.data.data.title,
         summary: res.data.data.summary,
         suggestion: res.data.data.suggestion,
@@ -61,6 +62,6 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
       </M.LogoutModal>
     </M.LogoutModalBg>
   );
-};
+}; 
 
 export default SecondModal;

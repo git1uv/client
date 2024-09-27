@@ -6,15 +6,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setAnswer } from '../../../../redux/counseling';
 
-export default function ChatbotBox({changeFace, loading, isChat, message}) {
-  // const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
-  // const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
-  // const [input, setInput] = useState(); // input 값
-  // const [current, setCurrent] = useState(); // 보낼 문장
-  // const [counseling, setCounseling] = useState({
-  //   counselingLogId: 1,
-  //   emotion: '평온',
-  // }) // 챗봇의 상태와 상담일지 ID
+export default function ChatbotBox({changeFace, loading, setLoading, isChat, message, isTyping, setIsTyping}) {
   const counseling = useSelector((state) => state.counseling);
 
   const inputRef = useRef(null);
@@ -25,7 +17,13 @@ export default function ChatbotBox({changeFace, loading, isChat, message}) {
   return (
     <S.Container isChat={isChat}>
       {isChat ? (
-        <Chat message={message} counseling={counseling} loading={loading}/>
+        <Chat 
+          message={message} 
+          counseling={counseling} 
+          loading={loading} 
+          isTyping={isTyping} 
+          setIsTyping={setIsTyping}
+        />
       ) : (
         <>
           <S.Title>

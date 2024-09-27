@@ -5,6 +5,10 @@ export const Header = styled.header`
   top: 0;
   width: 100%;
   background-color: #EEECE3;
+  background: ${({ isMain }) => isMain 
+    ? 'linear-gradient(0deg, rgba(238,236,227,0) 0%, rgba(238,236,227,0) 51%, rgba(238,236,227,1) 100%)' 
+    : '#EEECE3'};
+
   z-index: 100;
 `;
 

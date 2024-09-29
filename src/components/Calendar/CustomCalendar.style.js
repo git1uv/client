@@ -13,8 +13,8 @@ export const StyledCalendarWrapper = styled.div`
     margin-top: 7vh;
   }
   @media (min-width: 431px) and (max-width: 768px){
-    height: 36rem; 
-    width: 40rem;
+    height: 35rem; 
+    width: 33rem;
     margin-top: 10.3vh;
   }
   @media (min-width: 769px) and (max-width: 1024px){
@@ -64,7 +64,10 @@ export const StyledCalendarWrapper = styled.div`
     @media screen and (max-width: 430px) {
     justify-content: space-between;
     flex-wrap: nowrap;
-  }
+    }
+    @media (min-width: 431px) and (max-width: 768px) {
+      margin-bottom: 1%; 
+    }
   }
   
   /* 네비게이션 폰트 설정 */
@@ -100,6 +103,9 @@ export const StyledCalendarWrapper = styled.div`
   }
   .react-calendar__month-view__weekdays{
     margin-bottom: 1vh;
+    @media (min-width: 431px) and (max-width: 768px) {
+      margin-bottom: 1%; 
+    }
   }
   .react-calendar__month-view__days {
     display: flex;
@@ -156,10 +162,10 @@ export const StyledCalendarWrapper = styled.div`
     font-size: 1.25rem;
     border-radius: 0.8rem;
     @media (max-width: 430px) {
-      padding: 0.3rem 0.2rem 6rem;
+      padding: 1% 0 20%;
     }
     @media (min-width: 431px) and (max-width: 768px) {
-      padding: 0.3% 0 8.5%;
+      padding: 0.3% 0 11%;
     }
     @media (min-width: 769px) and (max-width: 1023px) {
       padding: 0.3% 0 11.5%;
@@ -197,12 +203,12 @@ export const StyledEmotion = styled.div`
   align-items: center;
   background-repeat: no-repeat;
   @media (max-width: 430px) {
-    width: 3.75rem;
-    height: 3.75rem;
+    width: 3.25rem;
+    height: 3.25rem;
   }
   @media (min-width: 431px) and (max-width: 768px) {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
   }
   @media (min-width: 769px) and (max-width: 1023px) {
     width: 4.25rem;
@@ -235,13 +241,13 @@ export const Circle = styled.div`
   justify-content: center;
   align-items: center;
   @media (max-width: 430px) {
-    width: 4.15rem;
-    height: 4.15rem;
-    top: 60%;
+    width: 3.75rem;
+    height: 3.75rem;
+    top: 50%;
   }
   @media (min-width: 431px) and (max-width: 768px) {
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 3rem;
+    height: 3rem;
     top: 65%;
   }
   @media (min-width: 769px) and (max-width: 1023px) {

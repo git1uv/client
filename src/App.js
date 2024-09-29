@@ -41,7 +41,7 @@ function App() {
   const mobileHideHeaderPaths = [
     '/settings', '/ask', '/developer', 
     '/faq', '/namechange', '/pwchange', 
-    '/simterinformation', '/chatbot',
+    '/simterinformation', '/chatbot', '/oauth'
   ];  
   const hideHeader = hideHeaderPaths.includes(location.pathname) || (isMobileView && mobileHideHeaderPaths.includes(location.pathname));
   

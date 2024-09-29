@@ -105,14 +105,14 @@ export const Text = styled.div`
   @media (min-width: 1471px) {
     font-size: 1.5rem;
   }
-  @media (min-width: 1201px) and (max-width: 1470px) {
+  @media (min-width: 769px) and (max-width: 1470px) {
     font-size: 1.25rem;
   }
-  @media (min-width: 431px) and (max-width: 1200px) {
-    font-size: 1rem;
+  @media (min-width: 431px) and (max-width: 768px) {
+    font-size: 0.9rem;
   }
   @media (max-width: 430px) {
-    font-size: 1.3rem;
+    font-size: 1rem;
     line-height: 22px; 
   }
 `;

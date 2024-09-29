@@ -405,15 +405,19 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   }
   width: 1.2rem;
   height: 1.2rem;
-  margin-top: 1.5%;
+  margin-top: 0.5%;
+  @media (min-width: 768px) and (max-width: 1200px) {
+    margin-top: 1.5%;
+  }
   @media (min-width: 1601px) {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 0;
   }
 `;
 export const Todo = styled.div`
   width: 90%; 
-  margin: 0 1.5%;
+  margin: 0.5% 1.5%;
   font-family: SeoulHangang;
   font-style: normal;
   font-weight: 400;
@@ -427,7 +431,7 @@ export const Todo = styled.div`
     font-size: 1.2rem;
   }
   @media (min-width: 1471px) {
-    font-size: 1.14rem;
+    font-size: 1.3rem;
   }
 `;
 export const DeleteButton = styled.div`

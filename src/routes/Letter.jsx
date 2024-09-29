@@ -157,6 +157,10 @@ function Mailbox() {
   const handleDelete = async (mailId) => {
     try {
       const mailIdsToDelete = mailId ? [mailId] : selectedMailIds; 
+      if (mailIdsToDelete.length === 0) {
+        console.warn("삭제할 편지가 없습니다.");
+        return;
+      }
       const response = await axios.post(`${serverURL}/api/v1/mail/delete`, {
         mailIds: mailIdsToDelete,
       },
@@ -247,7 +251,7 @@ function Mailbox() {
                 <DeleteLetterModal
                 isVisible={isDeleteModalVisible}
                 onClose={() => setDeleteModalVisible(false)}
-                onConfirm={handleDelete}
+                onConfirm={() => handleDelete()}
                 />
             )}
     </L.Container>

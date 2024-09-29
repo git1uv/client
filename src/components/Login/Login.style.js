@@ -62,6 +62,7 @@ export const Wrapper = styled.div`
   @media ${theme.WINDOW_SIZE.MOBILE} {
     border-radius: 0px;
     box-shadow: 0px;
+    width: 100%;
   }
 `
 

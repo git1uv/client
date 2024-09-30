@@ -8,11 +8,10 @@ import NeuraneeImg from '../../../../assets/chatbot/chatStart/Neuranee.png.webp'
 import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
 import { useSelector } from 'react-redux'
 
-export default function ChatbotBox() {
+export default function ChatbotBox({emotion, setEmotion}) {
   const result = localStorage.getItem('result');
   let counseling = useSelector((state) => state.counseling)
 
-  const [emotion, setEmotion] = useState(Neuranee.basic);
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현 
   const changeFace = () => {

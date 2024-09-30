@@ -65,6 +65,7 @@ export default function Chatbot() {
   }
   const connectCounseling = () => {
     window.location.href = 'https://www.ncmh.go.kr/ncmh/main.do';
+    closeRedFlagModal();
   }
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현 

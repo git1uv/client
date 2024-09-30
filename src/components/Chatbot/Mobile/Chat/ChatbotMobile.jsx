@@ -9,6 +9,8 @@ import SecondModal from '../../../Modal/Chatbot/SecondModal';
 import counseling from '../../../../redux/counseling'
 import RedFlagModal from '../../../Modal/Chatbot/RedFlagModal'
 
+import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
+
 export default function ChatbotMobile() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
@@ -17,6 +19,8 @@ export default function ChatbotMobile() {
   const [message, setMessage] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false); // 타이핑 중
+
+  const [emotion, setEmotion] = useState(Simmaeum.basic);
 
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
@@ -39,13 +43,17 @@ export default function ChatbotMobile() {
   }
   const connectCounseling = () => {
     window.location.href = 'https://www.ncmh.go.kr/ncmh/main.do';
+    closeRedFlagModal();
   }
 
   return (
     <S.App>
       <Header openFirstModal={openFirstModal}/>
       <ChattingBox message={message} counseling={counseling} loading={loading} isTyping={isTyping} setIsTyping={setIsTyping}/>
-      <ChatbotBox/>
+      <ChatbotBox
+        emotion={emotion}
+        setEmotion={setEmotion}
+      />
       <InputBox 
         message={message}
         setMessage={setMessage}
@@ -53,6 +61,8 @@ export default function ChatbotMobile() {
         setLoading={setLoading} 
         isTyping={isTyping} 
         openRedFlagModal={openRedFlagModal}
+        emotion={emotion}
+        setEmotion={setEmotion}
       />
       <FirstModal
         isVisible={isFirstModalOpen} 

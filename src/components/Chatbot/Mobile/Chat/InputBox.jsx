@@ -4,9 +4,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setAnswer } from '../../../../redux/counseling';
 
-import { Simmaeum, Banbani, Neuranee } from '../../../../datas/emotion'
-
-export default function InputBox({message, setMessage, loading, setLoading, isTyping, openRedFlagModal}) {
+export default function InputBox({message, setMessage, loading, setLoading, isTyping, openRedFlagModal, emotion, setEmotion}) {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
   const accessToken = localStorage.getItem('accessToken');
@@ -17,7 +15,6 @@ export default function InputBox({message, setMessage, loading, setLoading, isTy
 
   const [input, setInput] = useState('');
   const [current, setCurrent] = useState(); // 보낼 문장
-  const [emotion, setEmotion] = useState(Simmaeum.basic);
 
   const dispatch = useDispatch();
   const addNewMessage = (newMessage) => {

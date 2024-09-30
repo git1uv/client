@@ -126,14 +126,6 @@ export default function Chatbot() {
   const handleKeyPress = (e) => { // 엔터키 누르면 메시지 전송
     if (e.key === 'Enter') {
       ChangeChat();
-      // test
-      dispatch(setAnswer(
-        {
-          counselingLogId: '',
-          emotion: '평온',
-          date: '',
-        }
-      ))
     }
   }
 

@@ -44,6 +44,8 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
       onClose();
       navigate(`/chatbot/${counselingId}`, { state: { fromModal: true } });
     } catch(err) {
+      window.alert('상담일지를 만드는 데 에러가 발생했어요. 다시 시도해주세요.');
+      onClose();
       console.log(err);
     }
   }

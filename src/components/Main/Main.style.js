@@ -4,27 +4,9 @@ import {airplane, chatbot, calendar, mailbox, pencilHolder, trash} from '../../a
 import morning from "../../assets/main/sky/morning.webp"
 import evening from "../../assets/main/sky/evening.webp"
 import night from "../../assets/main/sky/night.webp"
-
-export const Sky = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    width: 100%;
-    height: 100vh;
-
-    background-image: url(${morning});
-    background-size: cover;
-    background-color: #EEECE3;
-  
-    background-position: center;
-
-    @media (max-width: 430px) {
-        height: 100dvh;
-    }
-    z-index: 1;
-`
+import morningMobile from "../../assets/main/sky/morningMobile.webp"
+import eveningMobile from "../../assets/main/sky/eveningMobile.webp"
+import nightMobile from "../../assets/main/sky/nightMobile.webp"
 
 export const Container = styled.div`
     display: flex;
@@ -41,6 +23,7 @@ export const Container = styled.div`
     background-position: center;
 
     @media (max-width: 430px) {
+        background-image: url(${(props) => (props.time >= 7 && props.time < 17 ? morningMobile : props.time >= 17 && props.time < 19 ? eveningMobile : nightMobile)});
         height: 100dvh;
     }
     z-index: 10;

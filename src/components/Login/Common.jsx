@@ -126,7 +126,7 @@ export default function Common({openModal}) {
           <div/>
           <S.SocialLogin>
             <button onClick={handleKakaoLogin} />
-            <button onClick={login} />
+            {/* <button onClick={login} /> */}
           </S.SocialLogin>
           <S.FindPw>
             <h6>아직 회원이 아니신가요?</h6>

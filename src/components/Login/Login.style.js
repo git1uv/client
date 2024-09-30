@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import backgroundImg from "../../assets/backgroundImg.webp"
 import theme from "../../constants/theme";
-import kakao from '../../assets/login/kakao.webp'
+// import kakao from '../../assets/login/kakao.webp'
+import kakaoOnly from '../../assets/login/kakao_login_medium_wide.webp'
 import google from '../../assets/login/google.webp'
 
 const {ALIGN} = theme;
@@ -62,6 +63,7 @@ export const Wrapper = styled.div`
   @media ${theme.WINDOW_SIZE.MOBILE} {
     border-radius: 0px;
     box-shadow: 0px;
+    width: 100%;
   }
 `
 
@@ -261,32 +263,36 @@ export const LoginButton = styled.button`
 export const SocialLogin = styled.div`
   display: flex;
   gap: 1.5rem;
-
+  width: 80%;
   justify-content: center;
 
   button {
-    width: 5rem;
-    height: 5rem;
+    width: 80%;
+    height: 4rem;
 
     @media (max-width: 1470px) {
-      width: 4rem;
-      height: 4rem;
+      width: 80%;
+      height: 3rem;
     }
     
     margin: 1rem 0;
-    border-radius: 100%;
+    // border-radius: 100%;
     border: none;
-    box-shadow: 2px 3px 4px #D9D9D9;
+
+    background-image: url(${kakaoOnly});
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 
 
-    &:first-child {
-      background-image: url(${kakao});
-      background-size: 100%;
-    } 
-    &:last-child {
-      background-image: url(${google});
-      background-size: 100%;
-    } 
+    // &:first-child {
+    //   background-image: url(${kakaoOnly});
+    //   background-size: 100%;
+    // } 
+    // &:last-child {
+    //   background-image: url(${google});
+    //   background-size: 100%;
+    // } 
   }
     
 `

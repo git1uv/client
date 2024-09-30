@@ -89,20 +89,20 @@ export default function ResultMobile() {
       setEndDate(formatDate);
 
       console.log(formatDate);
+      
+      let chatbotType = data.chatbotType;
+      if (chatbotType === 'F')
+        setChatbot('심마음');
+      else if (chatbotType === 'H')
+        setChatbot('반바니');
+      else
+        setChatbot('뉴러니');
 
     } catch(err) {
       console.log(err);
     }
   }
-  useEffect(() => {
-    // getCounseling(); /* 특정 상담일지 가져오기 API */
-    if (result === 'Simmaeum')
-      setChatbot('심마음');
-    else if (result === 'Banbani')
-      setChatbot('반바니');
-    else
-      setChatbot('뉴러니');
-  }, [])
+
 
   useEffect(() => {
     const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 

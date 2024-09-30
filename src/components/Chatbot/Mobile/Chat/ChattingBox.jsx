@@ -11,13 +11,6 @@ export default function ChattingBox({message, counseling, loading, isTyping, set
 
   const chatEndRef = useRef(null); // 스크롤을 위해 ref 생성
 
-  useEffect(() => {
-    // 메시지가 추가될 때마다 스크롤을 최하단으로 이동
-    if (chatEndRef.current) {
-      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [message]);
-
   // 메시지가 추가되거나 타이핑 애니메이션이 진행될 때마다 스크롤 최하단으로 이동
   const scrollToBottom = () => {
     if (chatEndRef.current) {
@@ -31,7 +24,8 @@ export default function ChattingBox({message, counseling, loading, isTyping, set
   useEffect(() => {
     if (message.length > 0) {
       const latestMessage = message[message.length - 1];
-
+      if (latestMessage.msg === '')
+              return;
       if (!latestMessage.isUser) {
         if (!isTyping) {
           setAnimatedMessage(''); // 초기화

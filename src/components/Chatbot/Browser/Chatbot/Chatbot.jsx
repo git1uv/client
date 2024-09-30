@@ -63,6 +63,9 @@ export default function Chatbot() {
   const closeRedFlagModal = () => {
     setIsRedFlagModalOpen(false);
   }
+  const connectCounseling = () => {
+    window.location.href = 'https://www.ncmh.go.kr/ncmh/main.do';
+  }
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현 
   const changeFace = () => {
@@ -126,14 +129,6 @@ export default function Chatbot() {
   const handleKeyPress = (e) => { // 엔터키 누르면 메시지 전송
     if (e.key === 'Enter') {
       ChangeChat();
-      // test
-      dispatch(setAnswer(
-        {
-          counselingLogId: '',
-          emotion: '평온',
-          date: '',
-        }
-      ))
     }
   }
 
@@ -170,9 +165,11 @@ export default function Chatbot() {
         updatedMessages.push({ msg: res.data.data.message, isUser: false, isLoading: false }); // 응답 메시지 추가
         return updatedMessages;
       });
-      // let redFlag = res.data.data.redFlag;
-      // if (redFlag)
-      //   openRedFlagModal();
+      let redFlag = res.data.data.redFlag;
+
+      if (redFlag === "true") {
+        openRedFlagModal();
+      }
       console.log(res.data);
     } catch(err) {
       console.log(err);
@@ -252,8 +249,8 @@ export default function Chatbot() {
       />
       <RedFlagModal
         isVisible={isRedFlagModalOpen} 
-        // isVisible={true} 
         onClose={closeRedFlagModal} 
+        onConfirm={connectCounseling}
       />
     </S.App>
   );

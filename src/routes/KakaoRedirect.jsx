@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setAccount } from "../redux/user";
+import loading from '../assets/chatbot/test/loading.gif'
+import * as S from '../components/Test/TestContent/TestContent.style'
 
 export default function KakaoRedirect() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -52,14 +54,8 @@ export default function KakaoRedirect() {
   }, []);
 
   return (
-    <div>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-      <h2> 진행 중입니다...</h2>
-    </div>
+    <S.Loading>
+      <img src={loading} alt='로딩창'/>
+    </S.Loading>
   );
 }

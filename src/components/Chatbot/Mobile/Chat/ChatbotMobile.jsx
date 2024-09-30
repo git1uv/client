@@ -7,10 +7,12 @@ import InputBox from './InputBox'
 import FirstModal from '../../../Modal/Chatbot/FirstModal';
 import SecondModal from '../../../Modal/Chatbot/SecondModal';
 import counseling from '../../../../redux/counseling'
+import RedFlagModal from '../../../Modal/Chatbot/RedFlagModal'
 
 export default function ChatbotMobile() {
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+  const [isRedFlagModalOpen, setIsRedFlagModalOpen] = useState(false);
 
   const [message, setMessage] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -28,6 +30,15 @@ export default function ChatbotMobile() {
   }
   const closeSecondModal = () => {
     setIsSecondModalOpen(false);
+  }
+  const openRedFlagModal = () => {
+    setIsRedFlagModalOpen(true);
+  }
+  const closeRedFlagModal = () => {
+    setIsRedFlagModalOpen(false);
+  }
+  const connectCounseling = () => {
+    window.location.href = 'https://www.ncmh.go.kr/ncmh/main.do';
   }
   const [dummyData, setDummyData] = useState([
     {
@@ -84,6 +95,11 @@ export default function ChatbotMobile() {
       <SecondModal
         isVisible={isSecondModalOpen} 
         onClose={closeSecondModal} 
+      />
+      <RedFlagModal
+        isVisible={isRedFlagModalOpen} 
+        onClose={closeRedFlagModal} 
+        onConfirm={connectCounseling}
       />
     </S.App>
   )

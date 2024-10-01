@@ -165,8 +165,8 @@ export const Title = styled.div`
     color: #ED6243;
     font-family: Pretendard;
     font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 300;
+    // font-style: normal;
+    font-weight: 600;
     line-height: normal;
     }
 `

@@ -295,9 +295,6 @@ export const Mailbox = styled.div`
     left: calc(50% - 128px);
     bottom: calc(50% - 370px);
 
-    border: 1px solid black;
-
-
     @media (max-width: 1470px) {
         width: 60px;
         height: 160px;

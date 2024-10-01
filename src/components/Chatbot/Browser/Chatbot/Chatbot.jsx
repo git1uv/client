@@ -233,7 +233,6 @@ export default function Chatbot() {
           isTyping={isTyping}
           setIsTyping={setIsTyping}
         />
-      </S.Bottom>
       <T.InputBox>
         <input
           disabled={loading || isTyping}
@@ -242,8 +241,9 @@ export default function Chatbot() {
           onKeyPress={handleKeyPress}
           ref={inputRef}
         />
-        <button disabled={loading} onClick={ChangeChat} />
+        <button disabled={loading || isTyping} onClick={ChangeChat} />
       </T.InputBox>
+      </S.Bottom>
       <FirstModal
         isVisible={isFirstModalOpen} 
         onClose={closeFirstModal} 

@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './ChatbotInfo.style'
 import howto from '../../../../assets/chatbot/chatStart/howto.png.webp'
 import func from '../../../../assets/chatbot/chatStart/function.png.webp'
-import warning from '../../../../assets/chatbot/chatStart/warning.png.webp'
+import tip from '../../../../assets/chatbot/chatStart/tip.webp'
 
 export default function ChatbotInfo() {
   return (
@@ -34,10 +34,17 @@ export default function ChatbotInfo() {
       </S.Infos>
       <S.Infos id='warning'>
         <S.IconBox id='warning'>
-          <img src={warning} alt='icon' />  
-          <h2>주의</h2>
+          <img src={tip} alt='icon' />  
+          <h2>TIP</h2>
         </S.IconBox>
-        <S.Info></S.Info>
+        <S.Info>
+          <ul>
+            <li>대화를 하면서, 궁금한 정보가 있다면 무엇이든지 물어봐주세요! 챗봇이 아주 잘 대답해줍니다.</li>
+          </ul>
+          <ul>
+            <li>재밌는 말투로 대화해보세요! 챗봇도 재치있는 말투로 대답해줍니다.</li>
+          </ul>
+        </S.Info>
       </S.Infos>
     </S.InfoBox>
   )

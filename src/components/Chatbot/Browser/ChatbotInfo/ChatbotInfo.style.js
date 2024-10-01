@@ -77,4 +77,18 @@ export const Info = styled.div`
 
         text-align: ${({ id }) => id === 'func' ? 'center' : null};
     }
+    li {
+        margin: 0.5rem 1rem 0.5rem 0;
+        color: #27272A;
+        
+        font-family: Pretendard;
+        font-size: 1rem;
+        @media (max-width: 1470px) {
+            font-size: 0.8rem;
+        }
+        font-weight: 300;
+        line-height: 1.375rem;
+        letter-spacing: -0.01rem;
+        text-align: ${({ id }) => id === 'func' ? 'center' : null};
+    }
 `

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from "../Signup/Signup.style"
 import * as T from "../../Login/Login.style"
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.webp'
 import notCheck from '../../../assets/notCheck.webp'
 import check from '../../../assets/Check.webp'
@@ -15,8 +15,11 @@ export default function SettingNameCm() {
   const [nickname, setNickname] = useState('');
   const [errors, setErrors] = useState({ nickname: '' });
   
+  
   const navigate = useNavigate();
-
+  const location = useLocation();
+  
+  const [isGeneral, setIsGeneral] = useState(location.state?.isGeneral);
   const user = useSelector((state) => state.user);
   const validateNickname = (nickname) => regexName.test(nickname);
 
@@ -91,7 +94,7 @@ export default function SettingNameCm() {
         <T.Title>
           <img src={logo} alt='로고' />
           <section />
-          {user.loginType === "general" && <h1>회원가입</h1>}
+          {isGeneral && <h1>회원가입</h1>}
         </T.Title>
         <S.Box>
           <S.Input>

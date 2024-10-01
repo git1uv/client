@@ -177,8 +177,11 @@ export const SpeechBubble = styled.div`
   ${ALIGN.COLUMN_CENTER};
     gap: 0.5rem;
     position: absolute;
-    top: -7rem;
-    left: ${(props) => props.id === 'back' ? '1rem' : '50rem'};
+    transform: translateY(-80%) translateX(${(props) => (props.id === 'back' ? '-250%' : '270%')}); /* Y축은 80% 올리고, X축은 props에 따라 조정 */
+
+    @media (max-width: 1470px) {
+        transform: translateY(-80%) translateX(${(props) => (props.id === 'back' ? '-190%' : '190%')}); /* Y축은 80% 올리고, X축은 props에 따라 조정 */
+    }
 
     width: 12.5625rem;
     height: 7rem;

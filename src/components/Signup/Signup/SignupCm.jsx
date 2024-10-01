@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.webp'
 import notCheck from '../../../assets/notCheck.webp'
 import check from '../../../assets/Check.webp'
-import { useDispatch } from 'react-redux';
-import { setAccount } from '../../../redux/user'
+import { useDispatch, useSelector } from 'react-redux';
+import { setAccount, setLoginType } from '../../../redux/user'
 import axios from 'axios';
 
 export default function SignupCm() {
@@ -20,6 +20,8 @@ export default function SignupCm() {
   const [confirmPw, setConfirmPw] = useState('');
   const [isValidEmail, setIsValidEmail] = useState();
   const [isAllValid, setIsAllValid] = useState(false);
+
+  const user = useSelector((state) => state.user);
 
   const [errors, setErrors] = useState({
     email: '',
@@ -65,17 +67,20 @@ export default function SignupCm() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    // let isValid = true;
-
-    // if (!validateEmail(email) || !validatePassword(pw) || pw !== confirmPw || !isValidEmail)
-    //   isValid = false;
 
     if (isAllValid) {
       dispatch(setAccount({
         email: email,
         password: pw
       }))
-      navigate('/signup/nickname'); 
+      dispatch(setLoginType({
+        loginType: "general"
+      }))
+
+      setTimeout(() => {
+        console.log("loginType : ", user.loginType); // 여기서 확인
+        navigate('/signup/nickname', { state: { isGeneral: true } }); 
+      }, 100); // 약간의 딜레이 추가
     }
   };
 

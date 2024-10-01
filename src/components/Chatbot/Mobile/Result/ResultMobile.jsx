@@ -41,7 +41,7 @@ export default function ResultMobile() {
         const canvas = await html2canvas(componentRef.current, { scale: 2 });
         canvas.toBlob((blob) => {
             if (blob !== null) {
-                saveAs(blob, "Counseling diary.png");
+                saveAs(blob, `${chatbot}의 상담일지.png`);
             }
         });
     } catch (error) {

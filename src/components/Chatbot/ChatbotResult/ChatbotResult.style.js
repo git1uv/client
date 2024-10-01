@@ -74,12 +74,12 @@ export const TitleBox = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  @media(min-width: 1441px) {
+  @media(min-width: 1470px) {
     margin-left: 4rem;
   }
   section {
     ${ALIGN.ROW_CENTER};
-    width: 110%;
+    width: 130%;
     height: 40%;
     flex-shrink: 0;
     background: #FFF;
@@ -92,7 +92,7 @@ export const TitleBox = styled.div`
       line-height: 1.2rem;
     }
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: -0.0175rem;
   }
@@ -172,8 +172,8 @@ export const Content = styled.div`
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
       font-size: 0.75rem;
     }
-    font-style: normal;
-    font-weight: 300;
+    // font-style: normal;
+    font-weight: 500;
   }
 
   section {
@@ -209,8 +209,8 @@ export const Title = styled.div`
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
       font-size: 0.75rem;
     }
-    font-style: normal;
-    font-weight: 300;
+    // font-style: bold;
+    font-weight: 600;
     line-height: normal;
     }
 `

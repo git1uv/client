@@ -86,17 +86,10 @@ export const InputBox = styled.div`
     height: 4rem;
     
     position: absolute;
-    bottom: calc(0% + 5.5rem);
+    bottom: calc(0% - 2rem);
 
     @media (max-width: 1470px) {
         width: 45.0625rem;
-        bottom: calc(0% + 1.5rem);
-    }
-    @media (max-width: 1200px) {
-        bottom: calc(0% + 4rem);
-    }
-    @media (max-width: 768px) {
-        bottom: calc(0% + 4.5rem);
     }
 
     border-radius: 2.0625rem;

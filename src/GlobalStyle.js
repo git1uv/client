@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import seoul from './assets/font/fontOriginal.ttf'
+import fonts from './Font.css'
 
 const GlobalStyle = createGlobalStyle`
   @media (max-width: 430px) {
@@ -30,10 +30,7 @@ const GlobalStyle = createGlobalStyle`
   //     font-size: 12px; // 화면 너비가 768px 이하일 때
   //   }
   // }
-    @font-face {
-      font-family: 'seoul';
-      src: url(${seoul}) format('truetype');
-    }
+
 `;
 
 export default GlobalStyle;

@@ -22,7 +22,6 @@ import FAQ from './routes/Set/FAQ';
 import NameChange from './routes/Set/NameChange'; 
 import PwChange from './routes/Set/PwChange'; 
 import SimterInformation from './routes/Set/SimterInformation'; 
-import './assets/font/font.css'; 
 import GlobalStyle from './GlobalStyle';
 import TestPage from './routes/Chatbot/TestPage';
 import TestContent from './components/Test/TestContent/TestContent';

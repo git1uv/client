@@ -79,9 +79,9 @@ function getChatbotBackground(chatbotType) {
 function CustomSlider({ logs, getChatbotName }) {
   const navigate = useNavigate();
 
-    const handleSlideClick = (logId) => {
-      navigate(`/chatbot/${logId}`);
-    };
+  const handleSlideClick = (logId) => {
+    navigate(`/chatbot/${logId}`);
+  };
     return (
         <SwiperContainer>
         <CustomSwiper

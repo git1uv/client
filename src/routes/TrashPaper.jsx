@@ -9,6 +9,7 @@ function TrashPaper() {
   const navigate = useNavigate();
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isThrownOutModalVisible, setIsThrownOutModalVisible] = useState(false);
+  const [paperContent, setPaperContent] = useState('');
 
   const handleThrowOutClick = () => {
     setIsConfirmModalVisible(true);
@@ -17,6 +18,7 @@ function TrashPaper() {
   const handleConfirmClick = () => {
     setIsConfirmModalVisible(false);
     setIsThrownOutModalVisible(true);
+    setPaperContent('');
   };
 
   const handleCloseModals = () => {
@@ -29,7 +31,10 @@ function TrashPaper() {
     <T.Container>
       <T.PaperSection>
       <T.Paper>
-        <textarea placeholder="Write your thoughts here..." />
+        <textarea 
+        value={paperContent}
+        onChange={(e) => setPaperContent(e.target.value)}
+        placeholder="감정 쓰레기통에 오늘 있었던 일, 감정을 적어보세요! &#13;&#10;써주신 내용은 어디에도 저장되지 않고, ‘버리기’를 누르면 소멸됩니다..! 🗑️" />
       </T.Paper>
       </T.PaperSection>
       <T.ButtonSection>

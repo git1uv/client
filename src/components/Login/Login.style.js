@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImg from "../../assets/backgroundImg.webp"
+import backgroundImg from "../../assets/backgroundImg.avif"
 import theme from "../../constants/theme";
 // import kakao from '../../assets/login/kakao.webp'
 import kakaoOnly from '../../assets/login/kakao_login_medium_wide.webp'

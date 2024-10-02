@@ -1,16 +1,32 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as M from '../LogoutModal.style';
 import x from '../../../assets/x.webp';
 import axios from 'axios';
 
 const RedFlagModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
- 
-  if (!isVisible) return null;
+  const [open, setOpen] = useState(false);
+  const [fadingOut, setFadingOut] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      setOpen(true); 
+      setFadingOut(false);
+    } else {
+      setFadingOut(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 350);
+    }
+  }, [isVisible]);
+
+  if (!open) {
+    return null;
+  }
 
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
-      <M.LogoutModal>
+      <M.LogoutModal fadingOut={fadingOut}>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.LogoutModalTitle>대화 속 내용에</M.LogoutModalTitle>
         <M.LogoutModalTitle>도움이 필요해보여요.</M.LogoutModalTitle>

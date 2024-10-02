@@ -10,6 +10,25 @@ const EmotionModal = ({ isVisible, onClose, calendarId, setEmotion}) => {
   const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16];
   const emotionNames = ['laughing', 'excited', 'passionate', 'peaceful', 'angry', 'crying', 'dissatisfied', 'disappointed', 'inlove', 'sick', 'proud', 'tired', 'surprised', 'anxious', 'happy', 'embarrassed'];
 
+  const [open, setOpen] = useState(false);
+  const [fadingOut, setFadingOut] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      setOpen(true); 
+      setFadingOut(false);
+    } else {
+      setFadingOut(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 350);
+    }
+  }, [isVisible]);
+
+  if (!open) {
+    return null;
+  }
+
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
@@ -37,7 +56,7 @@ const EmotionModal = ({ isVisible, onClose, calendarId, setEmotion}) => {
 
   return (
     <M.ModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
-      <M.Modal>
+      <M.Modal fadingOut={fadingOut}>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.EmotionContainer>
           {images.map((img, index) => (

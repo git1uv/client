@@ -262,7 +262,8 @@ function Mailbox() {
             createdAt={mailDetails.createdAt}
             chatbotType={mailDetails.chatbotType}
             setLetterModal={setLetterModalVisible}
-            handleDelete={handleDelete} 
+            handleDelete={handleDelete}
+            isVisible={isLetterModalVisible}
           />
         )}
         {isDeleteModalVisible && (

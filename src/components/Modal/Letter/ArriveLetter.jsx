@@ -7,12 +7,28 @@ import Arrive from '../../../assets/letterImg/arrive.webp'
 const ArriveLetterModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [fadingOut, setFadingOut] = useState(false);
 
-  if (!isVisible) return null;
+  useEffect(() => {
+    if (isVisible) {
+      setOpen(true); 
+      setFadingOut(false);
+    } else {
+      setFadingOut(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 350);
+    }
+  }, [isVisible]);
+
+  if (!open) {
+    return null;
+  }
 
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
-      <M.LogoutModal>
+      <M.LogoutModal fadingOut={fadingOut}>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.AirplaneImage src={Arrive} alt="img" />
         <M.LogoutModalTitle>새로운 편지가 도착했어요!</M.LogoutModalTitle>

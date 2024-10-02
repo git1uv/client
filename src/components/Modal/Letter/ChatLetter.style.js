@@ -1,7 +1,29 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import FBackground from '../../../assets/letterImg/letter_f.webp';
 import TBackground from '../../../assets/letterImg/letter_t.webp';
 import HBackground from '../../../assets/letterImg/letter_half.webp';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+`;
 
 export const ModalBg = styled.div`
   position: fixed;
@@ -62,6 +84,8 @@ export const Modal = styled.div`
   background-repeat: no-repeat;
   border-radius: 10px;
   position: relative;
+  opacity: 1;
+  animation: ${({ fadingOut }) => (fadingOut ? fadeOut : fadeIn)} 0.35s ease;
 `;
 
 export const ModalCloseButton = styled.button`

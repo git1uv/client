@@ -66,11 +66,10 @@ export default function Browser() {
         }
       })
       openSecondModal();
-    } catch(err) {
-      if(err.response.status === 500) {
-        console.log(err.response.message);
-        window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
-      }
+      console.log(res.data);
+    } catch (err){
+      console.log(err);
+      window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
     }
   }
 

@@ -98,9 +98,9 @@ export const InputBox = styled.div`
     box-shadow: 3px 1px 10px 0px #8F9988;
     
     input {
-        width: 80%;
+        width: 90%;
         height: 3rem;
-
+        padding-left: 4%;
         background: none;
         border: none;
         outline: none;

@@ -73,6 +73,8 @@ export default function SignupCm() {
         email: email,
         password: pw
       }))
+      console.log(pw);
+      console.log("user.password:  ", user.password)
       dispatch(setLoginType('general'))
 
       setTimeout(() => {

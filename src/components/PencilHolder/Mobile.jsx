@@ -60,7 +60,7 @@ export default function Mobile() {
   const writeLetter = async() => {
     try {
       const res = await axios.post(`${serverURL}/api/v1/airplane`, {
-        writer_name: name,
+        writerName: name,
         content: content
       }, {
         headers: {
@@ -68,11 +68,10 @@ export default function Mobile() {
         },
       });
       openSecondModal();
+      console.log(res.data);
     } catch (err){
-      if(err.response.status === 500) {
-        console.log(err.response.message);
+        console.log(err);
         window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
-      }
     }
    }
   return (

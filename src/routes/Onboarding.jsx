@@ -16,6 +16,7 @@ const App = styled.div`
     @media (max-width: ${RESPONSIVE_SIZE.MOBILE}) {
         height: 30dvh;
     }
+    background: #EEECE3;
   }
 `;
 

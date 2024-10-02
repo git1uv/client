@@ -22,8 +22,6 @@
     font-family: 'SeoulHangangBold';
     font-weight: normal;
     src: url('./assets/font/SeoulHangangBold.ttf') format('truetype');
-    /* font-weight: 600;
-    font-style: normal; */
 } 
 
 body {

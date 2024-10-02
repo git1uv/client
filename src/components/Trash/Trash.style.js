@@ -78,7 +78,7 @@ export const Text = styled.div`
   border: none;
   background-color: transparent;
   color: #fff;
-  font-family: SeoulHangangM;
+  font-family: SeoulHangangLight;
   font-style: normal;
   font-weight: 400;
   font-size: 2rem;
@@ -235,7 +235,7 @@ export const Paper = styled.div`
     border: none;
     background-color: transparent;
     color: #000;
-    font-family: SeoulHangangM;
+    font-family: SeoulHangangLight;
     font-style: normal;
     font-weight: 400;
     outline: none;

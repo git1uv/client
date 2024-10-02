@@ -110,7 +110,7 @@ export const Bottom = styled.div`
 `
 export const Header = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 0 5%;
 
@@ -123,7 +123,7 @@ export const Header = styled.div`
     h1 {
         width: 80%;
         text-align: center;
-        margin: 0;
+        margin: 0 0 0 3%;
         color: #27272A;
         font-family: SeoulHangang;
         font-size: 1.5rem;
@@ -135,8 +135,7 @@ export const Header = styled.div`
         letter-spacing: -0.015rem;
     }
     button {
-        width: 6.8rem;
-        // width: 15%;
+        width: 12%;
         height: 2.8rem;
         margin-right: -4%;
         position: relative;
@@ -159,9 +158,9 @@ export const Header = styled.div`
 `
 
 export const BackBtn = styled(IoIosArrowBack)`
-    width: 15%;
-    height: 2rem;
-    margin-left: -8%;
+    width: 4%;
+    height: auto;
+    margin: 0 3% 0 -3%;
     color: #ED6243;
     position: relative;
     cursor: pointer;
@@ -177,10 +176,13 @@ export const SpeechBubble = styled.div`
   ${ALIGN.COLUMN_CENTER};
     gap: 0.5rem;
     position: absolute;
-    transform: translateY(-80%) translateX(${(props) => (props.id === 'back' ? '-250%' : '270%')}); /* Y축은 80% 올리고, X축은 props에 따라 조정 */
+
+    bottom: calc(90%);
+    right: ${(props) => (props.id === 'back' ? 'calc(50% + 34%)' : 'calc(50% - 52%)')};
 
     @media (max-width: 1470px) {
-        transform: translateY(-80%) translateX(${(props) => (props.id === 'back' ? '-190%' : '190%')}); /* Y축은 80% 올리고, X축은 props에 따라 조정 */
+        bottom: calc(100%);
+        right: ${(props) => (props.id === 'back' ? 'calc(50% + 30%)' : 'calc(50% - 52.5%)')};
     }
 
     width: 12.5625rem;

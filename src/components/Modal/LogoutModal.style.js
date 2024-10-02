@@ -1,4 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 export const LogoutModalBg = styled.div`
   position: fixed;
@@ -24,6 +42,8 @@ export const LogoutModal = styled.div`
   padding: 20px;
   border-radius: 24px;
   text-align: center;
+  opacity: 1;
+  animation: ${({ fadingOut }) => fadingOut ? fadeOut : fadeIn} 0.35s ease;
   .sub{
     font-size: 1.25rem;
     margin: 0;

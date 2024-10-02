@@ -1,4 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 export const ModalBg = styled.div`
   position: fixed;
@@ -22,6 +40,8 @@ export const Modal = styled.div`
   padding: 20px;
   border-radius: 24px;
   text-align: center;
+  opacity: 1;
+  animation: ${({ fadingOut }) => fadingOut ? fadeOut : fadeIn} 0.35s ease;
   @media (min-width: 769px) {
     width: 25.875rem;
     top: 30%;

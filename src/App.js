@@ -31,6 +31,8 @@ import ChatbotChoice from './components/Chatbot/ChatbotChoice/ChatbotChoice';
 import ChatbotResultPage from './routes/Chatbot/ChatbotResultPage';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Onboarding from './routes/Onboarding';
+import PublicRoute from './routes/publicRoute';
+import PrivateRoute from './routes/privateRoute';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -56,45 +58,46 @@ function App() {
   
   return (
     <>
-      <GlobalStyle />
-          <div>
-          {!hideHeader && (
-          isMobileView ? 
-          <AppHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> :
-          <WebHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        )}
-              <Routes>
-                <Route path="/" element={<Onboarding/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/login" element={<Login/>}/>
-                <Route path="/signup" element={<Signup/>}/>
-                <Route path="/signup/nickname" element={<SettingName/>}/>
-                <Route path="/oauth" element={<KakaoRedirect />}/>
-                <Route path="/oauth2" element={<GoogleRedirect />}/>
-                <Route path="/main" element={<Main/>}/>
-                <Route path="/calendar" element={<MyCalendar />} />
-                <Route path="/date/:date" element={<DatePage />} />
-                <Route path="/chatbot" element={<ChatbotPage />} />
-                <Route path="/chatbot/choice" element={<ChatbotChoice />} />
-                <Route path="/chatbot/:counselingLogId" element={<ChatbotResultPage />} />
-                <Route path="/test" element={<TestPage />} />
-                <Route path="/test/content" element={<TestContent />} />
-                <Route path="/test/result" element={<TestResult />} />
-                <Route path="/trash" element={<Trash />} />
-                <Route path="/trashpaper" element={<TrashPaper />} />
-                <Route path="/letter" element={<Letter />} />
-                <Route path="/pencilholder" element={<PencilHolder />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/ask" element={<Ask />}/>
-                <Route path="/developer" element={<Developer />}/>
-                <Route path="/faq" element={<FAQ />}/>
-                <Route path="/namechange" element={<NameChange />}/>
-                <Route path="/pwchange" element={<PwChange />}/>
-                <Route path="/simterinformation" element={<SimterInformation />}/>
-              </Routes>
-          
-          </div>
-        </>
+  <GlobalStyle />
+    <div>
+      {!hideHeader && (
+        isMobileView ? 
+        <AppHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} /> :
+        <WebHeader isMain={isMain} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      )}
+        <Routes>
+          <Route element={<PublicRoute />}>
+            <Route path="/" element={<Onboarding/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/signup" element={<Signup/>}/>
+            <Route path="/signup/nickname" element={<SettingName/>}/>
+            <Route path="/oauth" element={<KakaoRedirect />}/>
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/main" element={<Main/>}/>
+            <Route path="/calendar" element={<MyCalendar />} />
+            <Route path="/date/:date" element={<DatePage />} />
+            <Route path="/chatbot" element={<ChatbotPage />} />
+            <Route path="/chatbot/choice" element={<ChatbotChoice />} />
+            <Route path="/chatbot/:counselingLogId" element={<ChatbotResultPage />} />
+            <Route path="/test" element={<TestPage />} />
+            <Route path="/test/content" element={<TestContent />} />
+            <Route path="/test/result" element={<TestResult />} />
+            <Route path="/trash" element={<Trash />} />
+            <Route path="/trashpaper" element={<TrashPaper />} />
+            <Route path="/letter" element={<Letter />} />
+            <Route path="/pencilholder" element={<PencilHolder />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/ask" element={<Ask />}/>
+            <Route path="/developer" element={<Developer />}/>
+            <Route path="/faq" element={<FAQ />}/>
+            <Route path="/namechange" element={<NameChange />}/>
+            <Route path="/pwchange" element={<PwChange />}/>
+            <Route path="/simterinformation" element={<SimterInformation />}/>
+          </Route>
+        </Routes>
+      </div>
+    </>
   );
 }
 

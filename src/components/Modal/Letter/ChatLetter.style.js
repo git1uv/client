@@ -122,7 +122,7 @@ export const Text = styled.div`
   left: 20%;
   color: #27272A;
   text-align: center;
-  font-family: SeoulHangang;
+  font-family: SeoulHangangLight;
   font-style: normal;
   font-weight: 400;
   line-height: 2.25rem; 
@@ -149,7 +149,7 @@ export const Date = styled.div`
   font-size: 1.25rem;
   text-align: center;
   color: #52525B;
-  font-family: SeoulHangang;
+  font-family: SeoulHangangLight;
   font-style: normal;
   font-weight: 400;
   line-height: normal;

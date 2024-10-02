@@ -21,9 +21,10 @@ export const Container = styled.div`
     height: 100dvh;
   }
 
-  background-image: url(${backgroundImg});
+  background-image: url(${(props) => props.bgImage});
   background-size: cover;
   background-position: center;
+  background-color: #FFF;
 
   &::before {
     content: "";

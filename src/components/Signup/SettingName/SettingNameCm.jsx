@@ -52,6 +52,10 @@ export default function SettingNameCm() {
 
   /* 일반 회원가입 API : 연결하면 주석 풀기 */
   const postRegister = async() => {
+    console.log('email : ', user.email);
+    console.log('password : ', user.password);
+    console.log('nickname : ', nickname);
+    console.log('loginType : ', user.loginType);
     try {
       const res = await axios.post(`${serverURL}/api/v1/register/general`, {
         email: user.email,

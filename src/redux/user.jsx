@@ -10,8 +10,9 @@ const user = createSlice({
 		},
 		reducers: {
 			setAccount(state, action) {
-				const {email, loginType} = action.payload;
+				const {email, password, loginType} = action.payload;
 				state.email = email;
+				state.password = password;
 				state.loginType = loginType;
 			},
 			setLogin(state, action) {

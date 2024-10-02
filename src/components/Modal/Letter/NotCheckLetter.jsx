@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect  } from 'react';
 import * as M from '../LogoutModal.style';
 import x from '../../../assets/x.webp';
 
-const SaveModal = ({ isVisible, onClose}) => {
+const CheckModal = ({ isVisible, onClose}) => {
   const [opacity, setOpacity] = useState(1);
   const outside = useRef();
 
@@ -31,7 +31,7 @@ const SaveModal = ({ isVisible, onClose}) => {
     >
       <M.LogoutModal>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
-        <M.LogoutModalTitle>일기가 저장되었습니다</M.LogoutModalTitle>
+        <M.LogoutModalTitle>편지를 선택해주세요</M.LogoutModalTitle>
         <M.ModalActions>
           <M.OKButton onClick={onClose}>확인</M.OKButton>
         </M.ModalActions>
@@ -40,4 +40,4 @@ const SaveModal = ({ isVisible, onClose}) => {
   );
 };
 
-export default SaveModal;
+export default CheckModal;

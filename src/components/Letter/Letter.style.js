@@ -250,6 +250,7 @@ export const LetterContainer = styled.div`
   align-items: center;
   @media (max-width: 430px) {
     height: 50px;
+    margin-left: 2%;
   }
   @media (min-width: 431px) and (max-width: 1200px){
     height: 70px;
@@ -268,7 +269,7 @@ export const CheckBox = styled.div`
   align-items: center;
   height: 100%;
   @media (max-width: 430px) {
-    width: 7%;
+    width: 10%;
   }
   @media (min-width: 431px){
     width: 10%;

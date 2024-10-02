@@ -70,6 +70,12 @@ export const NicknameChange = styled.div`
     border: 1px solid #D4D4D8;
     border-radius: 5px;
     background: #FFFFFF;
+    &.error {
+      border-color: #ED6243;
+    }
+    &.success {
+      border-color: #95DD98;
+    }
     @media (max-width: 430px) {
     margin: 0 1.8vw;
   }

@@ -265,7 +265,7 @@ export const ToDoListContainer = styled.div`
 `;
 export const ToDoItem = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   margin-bottom: 2%;
   width: 100%;
@@ -273,9 +273,9 @@ export const ToDoItem = styled.div`
 export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
   appearance: none;
   border: 3px solid #739B8B;
-  width: 1.75rem;
-  height: 1.75rem;
-
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.2%;
   &:checked {
     background-image: url(${check});
     background-size: 100% 100%;

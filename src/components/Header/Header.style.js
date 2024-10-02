@@ -89,6 +89,12 @@ export const HeaderButton = styled.button`
   img {
     height: calc(10.3vh / 5); 
   }
+  .login {
+    height: calc(10.3vh / 3); 
+    @media (max-width: 430px) {
+      height: calc(6.5vh / 3); 
+    }
+  }
 `;
 export const MenuButton = styled.button`
   background-color: transparent; 

@@ -1,15 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import * as M from './LogoutModal.style';
 import x from '../../assets/x.webp';
 
 const PwChangeModal = ({ isVisible, onClose}) => {
   const outside = useRef();
+  const [open, setOpen] = useState(false);
+  const [fadingOut, setFadingOut] = useState(false);
 
-  if (!isVisible) return null;
+  useEffect(() => {
+    if (isVisible) {
+      setOpen(true); 
+      setFadingOut(false);
+    } else {
+      setFadingOut(true);
+      setTimeout(() => {
+        setOpen(false);
+      }, 350);
+    }
+  }, [isVisible]);
+
+  if (!open) {
+    return null;
+  }
 
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
-      <M.LogoutModal>
+      <M.LogoutModal fadingOut={fadingOut}>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
         <M.LogoutModalTitle>비밀번호 변경</M.LogoutModalTitle>
         <p className='sub'>비밀번호가 변경되었습니다</p>

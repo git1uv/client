@@ -238,6 +238,7 @@ export const Paper = styled.div`
     font-family: SeoulHangangM;
     font-style: normal;
     font-weight: 400;
+    outline: none;
     @media (min-width: 431px){
     font-size: 1.625rem;
     line-height: 32px; 

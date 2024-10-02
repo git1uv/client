@@ -180,7 +180,7 @@ function Mobile({date}) {
   return (
     <DateWrapper>
       <M.Container>
-        <M.BackButton onClick={() => navigate(-1)}/>
+        <M.BackButton onClick={() => navigate(`/calendar`)}/>
         <M.Content>
           <M.DiaryBox>
             <M.TodayEmotion onClick={handleEmotionClick}>

@@ -181,7 +181,7 @@ function Browser({ date }) {
   return (
     <DateWrapper>
       <P.Container>
-        <P.BackButton onClick={() => navigate(-1)}/>
+        <P.BackButton onClick={() => navigate(`/calendar`)}/>
         <MiniCalendar />
         <P.Content>
           <P.DiaryBox>

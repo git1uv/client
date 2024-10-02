@@ -26,7 +26,7 @@ function Airplane({setAirplaneModal, setIsExistAirplane}) {
             const canvas = await html2canvas(modalRef.current, { scale: 2 });
             canvas.toBlob((blob) => {
                 if (blob !== null) {
-                    saveAs(blob, "letter.png");
+                    saveAs(blob, `${sender}의 편지.png`);
                 }
             });
         } catch (error) {

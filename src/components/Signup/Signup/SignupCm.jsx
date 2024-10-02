@@ -73,13 +73,10 @@ export default function SignupCm() {
         email: email,
         password: pw
       }))
-      dispatch(setLoginType({
-        loginType: "general"
-      }))
+      dispatch(setLoginType('general'))
 
       setTimeout(() => {
-        console.log("loginType : ", user.loginType); // 여기서 확인
-        navigate('/signup/nickname', { state: { isGeneral: true } }); 
+        navigate('/signup/nickname'); 
       }, 100); // 약간의 딜레이 추가
     }
   };

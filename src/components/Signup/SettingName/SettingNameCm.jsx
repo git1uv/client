@@ -19,7 +19,6 @@ export default function SettingNameCm() {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const [isGeneral, setIsGeneral] = useState(location.state?.isGeneral);
   const user = useSelector((state) => state.user);
   const validateNickname = (nickname) => regexName.test(nickname);
 
@@ -55,9 +54,9 @@ export default function SettingNameCm() {
   const postRegister = async() => {
     try {
       const res = await axios.post(`${serverURL}/api/v1/register/general`, {
-        nickname: nickname,
         email: user.email,
         password: user.password,
+        nickname: nickname,
         loginType: user.loginType
       })
       console.log(res.data);
@@ -94,7 +93,7 @@ export default function SettingNameCm() {
         <T.Title>
           <img src={logo} alt='로고' />
           <section />
-          {isGeneral && <h1>회원가입</h1>}
+          {user.loginType === 'general' && <h1>회원가입</h1>}
         </T.Title>
         <S.Box>
           <S.Input>

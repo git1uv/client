@@ -5,6 +5,7 @@ import styled from "styled-components";
 import axios from 'axios';
 import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
+import CheckLetterModal from '../components/Modal/Letter/NotCheckLetter';
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -24,6 +25,7 @@ function Mailbox() {
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
   const [mailDetails, setMailDetails] = useState(null);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
+  const [isCheckModalVisible, setCheckModalVisible] = useState(false);
   const [selectedMailIds, setSelectedMailIds] = useState([]); 
 
   const accessToken = localStorage.getItem('accessToken'); 
@@ -42,11 +44,14 @@ function Mailbox() {
         setMails(response.data.data.mails);
       } else if (response.data.code === "MAIL5001") {
         console.error("편지 가져오기 실패:", response.data.message);
+        setMails([]);
       } else {
         console.error("편지가 없습니다:", response.data.message);
+        setMails([]);
       }
     } catch (error) {
       console.error("API 호출 중 오류 발생:", error);
+      setMails([]);
     }
   };
 
@@ -61,6 +66,11 @@ function Mailbox() {
       if (response.data.code === "200") {
         setMailDetails(response.data.data); 
         setLetterModalVisible(true); 
+        setMails((prevMails) =>
+          prevMails.map((mail) =>
+            mail.mailId === mailId ? { ...mail, read: true } : mail
+          )
+        );
       
         if (seeNotReadActive) {
           fetchMails('notRead');
@@ -101,8 +111,8 @@ function Mailbox() {
         console.error("실패:", response.data.message);
         setMails(mails);
       } else {
-        console.error("메일이 없습니다", response.data.message);
         setMails(mails);
+        console.error("메일이 없습니다", response.data.message);
       }
     } catch (error) {
       console.error('즐겨찾기 요청 중 오류 발생:', error);
@@ -157,6 +167,10 @@ function Mailbox() {
   const handleDelete = async (mailId) => {
     try {
       const mailIdsToDelete = mailId ? [mailId] : selectedMailIds; 
+      if (mailIdsToDelete.length === 0) {
+        setDeleteModalVisible(true);
+        return;
+      }
       const response = await axios.post(`${serverURL}/api/v1/mail/delete`, {
         mailIds: mailIdsToDelete,
       },
@@ -181,7 +195,7 @@ function Mailbox() {
   useEffect(() => {
     fetchMails();
   }, []);
-  
+
   return (
     <LetterWrapper>
     <L.Bg>
@@ -191,9 +205,16 @@ function Mailbox() {
             <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
             <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
             <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} />
-            <L.Delete onClick={() => setDeleteModalVisible(true)}/>
+            <L.Delete onClick={() => {
+              if (selectedMailIds.length === 0) {
+                  setCheckModalVisible(true);
+              } else {
+                  setDeleteModalVisible(true);
+              }
+          }}/>
           </L.TopRow>
           <L.LettersWrapper>
+          {mails.length > 0 ? (
           <L.Letters>
           {mails.map(mail => (
             <L.LetterContainer key={mail.mailId}>
@@ -231,6 +252,7 @@ function Mailbox() {
             </L.LetterContainer>
           ))}
           </L.Letters>
+           ) : null} 
           </L.LettersWrapper>
       </L.Mailbox>
       {isLetterModalVisible && mailDetails && (
@@ -247,7 +269,13 @@ function Mailbox() {
                 <DeleteLetterModal
                 isVisible={isDeleteModalVisible}
                 onClose={() => setDeleteModalVisible(false)}
-                onConfirm={handleDelete}
+                onConfirm={() => handleDelete()}
+                />
+            )}
+        {isCheckModalVisible && (
+                <CheckLetterModal
+                isVisible={isCheckModalVisible}
+                onClose={() => setCheckModalVisible(false)}
                 />
             )}
     </L.Container>

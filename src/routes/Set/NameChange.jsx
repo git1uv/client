@@ -23,8 +23,20 @@ function NameChange() {
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
 
+  const isValidNickname = (nickname) => {
+    const regex = /^[가-힣a-zA-Z]{1,10}$/;
+    return regex.test(nickname);
+  };
+
   const handleNicknameChange = (e) => {
-    setNickname(e.target.value);
+    const value = e.target.value;
+    setNickname(value);
+
+    if (isValidNickname(value)) {
+      setErrorMessage('');
+    } else {
+      setErrorMessage('1~10자의 한글/영문을 사용해주세요.');
+    }
   };
 
   const handleNicknameSubmit = async () => {
@@ -79,9 +91,11 @@ function NameChange() {
         <Set.NicknameChange>
             <input
             type="text"
+            maxlength="10"
             placeholder="1~10자의 한글/영문을 사용해주세요."
             value={nickname}
             onChange={handleNicknameChange}
+            className= {isValidNickname(nickname) ? 'success' : 'error'}
           />
         </Set.NicknameChange>
         <Set.Button>

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import LogoutModal from '../../components/Modal/LogoutModal';
 import DeleteIDModal from '../../components/Modal/DeleteIDModal';
+import MockModal from '../../components/Modal/MockModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/user'; 
 import axios from 'axios';
@@ -25,6 +26,7 @@ function Settings() {
   const navigate = useNavigate();
   const [logoutModal, setLogoutModal] = useState(false);
   const [deleteAccountModal, setDeleteAccountModal] = useState(false);
+  const [isMockModal, setIsMockModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const nickname = localStorage.getItem('nickname'); 
@@ -104,17 +106,21 @@ function Settings() {
           <p>고객센터</p>
         </Set.Title>
         <Set.FAQ>
-            <button onClick={() => navigate('/faq')}>FAQ</button>
-            <button onClick={() => navigate('/faq')} className="right-icon"><FiChevronRight /></button>
+            <button onClick={() => setIsMockModal(true)}>FAQ</button>
+            <button onClick={() => setIsMockModal(true)} className="right-icon"><FiChevronRight /></button>
         </Set.FAQ>
         <Set.Ask>
-            <button onClick={() => navigate('/ask')}>문의하기</button>
-            <button onClick={() => navigate('/ask')} className="right-icon"><FiArrowUpRight /></button>
+            <button onClick={() => setIsMockModal(true)}>문의하기</button>
+            <button onClick={() => setIsMockModal(true)} className="right-icon"><FiArrowUpRight /></button>
         </Set.Ask>
         <Set.Information>
-            <button onClick={() => navigate('/simterinformation')}>심터 정보</button>
-            <button onClick={() => navigate('/simterinformation')} className="right-icon"><FiChevronRight /></button>
+            <button onClick={() => setIsMockModal(true)}>심터 정보</button>
+            <button onClick={() => setIsMockModal(true)} className="right-icon"><FiChevronRight /></button>
         </Set.Information>
+        <MockModal 
+          isVisible={isMockModal}
+          onClose={() => setIsMockModal(false)}  
+        />
         <Set.Divider/>
         <div/>
         <Set.LogOut>
@@ -122,10 +128,10 @@ function Settings() {
             <button onClick={() => setLogoutModal(true)} className="right-icon"><FiChevronRight /></button>
         </Set.LogOut>
         <LogoutModal
-        isVisible={logoutModal}
-        onClose={() => setLogoutModal(false)}
-        onConfirm={confirmLogout}
-      />
+          isVisible={logoutModal}
+          onClose={() => setLogoutModal(false)}
+          onConfirm={confirmLogout}
+        />
         <Set.DeleteID>
             <button onClick={() => setDeleteAccountModal(true)}> 서비스 탈퇴 </button>
             <button onClick={() => setDeleteAccountModal(true)} className="right-icon"><FiChevronRight /></button>

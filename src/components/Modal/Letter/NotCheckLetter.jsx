@@ -13,7 +13,7 @@ const CheckModal = ({ isVisible, onClose}) => {
       }, 1000); 
       const timer = setTimeout(() => {
         onClose(); 
-      }, 2000); 
+      }, 1500); 
       return () => {
         clearTimeout(fadeOut);
         clearTimeout(timer);

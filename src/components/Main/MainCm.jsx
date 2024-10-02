@@ -7,6 +7,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../redux/user';
 import MailAlert from '../Modal/MailAlert';
+import apiClient from '../../constants/tokenInstance';
 
 export default function MainCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -31,11 +32,7 @@ export default function MainCm() {
 
   const getData = async() => {
     try {
-      const res = await axios.get(`${serverURL}/api/v1/main`, {
-        headers : {
-          'Authorization' : `Bearer ${accessToken} ${refreshToken}`
-        }
-      })
+      const res = await apiClient.get(`/api/v1/main`)
       let data = res.data.data;
       dispatch(setLogin({nickname: data.nickname}));
       localStorage.setItem('nickname', data.nickname);

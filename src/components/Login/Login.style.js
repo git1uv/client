@@ -96,7 +96,7 @@ export const Title = styled.div`
   }
   h1 {
     margin: 7% 0 0 0;
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     font-weight: 600;
     font-size: 1.8rem;
     @media (max-width: 1470px) {
@@ -111,7 +111,7 @@ export const Title = styled.div`
   }
   h2 {
     margin: 0.6rem 0 0 0;
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     font-weight: 300;
     font-size: 1rem;
     @media (max-width: 1470px) {
@@ -155,7 +155,7 @@ export const Input = styled.div`
     font-size: 1rem;
   }
   input::placeholder {
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
@@ -183,7 +183,7 @@ export const Input = styled.div`
   p {
     margin: 0;
 
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
@@ -205,7 +205,6 @@ export const FindPw = styled.div`
     border: none;
     color: black;
 
-    font-family: 'Pretendard';
     font-weight: 700;
     font-size: 1rem;
     text-align: center;
@@ -216,7 +215,7 @@ export const FindPw = styled.div`
   h6 {
     margin: 0;
 
-    font-family: 'Pretendard';
+    font-family: 'Pretendard-Regular';
     font-style: normal;
     font-weight: 300;
     font-size: 1rem;
@@ -244,7 +243,7 @@ export const LoginButton = styled.button`
   background: #FBEEA0;
   border: none;
 
-  font-family: 'Pretendard';
+  font-family: 'Pretendard-Regular';
   font-style: normal;
   font-weight: 500;
   font-size: 1.25rem;

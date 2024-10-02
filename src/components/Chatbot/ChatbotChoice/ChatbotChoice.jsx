@@ -8,6 +8,7 @@ import { SliderSwiper } from './SliderSwiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import axios from 'axios';
+import apiClient from '../../../constants/tokenInstance';
 
 export default function ChatbotChoice()  {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -36,12 +37,8 @@ export default function ChatbotChoice()  {
       selectedChatbot = 'T'
 
     try {
-      const res = await axios.post(`${serverURL}/api/v1/chatbot/session`, {
+      const res = await apiClient.post(`/api/v1/chatbot/session`, {
         chatbotType: selectedChatbot
-      },{
-        headers: {
-          'Authorization': `Bearer ${accessToken} ${refreshToken}`
-        }
       });
       console.log(res.data);
       localStorage.setItem('counselingLogId', res.data.data.counselingLogId);

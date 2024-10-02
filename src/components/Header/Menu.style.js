@@ -38,7 +38,8 @@ export const ModalButton = styled.button`
   background-color: transparent;
   border: none;
   color: #27272A;
-  font-family: Pretendard;
+  font-family: SeoulHangangLight;
+  font-weight: 300;
   img{
     margin-right: 15px;
     height: 4vh; 

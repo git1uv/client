@@ -226,7 +226,7 @@ export const NotesTextarea = styled.textarea`
       #739B8B 1.75rem, #739B8B 1.875rem, 
       transparent 1.875rem);
   color: #000;
-  font-family: SeoulHangang;
+  font-family: SeoulHangangLight;
   font-style: normal;
   font-weight: 400;
   line-height: 1.75rem;
@@ -418,7 +418,7 @@ export const CheckBox = styled.input.attrs({ type: 'checkbox' })`
 export const Todo = styled.div`
   width: 90%; 
   margin: 0.5% 1.5%;
-  font-family: SeoulHangang;
+  font-family: SeoulHangangLight;
   font-style: normal;
   font-weight: 400;
   line-height: 22px;

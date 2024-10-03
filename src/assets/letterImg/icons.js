@@ -15,4 +15,7 @@ import heart from './Heart.webp';
 import check from './check.webp';
 import trash from './delete.webp';
 
-export {notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, bg, mailbox_mobile, Fface, Tface, Hface, heart, Emptyheart, check, trash};
+import all from './all.webp'
+import notRead from './notRead.webp'
+
+export {all, notRead, notreadO, notreadX, allO, allX, favoriteO, favoriteX, mailbox, bg, mailbox_mobile, Fface, Tface, Hface, heart, Emptyheart, check, trash};

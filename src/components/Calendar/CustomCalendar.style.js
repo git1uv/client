@@ -74,7 +74,7 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__navigation button {
     font-weight: bold;
     font-size: 2rem;
-    font-family: SeoulHangang;
+    font-family: SeoulHangangLight;
     line-height: 22px; 
     color: #4C434E;
     margin: 0 1vw;

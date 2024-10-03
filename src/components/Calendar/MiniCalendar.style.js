@@ -92,7 +92,7 @@ export const MiniCalendarWrapper = styled.div`
   }
   .react-calendar__navigation button {
     font-weight: bold;
-    font-family: SeoulHangang;
+    font-family: SeoulHangangLight;
     line-height: 22px; 
     font-size: 1.5rem;
     margin: 0 0.3vw !important;
@@ -117,7 +117,7 @@ export const MiniCalendarWrapper = styled.div`
     font-size: 0.94rem;
     line-height: 22px; 
     color: #000;
-    font-family: SeoulHangang;
+    font-family: SeoulHangangLight;
 
   }
   .react-calendar__month-view__weekdays{
@@ -134,8 +134,8 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__month-view__days__day abbr { 
     color: #78716C;
     text-align: center;
-    font-family: Pretendard;
-    font-size: 1rem;
+    font-family: SeoulHangangLight;
+    font-size: 0.94rem;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; 

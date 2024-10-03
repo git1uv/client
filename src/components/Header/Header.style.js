@@ -75,9 +75,10 @@ export const HeaderButton = styled.button`
   background-color: transparent;
   writing-mode: horizontal-tb; 
   white-space: nowrap; 
-  font-family: SeoulHangang;
-  font-style: normal;
-  font-weight: 400;
+
+  font-family: SeoulHangangLight;
+  font-style: lighter;
+  font-weight: 200;
   line-height: 22px;
   color: ${({ active }) => (active ? '#ED6243' : '#4C434E')}; 
   text-align: center; 

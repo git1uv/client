@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import room from "../../../assets/main/room.webp";
+import room from "../../../assets/main/room-small.avif";
 import { chatbot, calendar, mailbox, pencilHolder, trash} from '../../../assets/main/icons'
 import morningMobile from "../../../assets/main/sky/morningMobile.webp"
 import eveningMobile from "../../../assets/main/sky/eveningMobile.webp"

@@ -94,12 +94,12 @@ export default function MainCm() {
     <>
       <S.Container time={time}>
         <S.Room>
-        <S.Trash onClick={() => navigate('/trash')}/>
-        <S.Airplane src={airplaneIcon} isExistAirplane={isExistAirplane} onClick={() => setAirplaneModal(true)}/>
-        <S.Calendar onClick={() => navigate('/calendar')}/>
-        <S.Chatbot onClick={() => navigate('/chatbot/choice')}/>
-        <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
-        <S.Mailbox onClick={() => navigate('/letter')}/>
+          <S.Trash onClick={() => navigate('/trash')}/>
+          <S.Airplane src={airplaneIcon} isExistAirplane={isExistAirplane} onClick={() => setAirplaneModal(true)}/>
+          <S.Calendar onClick={() => navigate('/calendar')}/>
+          <S.Chatbot onClick={() => navigate('/chatbot/choice')}/>
+          <S.PencilHolder onClick={() => navigate('/pencilholder')}/>
+          <S.Mailbox onClick={() => navigate('/letter')}/>
         </S.Room>
         {airplaneModal && <Airplane setAirplaneModal={setAirplaneModal} setIsExistAirplane={setIsExistAirplane} />} 
       </S.Container>

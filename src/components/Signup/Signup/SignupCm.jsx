@@ -8,6 +8,7 @@ import check from '../../../assets/Check.webp'
 import { useDispatch, useSelector } from 'react-redux';
 import { setAccount, setLoginType } from '../../../redux/user'
 import axios from 'axios';
+import MockModal from '../../Modal/MockModal';
 
 export default function SignupCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -20,6 +21,8 @@ export default function SignupCm() {
   const [confirmPw, setConfirmPw] = useState('');
   const [isValidEmail, setIsValidEmail] = useState();
   const [isAllValid, setIsAllValid] = useState(false);
+
+  const [isMockModal, setIsMockModal] = useState(false);
 
   const user = useSelector((state) => state.user);
 
@@ -121,6 +124,7 @@ export default function SignupCm() {
   }
 
   return (
+  <>
     <T.Container>
       <T.Wrapper>
         <T.Title>
@@ -195,7 +199,7 @@ export default function SignupCm() {
           onClick={handleSubmit}>계속하기</T.LoginButton>
         <S.TermsBox>
           <h6>회원가입 하시면</h6>
-          <button onClick={() => navigate('/terms')}>이용약관</button>
+          <button onClick={() => setIsMockModal(true)}>이용약관</button>
           <h6>에 동의하는 것으로 간주됩니다.</h6>
         </S.TermsBox>
         <S.Divider/>
@@ -205,5 +209,10 @@ export default function SignupCm() {
         </S.TermsBox>
       </T.Wrapper>
     </T.Container>
+    <MockModal
+      isVisible={isMockModal}
+      onClose={() => setIsMockModal(false)}  
+    />
+    </>
   )
 }

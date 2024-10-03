@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import webp from '../../assets/trashImg/delete.webp'
 
 
+
 const DeletePaperModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
   const navigate = useNavigate();

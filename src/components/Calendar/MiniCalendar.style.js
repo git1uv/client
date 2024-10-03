@@ -128,23 +128,20 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__month-view__days__day {
     padding: 1%;
   }
-  .react-calendar__month-view__days__day abbr { 
+  .react-calendar__tile--now {
+    background: white;
+    border: 2px solid #d9d9d9 !important;
+    border-radius: 15px;
+  }
+  .react-calendar__tile--now.react-calendar__month-view__days__day abbr{
     color: #000;
+    background-color: white;
     text-align: center;
     font-family: SeoulHangangLight;
     font-size: 0.94rem;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; 
-  }
-  .react-calendar__tile--now {
-    background: white;
-    border: 2px solid #d9d9d9 !important;
-    border-radius: 15px;
-  }
-  .react-calendar__tile--now abbr {
-    color: #000;
-    background: none;
     width: 100%;
     height: 100%;
   }
@@ -177,13 +174,19 @@ export const MiniCalendarWrapper = styled.div`
 
   }
   
-  /* 네비게이션 월 스타일 적용 */
-  .react-calendar__year-view__months__month {
-  
+  .react-calendar__tile--now.react-calendar__year-view__months__month abbr  { 
+    color: #FFCB3A; 
   }
   .react-calendar__tile.highlight {
     background-color: #FFCB3A !important;
     border-radius: 15px;
+  }
+  .react-calendar__year-view .react-calendar__tile, 
+  .react-calendar__decade-view .react-calendar__tile, 
+  .react-calendar__century-view .react-calendar__tile {
+    @media (min-width: 431px) and (max-width: 1024px) {
+      padding: 5%;
+    }
   }
 
 `;

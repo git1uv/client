@@ -195,6 +195,11 @@ export const StyledCalendarWrapper = styled.div`
   .react-calendar__year-view__months__month:hover { 
     background-color: #e6e6e6 !important;
   }
+  .react-calendar__year-view .react-calendar__tile, 
+  .react-calendar__decade-view .react-calendar__tile, 
+  .react-calendar__century-view .react-calendar__tile {
+    padding: 2em 0.5em;
+  }
   
 `;
 

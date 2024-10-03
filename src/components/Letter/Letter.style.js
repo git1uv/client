@@ -253,6 +253,7 @@ export const LetterContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
   @media (max-width: 430px) {
     height: 50px;
     margin-left: 2%;

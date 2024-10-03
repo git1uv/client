@@ -128,6 +128,15 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__month-view__days__day {
     padding: 1%;
   }
+  .react-calendar__month-view__days__day abbr { 
+    color: #78716C;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
+  }
   .react-calendar__tile--now {
     background: white;
     border: 2px solid #d9d9d9 !important;

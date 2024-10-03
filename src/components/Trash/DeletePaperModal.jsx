@@ -2,18 +2,18 @@ import React, { useState, useEffect, useRef } from 'react';
 import * as M from '../Modal/LogoutModal.style';
 import x from '../../assets/x.webp';
 import { useNavigate } from 'react-router-dom';
-import gif from '../../assets/trashImg/delete.webp';
+import webp from '../../assets/trashImg/delete.webp'
 
 const DeletePaperModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
   const navigate = useNavigate();
-  const [gifSrc, setGifSrc] = useState(gif);
+  const [webpSrc, setwebpSrc] = useState(webp);
   const [open, setOpen] = useState(false);
   const [fadingOut, setFadingOut] = useState(false);
 
   useEffect(() => {
     if (isVisible) {
-      setGifSrc(`${gif}?${new Date().getTime()}`);
+      setwebpSrc(`${webp}?${new Date().getTime()}`);
       setOpen(true); 
       setFadingOut(false);
     } else {
@@ -32,7 +32,7 @@ const DeletePaperModal = ({ isVisible, onClose, onConfirm }) => {
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
       <M.LogoutModal fadingOut={fadingOut}>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
-        <M.DeleteGif src={gifSrc} alt="GIF" /> 
+        <M.Deletewebp src={webpSrc} alt="webp" /> 
         <M.LogoutModalTitle>작성한 내용을 쓰레기통에 버렸어요!</M.LogoutModalTitle>
         <M.ModalActions>
           <M.CancelButton onClick={() => navigate('/main')}>홈으로 돌아가기</M.CancelButton>

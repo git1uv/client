@@ -31,10 +31,10 @@ function MiniCalendar() {
       if (response.data.code === "200") {
         setCounselingDays(response.data.data);
       } else {
-        console.error("달력 불러오기 실패:", response.data.message);
+        // console.error("달력 불러오기 실패:", response.data.message);
       }
     } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
+      // console.error("API 호출 중 오류 발생:", error);
     }
   };
 

@@ -66,9 +66,9 @@ export default function Browser() {
         }
       })
       openSecondModal();
-      console.log(res.data);
+      // console.log(res.data);
     } catch (err){
-      console.log(err);
+      // console.log(err);
       window.alert('종이 보내기에 실패하였습니다. 다시 시도해주세요.');
     }
   }

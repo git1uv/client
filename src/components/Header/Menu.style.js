@@ -41,6 +41,8 @@ export const ModalButton = styled.button`
   cursor: pointer;
   font-family: SeoulHangangLight;
   font-weight: 300;
+
+  cursor: pointer;
   img{
     margin-right: 15px;
     height: 4vh; 

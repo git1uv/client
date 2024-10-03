@@ -45,7 +45,7 @@ export default function ResultMobile() {
             }
         });
     } catch (error) {
-        console.error("Error converting div to image:", error);
+        // console.error("Error converting div to image:", error);
     }
   };
 
@@ -75,7 +75,7 @@ export default function ResultMobile() {
           'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       });
-      console.log(res.data);
+      // console.log(res.data);
       let data = res.data.data
       dispatch(setSolution({
         counselingLogId: data.counselingLogId,
@@ -88,7 +88,7 @@ export default function ResultMobile() {
       const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
-      console.log(formatDate);
+      // console.log(formatDate);
       
       let chatbotType = data.chatbotType;
       if (chatbotType === 'F')
@@ -99,7 +99,7 @@ export default function ResultMobile() {
         setChatbot('뉴러니');
 
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 

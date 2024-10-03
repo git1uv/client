@@ -3,9 +3,10 @@ import * as L from "../components/Letter/Letter.style";
 import Letter from '../components/Modal/Letter/ChatLetter';
 import styled from "styled-components";
 import axios from 'axios';
-import {Fface, Tface, Hface, heart, Emptyheart} from '../assets/letterImg/icons';
+import {Fface, Tface, Hface, heart, Emptyheart, all, notRead} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
 import CheckLetterModal from '../components/Modal/Letter/NotCheckLetter';
+
 
 const LetterWrapper = styled.div`
   display: flex;
@@ -23,6 +24,11 @@ function Mailbox() {
   const [seeAllActive, setSeeAllActive] = useState(true);
   const [seeFavoritesActive, setSeeFavoritesActive] = useState(false);
   const [seeNotReadActive, setSeeNotReadActive] = useState(false);
+  const [isActive, setIsActive] = useState({
+    seeAllActive: true,
+    seeFavoritesActive: false,
+    seeNotReadActive: false
+  })
   const [mailDetails, setMailDetails] = useState(null);
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const [isCheckModalVisible, setCheckModalVisible] = useState(false);
@@ -43,14 +49,14 @@ function Mailbox() {
       if (response.data.code === "200") {
         setMails(response.data.data.mails);
       } else if (response.data.code === "MAIL5001") {
-        console.error("편지 가져오기 실패:", response.data.message);
+        // console.error("편지 가져오기 실패:", response.data.message);
         setMails([]);
       } else {
-        console.error("편지가 없습니다:", response.data.message);
+        // console.error("편지가 없습니다:", response.data.message);
         setMails([]);
       }
     } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
+      // console.error("API 호출 중 오류 발생:", error);
       setMails([]);
     }
   };
@@ -80,12 +86,12 @@ function Mailbox() {
           fetchMails('all');
         }
       } else if(response.data.code === "MAIL5001"){
-        console.error("편지 가져오기 실패:", response.data.message);
+        // console.error("편지 가져오기 실패:", response.data.message);
       } else {
-        console.error("편지가 없습니다:", response.data.message);
+        // console.error("편지가 없습니다:", response.data.message);
       }
     } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
+      // console.error("API 호출 중 오류 발생:", error);
     }
   };
 
@@ -98,7 +104,7 @@ function Mailbox() {
       });
 
       if (response.data.code === '200') {
-        console.log('즐겨찾기 상태 변경 성공');
+        // console.log('즐겨찾기 상태 변경 성공');
         const updatedMails = mails.map((mail) =>
           mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
         );
@@ -108,14 +114,14 @@ function Mailbox() {
         }
 
       } else if (response.data.code === "MAIL5001") {
-        console.error("실패:", response.data.message);
+        // console.error("실패:", response.data.message);
         setMails(mails);
       } else {
         setMails(mails);
-        console.error("메일이 없습니다", response.data.message);
+        // console.error("메일이 없습니다", response.data.message);
       }
     } catch (error) {
-      console.error('즐겨찾기 요청 중 오류 발생:', error);
+      // console.error('즐겨찾기 요청 중 오류 발생:', error);
       setMails(mails);
     }
   
@@ -135,22 +141,46 @@ function Mailbox() {
       }
     };
   
+  // const handleSeeAllToggle = () => {
+  //   setSeeAllActive(true);
+  //   setSeeFavoritesActive(false);
+  //   setSeeNotReadActive(false);
+  //   fetchMails('all');
+  // };
+  // const handleSeeFavoritesToggle = () => {
+  //   setSeeFavoritesActive(true);
+  //   setSeeAllActive(false);
+  //   setSeeNotReadActive(false);
+  //   fetchMails('starred');
+  // }; 
+  // const handleSeeNotReadToggle = () => {
+  //   setSeeNotReadActive(true);
+  //   setSeeAllActive(false);
+  //   setSeeFavoritesActive(false);
+  //   fetchMails('notRead');
+  // };
   const handleSeeAllToggle = () => {
-    setSeeAllActive(true);
-    setSeeFavoritesActive(false);
-    setSeeNotReadActive(false);
+    setIsActive({
+      seeAllActive: true,
+      seeFavoritesActive: false,
+      seeNotReadActive: false
+    })
     fetchMails('all');
   };
   const handleSeeFavoritesToggle = () => {
-    setSeeFavoritesActive(true);
-    setSeeAllActive(false);
-    setSeeNotReadActive(false);
+    setIsActive({
+      seeAllActive: false,
+      seeFavoritesActive: true,
+      seeNotReadActive: false
+    })
     fetchMails('starred');
   }; 
   const handleSeeNotReadToggle = () => {
-    setSeeNotReadActive(true);
-    setSeeAllActive(false);
-    setSeeFavoritesActive(false);
+    setIsActive({
+      seeAllActive: false,
+      seeFavoritesActive: false,
+      seeNotReadActive: true
+    })
     fetchMails('notRead');
   };
 
@@ -184,10 +214,10 @@ function Mailbox() {
         setMails((prevMails) => prevMails.filter(mail => !mailIdsToDelete.includes(mail.mailId)));
         setDeleteModalVisible(false);
       } else {
-        console.error('실패:', response.data.message);
+        // console.error('실패:', response.data.message);
       }
     } catch (error) {
-      console.error('실패:', error);
+      // console.error('실패:', error);
     }
   };
 
@@ -202,9 +232,23 @@ function Mailbox() {
     <L.Container>
       <L.Mailbox>
           <L.TopRow>
-            <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
+            {/* <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
             <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
-            <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} />
+            <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} /> */}
+             <L.TopIcons onClick={handleSeeAllToggle} active={isActive.seeAllActive}>
+                <img src={all} alt="모두보기" />
+                <p>모두보기</p>
+              </L.TopIcons>
+
+              <L.TopIcons onClick={handleSeeFavoritesToggle} active={isActive.seeFavoritesActive}>
+                <img src={heart} alt="즐겨찾기" />
+                <p>즐겨찾기</p>
+              </L.TopIcons>
+
+              <L.TopIcons onClick={handleSeeNotReadToggle} active={isActive.seeNotReadActive}>
+                <img src={notRead} alt="안읽음" />
+                <p>안읽음</p>
+              </L.TopIcons>
             <L.Delete onClick={() => {
               if (selectedMailIds.length === 0) {
                   setCheckModalVisible(true);
@@ -252,7 +296,7 @@ function Mailbox() {
             </L.LetterContainer>
           ))}
           </L.Letters>
-           ) : null} 
+           ) : <L.EmptyLetter>편지가 없어요 :( </L.EmptyLetter>} 
           </L.LettersWrapper>
       </L.Mailbox>
       {isLetterModalVisible && mailDetails && (

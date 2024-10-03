@@ -47,7 +47,7 @@ function Settings() {
         navigate('/login');
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   };
   const confirmDeleteAccount = async () => {
@@ -68,12 +68,12 @@ function Settings() {
       );
  
       if (response.status === 200) {
-        console.log('사용자 탈퇴 성공:', response.data.message);
+        // console.log('사용자 탈퇴 성공:', response.data.message);
         localStorage.removeItem('token'); 
         navigate('/');
       }
     } catch (error) {
-      console.error('사용자 탈퇴 실패:', error.response?.data?.message || error.message);
+      // console.error('사용자 탈퇴 실패:', error.response?.data?.message || error.message);
       setErrorMessage('탈퇴에 실패했습니다. 다시 시도해 주세요.');
     }
   };
@@ -144,7 +144,7 @@ function Settings() {
       </Set.Container>
       <Set.Footer>
           <Set.DeveloperInformation>
-            <button onClick={() => navigate('/developer')}> 
+            <button onClick={() => {window.location.href = 'https://github.com/git1uv'}}> 
               깃러브
               <br />
               개발자 정보

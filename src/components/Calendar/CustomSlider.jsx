@@ -84,7 +84,7 @@ function CustomSlider({ logs, getChatbotName }) {
 
   const handleSlideClick = (logId, logChatbotType) => {
     localStorage.setItem('counselingLogId', logId);
-    console.log(logChatbotType);
+    // console.log(logChatbotType);
     dispatch(setCounseling({
       counselingLogId: logId,
       chatbotType: logChatbotType

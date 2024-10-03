@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImg from "../../assets/backgroundImg.webp"
+import backgroundImg from "../../assets/backgroundImg.avif"
 import theme from "../../constants/theme";
 // import kakao from '../../assets/login/kakao.webp'
 import kakaoOnly from '../../assets/login/kakao_login_medium_wide.webp'
@@ -21,9 +21,10 @@ export const Container = styled.div`
     height: 100dvh;
   }
 
-  background-image: url(${backgroundImg});
+  background-image: url(${(props) => props.bgImage});
   background-size: cover;
   background-position: center;
+  background-color: #FFF;
 
   &::before {
     content: "";
@@ -282,6 +283,7 @@ export const SocialLogin = styled.div`
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: transparent;
 
 
     // &:first-child {

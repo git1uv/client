@@ -29,9 +29,9 @@ const Img = styled.img`
 
 const Button = styled.button`
     position: absolute; 
-    bottom: 0.5%;
-    left: 50%;
-    transform: translateX(-50%); 
+    bottom: calc(0.5%);
+    left: calc(15%);
+    
     background: transparent;
     width: 70%;
     height: 3%;
@@ -39,10 +39,12 @@ const Button = styled.button`
     // border: 1px solid black;
     margin-bottom: 7.9%;
     
-    @media (max-width: 430px) {
+    @media (max-width: 768px) {
         margin-bottom: 18%;
         width: 92%;
         height: 2.6%;
+        bottom: calc(0.55%);
+        left: calc(4%);
     }
 `;
 

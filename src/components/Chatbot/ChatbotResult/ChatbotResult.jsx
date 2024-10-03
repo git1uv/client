@@ -13,7 +13,7 @@ import Icon1 from '../../../assets/chatbot/result/journal1.png.webp'
 import Icon2 from '../../../assets/chatbot/result/journal2.png.webp'
 import Icon3 from '../../../assets/chatbot/result/journal3.png.webp'
 import axios from 'axios';
-import { setSolution } from '../../../redux/solution';
+import { setCounseling, setSolution } from '../../../redux/solution';
 import { useLocation, useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
@@ -25,11 +25,14 @@ export default function ChatbotResult() {
 
   let result = localStorage.getItem('result');
   let counselingLogId = localStorage.getItem('counselingLogId');
-
+  
   let [endDate, setEndDate] = useState('');
   const [chatbot, setChatbot] = useState('');
-
+  const [chatbotImg, setChatbotImg] = useState('');
+  
   const solution = useSelector((state) => state.solution);
+  // let counselingLogId = solution.counselingLogId;
+
   const componentRef = useRef(null); 
   
   const navigate = useNavigate();
@@ -47,7 +50,7 @@ export default function ChatbotResult() {
             }
         });
     } catch (error) {
-        console.error("Error converting div to image:", error);
+        // console.error("Error converting div to image:", error);
     }
   };
 
@@ -60,32 +63,41 @@ export default function ChatbotResult() {
           'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       });
-      console.log(res.data);
+      // console.log(res.data);
       let data = res.data.data
       dispatch(setSolution({
-        counselingLogId: data.counselingLogId,
-        chatbotType: data.chatbotType,
         title: data.title,
         summary: data.summary,
         suggestion: data.suggestion,
         solutions: data.solutions,
-        endedAt: data.endedAt,
+				endedAt: data.endedAt
       }));
+      dispatch(setCounseling({
+        counselingLogId: data.counselingLogId,
+        chatbotType: data.chatbotType
+      }));
+      
       const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
-      console.log(formatDate);
+      // console.log(formatDate);
 
       let chatbotType = data.chatbotType;
-      if (chatbotType === 'F')
+      if (chatbotType === 'F') {
         setChatbot('심마음');
-      else if (chatbotType === 'H')
+        setChatbotImg(Simmaeum);
+      }
+      else if (chatbotType === 'H') {
         setChatbot('반바니');
-      else
+        setChatbotImg(Banbani);
+      }
+      else {
         setChatbot('뉴러니');
+        setChatbotImg(Neuranee);
+      }
 
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 
@@ -105,7 +117,7 @@ export default function ChatbotResult() {
       <S.Container ref={componentRef}>
         <S.Top>
           <S.Header>
-            <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
+            <img src={chatbotImg} alt="Character" />
           </S.Header>
           <S.TitleBox>
             <S.Name>

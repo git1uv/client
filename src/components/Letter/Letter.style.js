@@ -178,8 +178,12 @@ export const LettersWrapper = styled.div`
   display: flex;  
   justify-content: center;
   align-items: flex-start;
+  // padding-top: 1.5%;
+
   border-radius: 55px;
   background-color: #280502;
+
+
   @media (max-width: 430px) {
     width: 92%;
     height: 70%;
@@ -192,6 +196,7 @@ export const LettersWrapper = styled.div`
 export const Letters = styled.div`
   width: 100%;
   height: 90%;
+
   z-index: 4;
   display: grid;
   flex-direction: column;
@@ -228,22 +233,22 @@ export const Letters = styled.div`
     grid-template-rows: repeat(auto-fill, 70px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
   @media (min-width: 1201px) and (max-width: 1470px){
     grid-template-rows: repeat(auto-fill, 80px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
   @media (min-width: 1471px){
     grid-template-rows: repeat(auto-fill, 100px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
 `;
 export const LetterContainer = styled.div`
@@ -252,6 +257,7 @@ export const LetterContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
   @media (max-width: 430px) {
     height: 50px;
     margin-left: 2%;
@@ -271,7 +277,7 @@ export const CheckBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100%; 
   @media (max-width: 430px) {
     width: 10%;
   }
@@ -446,4 +452,56 @@ export const Heart = styled.div`
   }
 `;
 
+export const EmptyLetter = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  color: #CEB3B3;
+  font-size: 1rem;
+  font-family: SeoulHangangLight;
+`
+
+export const TopIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 6%;
+  border-radius: 35%;
+  width: 7rem;
+  height: 7rem;
+  
+  @media (max-width: 1600px) {
+    width: 4rem;
+    height: 4rem;
+  }
+  cursor: pointer;
+  background-color: #EEECE3;
+  margin: 0 2% 5% 2%;
+
+  img {
+    width: 3rem;
+    height: auto;
+    object-fit: cover;
+    @media (max-width: 1600px) {
+      width: 1.5rem;
+    }
+    opacity: ${(props) => (props.active ? '1' : '0.6')};
+  }
+
+  p {
+    color: #52525B;
+    font-family: SeoulHangangLight;
+    font-size: 1rem;
+    @media (max-width: 1600px) {
+      font-size: 0.75rem;
+    }
+    line-height: normal;
+    letter-spacing: -0.01rem;
+    margin: 0;
+  }
+`

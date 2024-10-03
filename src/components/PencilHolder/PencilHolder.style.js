@@ -45,7 +45,8 @@ export const Title = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    
+    align-self: flex-start;
+    width: 100%;
     h1 {
         margin: 0 0 1% 0;
         font-family: 'Pretendard';
@@ -56,9 +57,6 @@ export const Title = styled.div`
 
         @media (max-width: 1470px) {
             font-size: 1.5rem;
-        }
-        @media (max-width: 430px) {
-            font-size: 1.75rem;
         }
     }
     p {
@@ -80,11 +78,12 @@ export const Letter = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 55rem;
+    // width: 55rem;
+    width: 900px;
     height: auto;
 
     @media (max-width: 1470px) {
-        width: 45rem;
+        width: 700px;
         padding: 0;
     }
 
@@ -148,7 +147,8 @@ export const WriteBox = styled.div`
         }
         font-weight: 400;
         line-height: normal;
-        padding-left: 10px;
+        padding-left: 2%;
+
     }
 
     input::placeholder {
@@ -179,7 +179,8 @@ export const WriteBox = styled.div`
         }
         font-weight: 400;
         line-height: normal;
-        padding: 10px;
+        padding-top: 2%;
+        padding-left: 2%;
 
         resize: none;
 
@@ -195,7 +196,8 @@ export const WriteBox = styled.div`
 export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    width: ;
 `
 
 export const SendBtn = styled.div`

@@ -38,7 +38,7 @@ export default function Chatbot() {
   const inputRef = useRef(null);
   const [isChat, setIsChat] = useState(false); // 채팅 시작 여부
   const [message, setMessage] = useState([]); // 사용자와 챗봇이 보낸 메시지들
-  const [input, setInput] = useState(); // input 값
+  const [inputValue, setInputValue] = useState(''); // input 값
   const [current, setCurrent] = useState(); // 보낼 문장
   
   const navigate = useNavigate();
@@ -119,9 +119,9 @@ export default function Chatbot() {
     if (!isChat) {
       setIsChat(true);
     }
-    setCurrent(input);
+    setCurrent(inputValue);
     setMessage((prev) => [...prev, {
-      msg: input,
+      msg: inputValue,
       isUser: true,
     }]);
     textClear();
@@ -134,7 +134,7 @@ export default function Chatbot() {
   }
 
   const ChangeInput = (e) => {
-    setInput(e.target.value);
+    setInputValue(e.target.value);
   }
 
   /* 사용자 메시지 보내기 API*/
@@ -171,15 +171,17 @@ export default function Chatbot() {
       if (redFlag === "true") {
         openRedFlagModal();
       }
-      console.log(res.data);
+      // console.log(res.data);
     } catch(err) {
-      console.log(err);
+      // console.log(err);
       window.alert('메시지 전송을 실패하였습니다. 다시 시도해주세요.');
       setMessage((prevMessages) => {
         const updatedMessages = [...prevMessages];
         updatedMessages.pop(); // 마지막 로딩 메시지 제거
+        updatedMessages.pop(); // 보내지지 않은 메시지도 제거
         return updatedMessages;
       });
+      
     } finally {
       setLoading(false); // 로딩 종료
     }
@@ -241,7 +243,7 @@ export default function Chatbot() {
           onKeyPress={handleKeyPress}
           ref={inputRef}
         />
-        <button disabled={loading || isTyping} onClick={ChangeChat} />
+        <button disabled={loading || isTyping || inputValue === ''} onClick={ChangeChat} />
       </T.InputBox>
       </S.Bottom>
       <FirstModal

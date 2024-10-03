@@ -8,6 +8,7 @@ import Neuranee from '../../../assets/chatbot/test/Neuranee.png.webp'
 import chatbotInfo from '../../../datas/chatbot'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import apiClient from '../../../constants/tokenInstance'
 
 export default function TestResult() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -25,26 +26,24 @@ export default function TestResult() {
 
   const navigate = useNavigate();
 
-  /* 테스트 통해서 정해진 챗봇 설정 API */
-  const patchChatbot = async() => {
+  const postSelectedChatbot = async() => {
     if (result === 'Neuranee')
       setChatbot('T');
     else if (result === 'Banbani')
       setChatbot('H');
     else
       setChatbot('F');
+
     try {
-      const res = await axios.patch(`${serverURL}/api/v1/chatbot/update`, {
-        'chatbot': chatbot
-      }, {
-        headers: {
-          'Authorization': `Bearer ${accessToken} ${refreshToken}`
-        }
+      const res = await apiClient.post(`/api/v1/chatbot/session`, {
+        chatbotType: chatbot
       });
+      // console.log(res.data);
+      localStorage.setItem('counselingLogId', res.data.data.counselingLogId);
       navigate('/chatbot');
-      console.log(res.data);
     } catch(err) {
-      console.log(err)
+        // console.log(err);
+        // console.log('서버 에러, 관리자에게 문의 바랍니다.');
     }
   }
 
@@ -83,7 +82,7 @@ export default function TestResult() {
         </S.SpeechBubble>
         <S.BtnBox>
           <button onClick={() => navigate('/chatbot/choice')}>다른 캐릭터 보러가기</button>
-          <button onClick={() => patchChatbot()}>대화를 시작할까?</button>
+          <button onClick={() => postSelectedChatbot()}>대화를 시작할까?</button>
         </S.BtnBox>
       </S.Container>
     </S.App>

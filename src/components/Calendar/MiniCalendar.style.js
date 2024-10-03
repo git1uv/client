@@ -134,6 +134,7 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__month-view__days__day abbr { 
     color: #78716C;
     text-align: center;
+
     font-family: SeoulHangangLight;
     font-size: 0.94rem;
     font-style: normal;
@@ -149,7 +150,7 @@ export const MiniCalendarWrapper = styled.div`
     color: #000;
     background-color: transparent;
     text-align: center;
-    font-family: SeoulHangang;
+    font-family: SeoulHangangLight;
     font-size: 0.94rem;
     font-style: normal;
     font-weight: 400;

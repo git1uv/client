@@ -24,13 +24,15 @@ export default function ChatbotResult() {
   const refreshToken = localStorage.getItem('refreshToken');
 
   let result = localStorage.getItem('result');
-  let counselingLogId = localStorage.getItem('counselingLogId');
-
+  // let counselingLogId = localStorage.getItem('counselingLogId');
+  
   let [endDate, setEndDate] = useState('');
   const [chatbot, setChatbot] = useState('');
   const [chatbotImg, setChatbotImg] = useState('');
-
+  
   const solution = useSelector((state) => state.solution);
+  let counselingLogId = solution.counselingLogId;
+
   const componentRef = useRef(null); 
   
   const navigate = useNavigate();

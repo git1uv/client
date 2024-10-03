@@ -57,7 +57,7 @@ function Browser({ date }) {
 
   useEffect(() => {
     if (!accessToken || !refreshToken) {
-      console.error("토큰이 없습니다.");
+      // console.error("토큰이 없습니다.");
       return;
     }
     const fetchDiaryData = async () => {

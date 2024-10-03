@@ -94,10 +94,6 @@ export default function SettingNameCm() {
 
   /* 일반 회원가입 API : 연결하면 주석 풀기 */
   const postRegister = async() => {
-    console.log('email : ', user.email);
-    console.log('password : ', user.password);
-    console.log('nickname : ', nickname);
-    console.log('loginType : ', user.loginType);
     try {
       const res = await axios.post(`${serverURL}/api/v1/register/general`, {
         email: user.email,
@@ -105,11 +101,11 @@ export default function SettingNameCm() {
         nickname: nickname,
         loginType: user.loginType
       })
-      console.log(res.data);
+      // console.log(res.data);
       window.alert('심터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
       navigate('/login');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
   /* 소셜 로그인 회원가입 API : 연결하면 주석 풀기 */
@@ -125,11 +121,11 @@ export default function SettingNameCm() {
           refreshToken: refreshToken
         }
       })
-      console.log(res.data);
+      // console.log(res.data);
       // window.alert('심ㅌ터에 오신 것을 환영합니다! 로그인창으로 이동합니다 :)');
       navigate('/main');
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 

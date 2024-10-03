@@ -171,9 +171,9 @@ export default function Chatbot() {
       if (redFlag === "true") {
         openRedFlagModal();
       }
-      console.log(res.data);
+      // console.log(res.data);
     } catch(err) {
-      console.log(err);
+      // console.log(err);
       window.alert('메시지 전송을 실패하였습니다. 다시 시도해주세요.');
       setMessage((prevMessages) => {
         const updatedMessages = [...prevMessages];

@@ -100,20 +100,20 @@ export default function Common({openModal}) {
       navigate('/main')
     } catch(err) {
       window.alert('가입되지 않은 이메일이거나 비밀번호가 맞지 않습니다.');
-      console.log(err);
+      // console.log(err);
     }
   }
 
   const login = useGoogleLogin({
     clientId: G_CLIENT_ID,
     onSuccess: res => {
-      console.log(res);
+      // console.log(res);
       localStorage.setItem('accessToken', res.access_token);
       navigate('/main')
       // 구글 로그인 성공 시 처리할 로직
     },
     onError: err => {
-      console.log(err);
+      // console.log(err);
       // 구글 로그인 실패 시 처리할 로직
     },
   });

@@ -30,7 +30,7 @@ function Airplane({setAirplaneModal, setIsExistAirplane}) {
                 }
             });
         } catch (error) {
-            console.error("Error converting div to image:", error);
+            // console.error("Error converting div to image:", error);
         }
 
     };
@@ -51,10 +51,10 @@ function Airplane({setAirplaneModal, setIsExistAirplane}) {
                     setDate(createdAt);
                     setIsExistAirplane(false);
                 } else {
-                    console.error('Failed to fetch letter data');
+                    // console.error('Failed to fetch letter data');
                 }
             } catch (error) {
-                console.error('Error fetching letter data:', error);
+                // console.error('Error fetching letter data:', error);
             }
         };
         fetchLetterData();

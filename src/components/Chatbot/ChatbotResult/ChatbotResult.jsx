@@ -28,6 +28,7 @@ export default function ChatbotResult() {
 
   let [endDate, setEndDate] = useState('');
   const [chatbot, setChatbot] = useState('');
+  const [chatbotImg, setChatbotImg] = useState('');
 
   const solution = useSelector((state) => state.solution);
   const componentRef = useRef(null); 
@@ -63,26 +64,31 @@ export default function ChatbotResult() {
       console.log(res.data);
       let data = res.data.data
       dispatch(setSolution({
-        counselingLogId: data.counselingLogId,
-        chatbotType: data.chatbotType,
         title: data.title,
         summary: data.summary,
         suggestion: data.suggestion,
         solutions: data.solutions,
         endedAt: data.endedAt,
       }));
+
       const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
       console.log(formatDate);
 
       let chatbotType = data.chatbotType;
-      if (chatbotType === 'F')
+      if (chatbotType === 'F') {
         setChatbot('심마음');
-      else if (chatbotType === 'H')
+        setChatbotImg(Simmaeum);
+      }
+      else if (chatbotType === 'H') {
         setChatbot('반바니');
-      else
+        setChatbotImg(Banbani);
+      }
+      else {
         setChatbot('뉴러니');
+        setChatbotImg(Neuranee);
+      }
 
     } catch(err) {
       console.log(err);
@@ -105,7 +111,7 @@ export default function ChatbotResult() {
       <S.Container ref={componentRef}>
         <S.Top>
           <S.Header>
-            <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
+            <img src={chatbotImg} alt="Character" />
           </S.Header>
           <S.TitleBox>
             <S.Name>

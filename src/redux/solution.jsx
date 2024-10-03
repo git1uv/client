@@ -26,17 +26,20 @@ const solution = createSlice({
 		},
 		reducers: {
 			setSolution(state, action) {
-				const {counselingLogId, chatbotType, title, summary, suggestion, solutions, endedAt} = action.payload;
-				state.counselingLogId = counselingLogId;
-				state.chatbotType = chatbotType;
+				const {title, summary, suggestion, solutions, endedAt} = action.payload;
 				state.title = title;
 				state.summary = summary;
 				state.suggestion = suggestion;
 				state.solutions = solutions;
 				state.endedAt = endedAt;
 			},
+			setCounseling(state, action) {
+				const {counselingLogId, chatbotType} = action.payload;
+				state.counselingLogId = counselingLogId;
+				state.chatbotType = chatbotType;
+			},
 		}
 })
 
-export const {setSolution} = solution.actions;
+export const {setSolution, setCounseling} = solution.actions;
 export default solution.reducer;

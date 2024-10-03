@@ -75,6 +75,7 @@ export const Text = styled.div`
   justify-content: flex-end;
   align-items: center;
   text-align: center;
+  white-space: nowrap;
   border: none;
   background-color: transparent;
   color: #fff;

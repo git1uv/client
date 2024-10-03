@@ -83,6 +83,7 @@ export const ModalCloseButton = styled.button`
   position: absolute;
   background: none;
   border: none;
+  cursor: pointer;
   color: #27272A;
   img{
     height: 2.7vh;
@@ -108,6 +109,7 @@ export const EmotionImg = styled.div`
   display: flex;
   justify-content: center;
   align-items: center; 
+  cursor: pointer;
   @media (min-width: 1601px){
     img{
       width: 5rem;

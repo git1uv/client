@@ -101,6 +101,9 @@ export const MiniCalendarWrapper = styled.div`
       font-size: 2rem;
       margin: 0 0.5vw !important;
     }
+    @media (min-width: 769px) and (max-width: 1024px){
+      font-size: 1rem;
+    }
   }
   .react-calendar__navigation button:focus {
     background-color: white;
@@ -132,7 +135,7 @@ export const MiniCalendarWrapper = styled.div`
     color: #78716C;
     text-align: center;
     font-family: Pretendard;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; 

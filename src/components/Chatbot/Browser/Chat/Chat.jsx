@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './Chat.style'
 import * as T from '../ChatbotBox/ChatbotBox.style'
-import icon from '../../../../assets/chatbot/loading_icon.gif' // 나중에 꼭 바꾸기!!!
+import icon from '../../../../assets/chatbot/loading_icon.webp' // 나중에 꼭 바꾸기!!!
 export default function Chat({message, counseling, loading, isTyping, setIsTyping}) {
   const chatbot = localStorage.getItem('result');
   const [animatedMessage, setAnimatedMessage] = useState(''); // 타이핑 중인 메시지

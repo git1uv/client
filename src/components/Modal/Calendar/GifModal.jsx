@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import Firework from '../../../assets/CalendarImg/firework.gif';
+import Firework from '../../../assets/CalendarImg/firework.webp';
 
 const GifModalWrapper = styled.div`
   position: fixed;

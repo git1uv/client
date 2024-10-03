@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as M from '../LogoutModal.style';
 import x from '../../../assets/x.webp';
-import write from '../../../assets/chatbot/writeAni.gif'
+import write from '../../../assets/chatbot/writeAni.webp'
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import solution, { setSolution } from '../../../redux/solution';
@@ -59,7 +59,7 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
   return (
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
       <M.LogoutModal>
-        <M.AirplaneImage src={write} alt="gif" />
+        <M.AirplaneImage src={write} alt="webp" />
         <M.LogoutModalTitle>챗봇이 일지를 작성하고 있어요!</M.LogoutModalTitle>
       </M.LogoutModal>
     </M.LogoutModalBg>

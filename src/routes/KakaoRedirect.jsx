@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setAccount } from "../redux/user";
-import loading from '../assets/chatbot/test/loading.gif'
+import loading from '../assets/chatbot/test/loading.webp'
 import * as S from '../components/Test/TestContent/TestContent.style'
 
 export default function KakaoRedirect() {

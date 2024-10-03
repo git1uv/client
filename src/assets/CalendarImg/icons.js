@@ -1,4 +1,4 @@
-import Firework from './firework.gif';
+import Firework from './firework.webp';
 import buttonBack from './button_back.webp';
 import film from './image_film.webp';
 import note from './image_note.webp';

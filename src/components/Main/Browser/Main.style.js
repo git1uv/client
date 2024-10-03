@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import room from "../../assets/main/room.webp";
-import { chatbot, calendar, mailbox, pencilHolder, trash} from '../../assets/main/icons'
-import morning from "../../assets/main/sky/morning.webp"
-import evening from "../../assets/main/sky/evening.webp"
-import night from "../../assets/main/sky/night.webp"
-import morningMobile from "../../assets/main/sky/morningMobile.webp"
-import eveningMobile from "../../assets/main/sky/eveningMobile.webp"
-import nightMobile from "../../assets/main/sky/nightMobile.webp"
+import room from "../../../assets/main/room.webp";
+import { chatbot, calendar, mailbox, pencilHolder, trash} from '../../../assets/main/icons'
+import morning from "../../../assets/main/sky/morning.webp"
+import evening from "../../../assets/main/sky/evening.webp"
+import night from "../../../assets/main/sky/night.webp"
+import morningMobile from "../../../assets/main/sky/morningMobile.webp"
+import eveningMobile from "../../../assets/main/sky/eveningMobile.webp"
+import nightMobile from "../../../assets/main/sky/nightMobile.webp"
 
 export const Container = styled.div`
     display: flex;

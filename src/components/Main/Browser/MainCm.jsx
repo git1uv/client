@@ -1,13 +1,13 @@
 import React,{ useEffect, useState } from 'react'
 import * as S from "./Main.style"
 import { useNavigate } from 'react-router-dom';
-import  Airplane  from '../Modal/Airplane';
-import airplaneIcon from '../../assets/main/airplane.webp'
+import  Airplane  from '../../Modal/Airplane';
+import airplaneIcon from '../../../assets/main/airplane.webp'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { setLogin } from '../../redux/user';
-import MailAlert from '../Modal/MailAlert';
-import apiClient from '../../constants/tokenInstance';
+import { setLogin } from '../../../redux/user';
+import MailAlert from '../../Modal/MailAlert';
+import apiClient from '../../../constants/tokenInstance';
 
 export default function MainCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -22,6 +22,7 @@ export default function MainCm() {
 
   const accessToken = localStorage.getItem('accessToken');
   const refreshToken = localStorage.getItem('refreshToken');
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const date = new Date();
   const time = date.getHours();
@@ -29,6 +30,18 @@ export default function MainCm() {
   const closeMailAlert = () => {
     setMailAlert(false);
   }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const getData = async() => {
     try {

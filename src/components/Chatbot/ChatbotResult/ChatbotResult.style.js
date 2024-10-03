@@ -162,7 +162,7 @@ export const Content = styled.div`
     padding: 2%;
 
     color: #000;
-    font-family: Pretendard;
+    font-family: Pretendard-Regular;
     font-size: 1.125rem;
     line-height: 1.625rem; 
     @media (max-width: 1470px) {

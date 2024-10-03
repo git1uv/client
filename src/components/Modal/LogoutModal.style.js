@@ -170,7 +170,7 @@ export const AirplaneImage = styled.img`
   width: 100%;
 `;
 
-export const DeleteGif = styled.img`
+export const Deletewebp = styled.img`
   width: 68%;
   height: 52.8%;
   padding: 0 0 0 18%;

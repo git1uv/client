@@ -66,7 +66,7 @@ export const Warning = styled.div`
     p {
         margin: 0;
         color: #27272A;
-        font-family: Pretendard;
+        font-family: Pretendard-Regular;
         font-size: 1rem;
         @media (max-width: 1470px) {
             font-size: 0.9rem;
@@ -100,11 +100,12 @@ export const InputBox = styled.div`
     input {
         width: 90%;
         height: 3rem;
+        font-family: Pretendard-Regular;
         padding-left: 4%;
         background: none;
         border: none;
         outline: none;
-        }
+    }
     button {
         width: 3.125rem;
         height: 3.125rem;

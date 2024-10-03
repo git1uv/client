@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import * as M from '../LogoutModal.style';
 import x from '../../../assets/x.webp';
-import Airplane from '../../../assets/pencilHolder/airplane.gif'
+import Airplane from '../../../assets/pencilHolder/airplane.webp'
 
 const SecondModal = ({ isVisible, onClose, onConfirm }) => {
   const outside = useRef();
@@ -12,7 +12,7 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
     <M.LogoutModalBg ref={outside} onClick={(e) => { if (e.target === outside.current) onClose(); }}>
       <M.LogoutModal>
         <M.ModalCloseButton onClick={onClose}><img src={x} alt='x' /></M.ModalCloseButton>
-        <M.AirplaneImage src={Airplane} alt="gif" />
+        <M.AirplaneImage src={Airplane} alt="webp" />
         <M.LogoutModalTitle>종이비행기를 보냈어요.</M.LogoutModalTitle>
         <br />
         <M.ModalActions>

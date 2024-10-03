@@ -164,7 +164,7 @@ export const Character = styled.img`
 
 export const Emotion = styled.img`
     position: absolute;
-    width: 25%;
+    width: ${(props) => props.chatbotType === 'Neuranee' ? '27%' : '25%'};
     height: auto;
     
     left: 16%;  

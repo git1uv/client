@@ -144,7 +144,7 @@ function Settings() {
       </Set.Container>
       <Set.Footer>
           <Set.DeveloperInformation>
-            <button onClick={() => navigate('/developer')}> 
+            <button onClick={() => {window.location.href = 'https://github.com/git1uv'}}> 
               깃러브
               <br />
               개발자 정보

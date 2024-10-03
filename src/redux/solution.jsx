@@ -26,9 +26,7 @@ const solution = createSlice({
 		},
 		reducers: {
 			setSolution(state, action) {
-				const {counselingLogId, chatbotType, title, summary, suggestion, solutions, endedAt} = action.payload;
-				state.counselingLogId = counselingLogId;
-				state.chatbotType = chatbotType;
+				const {title, summary, suggestion, solutions, endedAt} = action.payload;
 				state.title = title;
 				state.summary = summary;
 				state.suggestion = suggestion;

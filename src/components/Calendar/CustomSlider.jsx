@@ -11,6 +11,8 @@ import slider_f from '../../assets/CalendarImg/slider_f.webp';
 import slider_h from '../../assets/CalendarImg/slider_h.webp';
 import moment from 'moment'; 
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCounseling } from '../../redux/solution';
 
 const SwiperContainer = styled.div`
   display: flex;
@@ -78,8 +80,17 @@ function getChatbotBackground(chatbotType) {
 
 function CustomSlider({ logs, getChatbotName }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const handleSlideClick = (logId) => {
+  const handleSlideClick = (logId, logChatbotType) => {
+    localStorage.setItem('counselingLogId', logId);
+    console.log(logChatbotType);
+    dispatch(setCounseling({
+      counselingLogId: logId,
+      chatbotType: logChatbotType
+    }
+    ));
+
     navigate(`/chatbot/${logId}`);
   };
     return (
@@ -96,7 +107,7 @@ function CustomSlider({ logs, getChatbotName }) {
           <CustomSwiperSlide 
             key={log.id}
             chatbotType={log.chatbotType}
-            onClick={() => handleSlideClick(log.id)}
+            onClick={() => handleSlideClick(log.id, log.chatbotType)}
             >
             <P.OneLine>{log.title}</P.OneLine>
             <P.SliderLineBox>

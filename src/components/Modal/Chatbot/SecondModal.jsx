@@ -32,7 +32,6 @@ const SecondModal = ({ isVisible, onClose, onConfirm }) => {
       counselingLogId: counselingLogId,
       chatbotType: chatbotType
     }))
-
   }, [])
 
   const outside = useRef();

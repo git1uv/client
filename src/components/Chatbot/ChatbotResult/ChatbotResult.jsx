@@ -13,7 +13,7 @@ import Icon1 from '../../../assets/chatbot/result/journal1.png.webp'
 import Icon2 from '../../../assets/chatbot/result/journal2.png.webp'
 import Icon3 from '../../../assets/chatbot/result/journal3.png.webp'
 import axios from 'axios';
-import { setSolution } from '../../../redux/solution';
+import { setCounseling, setSolution } from '../../../redux/solution';
 import { useLocation, useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 
@@ -24,14 +24,14 @@ export default function ChatbotResult() {
   const refreshToken = localStorage.getItem('refreshToken');
 
   let result = localStorage.getItem('result');
-  // let counselingLogId = localStorage.getItem('counselingLogId');
+  let counselingLogId = localStorage.getItem('counselingLogId');
   
   let [endDate, setEndDate] = useState('');
   const [chatbot, setChatbot] = useState('');
   const [chatbotImg, setChatbotImg] = useState('');
   
   const solution = useSelector((state) => state.solution);
-  let counselingLogId = solution.counselingLogId;
+  // let counselingLogId = solution.counselingLogId;
 
   const componentRef = useRef(null); 
   
@@ -70,9 +70,13 @@ export default function ChatbotResult() {
         summary: data.summary,
         suggestion: data.suggestion,
         solutions: data.solutions,
-        endedAt: data.endedAt,
+				endedAt: data.endedAt
       }));
-
+      dispatch(setCounseling({
+        counselingLogId: data.counselingLogId,
+        chatbotType: data.chatbotType
+      }));
+      
       const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 

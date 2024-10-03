@@ -42,7 +42,8 @@ export const Trash = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
+  cursor: pointer;
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
@@ -75,6 +76,7 @@ export const Text = styled.div`
   justify-content: flex-end;
   align-items: center;
   text-align: center;
+  white-space: nowrap;
   border: none;
   background-color: transparent;
   color: #fff;

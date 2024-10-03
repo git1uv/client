@@ -12,6 +12,7 @@ export const BackButton = styled.div`
   height: 4.3rem;
   top: -52px;
   left: 20px;
+  cursor: pointer;
 `;
 
 export const Container = styled.div`
@@ -65,6 +66,7 @@ export const TodayEmotion = styled.div`
   background-image: url(${stickerDown});
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
 
 export const OverlayImage = styled.div`
@@ -93,6 +95,7 @@ export const EmotionButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const EmotionText = styled.div`
@@ -145,6 +148,7 @@ export const SaveButton = styled.div`
   background: #F4F2EB;
   width: 20%;
   height: 50%;
+  cursor: pointer;
 `;
 
 export const Text = styled.div`
@@ -303,4 +307,5 @@ export const DeleteButton = styled.div`
   background-image: url(${x});
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;

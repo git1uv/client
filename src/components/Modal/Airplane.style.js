@@ -128,6 +128,7 @@ export const ModalCloseButton = styled.button`
   right: 1.5vw;
   background: none;
   border: none;
+  cursor: pointer;
   img{
     height: 2.7vh;
   }
@@ -139,6 +140,7 @@ export const DownloadButton = styled.button`
   border: none;
   border-radius: 50%;
   background-color: white;
+  cursor: pointer;
   filter: drop-shadow(0px 4px 6px rgba(32, 32, 32, 0.25));
   @media (max-width: 430px) {
     top: 66vh;

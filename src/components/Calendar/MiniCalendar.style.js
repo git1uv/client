@@ -101,6 +101,9 @@ export const MiniCalendarWrapper = styled.div`
       font-size: 2rem;
       margin: 0 0.5vw !important;
     }
+    @media (min-width: 769px) and (max-width: 1024px){
+      font-size: 1rem;
+    }
   }
   .react-calendar__navigation button:focus {
     background-color: white;
@@ -129,7 +132,7 @@ export const MiniCalendarWrapper = styled.div`
     padding: 1%;
   }
   .react-calendar__month-view__days__day abbr { 
-    color: #000;
+    color: #78716C;
     text-align: center;
     font-family: SeoulHangangLight;
     font-size: 0.94rem;
@@ -142,9 +145,15 @@ export const MiniCalendarWrapper = styled.div`
     border: 2px solid #d9d9d9 !important;
     border-radius: 15px;
   }
-  .react-calendar__tile--now abbr {
+  .react-calendar__tile--now.react-calendar__month-view__days__day abbr{
     color: #000;
-    background: none;
+    background-color: transparent;
+    text-align: center;
+    font-family: SeoulHangang;
+    font-size: 0.94rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; 
     width: 100%;
     height: 100%;
   }
@@ -153,9 +162,8 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__tile--hasActive {
     background-color: transparent;
   }
-  .react-calendar__tile--active:enabled:hover,
-  .react-calendar__tile--active:enabled:focus {
-    background: #e6e6e6 !important;
+  .react-calendar__tile--active:enabled:hover {
+    background: #e6e6e6;
   }
   .react-calendar__tile--hasActive abbr {
     color: white;
@@ -177,13 +185,19 @@ export const MiniCalendarWrapper = styled.div`
 
   }
   
-  /* 네비게이션 월 스타일 적용 */
-  .react-calendar__year-view__months__month {
-  
+  .react-calendar__tile--now.react-calendar__year-view__months__month abbr  { 
+    color: #FFCB3A; 
   }
   .react-calendar__tile.highlight {
     background-color: #FFCB3A !important;
     border-radius: 15px;
+  }
+  .react-calendar__year-view .react-calendar__tile, 
+  .react-calendar__decade-view .react-calendar__tile, 
+  .react-calendar__century-view .react-calendar__tile {
+    @media (min-width: 431px) and (max-width: 1024px) {
+      padding: 5%;
+    }
   }
 
 `;

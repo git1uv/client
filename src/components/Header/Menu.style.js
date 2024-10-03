@@ -38,6 +38,7 @@ export const ModalButton = styled.button`
   background-color: transparent;
   border: none;
   color: #27272A;
+  cursor: pointer;
   font-family: SeoulHangangLight;
   font-weight: 300;
   img{
@@ -52,6 +53,7 @@ export const ModalCloseButton = styled.button`
   right: 5vw;
   background: none;
   border: none;
+  cursor: pointer;
   img{
     height: 2.7vh;
   }
@@ -60,6 +62,7 @@ export const ModalCloseButton = styled.button`
 export const LogoutButton = styled(ModalButton)`
   color: #52525B;
   font-size: 1rem;
+  cursor: pointer;
 `;
 
 

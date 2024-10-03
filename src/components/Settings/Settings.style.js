@@ -349,7 +349,7 @@ export const DeveloperInformation = styled.div`
     margin: 1vh 0 0 5.3vw;
   }
   @media (min-width: 431px) {
-    margin: 0 0 2vh 31vw;
+    margin: 0 0 2vh calc((100vw - 36rem)/2);
   }
 `;
 

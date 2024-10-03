@@ -36,7 +36,7 @@ const Button = styled.button`
     width: 70%;
     height: 3%;
     border: none;
-    border: 1px solid black;
+    // border: 1px solid black;
     margin-bottom: 7.9%;
     
     @media (max-width: 768px) {

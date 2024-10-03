@@ -283,6 +283,7 @@ export const SocialLogin = styled.div`
     background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: transparent;
 
 
     // &:first-child {

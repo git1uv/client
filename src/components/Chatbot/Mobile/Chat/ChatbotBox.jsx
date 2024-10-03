@@ -68,7 +68,7 @@ export default function ChatbotBox({emotion, setEmotion}) {
         : result === 'Banbani' ? <S.Character src={BanbaniImg} alt='chatbot' /> 
         : <S.Character src={NeuraneeImg} alt='chatbot' /> 
       }
-      <S.Emotion src={emotion} />
+      <S.Emotion chatbotType={result} src={emotion} />
     </S.ChatbotBox>
   )
 }

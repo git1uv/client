@@ -456,3 +456,45 @@ export const EmptyLetter = styled.div`
   font-size: 1rem;
   font-family: SeoulHangangLight;
 `
+
+export const TopIcons = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  gap: 6%;
+  border-radius: 35%;
+  width: 7rem;
+  height: 7rem;
+  
+  @media (max-width: 1600px) {
+    width: 4rem;
+    height: 4rem;
+  }
+  cursor: pointer;
+  background-color: #EEECE3;
+  margin: 0 2% 5% 2%;
+
+  img {
+    width: 3rem;
+    height: auto;
+    object-fit: cover;
+    @media (max-width: 1600px) {
+      width: 1.5rem;
+    }
+    opacity: ${(props) => (props.active ? '1' : '0.6')};
+  }
+
+  p {
+    color: #52525B;
+    font-family: SeoulHangangLight;
+    font-size: 1rem;
+    @media (max-width: 1600px) {
+      font-size: 0.75rem;
+    }
+    line-height: normal;
+    letter-spacing: -0.01rem;
+    margin: 0;
+  }
+`

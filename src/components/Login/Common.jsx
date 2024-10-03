@@ -77,7 +77,7 @@ export default function Common({openModal}) {
           setBackgroundImage(resizedImage); // 상태 업데이트
           // resizedImage를 사용하여 배경으로 설정할 수 있음
         }
-      }, 'image/png', 1);
+      }, 'image/avif', 1);
     };
   };
 

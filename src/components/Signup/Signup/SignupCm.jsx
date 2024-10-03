@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAccount, setLoginType } from '../../../redux/user'
 import axios from 'axios';
 import MockModal from '../../Modal/MockModal';
+import Resizer from 'react-image-file-resizer';
+import backgroundImg from "../../../assets/backgroundImg.avif"
 
 export default function SignupCm() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -23,6 +25,8 @@ export default function SignupCm() {
   const [isAllValid, setIsAllValid] = useState(false);
 
   const [isMockModal, setIsMockModal] = useState(false);
+  const [backgroundImage, setBackgroundImage] = useState('');
+
 
   const user = useSelector((state) => state.user);
 
@@ -35,6 +39,45 @@ export default function SignupCm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
+  const resizeImage = (image) => {
+    return new Promise((resolve, reject) => {
+      Resizer.imageFileResizer(
+        image,
+        800, // 원하는 가로 크기
+        600, // 원하는 세로 크기
+        "avif", // 변환할 포맷
+        100, // 품질
+        0, // 회전
+        (uri) => {
+          resolve(uri);
+        },
+        "base64" // 반환 형식
+      );
+    });
+  };
+  const processImage = async () => {
+    // AVIF 파일을 이미지 객체로 생성
+    const img = new Image();
+    img.src = backgroundImg; // AVIF 파일 경로
+  
+    img.onload = async () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      
+      // Canvas의 데이터를 Blob으로 변환
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          const resizedImage = await resizeImage(blob); // 리사이즈 실행
+          setBackgroundImage(resizedImage); // 상태 업데이트
+          // resizedImage를 사용하여 배경으로 설정할 수 있음
+        }
+      }, 'image/png', 1);
+    };
+  };
+
   const validateEmail = (email) => regexEmail.test(email);
   const validatePassword = (pw) => regexPw.test(pw);
 
@@ -90,7 +133,9 @@ export default function SignupCm() {
     if (validateEmail(email) && validatePassword(pw) && pw == confirmPw && isValidEmail)
       setIsAllValid(true);
   }, [email, pw, confirmPw, isValidEmail]);
-
+  useEffect(() => {
+    processImage(); // 컴포넌트가 마운트될 때 이미지 처리
+  }, []);
   const checkEmail = async() => {
     if(validateEmail(email)) {
       try {
@@ -125,7 +170,7 @@ export default function SignupCm() {
 
   return (
   <>
-    <T.Container>
+    <T.Container bgImage={backgroundImage}>
       <T.Wrapper>
         <T.Title>
           <img src={logo} alt='로고' />

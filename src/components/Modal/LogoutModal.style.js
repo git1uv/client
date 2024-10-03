@@ -109,6 +109,7 @@ export const CancelButton = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 
   @media (min-width: 431px) {
     height: 5.5vh;
@@ -134,6 +135,7 @@ export const LogoutClickButton = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
 
   @media (min-width: 431px) {
     height: 5.5vh;
@@ -153,6 +155,7 @@ export const ModalCloseButton = styled.button`
   background: none;
   border: none;
   color: #27272A;
+  cursor: pointer;
   img{
     height: 2.7vh;
   }
@@ -187,6 +190,7 @@ export const OKButton = styled.button`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  cursor: pointer;
   @media (min-width: 431px) {
     height: 5vh;
     border-radius: 18px;

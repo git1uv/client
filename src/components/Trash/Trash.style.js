@@ -42,7 +42,8 @@ export const Trash = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
+  cursor: pointer;
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;

@@ -89,6 +89,7 @@ export const Delete = styled.div`
   background-repeat: no-repeat;
   position: absolute;
   bottom: 10%;
+  cursor: pointer;
   @media (max-width: 430px) {
     right: 12%;
     width: 2.1rem;
@@ -104,6 +105,7 @@ export const Favorites = styled.div`
   background-image: ${({ seeFavoritesActive }) => seeFavoritesActive ? `url(${favoriteO})` : `url(${favoriteX})`};
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
   @media (max-width: 430px) {
     width: 4.17rem;
     height: 4.17rem;
@@ -127,6 +129,7 @@ export const NotRead = styled.div`
   background-image: ${({ seeNotReadActive }) => seeNotReadActive ? `url(${notreadO})` : `url(${notreadX})`};
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
   @media (max-width: 430px) {
     width: 4.17rem;
     height: 4.17rem;
@@ -150,6 +153,7 @@ export const SeeAll = styled.div`
   background-image: ${({ seeAllActive }) => seeAllActive ? `url(${allO})` : `url(${allX})`};
   background-size: contain;
   background-repeat: no-repeat;
+  cursor: pointer;
   @media (max-width: 430px) {
     width: 4.17rem;
     height: 4.17rem;
@@ -307,6 +311,7 @@ export const Letter = styled.div`
   border-radius: 30px;
   background: #FBFBFB;
   position: relative;
+  cursor: pointer;
   @media (max-width: 430px) {
     max-width: 270px;
   }
@@ -434,6 +439,7 @@ export const HeartBox = styled.div`
 export const Heart = styled.div`
   z-index: 21;
   display: flex;
+  cursor: pointer;
   img{
     @media (max-width: 430px) {
       width: 1.25rem;

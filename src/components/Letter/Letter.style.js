@@ -481,7 +481,7 @@ export const TopIcons = styled.div`
   }
   cursor: pointer;
   background-color: #EEECE3;
-  margin: 0 2% 5% 2%;
+  margin: 0 2% 2.5% 2%;
 
   img {
     width: 3rem;

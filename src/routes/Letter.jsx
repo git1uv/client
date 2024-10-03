@@ -50,7 +50,7 @@ function Mailbox() {
         setMails([]);
       }
     } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
+      // console.error("API 호출 중 오류 발생:", error);
       setMails([]);
     }
   };
@@ -80,12 +80,12 @@ function Mailbox() {
           fetchMails('all');
         }
       } else if(response.data.code === "MAIL5001"){
-        console.error("편지 가져오기 실패:", response.data.message);
+        // console.error("편지 가져오기 실패:", response.data.message);
       } else {
-        console.error("편지가 없습니다:", response.data.message);
+        // console.error("편지가 없습니다:", response.data.message);
       }
     } catch (error) {
-      console.error("API 호출 중 오류 발생:", error);
+      // console.error("API 호출 중 오류 발생:", error);
     }
   };
 
@@ -98,7 +98,7 @@ function Mailbox() {
       });
 
       if (response.data.code === '200') {
-        console.log('즐겨찾기 상태 변경 성공');
+        // console.log('즐겨찾기 상태 변경 성공');
         const updatedMails = mails.map((mail) =>
           mail.mailId === mailId ? { ...mail, starred: !mail.starred } : mail
         );
@@ -108,14 +108,14 @@ function Mailbox() {
         }
 
       } else if (response.data.code === "MAIL5001") {
-        console.error("실패:", response.data.message);
+        // console.error("실패:", response.data.message);
         setMails(mails);
       } else {
         setMails(mails);
-        console.error("메일이 없습니다", response.data.message);
+        // console.error("메일이 없습니다", response.data.message);
       }
     } catch (error) {
-      console.error('즐겨찾기 요청 중 오류 발생:', error);
+      // console.error('즐겨찾기 요청 중 오류 발생:', error);
       setMails(mails);
     }
   
@@ -184,10 +184,10 @@ function Mailbox() {
         setMails((prevMails) => prevMails.filter(mail => !mailIdsToDelete.includes(mail.mailId)));
         setDeleteModalVisible(false);
       } else {
-        console.error('실패:', response.data.message);
+        // console.error('실패:', response.data.message);
       }
     } catch (error) {
-      console.error('실패:', error);
+      // console.error('실패:', error);
     }
   };
 
@@ -252,7 +252,7 @@ function Mailbox() {
             </L.LetterContainer>
           ))}
           </L.Letters>
-           ) : null} 
+           ) : <L.EmptyLetter>편지가 없어요 :(</L.EmptyLetter>} 
           </L.LettersWrapper>
       </L.Mailbox>
       {isLetterModalVisible && mailDetails && (

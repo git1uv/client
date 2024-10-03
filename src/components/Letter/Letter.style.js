@@ -440,4 +440,14 @@ export const Heart = styled.div`
   }
 `;
 
+export const EmptyLetter = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  color: #CEB3B3;
+  font-size: 1rem;
+  font-family: SeoulHangangLight;
+`

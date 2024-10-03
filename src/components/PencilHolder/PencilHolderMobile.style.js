@@ -11,7 +11,7 @@ export const Title = styled.div`
         margin: 0 0 1% 0;
         font-family: 'Pretendard';
         font-weight: 500;
-        font-size: 1.25rem;
+        font-size: 1.7rem;
         letter-spacing: -0.408px;
         color: #000000;
     }
@@ -19,8 +19,8 @@ export const Title = styled.div`
         margin: 0;
         font-family: 'Pretendard';
         font-weight: 400;
-        font-size: 0.75rem;
-        letter-spacing: -0.408px;
+        font-size: 1.1rem;
+        letter-spacing: -1.3px;
         color: #686868;
     }
 `
@@ -30,9 +30,8 @@ export const Letter = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 22.0625rem;
-
-    height: auto;
+    width: 28rem;
+    height: 35rem;
     margin-top: 2rem;
 
     background-image: url(${letter});
@@ -46,12 +45,12 @@ export const WriteBox = styled.div`
     flex-direction: column;
     justify-content: center;
     width: 90%;
-    margin: 0.5rem 0 1rem 0;
+
 
     h3 {
         color: #ED6243;
-        font-family: Pretendard;
-        font-size: 1rem;
+        font-family: SeoulHangangLight;
+        font-size: 1.2rem;
         font-weight: 500;
         line-height: 1.375rem; /* 146.667% */
         letter-spacing: -0.0255rem;
@@ -66,10 +65,11 @@ export const WriteBox = styled.div`
         background: #FFF;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 
-        font-family: SeoulHangang;
-        font-size: 1rem;
+        font-family: SeoulHangangLight;
+        font-size: 1.15rem;
         font-weight: 400;
         line-height: normal;
+        letter-spacing: -1px;
         padding: 5%;
     }
 
@@ -90,8 +90,8 @@ export const WriteBox = styled.div`
         background: #FFF;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 
-        font-family: SeoulHangang;
-        font-size: 1rem;
+        font-family: SeoulHangangLight;
+        font-size: 1.15rem;
         font-weight: 400;
         line-height: normal;
         padding: 5%;

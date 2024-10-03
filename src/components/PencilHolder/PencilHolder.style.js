@@ -210,13 +210,18 @@ export const SendBtn = styled.div`
     @media (max-width: 1470px) {
         margin: 0 0 1rem 2rem;
     }
-
+    
     width: 14.375rem;
     height: 3.75rem;
-
+    
     @media (max-width: 1470px) {
         width: 10.375rem;
         height: 3rem;
+    }
+    @media (max-width: 430px) {
+        width: 11rem;
+        height: 3.75rem;
+        margin: 0 0 1rem 1.2rem;
     }
 
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -225,14 +230,22 @@ export const SendBtn = styled.div`
     background: linear-gradient(90deg, #ED6243 11.5%, #FF9153 92%);
 
     cursor: pointer;
+
     p {
         margin: 0 0 0 2rem;
+        @media (max-width: 430px) {
+            width: 100%;
+            margin: 0 10% 0 0;
+        }
         color: white;
         text-align: center;
         font-family: Pretendard;
         font-size: 1.5625rem;
         @media (max-width: 1470px) {
            font-size: 1rem;
+        }
+        @media (max-width: 430px) {
+           font-size: 1.5rem;
         }
         font-weight: 800;
         line-height: 1.375rem;

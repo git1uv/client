@@ -252,7 +252,7 @@ function Mailbox() {
             </L.LetterContainer>
           ))}
           </L.Letters>
-           ) : <L.EmptyLetter>편지가 없어요 :(</L.EmptyLetter>} 
+           ) : <L.EmptyLetter>편지가 없어요 :( </L.EmptyLetter>} 
           </L.LettersWrapper>
       </L.Mailbox>
       {isLetterModalVisible && mailDetails && (

@@ -174,8 +174,12 @@ export const LettersWrapper = styled.div`
   display: flex;  
   justify-content: center;
   align-items: flex-start;
+  // padding-top: 1.5%;
+
   border-radius: 55px;
   background-color: #280502;
+
+
   @media (max-width: 430px) {
     width: 92%;
     height: 70%;
@@ -188,6 +192,7 @@ export const LettersWrapper = styled.div`
 export const Letters = styled.div`
   width: 100%;
   height: 90%;
+
   z-index: 4;
   display: grid;
   flex-direction: column;
@@ -224,22 +229,22 @@ export const Letters = styled.div`
     grid-template-rows: repeat(auto-fill, 70px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
   @media (min-width: 1201px) and (max-width: 1470px){
     grid-template-rows: repeat(auto-fill, 80px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
   @media (min-width: 1471px){
     grid-template-rows: repeat(auto-fill, 100px);
     row-gap: 2vh; 
     border-radius: 55px;
-    margin-top: 5%;
-    padding: 2% 1% 1% 0;
+    margin-top: 3%;
+    padding: 3% 1% 1% 0;
   }
 `;
 export const LetterContainer = styled.div`
@@ -267,7 +272,7 @@ export const CheckBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100%; 
   @media (max-width: 430px) {
     width: 10%;
   }

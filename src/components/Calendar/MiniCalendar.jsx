@@ -9,11 +9,12 @@ import * as M from './MiniCalendar.style';
 
 function MiniCalendar() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
-  const [value, onChange] = useState(new Date());
+  const [value, setValue] = useState(new Date());
   const [counselingDays, setCounselingDays] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
   const dateParam = moment(location.pathname.split('/').pop(), 'YYYY-MM-DD').toDate();
+
 
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
@@ -38,8 +39,12 @@ function MiniCalendar() {
   };
 
   useEffect(() => {
-    fetchCalendarData(value);
-  }, [value]);
+    if (moment(dateParam).isValid() && dateParam.getTime() !== value.getTime())  {
+      setValue(dateParam);
+      fetchCalendarData(dateParam); 
+    }
+  }, [location]);
+  
 
   const tileContent = ({ date, view }) => {
     if (view === 'month') {
@@ -58,7 +63,7 @@ function MiniCalendar() {
   };
 
   const tileClassName = ({ date, view }) => {
-    if (view === 'month' && dateParam && date.getTime() === dateParam.getTime()) {
+    if (view === 'month' && moment(date).isSame(value, 'day')){
       return 'highlight';
     }
     return null;
@@ -67,7 +72,7 @@ function MiniCalendar() {
   return (
     <M.MiniCalendarWrapper>
       <Calendar
-        onChange={onChange}
+        onChange={setValue}
         value={value}
         minDetail="year"
         maxDetail="month"

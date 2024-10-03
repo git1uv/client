@@ -47,10 +47,10 @@ const EmotionModal = ({ isVisible, onClose, calendarId, setEmotion}) => {
         setEmotion(emotionName); 
         onClose();
       } else {
-        console.error('감정 저장 실패');
+        // console.error('감정 저장 실패');
       }
     } catch (error) {
-      console.error('감정 저장 중 오류 발생', error);
+      // console.error('감정 저장 중 오류 발생', error);
     }
   };
 

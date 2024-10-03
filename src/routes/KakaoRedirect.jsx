@@ -22,7 +22,7 @@ export default function KakaoRedirect() {
     // setError(null); // 에러 초기화
     try {
       const res = await axios.post(`${serverURL}/api/v1/login/kakao?code=${code}`, {});
-      console.log(res.data);
+      // console.log(res.data);
 
       let data = res.data.data; 
       let accessToken = data.token.accessToken; 
@@ -44,7 +44,7 @@ export default function KakaoRedirect() {
         navigate("/signup/nickname");
     } catch (error) {
       // setError(error.response); // 에러 상태 저장
-      console.log(error);
+      // console.log(error);
 
     }
   };

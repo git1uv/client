@@ -119,8 +119,6 @@ export default function SignupCm() {
         email: email,
         password: pw
       }))
-      console.log(pw);
-      console.log("user.password:  ", user.password)
       dispatch(setLoginType('general'))
 
       setTimeout(() => {
@@ -154,11 +152,10 @@ export default function SignupCm() {
             email: '사용 가능한 이메일입니다.'
           }));
         }
-        console.log(res.data);
-        console.log(valid);
+        // console.log(res.data);
 
       } catch(err) {
-        console.log(err);
+        // console.log(err);
       }
     } else {
       setErrors(prevErrors => ({

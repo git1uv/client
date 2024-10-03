@@ -10,13 +10,13 @@ export default function FirstModal({isOpen, closeModal, setIsSecondOpen}) {
   const postTempPw = async() => {
     try { 
       const res = await axios.patch(`${serverURL}/api/v1/login/temp-pw`, {email: email})
-      console.log(res.data);
+      // console.log(res.data);
       if (res.status === 400)
         window.alert('존재하지 않는 이메일이에요.');
       else
         closeFirstModal();
     } catch(err) {
-      console.log(err);
+      // console.log(err);
       if (err.response.status === 400)
         window.alert('존재하지 않는 이메일이에요.');
     }

@@ -58,7 +58,7 @@ export default function TestContent() {
   /* 로딩창 띄움 */
   useEffect(() => {
     if (progress === 100) {
-      console.log(test.score);
+      // console.log(test.score);
       saveLocalStorage()
       const timer = setTimeout(() => {
         navigate('/test/result');

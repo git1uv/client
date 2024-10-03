@@ -49,10 +49,10 @@ function Mailbox() {
       if (response.data.code === "200") {
         setMails(response.data.data.mails);
       } else if (response.data.code === "MAIL5001") {
-        console.error("편지 가져오기 실패:", response.data.message);
+        // console.error("편지 가져오기 실패:", response.data.message);
         setMails([]);
       } else {
-        console.error("편지가 없습니다:", response.data.message);
+        // console.error("편지가 없습니다:", response.data.message);
         setMails([]);
       }
     } catch (error) {

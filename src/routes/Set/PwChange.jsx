@@ -94,11 +94,11 @@ function PWChange() {
           setErrorMessage('기존 비밀번호 불일치');
           setCurrentPwError(true);
         } else {
-          console.log('서버 응답 에러 메시지:', error.response); 
+          // console.log('서버 응답 에러 메시지:', error.response); 
           setErrorMessage('비밀번호 변경 실패');
         }
       } else {
-        console.log('서버 응답 에러 메시지:', error.response); 
+        // console.log('서버 응답 에러 메시지:', error.response); 
         setErrorMessage('비밀번호 변경 실패');
       }
     }

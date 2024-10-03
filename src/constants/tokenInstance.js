@@ -16,8 +16,8 @@ const apiClient = axios.create({
 // 토큰 재발급 함수
 const getNewToken = async() => {
   
-  console.log('토큰 재발급 중...');
-  console.log(`Bearer ${accessToken} ${refreshToken}`)
+  // console.log('토큰 재발급 중...');
+  // console.log(`Bearer ${accessToken} ${refreshToken}`)
   try {
     const res = await apiClient.get(`/api/v1/reissue`);
     const newAccessToken = res.data.data.accessToken;
@@ -29,7 +29,7 @@ const getNewToken = async() => {
     return { accessToken: newAccessToken, refreshToken: newRefreshToken };
 
   } catch (error) {
-    console.log('Refresh token failed', error);
+    // console.log('Refresh token failed', error);
     // 리프레시 토큰이 만료되었거나 실패했을 경우, 로그인 페이지로 리다이렉트
     // window.location.href = '/login';
     return null;
@@ -45,7 +45,7 @@ apiClient.interceptors.request.use(
     if (accessToken && refreshToken) {
       config.headers.Authorization = `Bearer ${accessToken} ${refreshToken}`;
     } else {
-      console.log("토큰이 존재하지 않음");
+      // console.log("토큰이 존재하지 않음");
     }
     return config;
   }, 
@@ -71,7 +71,7 @@ apiClient.interceptors.response.use(
         // 원래 요청을 새로운 토큰을 사용하여 다시 요청
         return apiClient(originalRequest);
       } else {
-        console.log('토큰 재발급 실패: 로그인 페이지로 리다이렉트'); // 재발급 실패 로그 추가
+        // console.log('토큰 재발급 실패: 로그인 페이지로 리다이렉트'); // 재발급 실패 로그 추가
       }
     }
 

@@ -50,7 +50,7 @@ export default function MainCm() {
       dispatch(setLogin({nickname: data.nickname}));
       localStorage.setItem('nickname', data.nickname);
 
-      console.log(data);
+      // console.log(data);
 
       let isMailAlert = data.mailAlert;
       isMailAlert ? setMailAlert(true) : setMailAlert(false);
@@ -59,7 +59,7 @@ export default function MainCm() {
       airplane ? setIsExistAirplane(true) : setIsExistAirplane(false);
 
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     } 
   }
 
@@ -73,10 +73,10 @@ export default function MainCm() {
           'Authorization' : `Bearer ${accessToken} ${refreshToken}`
         }
       })
-      console.log(res.data);
+      // console.log(res.data);
 
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 

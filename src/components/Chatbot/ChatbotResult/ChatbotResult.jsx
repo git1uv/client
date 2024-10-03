@@ -50,7 +50,7 @@ export default function ChatbotResult() {
             }
         });
     } catch (error) {
-        console.error("Error converting div to image:", error);
+        // console.error("Error converting div to image:", error);
     }
   };
 
@@ -63,7 +63,7 @@ export default function ChatbotResult() {
           'Authorization': `Bearer ${accessToken} ${refreshToken}`
         }
       });
-      console.log(res.data);
+      // console.log(res.data);
       let data = res.data.data
       dispatch(setSolution({
         title: data.title,
@@ -80,7 +80,7 @@ export default function ChatbotResult() {
       const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
       setEndDate(formatDate);
 
-      console.log(formatDate);
+      // console.log(formatDate);
 
       let chatbotType = data.chatbotType;
       if (chatbotType === 'F') {
@@ -97,7 +97,7 @@ export default function ChatbotResult() {
       }
 
     } catch(err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 

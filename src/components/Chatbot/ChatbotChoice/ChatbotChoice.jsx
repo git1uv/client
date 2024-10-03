@@ -23,7 +23,7 @@ export default function ChatbotChoice()  {
     localStorage.setItem('result', chatbot.name);
     postSelectedChatbot(); // API 연결
     navigate('/chatbot');
-    console.log(chatbot.name);
+    // console.log(chatbot.name);
   }
 
   /* 사용할 챗봇 선택 API */
@@ -40,11 +40,11 @@ export default function ChatbotChoice()  {
       const res = await apiClient.post(`/api/v1/chatbot/session`, {
         chatbotType: selectedChatbot
       });
-      console.log(res.data);
+      // console.log(res.data);
       localStorage.setItem('counselingLogId', res.data.data.counselingLogId);
     } catch(err) {
-        console.log(err);
-        console.log('서버 에러, 관리자에게 문의 바랍니다.');
+        // console.log(err);
+        // console.log('서버 에러, 관리자에게 문의 바랍니다.');
     }
   }
 

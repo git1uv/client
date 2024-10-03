@@ -38,13 +38,12 @@ export default function TestResult() {
       const res = await apiClient.post(`/api/v1/chatbot/session`, {
         chatbotType: chatbot
       });
-      console.log(res.data);
-      console.log(chatbot);
+      // console.log(res.data);
       localStorage.setItem('counselingLogId', res.data.data.counselingLogId);
       navigate('/chatbot');
     } catch(err) {
-        console.log(err);
-        console.log('서버 에러, 관리자에게 문의 바랍니다.');
+        // console.log(err);
+        // console.log('서버 에러, 관리자에게 문의 바랍니다.');
     }
   }
 

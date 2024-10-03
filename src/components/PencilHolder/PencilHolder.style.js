@@ -148,7 +148,8 @@ export const WriteBox = styled.div`
         }
         font-weight: 400;
         line-height: normal;
-        padding-left: 10px;
+        padding-left: 2%;
+
     }
 
     input::placeholder {
@@ -179,7 +180,8 @@ export const WriteBox = styled.div`
         }
         font-weight: 400;
         line-height: normal;
-        padding: 10px;
+        padding-top: 2%;
+        padding-left: 2%;
 
         resize: none;
 

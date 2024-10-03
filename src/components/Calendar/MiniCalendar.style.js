@@ -147,7 +147,7 @@ export const MiniCalendarWrapper = styled.div`
   }
   .react-calendar__tile--now.react-calendar__month-view__days__day abbr{
     color: #000;
-    background-color: white;
+    background-color: transparent;
     text-align: center;
     font-family: SeoulHangang;
     font-size: 0.94rem;
@@ -162,9 +162,8 @@ export const MiniCalendarWrapper = styled.div`
   .react-calendar__tile--hasActive {
     background-color: transparent;
   }
-  .react-calendar__tile--active:enabled:hover,
-  .react-calendar__tile--active:enabled:focus {
-    background: #e6e6e6 !important;
+  .react-calendar__tile--active:enabled:hover {
+    background: #e6e6e6;
   }
   .react-calendar__tile--hasActive abbr {
     color: white;

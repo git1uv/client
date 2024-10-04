@@ -242,7 +242,7 @@ function Mobile({date}) {
         </M.Content>
       </M.Container>
       {showModal && <SaveModal isVisible={showModal} onClose={() => setShowModal(false)} />}
-      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} date={date} setEmotion={setEmotion} />}
+      {showEmotionModal && <EmotionModal isVisible={showEmotionModal} onClose={() => setShowEmotionModal(false)} calendarId={calendarId} setEmotion={setEmotion} />}
       {showGif && (
         <GifModal 
           isVisible={showGif} 

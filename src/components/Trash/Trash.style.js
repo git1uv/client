@@ -93,7 +93,7 @@ export const Card1 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: #F7F5F0;
   animation: floatIn 1s forwards;
   background-repeat: no-repeat;
   background-size: contain;
@@ -138,6 +138,7 @@ export const Card2 = styled.div`
   cursor: pointer;
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: #F7F5F0;
   transform: rotate(6deg);
   border-radius: 25px;
   box-shadow: -10px 4px 4px 0px rgba(0, 0, 0, 0.25);

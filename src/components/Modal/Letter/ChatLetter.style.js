@@ -82,7 +82,7 @@ export const Modal = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: F8F7F4;
+  background-color: #F8F7F4;
   border-radius: 10px;
   position: relative;
   opacity: 1;

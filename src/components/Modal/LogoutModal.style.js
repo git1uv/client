@@ -201,5 +201,43 @@ export const OKButton = styled.button`
     height: 5.5vh;
     letter-spacing: -0.45px;
   }
+`;
 
+export const SubmitButton = styled.button`
+  width: 45%;
+  margin: 15px 5px 10px 10px;
+  font-size: 1.125rem;
+  border: none;
+  background-color: #ED6243;
+  color: white;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  @media (min-width: 431px) {
+    height: 5.5vh;
+    border-radius: 18px;
+    letter-spacing: -0.54px;
+  }
+  @media (max-width: 430px) {
+    border-radius: 15px;
+    height: 5.5vh;
+    letter-spacing: -0.45px;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  width: 90%;
+  height: 100px;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 20px;
+  background: #F3F3F3;
+  font-family: Pretendard;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
 `;

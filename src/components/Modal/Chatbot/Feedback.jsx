@@ -31,14 +31,10 @@ const FeedbackModal = ({ isVisible, onClose, onConfirm }) => {
           },
         }
       );
-
-      if (response.data.code === 200) {
-        alert("피드백이 성공적으로 제출되었습니다!");
-        setFeedback(""); // 초기화
-        onClose(); // 모달 닫기
-        navigate("/main");
-      } else {
-      }
+      alert("피드백이 성공적으로 제출되었습니다!");
+      setFeedback(""); // 초기화
+      onClose(); // 모달 닫기
+      navigate("/main");
     } catch (error) {
       console.error("피드백 제출 중 오류 발생:", error);
     }
@@ -66,7 +62,7 @@ const FeedbackModal = ({ isVisible, onClose, onConfirm }) => {
           value={feedback}
           onChange={(e) => setFeedback(e.target.value)}
         />
-        <M.SubmitButton onClick={handleSubmit}>제출하기</M.SubmitButton>
+        <M.SubmitButton onClick={() => handleSubmit()}>제출하기</M.SubmitButton>
       </M.LogoutModal>
     </M.LogoutModalBg>
   );

@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const fadeIn = keyframes`
   0% {
@@ -43,11 +43,11 @@ export const LogoutModal = styled.div`
   border-radius: 24px;
   text-align: center;
   opacity: 1;
-  animation: ${({ fadingOut }) => fadingOut ? fadeOut : fadeIn} 0.35s ease;
-  .sub{
+  animation: ${({ fadingOut }) => (fadingOut ? fadeOut : fadeIn)} 0.35s ease;
+  .sub {
     font-size: 1.25rem;
     margin: 0;
-    color: #52525B;
+    color: #52525b;
     text-align: center;
     font-family: Pretendard;
     font-style: normal;
@@ -55,21 +55,21 @@ export const LogoutModal = styled.div`
     line-height: normal;
     letter-spacing: -0.0225rem;
   }
-  .warning{
+  .warning {
     font-family: Pretendard;
     font-size: 1rem;
-    color: #9F9F9F;
-    margin:0;
+    color: #9f9f9f;
+    margin: 0;
   }
   @media (min-width: 431px) {
     width: 26rem;
-    .sub{
+    .sub {
       padding: 0 1%;
     }
   }
   @media (max-width: 430px) {
     width: 25rem;
-    .sub{
+    .sub {
       padding: 0 3%;
     }
   }
@@ -78,14 +78,13 @@ export const LogoutModal = styled.div`
 export const LogoutModalTitle = styled.h2`
   margin: 1.4vh 0;
   font-size: 1.35rem;
-  color: #27272A;
+  color: #27272a;
   text-align: center;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.648px;
-
 `;
 
 export const ModalActions = styled.div`
@@ -94,7 +93,7 @@ export const ModalActions = styled.div`
   margin-top: 1vh;
   height: 8vh;
   @media (min-width: 431px) {
-  margin-top: 5px;
+    margin-top: 5px;
   }
 `;
 
@@ -103,8 +102,8 @@ export const CancelButton = styled.button`
   margin: 15px 5px 10px 10px;
   font-size: 1.125rem;
   border: none;
-  background-color: #E8E9EB;
-  color: #52525B;
+  background-color: #e8e9eb;
+  color: #52525b;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
@@ -121,7 +120,6 @@ export const CancelButton = styled.button`
     height: 5.5vh;
     letter-spacing: -0.45px;
   }
-
 `;
 
 export const LogoutClickButton = styled.button`
@@ -129,7 +127,7 @@ export const LogoutClickButton = styled.button`
   margin: 15px 10px 10px 5px;
   font-size: 1.125rem;
   border: none;
-  background-color: #ED6243;
+  background-color: #ed6243;
   color: white;
   font-family: Pretendard;
   font-style: normal;
@@ -147,16 +145,15 @@ export const LogoutClickButton = styled.button`
     height: 5.5vh;
     letter-spacing: -0.45px;
   }
-
 `;
 
 export const ModalCloseButton = styled.button`
   position: absolute;
   background: none;
   border: none;
-  color: #27272A;
+  color: #27272a;
   cursor: pointer;
-  img{
+  img {
     height: 2.7vh;
   }
   @media (max-width: 430px) {
@@ -184,8 +181,8 @@ export const OKButton = styled.button`
   margin: 15px 5px 10px 10px;
   font-size: 1.125rem;
   border: none;
-  background-color: #E8E9EB;
-  color: #52525B;
+  background-color: #e8e9eb;
+  color: #52525b;
   font-family: Pretendard;
   font-style: normal;
   font-weight: 500;
@@ -201,5 +198,45 @@ export const OKButton = styled.button`
     height: 5.5vh;
     letter-spacing: -0.45px;
   }
+`;
 
+export const SubmitButton = styled.button`
+  width: 45%;
+  margin: 15px 5px 10px 10px;
+  font-size: 1.125rem;
+  border: none;
+  background-color: #ed6243;
+  color: white;
+  font-family: Pretendard;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  @media (min-width: 431px) {
+    height: 5.5vh;
+    border-radius: 18px;
+    letter-spacing: -0.54px;
+  }
+  @media (max-width: 430px) {
+    border-radius: 15px;
+    height: 5.5vh;
+    letter-spacing: -0.45px;
+  }
+`;
+
+export const TextArea = styled.textarea`
+  width: 90%;
+  height: 20vh;
+  font-size: 1rem;
+  padding: 16px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #f3f3f3;
+  font-family: Pretendard;
+  resize: none;
+
+  &:focus {
+    outline: none;
+  }
 `;

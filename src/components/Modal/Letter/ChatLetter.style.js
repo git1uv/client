@@ -74,11 +74,7 @@ export const ModalContainer = styled.div`
 export const Modal = styled.div`
   width: 100%;
   height: 100%;
-  background-image: ${({ chatbotType }) => 
-    chatbotType === 'F' ? `url(${FBackground})` : 
-    chatbotType === 'T' ? `url(${TBackground})` : 
-    chatbotType === 'H' ? `url(${HBackground})` : 
-    `url(${HBackground})`};
+  background-image: url(${(props) => props.backgroundImage}); // props로 받은 이미지 사용
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,6 +1,4 @@
 
-import trashImage from './image_trash_back_web.webp';
-import trashImageFront from './image_trash_front_web.webp';
 import trashImageMobile from './image_trash_1.webp';
 import card1ImageMobile from './card_up-1.webp';
 import card1ImageWeb from './card_up.webp';
@@ -15,5 +13,5 @@ import throwOutImageMobile from './button_delete_mobile.webp';
 import backgroundImageMobile from './image_bg_mobile.webp';
 import backgroundImageWeb from './image_bg.webp';
 
-export {trashImage,trashImageFront, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb};
+export {trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb};
 

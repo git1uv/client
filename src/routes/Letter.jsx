@@ -3,9 +3,58 @@ import * as L from "../components/Letter/Letter.style";
 import Letter from '../components/Modal/Letter/ChatLetter';
 import styled from "styled-components";
 import axios from 'axios';
-import {Fface, Tface, Hface, heart, Emptyheart, all, notRead} from '../assets/letterImg/icons';
+import {Fface, Tface, Hface, heart, Emptyheart, all, notRead, bg, mailbox, mailbox_mobile, trash} from '../assets/letterImg/icons';
 import DeleteLetterModal from '../components/Modal/Letter/DeleteLetter';
 import CheckLetterModal from '../components/Modal/Letter/NotCheckLetter';
+import Resizer from 'react-image-file-resizer';
+
+const fetchBlobFromUrl = async (url) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return blob;
+};
+
+const resizeImage = (file, maxWidth, maxHeight, format = 'AVIF') =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      maxWidth,
+      maxHeight,
+      format,
+      90,
+      0,
+      (uri) => resolve(uri),
+      'blob'
+    );
+  });
+
+const optimizeImages = async () => {
+  const resizedImages = {};
+  const imageList = [
+    { name: 'bg', src: bg, maxWidth: 1920, maxHeight: 1200 },
+    { name: 'mailbox', src: mailbox, maxWidth: 1920, maxHeight: 1200 },
+    { name: 'mailbox_mobile', src: mailbox_mobile, maxWidth: 430, maxHeight: 900 },
+    { name: 'trash', src: trash, maxWidth: 100, maxHeight: 100 },
+    { name: 'Fface', src: Fface, maxWidth: 100, maxHeight: 200 },
+    { name: 'Tface', src: Tface, maxWidth: 100, maxHeight: 200 },
+    { name: 'Hface', src: Hface, maxWidth: 100, maxHeight: 200 },
+    { name: 'heart', src: heart, maxWidth: 150, maxHeight: 150 },
+    { name: 'Emptyheart', src: Emptyheart, maxWidth: 150, maxHeight: 150 },
+    { name: 'notRead', src: notRead, maxWidth: 60, maxHeight: 40 },
+  ];
+
+  for (const img of imageList) {
+    try {
+      const blob = await fetchBlobFromUrl(img.src);
+      const resizedImage = await resizeImage(blob, img.maxWidth, img.maxHeight);
+      resizedImages[img.name] = URL.createObjectURL(resizedImage);
+    } catch (error) {
+      console.error(`Failed to resize image ${img.name}:`, error);
+    }
+  }
+
+  return resizedImages;
+};
 
 
 const LetterWrapper = styled.div`
@@ -33,6 +82,7 @@ function Mailbox() {
   const [isDeleteModalVisible, setDeleteModalVisible] = useState(false);
   const [isCheckModalVisible, setCheckModalVisible] = useState(false);
   const [selectedMailIds, setSelectedMailIds] = useState([]); 
+  const [optimizedImages, setOptimizedImages] = useState({});
 
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
@@ -141,24 +191,6 @@ function Mailbox() {
       }
     };
   
-  // const handleSeeAllToggle = () => {
-  //   setSeeAllActive(true);
-  //   setSeeFavoritesActive(false);
-  //   setSeeNotReadActive(false);
-  //   fetchMails('all');
-  // };
-  // const handleSeeFavoritesToggle = () => {
-  //   setSeeFavoritesActive(true);
-  //   setSeeAllActive(false);
-  //   setSeeNotReadActive(false);
-  //   fetchMails('starred');
-  // }; 
-  // const handleSeeNotReadToggle = () => {
-  //   setSeeNotReadActive(true);
-  //   setSeeAllActive(false);
-  //   setSeeFavoritesActive(false);
-  //   fetchMails('notRead');
-  // };
   const handleSeeAllToggle = () => {
     setIsActive({
       seeAllActive: true,
@@ -221,20 +253,28 @@ function Mailbox() {
     }
   };
 
-
   useEffect(() => {
+    const loadImages = async () => {
+      const images = await optimizeImages(); 
+      setOptimizedImages(images)
+    };
     fetchMails();
+    loadImages();
   }, []);
+
+  if (!optimizedImages.bg || !optimizedImages.mailbox || !optimizedImages.mailbox_mobile || !optimizedImages.trash) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <LetterWrapper>
-    <L.Bg>
-    <L.Container>
+    <L.Bg bg={optimizedImages.bg}>
+    <L.Container
+      mailbox={optimizedImages.mailbox} 
+      mailbox_mobile={optimizedImages.mailbox_mobile}
+    >
       <L.Mailbox>
           <L.TopRow>
-            {/* <L.SeeAll seeAllActive={seeAllActive} onClick={handleSeeAllToggle} />
-            <L.Favorites seeFavoritesActive={seeFavoritesActive} onClick={handleSeeFavoritesToggle} />
-            <L.NotRead seeNotReadActive={seeNotReadActive} onClick={handleSeeNotReadToggle} /> */}
              <L.TopIcons onClick={handleSeeAllToggle} active={isActive.seeAllActive}>
                 <img src={all} alt="모두보기" />
                 <p>모두보기</p>
@@ -249,13 +289,16 @@ function Mailbox() {
                 <img src={notRead} alt="안읽음" />
                 <p>안읽음</p>
               </L.TopIcons>
-            <L.Delete onClick={() => {
-              if (selectedMailIds.length === 0) {
-                  setCheckModalVisible(true);
-              } else {
-                  setDeleteModalVisible(true);
-              }
-          }}/>
+            <L.Delete 
+              onClick={() => {
+                if (selectedMailIds.length === 0) {
+                    setCheckModalVisible(true);
+                } else {
+                    setDeleteModalVisible(true);
+                }
+              }}
+              trash={optimizedImages.trash} 
+            />
           </L.TopRow>
           <L.LettersWrapper>
           {mails.length > 0 ? (

@@ -10,7 +10,33 @@ import SaveModal from '../Modal/Calendar/SaveModal';
 import EmotionModal from '../Modal/Calendar/EmotionModal';
 import { useNavigate } from 'react-router-dom';
 import GifModal from '../Modal/Calendar/GifModal'; 
-import {img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16} from '../../assets/CalendarImg/icons';
+import Resizer from 'react-image-file-resizer';
+import {img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16, note} from '../../assets/CalendarImg/icons';
+
+const images = [
+  { src: img1, name: 'laughing' },
+  { src: img2, name: 'excited' },
+  { src: img3, name: 'passionate' },
+  { src: img4, name: 'peaceful' },
+  { src: img5, name: 'angry' },
+  { src: img6, name: 'crying' },
+  { src: img7, name: 'dissatisfied' },
+  { src: img8, name: 'disappointed' },
+  { src: img9, name: 'inlove' },
+  { src: img10, name: 'sick' },
+  { src: img11, name: 'proud' },
+  { src: img12, name: 'tired' },
+  { src: img13, name: 'surprised' },
+  { src: img14, name: 'anxious' },
+  { src: img15, name: 'happy' },
+  { src: img16, name: 'embarrassed' },
+];
+
+const fetchBlobFromUrl = async (url) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return blob;
+};
 
 const DateWrapper = styled.div`
   display: flex;
@@ -33,6 +59,36 @@ function Browser({ date }) {
   const [showModal, setShowModal] = useState(false);
   const [showEmotionModal, setShowEmotionModal] = useState(false);
   const [showGif, setShowGif] = useState(false);
+  const [optimizedImages, setOptimizedImages] = useState({});
+
+  const optimizeImages = async () => {
+    const resizedImages = {};
+    const imageList = [
+      { name: 'background', src: note, maxWidth: 1920, maxHeight: 1200 },
+      ...images.map((img) => ({ ...img, maxWidth: 70, maxHeight: 70 })), 
+    ];
+    for (const img of imageList) {
+      try {
+        const blob = await fetchBlobFromUrl(img.src);
+        const resizedImage = await new Promise((resolve) => {
+          Resizer.imageFileResizer(
+            blob,
+            img.maxWidth,
+            img.maxHeight,
+            'AVIF',
+            90,
+            0,
+            (uri) => resolve(uri),
+            'blob'
+          );
+        });
+        resizedImages[img.name] = URL.createObjectURL(resizedImage);
+      } catch (error) {
+        console.error(`Failed to resize image ${img.name}:`, error);
+      }
+    }
+    setOptimizedImages(resizedImages);
+  };
 
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
@@ -60,6 +116,9 @@ function Browser({ date }) {
       // console.error("토큰이 없습니다.");
       return;
     }
+    const loadImages = async () => {
+      await optimizeImages();
+    };
     const fetchDiaryData = async () => {
       try {
         const year = moment(date).format('YYYY');
@@ -89,6 +148,7 @@ function Browser({ date }) {
     };
 
     fetchDiaryData();
+    loadImages();
   }, [date]);
 
   const handleSaveDiary = async () => {
@@ -115,26 +175,8 @@ function Browser({ date }) {
   const handleEmotionClick = () => {
     setShowEmotionModal(true);
   };
-  const emotionImages = {
-    laughing: img1,
-    excited: img2,
-    passionate: img3,
-    peaceful: img4,
-    angry: img5,
-    crying: img6,
-    dissatisfied: img7,
-    disappointed: img8,
-    inlove: img9,
-    sick: img10,
-    proud: img11,
-    tired: img12,
-    surprised: img13,
-    anxious: img14,
-    happy: img15,
-    embarrassed: img16,
-  };
 
-  const currentEmotionImage = emotion !== 'none' ? emotionImages[emotion] : null;
+  const currentEmotionImage = emotion !== 'none' ? optimizedImages[emotion] : null;
 
   const getChatbotName = (chatbotType) => {
     switch (chatbotType) {
@@ -178,9 +220,15 @@ function Browser({ date }) {
   }
 };
 
+if (!optimizedImages.background) {
+  return <div>Loading...</div>;
+}
+
   return (
     <DateWrapper>
-      <P.Container>
+      <P.Container
+        background={optimizedImages.background}
+      >
         <P.BackButton onClick={() => navigate(`/calendar`)}/>
         <MiniCalendar />
         <P.Content>

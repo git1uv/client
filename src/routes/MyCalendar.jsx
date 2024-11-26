@@ -9,6 +9,33 @@ import { useNavigate } from 'react-router-dom';
 import leftArrow from '../assets/CalendarImg/left-arrow.webp'; 
 import rightArrow from '../assets/CalendarImg/right-arrow.webp'; 
 import {img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, img16} from '../assets/CalendarImg/icons';
+import Resizer from 'react-image-file-resizer';
+
+const images = [
+  { src: img1, name: 'laughing' },
+  { src: img2, name: 'excited' },
+  { src: img3, name: 'passionate' },
+  { src: img4, name: 'peaceful' },
+  { src: img5, name: 'angry' },
+  { src: img6, name: 'crying' },
+  { src: img7, name: 'dissatisfied' },
+  { src: img8, name: 'disappointed' },
+  { src: img9, name: 'inlove' },
+  { src: img10, name: 'sick' },
+  { src: img11, name: 'proud' },
+  { src: img12, name: 'tired' },
+  { src: img13, name: 'surprised' },
+  { src: img14, name: 'anxious' },
+  { src: img15, name: 'happy' },
+  { src: img16, name: 'embarrassed' },
+];
+
+const fetchBlobFromUrl = async (url) => {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return blob;
+};
+
 const CalendarWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -27,6 +54,7 @@ function MyCalendar() {
   const [emotionData, setEmotionData] = useState([]);
   const navigate = useNavigate();
   const isMobile = window.innerWidth <= 430; 
+  const [optimizedImages, setOptimizedImages] = useState({});
 
   const accessToken = localStorage.getItem('accessToken'); 
   const refreshToken = localStorage.getItem('refreshToken');
@@ -50,8 +78,34 @@ function MyCalendar() {
     }
   };
 
+  const optimizeImages = async () => {
+    const resizedImages = {};
+    for (const img of images) {
+      try {
+        const blob = await fetchBlobFromUrl(img.src);
+        const resizedImage = await new Promise((resolve) => {
+          Resizer.imageFileResizer(
+            blob,
+            70, // 최대 너비
+            70, // 최대 높이
+            'AVIF', // 출력 형식
+            90, // 품질
+            0, // 회전
+            (uri) => resolve(uri),
+            'blob'
+          );
+        });
+        resizedImages[img.name] = URL.createObjectURL(resizedImage);
+      } catch (error) {
+        console.error(`Failed to resize image ${img.name}:`, error);
+      }
+    }
+    setOptimizedImages(resizedImages);
+  };
+
   useEffect(() => {
     fetchCalendarData(value);
+    optimizeImages();
   }, [value]);
 
 const renderEmotionIcon = (emotion) => {

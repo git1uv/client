@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {trashImageFront, trashImageMobile, card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile, paperImageMobile, paperImageWeb, throwOutImageWeb, throwOutImageMobile, backgroundImageMobile, backgroundImageWeb} from '../../assets/trashImg/icons'
+import {card1ImageMobile, card1ImageWeb, card2ImageMobile, card2ImageWeb, buttonImageWeb, buttonImageMobile} from '../../assets/trashImg/icons'
 
 export const Container = styled.div`
   display: flex;
@@ -13,12 +13,12 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  bakcground-size: contain;
+  background-size: contain;
   @media (max-width: 430px) {
-    background-image: url(${backgroundImageMobile});
+    background-image: url(${(props) => props.backgroundImageMobile});
     }
   @media (min-width: 431px) {
-  background-image: url(${backgroundImageWeb});
+  background-image: url(${(props) => props.backgroundImageWeb});
     }
 `;
 
@@ -47,7 +47,7 @@ export const Trash = styled.button`
   border: none;
   background-color: transparent;
   background-repeat: no-repeat;
-  background-image: url(${trashImageMobile});
+  background-image: url(${(props) => props.trashImageMobile});
   background-size: cover;
   z-index: 10;
 
@@ -59,15 +59,6 @@ export const Trash = styled.button`
     width: 51.7vw;
     height: 31vh;
     }
-`;
-
-export const TrashFront = styled.div`
-  position: absolute;
-  width: 100%;
-  background-image: url(${trashImageFront});
-  background-size: cover;
-  background-repeat: no-repeat;
-  z-index: 15; 
 `;
 
 export const Text = styled.div`
@@ -252,7 +243,7 @@ export const Paper = styled.div`
     }
   }
   @media (max-width: 430px) {
-    background-image: url(${paperImageMobile});
+    background-image: url(${(props) => props.paperImageMobile});
     padding: 3.5rem 2.16rem;
     width: 95vw;
     height: 60vh;
@@ -261,7 +252,7 @@ export const Paper = styled.div`
 
     }
   @media (min-width: 431px) {
-    background-image: url(${paperImageWeb});
+    background-image: url(${(props) => props.paperImageWeb});
     width: 57.8vw;
     height: 53.7vh;
     padding: 5rem;
@@ -280,26 +271,26 @@ export const ThrowOut = styled.button`
   background-repeat: no-repeat;
   background-size: contain;
   @media (max-width: 430px) {
-    background-image: url(${throwOutImageMobile});
+    background-image: url(${(props) => props.throwOutImageMobile});
     width: 176px;
     height: 43px;
     margin-right: 2vw;
     margin-top: 10px;
     }
   @media (min-width: 431px) and (max-width: 1023px) { 
-    background-image: url(${throwOutImageWeb});
+    background-image: url(${(props) => props.throwOutImageWeb});
     width: 184.5px;
     height: 45px;
     margin-top: 12px;
   }
   @media (min-width: 1024px) and (max-width: 1470px) {
-    background-image: url(${throwOutImageWeb});
+    background-image: url(${(props) => props.throwOutImageWeb});
     width: 184.5px;
     height: 45px;
     margin-top: 12px;
   }
   @media (min-width: 1441px) {
-    background-image: url(${throwOutImageWeb});
+    background-image: url(${(props) => props.throwOutImageWeb});
     width: 246px;
     height: 60px;
     margin-top: 12px;

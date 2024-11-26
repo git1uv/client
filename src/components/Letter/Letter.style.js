@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {bg, mailbox, mailbox_mobile, allO, allX, notreadO, notreadX, favoriteO, favoriteX, check, trash} from "../../assets/letterImg/icons";
+import {check} from "../../assets/letterImg/icons";
 
 export const Bg = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Bg = styled.div`
   height: 100vh;
   z-index: 1;
   @media (min-width: 431px){
-    background-image: url(${bg});
+    background-image: url(${(props) => props.bg});
   }
 `;
 export const Container = styled.div`
@@ -22,10 +22,10 @@ export const Container = styled.div`
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  background-image: url(${mailbox});
+  background-image: url(${(props) => props.mailbox});
   z-index: 1;
   @media (max-width: 430px) {
-    background-image: url(${mailbox_mobile});
+    background-image: url(${(props) => props.mailbox_mobile});
     height: 50rem;
     width: 100vw;
   }
@@ -84,7 +84,7 @@ export const TopRow = styled.div`
 `;
 export const Delete = styled.div`
   z-index: 4;
-  background-image: url(${trash});
+  background-image: url(${(props) => props.trash})
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -101,78 +101,7 @@ export const Delete = styled.div`
     height: 3.125rem;
   }
 `;
-export const Favorites = styled.div`
-  background-image: ${({ seeFavoritesActive }) => seeFavoritesActive ? `url(${favoriteO})` : `url(${favoriteX})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  @media (max-width: 430px) {
-    width: 4.17rem;
-    height: 4.17rem;
-    border-radius: 15px;
-    margin: 8% 2% 2%;
-  }
-  @media (min-width: 431px) and (max-width: 1200px){
-    width: 5rem;
-    height: 5rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-  @media (min-width: 1201px){
-    width: 6.68rem;
-    height: 6.68rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-`;
-export const NotRead = styled.div`
-  background-image: ${({ seeNotReadActive }) => seeNotReadActive ? `url(${notreadO})` : `url(${notreadX})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  @media (max-width: 430px) {
-    width: 4.17rem;
-    height: 4.17rem;
-    border-radius: 15px;
-    margin: 8% 2% 2%;
-  }
-  @media (min-width: 431px) and (max-width: 1200px){
-    width: 5rem;
-    height: 5rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-  @media (min-width: 1201px){
-    width: 6.68rem;
-    height: 6.68rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-`;
-export const SeeAll = styled.div`
-  background-image: ${({ seeAllActive }) => seeAllActive ? `url(${allO})` : `url(${allX})`};
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  @media (max-width: 430px) {
-    width: 4.17rem;
-    height: 4.17rem;
-    border-radius: 15px;
-    margin: 8% 2% 2%;
-  }
-  @media (min-width: 431px) and (max-width: 1200px){
-    width: 5rem;
-    height: 5rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-  @media (min-width: 1201px){
-    width: 6.68rem;
-    height: 6.68rem;
-    border-radius: 44px;
-    margin: 5% 2%;
-  }
-`;
+
 export const LettersWrapper = styled.div`
   z-index: 3;
   display: flex;  

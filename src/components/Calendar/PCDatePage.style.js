@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {buttonBack, film, note, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
+import {buttonBack, film, stickerDown, stickerUp, check} from '../../assets/CalendarImg/icons';
 import x from '../../assets/x.webp';
 
 export const BackButton = styled.div`
@@ -44,7 +44,7 @@ export const BackButton = styled.div`
 export const Container = styled.div`
   display: flex;
   position: relative;
-  background-image: url(${note});
+  background-image: url(${(props) => props.background});
   background-size: contain;
   background-repeat: no-repeat;
   flex-direction: row;

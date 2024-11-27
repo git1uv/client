@@ -1,35 +1,43 @@
-import React, { useEffect, useRef, useState } from 'react'
-import Simmaeum from '../../../../assets/chatbot/result/Simmaeum.png.webp'
-import Banbani from '../../../../assets/chatbot/result/Banbani.png.webp'
-import Neuranee from '../../../../assets/chatbot/result/Neuranee.png.webp'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useRef, useState } from "react";
+import Simmaeum from "../../../../assets/chatbot/result/Simmaeum.png.webp";
+import Banbani from "../../../../assets/chatbot/result/Banbani.png.webp";
+import Neuranee from "../../../../assets/chatbot/result/Neuranee.png.webp";
+import { useDispatch, useSelector } from "react-redux";
 
-import Icon1 from '../../../../assets/chatbot/result/journal1.png.webp'
-import Icon2 from '../../../../assets/chatbot/result/journal2.png.webp'
-import Icon3 from '../../../../assets/chatbot/result/journal3.png.webp'
+import Icon1 from "../../../../assets/chatbot/result/journal1.png.webp";
+import Icon2 from "../../../../assets/chatbot/result/journal2.png.webp";
+import Icon3 from "../../../../assets/chatbot/result/journal3.png.webp";
 
-import * as S from './ResultMobile.style'
-import dayjs from 'dayjs';
-import { setSolution } from '../../../../redux/solution';
-import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import html2canvas from 'html2canvas';
-import saveAs from 'file-saver';
+import * as S from "./ResultMobile.style";
+import dayjs from "dayjs";
+import { setSolution } from "../../../../redux/solution";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import html2canvas from "html2canvas";
+import saveAs from "file-saver";
+import FeedbackModal from "../../../Modal/Chatbot/Feedback";
 
 export default function ResultMobile() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
 
-  const accessToken = localStorage.getItem('accessToken');
-  const refreshToken = localStorage.getItem('refreshToken');
+  const accessToken = localStorage.getItem("accessToken");
+  const refreshToken = localStorage.getItem("refreshToken");
 
-  let result = localStorage.getItem('result');
-  let counselingLogId = localStorage.getItem('counselingLogId');
+  let result = localStorage.getItem("result");
+  let counselingLogId = localStorage.getItem("counselingLogId");
 
-  const [chatbot, setChatbot] = useState('');
+  const [chatbot, setChatbot] = useState("");
   const solution = useSelector((state) => state.solution);
-  let [endDate, setEndDate] = useState('2024 / 09 / 04');
-  const componentRef = useRef(null); 
+  let [endDate, setEndDate] = useState("2024 / 09 / 04");
+  const componentRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -38,17 +46,16 @@ export default function ResultMobile() {
     if (!componentRef.current) return;
 
     try {
-        const canvas = await html2canvas(componentRef.current, { scale: 2 });
-        canvas.toBlob((blob) => {
-            if (blob !== null) {
-                saveAs(blob, `${chatbot}의 상담일지.png`);
-            }
-        });
+      const canvas = await html2canvas(componentRef.current, { scale: 2 });
+      canvas.toBlob((blob) => {
+        if (blob !== null) {
+          saveAs(blob, `${chatbot}의 상담일지.png`);
+        }
+      });
     } catch (error) {
-        // console.error("Error converting div to image:", error);
+      // console.error("Error converting div to image:", error);
     }
   };
-
 
   const contentData = [
     {
@@ -68,94 +75,110 @@ export default function ResultMobile() {
     },
   ];
   /* 특정 상담일지 가져오기 API 구현*/
-  const getCounseling = async() => {
+  const getCounseling = async () => {
     try {
-      const res = await axios.get(`${serverURL}/api/v1/chatbot/counselinglog/${counselingLogId}`, {
-        headers: {
-          'Authorization': `Bearer ${accessToken} ${refreshToken}`
+      const res = await axios.get(
+        `${serverURL}/api/v1/chatbot/counselinglog/${counselingLogId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken} ${refreshToken}`,
+          },
         }
-      });
+      );
       // console.log(res.data);
-      let data = res.data.data
-      dispatch(setSolution({
-        counselingLogId: data.counselingLogId,
-        title: data.title,
-        summary: data.summary,
-        suggestion: data.suggestion,
-        solutions: data.solutions,
-        endedAt: data.endedAt,
-      }));
-      const formatDate = dayjs(data.endedAt).format('YYYY-MM-DD');
+      let data = res.data.data;
+      dispatch(
+        setSolution({
+          counselingLogId: data.counselingLogId,
+          title: data.title,
+          summary: data.summary,
+          suggestion: data.suggestion,
+          solutions: data.solutions,
+          endedAt: data.endedAt,
+        })
+      );
+      const formatDate = dayjs(data.endedAt).format("YYYY-MM-DD");
       setEndDate(formatDate);
 
       // console.log(formatDate);
-      
-      let chatbotType = data.chatbotType;
-      if (chatbotType === 'F')
-        setChatbot('심마음');
-      else if (chatbotType === 'H')
-        setChatbot('반바니');
-      else
-        setChatbot('뉴러니');
 
-    } catch(err) {
+      let chatbotType = data.chatbotType;
+      if (chatbotType === "F") setChatbot("심마음");
+      else if (chatbotType === "H") setChatbot("반바니");
+      else setChatbot("뉴러니");
+    } catch (err) {
       // console.log(err);
     }
-  }
-
+  };
 
   useEffect(() => {
-    const isNavigatedFromCalendar = location.state && location.state.fromCalendar; 
+    const isNavigatedFromCalendar =
+      location.state && location.state.fromCalendar;
     const isNavigatedFromChatbot = location.state && location.state.fromChatbot;
 
-    if (counselingLogId && (isNavigatedFromCalendar || location.pathname === '/chatbot' || !isNavigatedFromChatbot)) {
+    if (
+      counselingLogId &&
+      (isNavigatedFromCalendar ||
+        location.pathname === "/chatbot" ||
+        !isNavigatedFromChatbot)
+    ) {
       getCounseling();
     }
-    
   }, [location, counselingLogId]);
 
-
   return (
-    <S.App>
-       <S.Container ref={componentRef}>
-        <S.Top>
+    <>
+      <S.App>
+        <S.Container ref={componentRef}>
+          <S.Top>
             <S.Header>
-                <img src={result === 'Simmaeum' ? Simmaeum : result === 'Banbani' ? Banbani : Neuranee} alt="Character" />
+              <img
+                src={
+                  result === "Simmaeum"
+                    ? Simmaeum
+                    : result === "Banbani"
+                    ? Banbani
+                    : Neuranee
+                }
+                alt="Character"
+              />
             </S.Header>
             <S.TitleBox>
-                <S.Name>
+              <S.Name>
                 <div>{chatbot}의 일지</div>
                 <h3>{endDate}</h3>
-                </S.Name>
-                <section>{solution.title}</section>
+              </S.Name>
+              <section>{solution.title}</section>
             </S.TitleBox>
-        </S.Top>
-        <S.Bottom>
-        {contentData.map((data, index) => (
-            <S.ContentBox key={index}>
+          </S.Top>
+          <S.Bottom>
+            {contentData.map((data, index) => (
+              <S.ContentBox key={index}>
                 <S.Title>
-                    <img src={data.icon} alt='아이콘' />
-                    <h2>{data.title}</h2>
+                  <img src={data.icon} alt="아이콘" />
+                  <h2>{data.title}</h2>
                 </S.Title>
                 <S.Content>
-                {Array.isArray(data.content) ? (
+                  {Array.isArray(data.content) ? (
                     data.content.map((text, idx) => (
-                    <div key={idx}>
+                      <div key={idx}>
                         <p>{text}</p>
-                    </div>
+                      </div>
                     ))
-                ) : (
+                  ) : (
                     <p>{data.content}</p>
-                )}
+                  )}
                 </S.Content>
-            </S.ContentBox>
+              </S.ContentBox>
             ))}
-        <S.BtnBox>
-            <button onClick={handleDownload}></button>
-            <button onClick={() => navigate('/main')}>종료하기</button>
-        </S.BtnBox>
-        </S.Bottom>
-       </S.Container>
-    </S.App>
-  )
+            <S.BtnBox>
+              <button onClick={handleDownload}></button>
+              <button onClick={handleOpenModal}>종료하기</button>
+            </S.BtnBox>
+          </S.Bottom>
+        </S.Container>
+      </S.App>
+      <FeedbackModal isVisible={isModalOpen} onClose={handleCloseModal} />
+    </>
+  );
 }

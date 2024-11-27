@@ -16,7 +16,6 @@ import axios from "axios";
 import { setCounseling, setSolution } from "../../../redux/solution";
 import { useLocation, useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
-import Feedback from "react-bootstrap/esm/Feedback";
 import FeedbackModal from "../../Modal/Chatbot/Feedback";
 
 export default function ChatbotResult() {

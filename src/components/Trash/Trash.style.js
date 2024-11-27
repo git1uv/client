@@ -13,7 +13,6 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   z-index: 1;
-  background-size: contain;
   @media (max-width: 430px) {
     background-image: url(${(props) => props.backgroundImageMobile});
     }

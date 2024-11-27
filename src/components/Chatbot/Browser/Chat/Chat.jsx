@@ -59,7 +59,7 @@ export default function Chat({
     return (
       <S.ChatbotBubble key={index}>
         {value.isLoading ? (
-          <Lottie loop={true} animationData={Loading} />
+          <S.Loading loop={true} animationData={Loading} />
         ) : index === message.length - 1 && !loading ? (
           animatedMessage
         ) : (

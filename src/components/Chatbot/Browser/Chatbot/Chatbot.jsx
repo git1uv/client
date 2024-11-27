@@ -17,6 +17,7 @@ import { setAnswer } from "../../../../redux/counseling";
 import axios from "axios";
 import { setSolution } from "../../../../redux/solution";
 import RedFlagModal from "../../../Modal/Chatbot/RedFlagModal";
+import Resizer from "react-image-file-resizer";
 
 export default function Chatbot() {
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -41,6 +42,12 @@ export default function Chatbot() {
   const [inputValue, setInputValue] = useState(""); // input 값
   const [current, setCurrent] = useState(); // 보낼 문장
 
+  const [icons, setIcons] = useState([
+    SimmaeumImg,
+    BanbaniImg,
+    NeuraneeImg,
+    Chair,
+  ]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -66,6 +73,55 @@ export default function Chatbot() {
   const connectCounseling = () => {
     window.location.href = "https://www.ncmh.go.kr/ncmh/main.do";
     closeRedFlagModal();
+  };
+
+  const resizeImage = (image) => {
+    return new Promise((resolve, reject) => {
+      Resizer.imageFileResizer(
+        image,
+        1920, // 원하는 가로 크기
+        1440, // 원하는 세로 크기
+        "avif", // 변환할 포맷
+        100, // 품질
+        0, // 회전
+        (uri) => {
+          resolve(uri);
+        },
+        "base64" // 반환 형식
+      );
+    });
+  };
+
+  const processImages = async (images) => {
+    return Promise.all(
+      images.map(async (imagePath) => {
+        const img = new Image();
+        img.src = imagePath;
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+        });
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        return new Promise((resolve, reject) => {
+          canvas.toBlob(
+            async (blob) => {
+              if (blob) {
+                const resizedImage = await resizeImage(blob);
+                resolve(resizedImage);
+              } else {
+                reject(new Error("Failed to create Blob"));
+              }
+            },
+            "image/avif",
+            1
+          );
+        });
+      })
+    );
   };
 
   // 감정 분석에 따른 챗봇의 표정 변화 구현
@@ -197,6 +253,11 @@ export default function Chatbot() {
   };
 
   useEffect(() => {
+    const images = [SimmaeumImg, BanbaniImg, NeuraneeImg, Chair];
+    processImages(images).then((resizedIcons) => setIcons(resizedIcons));
+  }, []);
+
+  useEffect(() => {
     if (current !== undefined) {
       postChatting();
     }
@@ -220,13 +281,13 @@ export default function Chatbot() {
   return (
     <S.App>
       <S.Top>
-        <S.Chair src={Chair} alt="상담의자" />
+        <S.Chair src={icons[3]} alt="상담의자" />
         {result === "Simmaeum" ? (
-          <S.Character src={SimmaeumImg} alt="chatbot" />
+          <S.Character src={icons[0]} alt="chatbot" />
         ) : result === "Banbani" ? (
-          <S.Character src={BanbaniImg} alt="chatbot" />
+          <S.Character src={icons[1]} alt="chatbot" />
         ) : (
-          <S.Character src={NeuraneeImg} alt="chatbot" />
+          <S.Character src={icons[2]} alt="chatbot" />
         )}
         <S.Emotion
           options={defaultOptions}
